@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="0.0" minWidth="200.0" prefHeight="400.0" prefWidth="600.0" style="-fx-alignment: center;" stylesheets="@../css/font_geostore.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="TOP_CENTER" prefHeight="96.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" styleClass="label-font" text="Un programma che permette di simulare lo store virtuale" wrapText="true" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="162.0" spacing="60.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" spacing="20.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" styleClass="label-font" text="Non hai un account?" textAlignment="CENTER" textFill="#3f51b5" wrapText="true">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="96.0" prefWidth="210.0" style="-fx-background-color: #3F51B5; -fx-background-radius: 20;" textAlignment="CENTER" textFill="WHITE">
+                           <graphic>
+                              <VBox alignment="CENTER" spacing="7.0">
+                                 <children>
+                                    <ImageView fitHeight="47.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../../../../Graphic/Canva/Assets/new_user_bit.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" styleClass="label-font" text="REGISTRATI" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </graphic></Button>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" spacing="26.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" styleClass="label-font" text="Hai già un account?" textAlignment="CENTER" textFill="#03a8e8" wrapText="true">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="210.0" style="-fx-background-color: #03A8E8; -fx-background-radius: 50;" textAlignment="CENTER" textFill="WHITE">
+                           <graphic>
+                              <HBox alignment="CENTER" spacing="7.0">
+                                 <children>
+                                    <ImageView fitHeight="24.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../../../../Graphic/Canva/Assets/user_white.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" styleClass="label-font" text="ACCEDI COME ADMIN" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                       <font>
+                                          <Font size="8.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </graphic></Button>
+                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="88.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="210.0" style="-fx-background-color: #03A8E8; -fx-background-radius: 50;" textAlignment="CENTER" textFill="WHITE">
+                           <graphic>
+                              <HBox alignment="CENTER" spacing="7.0">
+                                 <children>
+                                    <ImageView fitHeight="24.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../../../../Graphic/Canva/Assets/user_white.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" styleClass="label-font" text="ACCEDI COME CLIENTE" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                       <font>
+                                          <Font size="8.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="55.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="103.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Graphic/Canva/Images/GeoStore/geostore_sign_2_(without_bg).png" />
+               </image>
+            </ImageView>
+         </children></HBox>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0" style="-fx-background-color: #306FDB;" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

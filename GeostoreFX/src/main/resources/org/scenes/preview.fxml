@@ -20,19 +20,13 @@
             </image>
          </ImageView>
          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="140.0" layoutY="107.0" prefHeight="27.0" prefWidth="321.0" text="Login" textAlignment="CENTER">
-            <font>
-               <Font name="Berlin Sans FB" size="24.0" />
-            </font>
+
          </Label>
          <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="163.0" layoutY="164.0" text="Email:" textAlignment="RIGHT">
-            <font>
-               <Font size="14.0" />
-            </font>
+
          </Label>
          <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="132.0" layoutY="200.0" prefHeight="20.0" prefWidth="68.0" text="Password:" textAlignment="RIGHT">
-            <font>
-               <Font size="14.0" />
-            </font>
+
          </Label>
          <TextField fx:id="emailField" alignment="CENTER" layoutX="226.0" layoutY="161.0" />
          <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="226.0" layoutY="198.0" />

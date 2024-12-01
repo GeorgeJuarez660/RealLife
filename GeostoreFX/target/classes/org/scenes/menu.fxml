@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="fxmlLoader" maxHeight="800.0" maxWidth="1000.0" minHeight="0.0" minWidth="200.0" prefHeight="600.0" prefWidth="800.0" style="-fx-alignment: center;" stylesheets="@../css/font_geostore.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controller.MenuController">
+   <left>
+      <VBox alignment="TOP_CENTER" prefHeight="458.0" prefWidth="190.0" style="-fx-background-color: #306FDB;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" spacing="5.0">
+                     <children>
+                        <Label fx:id="name" alignment="CENTER" contentDisplay="CENTER" styleClass="label-font" text="NOME" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="surname" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="18.0" styleClass="label-font" text="COGNOME" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </HBox>
+            <Button onAction="#user_clicking" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="190.0" style="-fx-background-radius: 7; -fx-background-color: #306FDB;" styleClass="button-menu" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets top="150.0" />
+               </VBox.margin>
+               <graphic>
+                  <HBox alignment="CENTER" spacing="15.0">
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/user_bit.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" styleClass="label-font" text="Utente" textAlignment="CENTER" textFill="WHITE" />
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+            <Button onAction="#clicking" alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="224.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="190.0" style="-fx-background-radius: 7; -fx-background-color: #306FDB;" styleClass="label-font" textAlignment="CENTER">
+               <graphic>
+                  <HBox alignment="CENTER" spacing="15.0">
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/product.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" styleClass="label-font" text="Prodotti" textAlignment="CENTER" textFill="WHITE" />
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="250.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="190.0" style="-fx-background-radius: 7; -fx-background-color: #306FDB;" styleClass="label-font" textAlignment="CENTER">
+               <graphic>
+                  <HBox alignment="CENTER" spacing="15.0">
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/shop_list.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" styleClass="label-font" text="Ordini" textAlignment="CENTER" textFill="WHITE" />
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="276.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="190.0" style="-fx-background-radius: 7; -fx-background-color: #306FDB;" styleClass="label-font" textAlignment="CENTER">
+               <graphic>
+                  <HBox alignment="CENTER" spacing="15.0">
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/category.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" styleClass="label-font" text="Categorie" textAlignment="CENTER" textFill="WHITE" />
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="301.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="190.0" style="-fx-background-radius: 7; -fx-background-color: #306FDB;" styleClass="label-font" textAlignment="CENTER">
+               <graphic>
+                  <HBox alignment="CENTER" spacing="15.0">
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/material.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" styleClass="label-font" text="Materie" textAlignment="CENTER" textFill="WHITE" />
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="170.0" style="-fx-background-radius: 15; -fx-background-color: #0495CD;">
+               <VBox.margin>
+                  <Insets top="70.0" />
+               </VBox.margin>
+               <graphic>
+                  <HBox alignment="CENTER" spacing="7.0">
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/homepage_bit.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" styleClass="label-font" text="HOMEPAGE" textAlignment="CENTER" textFill="WHITE" />
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="495.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="170.0" style="-fx-background-radius: 15; -fx-background-color: #FF5757;">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <graphic>
+                  <HBox alignment="CENTER" spacing="7.0">
+                     <children>
+                        <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/logout_sym.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" styleClass="label-font" text="LOGOUT" textAlignment="CENTER" textFill="WHITE" />
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>

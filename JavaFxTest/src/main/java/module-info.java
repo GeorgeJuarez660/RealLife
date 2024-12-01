@@ -1,4 +1,4 @@
-module info {
+module org.example.proofs {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -11,8 +11,6 @@ module info {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens org.controller to javafx.fxml;
-    exports org.controller;
-    exports org.services;
-    opens org.services to javafx.fxml;
+    opens org.example.proofs to javafx.fxml;
+    exports org.example.proofs;
 }

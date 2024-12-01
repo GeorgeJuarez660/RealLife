@@ -6,14 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8273ca0a-1299-4b65-b52d-47dc6a793eae" name="Changes" comment="AppJavaFx: creating example">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/previewLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/previewLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/HelloApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/HelloController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/TryController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/TryLogin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/preview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/preview.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/preview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/preview.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/tryLogin.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +25,9 @@
   </component>
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="0f21a078-c9f4-47d1-b6aa-3d775a060413" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/22-ea+11/javafx-graphics-22-ea+11-win.jar!/javafx/scene/image/Image.class" root0="SKIP_INSPECTION" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -50,32 +48,44 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.HelloApplication.executor": "Run",
+    "Application.Main.executor": "Run",
     "Application.MainPreview.executor": "Run",
     "Application.Unnamed.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "featureDev/desktop",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/giorg/OneDrive/Desktop/App/G&P/Java/GeostoreFX/src/main/resources/org/scenes"
+    "last_opened_file_path": "C:/Users/giorg/OneDrive/Desktop/App/G&P/Programming/Java/GeostoreFX/src/main/resources/org/images",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Java\GeostoreFX\src\main\resources\org\scenes" />
-      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Java\GeostoreFX\src\main\resources\org\screens" />
+      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\images" />
+      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes" />
+      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\java\org\controller" />
+      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\fonts" />
+      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes" />
+      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\css" />
+      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org" />
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Java\GeostoreFX\src\main\resources\org" />
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Java\GeostoreFX\src\main\resources\org\scenes\images" />
-      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Java\GeostoreFX\src\main\resources\org\scenes" />
-      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Java\GeostoreFX\src\main\resources\org\screens" />
-      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Java\GeostoreFX\src\main\java\org\controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.controller" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.controller.Main" />
+      <module name="GeostoreFX" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainPreview" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.controller.MainPreview" />
       <module name="GeostoreFX" />
@@ -83,6 +93,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.MainPreview" />
+      <item itemvalue="Application.Main" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -149,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729356096359</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="AppJavaFx: creating example">
+      <option name="closed" value="true" />
+      <created>1729415483968</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1729415483968</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -157,5 +179,16 @@
     <MESSAGE value="managing" />
     <MESSAGE value="AppJavaFx: creating example" />
     <option name="LAST_COMMIT_MESSAGE" value="AppJavaFx: creating example" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/controller/WelcomeController.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

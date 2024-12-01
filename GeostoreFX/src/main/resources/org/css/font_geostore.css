@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.label-font {
+      -fx-font-family: 'Press Start 2P', system-ui;
+      -fx-font-weight: 400;
+      -fx-backgoung: normal;
+      -fx-alignment: center;      /* Allinea il testo al centro orizzontalmente e verticalmente */
+      -fx-text-alignment: center;
+}
