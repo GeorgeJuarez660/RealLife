@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import org.controller.GetsController;
 import org.controller.Main;
 import org.controller.MenuController;
+import org.controller.PrepageController;
 
 
 import java.net.URL;
@@ -26,15 +27,17 @@ public class MenuLoadPage {
             // Costruisce il percorso completo del file FXML
             URL fileUrl = Main.class.getResource("/org/scenes/" + clicked + ".fxml");
             if (fileUrl == null) {
-                throw new java.io.FileNotFoundException("FXML file can't be found");
+                throw new java.io.FileNotFoundException("Nessun file FXML trovato");
             }
 
             FXMLLoader loader = new FXMLLoader(fileUrl);
             Pane newScene = loader.load();
-            MenuController controller = loader.getController(); // Ottieni il controller della scena caricata
+            /*Object controller = loader.getController(); //Ottieni il controller della scena caricata
 
+            if(controller instanceof PrepageController){
+                PrepageController prepageController = (PrepageController) controller;
+            }*/
 
-            controller.setFields();
 
             //carica la scena
             Scene scene = new Scene(newScene, 800, 600);
@@ -47,6 +50,55 @@ public class MenuLoadPage {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public static void access(ActionEvent event, String choose) {
+        try {
+            String chooseType =  "login" + choose;
+
+            URL fileUrl = null;
+
+            // Costruisce il percorso completo del file FXML
+            if(chooseType.equals("loginAdmin")){
+                fileUrl = Main.class.getResource("/org/scenes/loginAdmin.fxml");
+                if (fileUrl == null) {
+                    throw new java.io.FileNotFoundException("Nessun file FXML trovato");
+                }
+            }
+            else if(chooseType.equals("loginUser")){
+                fileUrl = Main.class.getResource("/org/scenes/loginCliente.fxml");
+                if (fileUrl == null) {
+                    throw new java.io.FileNotFoundException("Nessun file FXML trovato");
+                }
+            }
+            else{
+                fileUrl = Main.class.getResource("/org/scenes/register.fxml");
+                if (fileUrl == null) {
+                    throw new java.io.FileNotFoundException("Nessun file FXML trovato");
+                }
+            }
+
+            FXMLLoader loader = new FXMLLoader(fileUrl);
+            Pane newScene = loader.load();
+            /*Object controller = loader.getController(); //Ottieni il controller della scena caricata
+
+            if(controller instanceof PrepageController){
+                PrepageController prepageController = (PrepageController) controller;
+            }*/
+
+
+            //carica la scena
+            Scene scene = new Scene(newScene, 800, 600);
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (Exception e) {
+            System.out.println("No page found. Please check FXMLLoader.");
+            e.printStackTrace();
+        }
+    }
+
 
     @FXML
     public static void getScene(BorderPane fxmlLoader, String clicked) {
