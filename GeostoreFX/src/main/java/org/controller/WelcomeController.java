@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import org.services.MenuLoadPage;
+import org.services.LoadPage;
 
 public class WelcomeController {
     @FXML
@@ -14,9 +14,9 @@ public class WelcomeController {
     private static Stage stage;// Questo è il BorderPane di menu.fxml
 
     @FXML
-    private void goes(ActionEvent event) {
+    private void goesToPrepage(ActionEvent event) {
         System.out.println("Clicked");
-        MenuLoadPage.getFullScene(event, "menu");
+        LoadPage.getFullScene(event, "prepage");
     }
 
 
@@ -24,15 +24,4 @@ public class WelcomeController {
     public void initialize() {
         System.out.println("Root inizializzato: " + welcomeLoader);
     }
-
-    // Metodo per cambiare il testo di titleGets
-
-
-    /*@FXML
-    private void caricaScene2() {
-        Pane scene2 = getPage("searchUsers.fxml"); // Usa il metodo generico per caricare la scena
-        if (scene2 != null) {
-            root.setCenter(scene2); // Imposta la scena nel centro del BorderPane
-        }
-    }*/
 }

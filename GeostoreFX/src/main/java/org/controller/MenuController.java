@@ -3,7 +3,7 @@ package org.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import org.services.MenuLoadPage;
+import org.services.LoadPage;
 
 public class MenuController {
     @FXML
@@ -15,7 +15,7 @@ public class MenuController {
     @FXML
     private void clicking() {
         System.out.println("Clicked");
-        MenuLoadPage.getScene(fxmlLoader, "gets");
+        LoadPage.getPartialScene(fxmlLoader, "gets");
     }
 
     @FXML
@@ -28,7 +28,7 @@ public class MenuController {
     @FXML
     private void user_clicking() {
         System.out.println("Clicked");
-        MenuLoadPage.getScene(fxmlLoader, "chooseTUserAdmin");
+        LoadPage.getPartialScene(fxmlLoader, "chooseTUserAdmin");
     }
 
 

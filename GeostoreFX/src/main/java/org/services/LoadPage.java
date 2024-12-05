@@ -8,15 +8,14 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import org.controller.AccessController;
 import org.controller.GetsController;
 import org.controller.Main;
-import org.controller.MenuController;
-import org.controller.PrepageController;
 
 
 import java.net.URL;
 
-public class MenuLoadPage {
+public class LoadPage {
     @FXML
     private static Stage stage; // Questo è il BorderPane di menu.fxml
 
@@ -82,8 +81,8 @@ public class MenuLoadPage {
             Pane newScene = loader.load();
             /*Object controller = loader.getController(); //Ottieni il controller della scena caricata
 
-            if(controller instanceof PrepageController){
-                PrepageController prepageController = (PrepageController) controller;
+            if(controller instanceof AccessController){
+                AccessController accessController = (AccessController) controller;
             }*/
 
 
@@ -101,7 +100,7 @@ public class MenuLoadPage {
 
 
     @FXML
-    public static void getScene(BorderPane fxmlLoader, String clicked) {
+    public static void getPartialScene(BorderPane fxmlLoader, String clicked) {
         Pane view = null;
         try {
             // Costruisce il percorso completo del file FXML

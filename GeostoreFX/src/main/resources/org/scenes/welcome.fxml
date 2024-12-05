@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="welcomeLoader" maxHeight="800.0" maxWidth="1000.0" minHeight="0.0" minWidth="200.0" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/font_geostore.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controller.WelcomeController">
+<BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="0.0" minWidth="200.0" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/font_geostore.css" xmlns="http://javafx.com/javafx/22" fx:controller="org.controller.WelcomeController" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -35,9 +35,9 @@
             </Label>
             <VBox alignment="BOTTOM_CENTER" prefHeight="173.0" prefWidth="800.0" spacing="30.0">
                <children>
-                  <Button onAction="#goes" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="236.0" style="-fx-background-radius: 50; -fx-background-color: #306FDB;" styleClass="label-font" text="ENTRA" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goesToPrepage" prefHeight="27.0" prefWidth="236.0" style="-fx-background-radius: 50; -fx-background-color: #306FDB;" styleClass="label-font" text="ENTRA" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="MS Gothic" size="12.0" />
                      </font>
                   </Button>
                   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="22.0" prefWidth="154.0" style="-fx-background-radius: 50; -fx-background-color: #FF5757;" styleClass="label-font" text="ESCI" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
