@@ -39,8 +39,12 @@ public class LoadPage {
 
 
             //carica la scena
-            Scene scene = new Scene(newScene, 800, 600);
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            double prefWidth = stage.getWidth(); //dimensione rimane invariata o mantenuta dall'utente
+            double prefHeight = stage.getHeight();
+            Scene scene = new Scene(newScene);
+            stage.setWidth(prefWidth);
+            stage.setHeight(prefHeight); //inserendo dimensioni fisse
             stage.setScene(scene);
             stage.show();
 
@@ -85,10 +89,13 @@ public class LoadPage {
                 AccessController accessController = (AccessController) controller;
             }*/
 
-
             //carica la scena
-            Scene scene = new Scene(newScene, 800, 600);
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            double prefWidth = stage.getWidth();
+            double prefHeight = stage.getHeight();
+            Scene scene = new Scene(newScene);
+            stage.setWidth(prefWidth);
+            stage.setHeight(prefHeight);
             stage.setScene(scene);
             stage.show();
 
