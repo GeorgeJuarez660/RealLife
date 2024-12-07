@@ -5,7 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import org.services.Product;
+import org.models.Disponibilita;
+import org.models.Prodotto;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -26,20 +27,24 @@ public class GetsController {// Questo è il BorderPane di menu.fxml
     }
 
     public void iteming(){
-        Product product = new Product();
-        product.setProductName("test");
-        product.setDisponibilità("alias");
+        Prodotto product = new Prodotto();
+        product.setNome("test");
+        Disponibilita disponibilita = new Disponibilita();
+        disponibilita.setCode("alias");
+        product.setDisponibilita(disponibilita);
 
-        Product product2 = new Product();
-        product2.setProductName("test2");
-        product2.setDisponibilità("alias2");
+        Prodotto product2 = new Prodotto();
+        product2.setNome("test2");
+        Disponibilita disponibilita2 = new Disponibilita();
+        disponibilita2.setCode("alias2");
+        product2.setDisponibilita(disponibilita2);
 
-        List<Product> productList = new ArrayList<>();
+        List<Prodotto> productList = new ArrayList<>();
 
         productList.add(product);
         productList.add(product2);
 
-        for (Product value : productList) {
+        for (Prodotto value : productList) {
             try {
                 // Costruisce il percorso completo del file FXML
                 URL fileUrl = getClass().getResource("productInfoGets.fxml");

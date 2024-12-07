@@ -13,19 +13,25 @@ public class PrepageController {
     @FXML
     private void register(ActionEvent event) {
         System.out.println("signing up");
-        LoadPage.access(event, "register");
+        LoadPage.saveStage(event);
+
+        LoadPage.access("register");
     }
 
     @FXML
     private void loginAdmin(ActionEvent event) {
         System.out.println("signing in admin");
-        LoadPage.access(event, "Admin");
+        LoadPage.saveStage(event);
+
+        LoadPage.access("Admin");
     }
 
     @FXML
     private void loginCliente(ActionEvent event) {
         System.out.println("signing in cliente");
-        LoadPage.access(event, "User");
+        LoadPage.saveStage(event);
+
+        LoadPage.access("User");
     }
 
     // Metodo per cambiare il testo di titleGets

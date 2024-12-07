@@ -1,6 +1,7 @@
 package org.services;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -8,19 +9,22 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import org.controller.AccessController;
-import org.controller.GetsController;
-import org.controller.Main;
+import org.controller.*;
 
 
 import java.net.URL;
 
 public class LoadPage {
     @FXML
-    private static Stage stage; // Questo è il BorderPane di menu.fxml
+    private static Stage savedStage; // Questo è il BorderPane di menu.fxml
+
+    public static void saveStage(Event event) {
+        //carica lo stage per cambiare scene
+        savedStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    }
 
     @FXML
-    public static void getFullScene(ActionEvent event, String clicked) {
+    public static void getFullScene(String clicked) {
         Pane view = null;
         try {
             // Costruisce il percorso completo del file FXML
@@ -39,14 +43,13 @@ public class LoadPage {
 
 
             //carica la scena
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            double prefWidth = stage.getWidth(); //dimensione rimane invariata o mantenuta dall'utente
-            double prefHeight = stage.getHeight();
+            double prefWidth = savedStage.getWidth(); //dimensione rimane invariata o mantenuta dall'utente
+            double prefHeight = savedStage.getHeight();
             Scene scene = new Scene(newScene);
-            stage.setWidth(prefWidth);
-            stage.setHeight(prefHeight); //inserendo dimensioni fisse
-            stage.setScene(scene);
-            stage.show();
+            savedStage.setWidth(prefWidth);
+            savedStage.setHeight(prefHeight); //inserendo dimensioni fisse
+            savedStage.setScene(scene);
+            savedStage.show();
 
         } catch (Exception e) {
             System.out.println("No page found. Please check FXMLLoader.");
@@ -55,7 +58,7 @@ public class LoadPage {
     }
 
     @FXML
-    public static void access(ActionEvent event, String choose) {
+    public static void access(String choose) {
         try {
             String chooseType =  "login" + choose;
 
@@ -90,14 +93,86 @@ public class LoadPage {
             }*/
 
             //carica la scena
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            double prefWidth = stage.getWidth();
-            double prefHeight = stage.getHeight();
+            double prefWidth = savedStage.getWidth();
+            double prefHeight = savedStage.getHeight();
             Scene scene = new Scene(newScene);
-            stage.setWidth(prefWidth);
-            stage.setHeight(prefHeight);
-            stage.setScene(scene);
-            stage.show();
+            savedStage.setWidth(prefWidth);
+            savedStage.setHeight(prefHeight);
+            savedStage.setScene(scene);
+            savedStage.show();
+
+        } catch (Exception e) {
+            System.out.println("No page found. Please check FXMLLoader.");
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public static void answerScene(String choose, String response) {
+        try {
+            URL fileUrl = null;
+
+            // Costruisce il percorso completo del file FXML
+            if(choose.equals("positive")){
+                fileUrl = Main.class.getResource("/org/scenes/positiveAnswer.fxml");
+                if (fileUrl == null) {
+                    throw new java.io.FileNotFoundException("Nessun file FXML trovato");
+                }
+            }
+            else if(choose.equals("negative")){
+                fileUrl = Main.class.getResource("/org/scenes/negativeAnswer.fxml");
+                if (fileUrl == null) {
+                    throw new java.io.FileNotFoundException("Nessun file FXML trovato");
+                }
+            }
+
+            FXMLLoader loader = new FXMLLoader(fileUrl);
+            Pane newScene = loader.load();
+
+            AnswerController answerController = (AnswerController) loader.getController(); //Ottieni il controller della scena caricata
+            answerController.response(response);
+
+            //carica la scena
+            double prefWidth = savedStage.getWidth();
+            double prefHeight = savedStage.getHeight();
+            Scene scene = new Scene(newScene);
+            savedStage.setWidth(prefWidth);
+            savedStage.setHeight(prefHeight);
+            savedStage.setScene(scene);
+            savedStage.show();
+
+        } catch (Exception e) {
+            System.out.println("No page found. Please check FXMLLoader.");
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public static void loadingScene(String response) {
+        try {
+            URL fileUrl = null;
+
+            // Costruisce il percorso completo del file FXML
+            fileUrl = Main.class.getResource("/org/scenes/loading.fxml");
+            if (fileUrl == null) {
+                throw new java.io.FileNotFoundException("Nessun file FXML trovato");
+            }
+
+            FXMLLoader loader = new FXMLLoader(fileUrl);
+            Pane newScene = loader.load();
+            Object controller = loader.getController(); //Ottieni il controller della scena caricata
+
+            LoadingController loadingController = (LoadingController) loader.getController();
+            loadingController.response(response);
+
+            //carica la scena
+            double prefWidth = savedStage.getWidth();
+            double prefHeight = savedStage.getHeight();
+            Scene scene = new Scene(newScene);
+            savedStage.setWidth(prefWidth);
+            savedStage.setHeight(prefHeight);
+            savedStage.setScene(scene);
+            savedStage.show();
 
         } catch (Exception e) {
             System.out.println("No page found. Please check FXMLLoader.");

@@ -16,7 +16,9 @@ public class WelcomeController {
     @FXML
     private void goesToPrepage(ActionEvent event) {
         System.out.println("Clicked");
-        LoadPage.getFullScene(event, "prepage");
+        LoadPage.saveStage(event);
+
+        LoadPage.getFullScene("prepage");
     }
 
 
