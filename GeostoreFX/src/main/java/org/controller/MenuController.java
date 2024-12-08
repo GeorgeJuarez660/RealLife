@@ -1,8 +1,12 @@
 package org.controller;
 
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.util.Duration;
+import org.models.Cliente;
+import org.models.Utente;
 import org.services.LoadPage;
 
 public class MenuController {
@@ -13,15 +17,31 @@ public class MenuController {
     private Label name, surname;
 
     @FXML
+    private Cliente user;
+
+    @FXML
     private void clicking() {
         System.out.println("Clicked");
         LoadPage.getPartialScene(fxmlLoader, "gets");
     }
 
+    @FXML //salvataggio utente per il menu
+    public void saveUser(Cliente utente) {
+        user = new Cliente();
+        user.setNome(utente.getNome());
+        user.setCognome(utente.getCognome());
+        user.setSesso(utente.getSesso());
+        user.setDataNascita(utente.getDataNascita());
+        user.setEmail(utente.getEmail());
+        user.setPassword(utente.getPassword());
+
+        setFields();
+    }
+
     @FXML
-    public void setFields() {
-        name.setText("GIORGIO");
-        surname.setText("NOCERINO");
+    private void setFields() {
+        name.setText(user.getNome());
+        surname.setText(user.getCognome());
     }
 
 
@@ -29,6 +49,21 @@ public class MenuController {
     private void user_clicking() {
         System.out.println("Clicked");
         LoadPage.getPartialScene(fxmlLoader, "chooseTUserAdmin");
+    }
+
+    @FXML
+    private void logout(){
+
+        LoadPage.answerScene("positive", "LOGOUT EFFETTUATO CON SUCCESSO");
+
+        //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+        PauseTransition delay = new PauseTransition(Duration.seconds(3));
+        delay.setOnFinished(event -> {
+            // Dopo 2 secondi, carica la terza scena
+            LoadPage.getFullScene("prepage");
+        });
+        delay.play();
+
     }
 
 

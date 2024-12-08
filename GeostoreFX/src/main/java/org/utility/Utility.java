@@ -1,6 +1,10 @@
 package org.utility;
 
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
+import javafx.util.Duration;
+import org.models.Cliente;
+import org.models.Utente;
 import org.services.LoadPage;
 
 import java.math.BigDecimal;
@@ -27,7 +31,7 @@ public class Utility {
         do{ //controlla ripetutamente se è un numero
             flag = false;
             try{
-                num = Integer.parseInt(input.nextLine());
+                num = Integer.parseInt(value);
             }catch(NumberFormatException err){
                 msgInf("GEOSTORE", "devi inserire un valore numerico");
                 flag = true;
@@ -43,14 +47,14 @@ public class Utility {
     }
 
     public static BigDecimal insertBigDecimal(String value){
-        System.out.println(value);
+        System.out.println("Portafoglio iniziale: " + value);
         BigDecimal num = new BigDecimal(0);
         boolean flag;
 
         do{ //controlla ripetutamente se è un numero
             flag = false;
             try{
-                num = new BigDecimal(input.nextLine());
+                num = new BigDecimal(value);
             }catch(NumberFormatException err){
                 msgInf("GEOSTORE", "devi inserire un valore decimale");
                 flag = true;
@@ -67,7 +71,7 @@ public class Utility {
 
     public static String insertString(String value){
         System.out.println(value);
-        String word = input.nextLine();
+        String word = value;
 
         return word;
 
@@ -83,7 +87,36 @@ public class Utility {
         return formattedValue;
     }
 
-    public static void sendResponse(Integer num){
+    public static void sendResponseLogin(Integer num, Cliente user){
+        if(num > 0){
+            LoadPage.answerScene("positive", "ACCESSO EFFETTUATO CON SUCCESSO");
+        }
+        else{
+            LoadPage.answerScene("negative", "ACCESSO FALLITO");
+        }
+
+        if(num>0){
+            //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+            PauseTransition delay = new PauseTransition(Duration.seconds(3));
+            delay.setOnFinished(event -> {
+                // Dopo 2 secondi, carica la terza scena
+                LoadPage.loginToMenu(user);
+            });
+            delay.play();
+        }
+        else{
+            //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+            PauseTransition delay = new PauseTransition(Duration.seconds(3));
+            delay.setOnFinished(event -> {
+                // Dopo 2 secondi, carica la terza scena
+                LoadPage.getFullScene("prepage");
+            });
+            delay.play();
+        }
+
+    }
+
+    public static void sendResponseRegister(Integer num){
         if(num > 0){
             LoadPage.answerScene("positive", "REGISTRATO CON SUCCESSO");
         }
@@ -91,7 +124,13 @@ public class Utility {
             LoadPage.answerScene("negative", "REGISTRAZIONE FALLITA");
         }
 
-        LoadPage.getFullScene("prepage");
+        //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+        PauseTransition delay = new PauseTransition(Duration.seconds(3));
+        delay.setOnFinished(event -> {
+            // Dopo 2 secondi, carica la terza scena
+            LoadPage.getFullScene("prepage");
+        });
+        delay.play();
     }
 
     public static String formatValueInteger(Integer value){

@@ -1,6 +1,5 @@
 package org.services;
 
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +9,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.controller.*;
+import org.models.Cliente;
+import org.models.Utente;
 
 
 import java.net.URL;
@@ -24,23 +25,47 @@ public class LoadPage {
     }
 
     @FXML
-    public static void getFullScene(String clicked) {
+    public static void getFullScene(String choosedScene) {
         Pane view = null;
         try {
             // Costruisce il percorso completo del file FXML
-            URL fileUrl = Main.class.getResource("/org/scenes/" + clicked + ".fxml");
+            URL fileUrl = Main.class.getResource("/org/scenes/" + choosedScene + ".fxml");
             if (fileUrl == null) {
                 throw new java.io.FileNotFoundException("Nessun file FXML trovato");
             }
 
             FXMLLoader loader = new FXMLLoader(fileUrl);
             Pane newScene = loader.load();
-            /*Object controller = loader.getController(); //Ottieni il controller della scena caricata
 
-            if(controller instanceof PrepageController){
-                PrepageController prepageController = (PrepageController) controller;
-            }*/
+            //carica la scena
+            double prefWidth = savedStage.getWidth(); //dimensione rimane invariata o mantenuta dall'utente
+            double prefHeight = savedStage.getHeight();
+            Scene scene = new Scene(newScene);
+            savedStage.setWidth(prefWidth);
+            savedStage.setHeight(prefHeight); //inserendo dimensioni fisse
+            savedStage.setScene(scene);
+            savedStage.show();
 
+        } catch (Exception e) {
+            System.out.println("No page found. Please check FXMLLoader.");
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public static void loginToMenu(Cliente user) {
+        Pane view = null;
+        try {
+            // Costruisce il percorso completo del file FXML
+            URL fileUrl = Main.class.getResource("/org/scenes/menu.fxml");
+            if (fileUrl == null) {
+                throw new java.io.FileNotFoundException("Nessun file FXML trovato");
+            }
+
+            FXMLLoader loader = new FXMLLoader(fileUrl);
+            Pane newScene = loader.load();
+            MenuController menuController = loader.getController(); //Ottieni il controller della scena caricata
+            menuController.saveUser(user);
 
             //carica la scena
             double prefWidth = savedStage.getWidth(); //dimensione rimane invariata o mantenuta dall'utente

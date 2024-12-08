@@ -1,9 +1,12 @@
 package org.controller;
 
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.util.Duration;
 import org.models.Amministratore;
 import org.models.Cliente;
 import org.models.UtenteRepository;
@@ -13,10 +16,13 @@ import java.sql.Date;
 
 public class AccessController {
     @FXML
-    private TextField name, surname, sex, bornDate, phoneNumber, address, email, codeAdmin;
+    private TextField name, surname, sex, phoneNumber, address, email, codeAdmin;
 
     @FXML
     private PasswordField password, confirmPassword;
+
+    @FXML
+    private DatePicker bornDate;
 
 
     @FXML
@@ -30,24 +36,34 @@ public class AccessController {
         user.setNome(name.getText());
         user.setCognome(surname.getText());
         user.setSesso(sex.getText());
-        user.setDataNascita(Date.valueOf(bornDate.getText()));
+        user.setDataNascita(Date.valueOf(bornDate.getValue()));
         user.setTelefono(phoneNumber.getText());
         user.setIndirizzo(address.getText());
         user.setEmail(email.getText());
 
         if(password.getText().equals(confirmPassword.getText())){
             user.setPassword(password.getText());
+            user.setPortafoglio(Utility.insertBigDecimal("50"));
+            insertUser(user);
         }
         else{
             LoadPage.answerScene("negative", "LE PASSWORD NON COINCIDONO");
+            //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+            PauseTransition delay = new PauseTransition(Duration.seconds(3));
+            delay.setOnFinished(e -> {
+                // Dopo 2 secondi, carica la terza scena
+                LoadPage.getFullScene("register");
+            });
+            delay.play();
         }
+    }
 
+    private void insertUser(Cliente user){
         UtenteRepository uRe = new UtenteRepository();
         int num = 0;
 
-        user.setPortafoglio(Utility.insertBigDecimal("50"));
 
-        if (codeAdmin != null && codeAdmin.getText() != null){
+        if (codeAdmin != null && codeAdmin.getText() != null && !codeAdmin.getText().isEmpty()){
             Amministratore admin = (Amministratore) user;
             admin.setCodeAdmin(codeAdmin.getText());
 
@@ -57,7 +73,7 @@ public class AccessController {
             num = uRe.insertUtenteWithDB(user.getId(), user);
         }
 
-        Utility.sendResponse(num);
+        Utility.sendResponseRegister(num);
     }
 
     @FXML
@@ -85,6 +101,8 @@ public class AccessController {
             if(admin.getEmail() != null){
                 num = 1;
             }
+
+            user = admin;
         }
         else{
             user = uRe.checkCliente(user.getEmail(), user.getPassword());
@@ -94,7 +112,7 @@ public class AccessController {
             }
         }
 
-        Utility.sendResponse(num);
+        Utility.sendResponseLogin(num, user);
     }
 
     @FXML

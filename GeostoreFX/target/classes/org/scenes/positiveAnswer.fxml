@@ -37,7 +37,7 @@
                               </ImageView>
                            </children>
                         </HBox>
-                        <Label fx:id="response" alignment="CENTER" contentDisplay="CENTER" layoutX="103.0" layoutY="84.0" prefHeight="82.0" prefWidth="586.0" styleClass="text_field2-font" text="AZIONE POSITIVA" textAlignment="CENTER" textFill="#379c56" wrapText="true">
+                        <Label fx:id="response" alignment="CENTER" contentDisplay="CENTER" layoutX="103.0" layoutY="84.0" prefHeight="82.0" prefWidth="586.0" styleClass="label-font" text="AZIONE POSITIVA" textAlignment="CENTER" textFill="#379c56" wrapText="true">
                            <font>
                               <Font size="15.0" />
                            </font>

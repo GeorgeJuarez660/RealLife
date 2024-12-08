@@ -125,7 +125,7 @@
                   </HBox>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="495.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="170.0" style="-fx-background-radius: 15; -fx-background-color: #FF5757;">
+            <Button onAction="#logout" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="495.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="170.0" style="-fx-background-radius: 15; -fx-background-color: #FF5757;">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
