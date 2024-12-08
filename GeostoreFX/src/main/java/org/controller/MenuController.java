@@ -40,8 +40,8 @@ public class MenuController {
 
     @FXML
     private void setFields() {
-        name.setText(user.getNome());
-        surname.setText(user.getCognome());
+        name.setText(user.getNome().toUpperCase());
+        surname.setText(user.getCognome().toUpperCase());
     }
 
 
@@ -73,7 +73,6 @@ public class MenuController {
     }
 
     // Metodo per cambiare il testo di titleGets
-
 
     /*@FXML
     private void caricaScene2() {
