@@ -35,7 +35,7 @@
                   <Insets top="30.0" />
                </VBox.margin>
             </HBox>
-            <Button onAction="#user_clicking" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="190.0" style="-fx-background-radius: 7; -fx-background-color: #306FDB;" styleClass="button-menu" textAlignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="190.0" style="-fx-background-radius: 7; -fx-background-color: #306FDB;" styleClass="button-menu" textAlignment="CENTER">
                <VBox.margin>
                   <Insets top="150.0" />
                </VBox.margin>

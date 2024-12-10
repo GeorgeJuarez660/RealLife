@@ -11,6 +11,7 @@ module info {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.sql;
+    requires transitive org.xerial.sqlitejdbc;
 
     opens org.controller to javafx.fxml;
     exports org.controller;

@@ -2,13 +2,9 @@ package org.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import org.services.LoadPage;
 
 public class PrepageController {
-
-    @FXML
-    private Button admin, cliente;
 
     @FXML
     private void register(ActionEvent event) {

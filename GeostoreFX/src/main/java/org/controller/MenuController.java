@@ -5,9 +5,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
+import org.models.Amministratore;
 import org.models.Cliente;
 import org.models.Utente;
 import org.services.LoadPage;
+import org.sqlite.util.StringUtils;
 
 public class MenuController {
     @FXML
@@ -20,9 +22,12 @@ public class MenuController {
     private Cliente user;
 
     @FXML
+    private Boolean isAdmin;
+
+    @FXML
     private void clicking() {
         System.out.println("Clicked");
-        LoadPage.getPartialScene(fxmlLoader, "gets");
+        LoadPage.getPartialScene(fxmlLoader, "gets", user);
     }
 
     @FXML //salvataggio utente per il menu
@@ -35,6 +40,14 @@ public class MenuController {
         user.setEmail(utente.getEmail());
         user.setPassword(utente.getPassword());
 
+        if(utente instanceof Amministratore){
+            Amministratore admin = (Amministratore) user;
+            isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank();
+        }
+        else{
+            isAdmin = false;
+        }
+
         setFields();
     }
 
@@ -46,9 +59,9 @@ public class MenuController {
 
 
     @FXML
-    private void user_clicking() {
+    public void loadNewsScene() {
         System.out.println("Clicked");
-        LoadPage.getPartialScene(fxmlLoader, "chooseTUserAdmin");
+        LoadPage.getPartialScene(fxmlLoader, "homepage", user);
     }
 
     @FXML

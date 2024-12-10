@@ -66,6 +66,7 @@ public class LoadPage {
             Pane newScene = loader.load();
             MenuController menuController = loader.getController(); //Ottieni il controller della scena caricata
             menuController.saveUser(user);
+            menuController.loadNewsScene();
 
             //carica la scena
             double prefWidth = savedStage.getWidth(); //dimensione rimane invariata o mantenuta dall'utente
@@ -207,11 +208,11 @@ public class LoadPage {
 
 
     @FXML
-    public static void getPartialScene(BorderPane fxmlLoader, String clicked) {
+    public static void getPartialScene(BorderPane fxmlLoader, String innerScene, Cliente user) {
         Pane view = null;
         try {
             // Costruisce il percorso completo del file FXML
-            URL fileUrl = Main.class.getResource(clicked + ".fxml");
+            URL fileUrl = Main.class.getResource("/org/scenes/" + innerScene + ".fxml");
             if (fileUrl == null) {
                 throw new java.io.FileNotFoundException("FXML file can't be found");
             }
@@ -224,6 +225,10 @@ public class LoadPage {
             if (controller instanceof GetsController) {
                 GetsController getsController = (GetsController) controller;
                 getsController.setTitle("Test Title");
+            }
+            else if(controller instanceof HomepageController){
+                HomepageController homepageController = (HomepageController) controller;
+                homepageController.title(user.getNome());
             }
             // Carica il file FXML
             // Imposta la scena caricata come contenuto centrale del BorderPane

@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="610.0" stylesheets="@./css/font_geostore.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proofs.GetsController">
+<VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="610.0" stylesheets="@../css/font_geostore.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controller.GetsController">
    <children>
       <HBox alignment="CENTER" prefHeight="55.0">
          <children>
             <ImageView fitHeight="103.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@./images/geostore_sign.png" />
+                  <Image url="@../images/geostore_sign.png" />
                </image>
             </ImageView>
          </children>
@@ -27,7 +27,7 @@
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@./images/come_back_sym.png" />
+                        <Image url="@../images/come_back_sym.png" />
                      </image>
                   </ImageView>
                </graphic>
