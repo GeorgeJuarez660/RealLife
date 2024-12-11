@@ -62,7 +62,7 @@
          <children>
             <ScrollPane hbarPolicy="NEVER" hmin="525.0" minWidth="20.0" prefHeight="200.0" style="-fx-background-color: transparent; -fx-border-radius: 12;">
                <content>
-                  <VBox alignment="TOP_CENTER" prefHeight="195.0" prefWidth="555.0" style="-fx-border-radius: 12; -fx-background-radius: 12; -fx-background-color: transparent;" />
+                  <VBox fx:id="newsList" alignment="TOP_CENTER" prefHeight="195.0" prefWidth="555.0" style="-fx-border-radius: 12; -fx-background-radius: 12; -fx-background-color: transparent;" />
                </content>
             </ScrollPane>
          </children>
@@ -82,7 +82,7 @@
       </HBox>
       <HBox alignment="TOP_CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="170.0" style="-fx-background-radius: 15; -fx-background-color: #2352A4;" styleClass="label-font" text="INFO" textFill="WHITE" />
+            <Button onAction="#loadInfo" mnemonicParsing="false" prefHeight="30.0" prefWidth="170.0" style="-fx-background-radius: 15; -fx-background-color: #2352A4;" styleClass="label-font" text="INFO" textFill="WHITE" />
          </children>
          <VBox.margin>
             <Insets top="30.0" />

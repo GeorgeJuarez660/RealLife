@@ -6,18 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8273ca0a-1299-4b65-b52d-47dc6a793eae" name="Changes" comment="AppJavaFx: creating example">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/PrepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/PrepageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/gets.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/gets.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/MenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/PrepageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/PrepageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/gets.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/gets.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/services/LoadPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/services/LoadPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/utility/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/utility/Utility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/homepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/homepage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +50,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
+    "Application.Main.executor": "Coverage",
     "Application.MainPreview.executor": "Run",
     "Application.Unnamed.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -197,7 +190,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/LoadPage.java</url>
-          <line>219</line>
+          <line>220</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -227,7 +220,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/LoadPage.java</url>
-          <line>31</line>
+          <line>32</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -277,33 +270,33 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java</url>
-          <line>34</line>
+          <line>78</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java</url>
-          <line>46</line>
+          <line>90</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java</url>
-          <line>37</line>
+          <line>81</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java</url>
-          <line>40</line>
+          <line>84</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java</url>
-          <line>43</line>
+          <line>87</line>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/GeostoreFX$Main.ic" NAME="Main Coverage Results" MODIFIED="1733341680356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/GeostoreFX$Main.ic" NAME="Main Coverage Results" MODIFIED="1733950978556" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>

@@ -89,7 +89,7 @@ public class Utility {
 
     public static void sendResponseLogin(Integer num, Cliente user){
         if(num > 0){
-            LoadPage.answerScene("positive", "ACCESSO EFFETTUATO CON SUCCESSO");
+            LoadPage.answerScene("positive", "ACCESSO APPROVATO");
         }
         else{
             LoadPage.answerScene("negative", "ACCESSO FALLITO");

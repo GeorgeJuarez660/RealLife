@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.controller.*;
@@ -66,7 +67,7 @@ public class LoadPage {
             Pane newScene = loader.load();
             MenuController menuController = loader.getController(); //Ottieni il controller della scena caricata
             menuController.saveUser(user);
-            menuController.loadNewsScene();
+            menuController.loadHomepage();
 
             //carica la scena
             double prefWidth = savedStage.getWidth(); //dimensione rimane invariata o mantenuta dall'utente
@@ -208,7 +209,7 @@ public class LoadPage {
 
 
     @FXML
-    public static void getPartialScene(BorderPane fxmlLoader, String innerScene, Cliente user) {
+    public static void getPartialScene(BorderPane fxmlLoader, String innerScene, Cliente user, Boolean isAdmin) {
         Pane view = null;
         try {
             // Costruisce il percorso completo del file FXML
@@ -228,7 +229,15 @@ public class LoadPage {
             }
             else if(controller instanceof HomepageController){
                 HomepageController homepageController = (HomepageController) controller;
-                homepageController.title(user.getNome());
+                homepageController.save(fxmlLoader, user);
+                homepageController.title();
+                homepageController.showButtonCreateNews();
+                homepageController.loadNews();
+            }
+            else if(controller instanceof InfoController){
+                InfoController infoController = (InfoController) controller;
+                infoController.save(fxmlLoader, user);
+                infoController.setVersion("1.6.0");
             }
             // Carica il file FXML
             // Imposta la scena caricata come contenuto centrale del BorderPane
@@ -240,3 +249,4 @@ public class LoadPage {
         }
     }
 }
+

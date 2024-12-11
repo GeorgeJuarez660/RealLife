@@ -2,11 +2,20 @@ package org.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import org.models.*;
 import org.services.LoadPage;
 
+import java.net.URL;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomepageController {
 
@@ -14,7 +23,42 @@ public class HomepageController {
     private Label title;
 
     @FXML
-    public void title(String nomeUtente) {
+    private Button createNews;
+
+    @FXML
+    private Cliente user;
+
+    @FXML
+    private Boolean isAdmin;
+
+    @FXML
+    private BorderPane fxmlLoader;
+
+    @FXML
+    private VBox newsList;
+
+    public void save(BorderPane fxmlLoader, Cliente utente){
+        user = new Cliente();
+        user.setNome(utente.getNome());
+        user.setCognome(utente.getCognome());
+        user.setSesso(utente.getSesso());
+        user.setDataNascita(utente.getDataNascita());
+        user.setEmail(utente.getEmail());
+        user.setPassword(utente.getPassword());
+
+        if(utente instanceof Amministratore){
+            Amministratore admin = (Amministratore) user;
+            isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank();
+        }
+        else{
+            isAdmin = false;
+        }
+
+        this.fxmlLoader = fxmlLoader;
+    }
+
+    @FXML
+    public void title() {
         System.out.println("homepage");
 
         String startMorning = "06:00";
@@ -44,13 +88,60 @@ public class HomepageController {
         else if(formatTime.compareTo(startNight) >= 0 || formatTime.compareTo(endNight) < 0){
             greetings = "Buona permanenza notturna ";
         }
-        greetings += nomeUtente;
+        greetings += user.getNome();
         title.setText(greetings);
 
         //LoadPage.access("register");
     }
 
-    // Metodo per cambiare il testo di titleGets
+    public void showButtonCreateNews(){
+        createNews.setVisible(isAdmin); //rende invisibile
+        createNews.setManaged(isAdmin); //ignora la presenza
+    }
+
+    public void loadNews(){
+        News notizia = new News();
+        notizia.setTesto("test");
+
+        News notizia2 = new News();
+        notizia2.setTesto("test2");
+
+        List<News> notizie = new ArrayList<>();
+
+        notizie.add(notizia);
+        notizie.add(notizia2);
+
+        for (News value : notizie) {
+            try {
+                // Costruisce il percorso completo del file FXML
+                URL fileUrl = getClass().getResource("/org/scenes/newsInfoGets.fxml");
+                if (fileUrl == null) {
+                    throw new java.io.FileNotFoundException("FXML file can't be found");
+                }
+
+                FXMLLoader loader = new FXMLLoader(fileUrl);
+                HBox productItem = loader.load();
+                NewsInfoController newsInfoController = loader.getController();
+                newsInfoController.setValues(value);
+                newsList.getChildren().add(productItem);
+
+                // Carica il file FXML
+                // Imposta la scena caricata come contenuto centrale del BorderPane
+
+            } catch (Exception e) {
+                System.out.println("No page found. Please check FXMLLoader.");
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @FXML
+    private void loadInfo(){
+        System.out.println("goes to info");
+        LoadPage.getPartialScene(fxmlLoader, "info", user, isAdmin);
+    }
+
+
 
 
     /*@FXML

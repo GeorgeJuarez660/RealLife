@@ -27,7 +27,7 @@ public class MenuController {
     @FXML
     private void clicking() {
         System.out.println("Clicked");
-        LoadPage.getPartialScene(fxmlLoader, "gets", user);
+        LoadPage.getPartialScene(fxmlLoader, "gets", user, isAdmin);
     }
 
     @FXML //salvataggio utente per il menu
@@ -59,9 +59,9 @@ public class MenuController {
 
 
     @FXML
-    public void loadNewsScene() {
-        System.out.println("Clicked");
-        LoadPage.getPartialScene(fxmlLoader, "homepage", user);
+    public void loadHomepage() {
+        System.out.println("goes to homepage");
+        LoadPage.getPartialScene(fxmlLoader, "homepage", user, isAdmin);
     }
 
     @FXML
