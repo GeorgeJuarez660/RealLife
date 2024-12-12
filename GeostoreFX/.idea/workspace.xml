@@ -7,10 +7,18 @@
     <list default="true" id="8273ca0a-1299-4b65-b52d-47dc6a793eae" name="Changes" comment="AppJavaFx: creating example">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/utility/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/utility/Utility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/NewsInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/NewsInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/News.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/News.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/css/font_geostore.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/css/font_geostore.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/homepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/homepage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/newsInfoGets.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/newsInfoGets.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/HomepageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/HomepageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/NewsInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/NewsInfoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/css/font_geostore.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/css/font_geostore.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/models/News.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/News.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/gets.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/gets.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/homepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/homepage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/newsInfoGets.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/newsInfoGets.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +58,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Coverage",
+    "Application.Main.executor": "Run",
     "Application.MainPreview.executor": "Run",
     "Application.Unnamed.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -74,10 +82,10 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes" />
+      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\images" />
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\css" />
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org" />
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Java\GeostoreFX\src\main\resources\org" />
-      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Java\GeostoreFX\src\main\resources\org\scenes\images" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.controller" />

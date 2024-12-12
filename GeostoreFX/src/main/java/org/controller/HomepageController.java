@@ -123,6 +123,7 @@ public class HomepageController {
                 HBox productItem = loader.load();
                 NewsInfoController newsInfoController = loader.getController();
                 newsInfoController.setValues(value);
+                newsInfoController.enableButtons(isAdmin);
                 newsList.getChildren().add(productItem);
 
                 // Carica il file FXML
