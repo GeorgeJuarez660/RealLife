@@ -4,10 +4,7 @@ import org.utility.DBConnection;
 import org.utility.Utility;
 import org.utility.newsCRUD;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.HashMap;
 
 public class NewsRepository implements newsCRUD {
@@ -15,8 +12,8 @@ public class NewsRepository implements newsCRUD {
     private HashMap<Integer, News> notizie = new HashMap<>();
 
     @Override
-    public int insertNotizieWithDB(String testo, Integer idAdmin) {
-        String sql = "INSERT INTO `news`(`testo`, `admin_id`) VALUES (?, ?) ";
+    public int insertNotizieWithDB(Date dataPub, Date dataMod, String testo, Integer idAdmin) {
+        String sql = "INSERT INTO `news`(`data_pubblicazione`, `data_modifica`, `testo`, `admin_id`) VALUES (?, ?, ?, ?) ";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         int num = 0;
@@ -26,8 +23,10 @@ public class NewsRepository implements newsCRUD {
             preparedStatement = connection.prepareStatement(sql);
             //int num = 0;
 
-            preparedStatement.setString(1, testo);
-            preparedStatement.setInt(2, idAdmin);
+            preparedStatement.setDate(1, dataPub);
+            preparedStatement.setDate(2, dataMod);
+            preparedStatement.setString(3, testo);
+            preparedStatement.setInt(4, idAdmin);
             num = preparedStatement.executeUpdate();
             //chiudi la connessione
             preparedStatement.close();
@@ -41,7 +40,37 @@ public class NewsRepository implements newsCRUD {
 
     @Override
     public HashMap<Integer, News> getNotizieWithDB() {
-        return null;
+        String sql = "SELECT * FROM News n";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        notizie = new HashMap<>();
+
+        try{
+            //Connessione al db
+            connection = DBConnection.sqlConnect();
+            preparedStatement = connection.prepareStatement(sql);
+            rs = preparedStatement.executeQuery();
+            News n;
+
+            while(rs.next()){
+                n = new News();
+                n.setId(rs.getInt("id"));
+                n.setTesto(rs.getString("testo"));
+                n.setDataPub(rs.getDate("data_pubblicazione"));
+                n.setDataMod(rs.getDate("data_modifica"));
+
+                notizie.put(n.getId(), n);
+            }
+            //chiudi la connessione
+            rs.close();
+            preparedStatement.close();
+            connection.close();
+        }catch(SQLException e){
+            Utility.msgInf("GEOSTORE", "Errore nel getNotizieWithDB: " + e.getMessage());
+        }
+
+        return notizie;
     }
 
     @Override
@@ -64,6 +93,8 @@ public class NewsRepository implements newsCRUD {
                 news = new News();
                 news.setId(rs.getInt("id"));
                 news.setTesto(rs.getString("testo"));
+                news.setDataPub(rs.getDate("data_pubblicazione"));
+                news.setDataMod(rs.getDate("data_modifica"));
             }
             //chiudi la connessione
             rs.close();
@@ -76,8 +107,8 @@ public class NewsRepository implements newsCRUD {
     }
 
     @Override
-    public int updateNotizieWithDB(Integer id, String newTesto, Integer newIdAdmin) {
-        String sql = "UPDATE `news` SET `testo` = ?, `admin_id` = ? WHERE id = ? ";
+    public int updateNotizieWithDB(Integer id, Date newDataMod, String newTesto, Integer newIdAdmin) {
+        String sql = "UPDATE `news` SET `data_modifica` = ?, `testo` = ?, `admin_id` = ? WHERE id = ? ";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         int num = 0;
@@ -88,9 +119,10 @@ public class NewsRepository implements newsCRUD {
             preparedStatement = connection.prepareStatement(sql);
             //int num = 0;
 
-            preparedStatement.setString(1, newTesto);
-            preparedStatement.setInt(2, newIdAdmin);
-            preparedStatement.setInt(3, id);
+            preparedStatement.setDate(1, newDataMod);
+            preparedStatement.setString(2, newTesto);
+            preparedStatement.setInt(3, newIdAdmin);
+            preparedStatement.setInt(4, id);
             num = preparedStatement.executeUpdate();
             //chiudi la connessione
             preparedStatement.close();

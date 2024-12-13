@@ -15,7 +15,9 @@ import java.net.URL;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HomepageController {
 
@@ -25,17 +27,14 @@ public class HomepageController {
     @FXML
     private Button createNews;
 
-    @FXML
     private Cliente user;
-
-    @FXML
     private Boolean isAdmin;
-
-    @FXML
     private BorderPane fxmlLoader;
+    private NewsRepository newsRep;
 
     @FXML
     private VBox newsList;
+
 
     public void save(BorderPane fxmlLoader, Cliente utente){
         user = new Cliente();
@@ -100,18 +99,12 @@ public class HomepageController {
     }
 
     public void loadNews(){
-        News notizia = new News();
-        notizia.setTesto("test");
+        newsRep = new NewsRepository();
+        Map<Integer, News> notizie = new HashMap();
 
-        News notizia2 = new News();
-        notizia2.setTesto("test2");
+        notizie = newsRep.getNotizieWithDB();
 
-        List<News> notizie = new ArrayList<>();
-
-        notizie.add(notizia);
-        notizie.add(notizia2);
-
-        for (News value : notizie) {
+        for (News value : notizie.values()) {
             try {
                 // Costruisce il percorso completo del file FXML
                 URL fileUrl = getClass().getResource("/org/scenes/newsInfoGets.fxml");

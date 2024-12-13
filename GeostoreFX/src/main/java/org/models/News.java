@@ -8,6 +8,7 @@ public class News {
     private static Integer count=0;
     private String testo;
     private Date dataPub;
+    private Date dataMod;
 
     public Integer getId() {
         return id;
@@ -38,17 +39,25 @@ public class News {
         this.dataPub = dataPub;
     }
 
+    public Date getDataMod() {
+        return dataMod;
+    }
+
+    public void setDataMod(Date dataMod) {
+        this.dataMod = dataMod;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         News news = (News) o;
-        return Objects.equals(id, news.id) && Objects.equals(testo, news.testo)&& Objects.equals(dataPub, news.dataPub);
+        return Objects.equals(id, news.id) && Objects.equals(testo, news.testo) && Objects.equals(dataPub, news.dataPub) && Objects.equals(dataMod, news.dataMod);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, testo, dataPub);
+        return Objects.hash(id, testo, dataPub, dataMod);
     }
 
     public News() {
@@ -63,6 +72,7 @@ public class News {
         return "News{" +
                 "testo='" + testo + '\'' +
                 "dataPub='" + dataPub + '\'' +
+                "dataMod='" + dataMod + '\'' +
                 '}';
     }
 }

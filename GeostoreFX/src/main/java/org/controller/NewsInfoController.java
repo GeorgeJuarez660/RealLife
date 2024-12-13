@@ -23,7 +23,8 @@ public class NewsInfoController implements Initializable {
     private Button update, delete;
 
     public void setValues(News notizia){
-        date.setText(LocalDate.now().getDayOfMonth()+"/"+LocalDate.now().getMonthValue()+"/"+ LocalDate.now().getYear()+":");
+
+        date.setText(notizia.getDataPub().getDay()+"/"+notizia.getDataPub().getMonth()+"/"+ notizia.getDataPub().getYear()+":");
         text.setText(notizia.getTesto());
     }
 

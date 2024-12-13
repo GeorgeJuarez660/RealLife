@@ -56,7 +56,7 @@
          <children>
             <ScrollPane hbarPolicy="NEVER" hmin="525.0" minWidth="20.0" prefHeight="270.0" style="-fx-background-color: transparent; -fx-border-radius: 12;">
                <content>
-                  <VBox fx:id="list" alignment="TOP_CENTER" prefHeight="265.0" prefWidth="555.0" spacing="7.0" style="-fx-border-radius: 12; -fx-background-radius: 12; -fx-background-color: transparent;" />
+                  <VBox fx:id="list" alignment="TOP_CENTER" prefHeight="265.0" prefWidth="555.0" style="-fx-border-radius: 12; -fx-background-radius: 12; -fx-background-color: transparent;" />
                </content>
             </ScrollPane>
          </children>
