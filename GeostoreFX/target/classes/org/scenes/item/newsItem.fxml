@@ -8,16 +8,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="73.0" prefWidth="555.0" style="-fx-border-radius: 15; -fx-border-color: #306FDB; -fx-background-color: transparent; -fx-border-width: 2;" stylesheets="@../css/font_geostore.css" xmlns="http://javafx.com/javafx/22" fx:controller="org.controller.NewsInfoController" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="73.0" prefWidth="555.0" style="-fx-border-radius: 15; -fx-border-color: #306FDB; -fx-background-color: transparent; -fx-border-width: 2;" stylesheets="@../../css/font_geostore.css" xmlns="http://javafx.com/javafx/22" fx:controller="org.controller.item.NewsItemController" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="72.0" prefWidth="445.0" style="-fx-background-radius: 15 0 0 15; -fx-background-color: #D3F3FF;">
          <children>
-            <Label fx:id="date" alignment="TOP_LEFT" styleClass="label-font" text="DD/MM/YYYY:" textFill="#0495cd" wrapText="true">
+            <Label fx:id="date" alignment="TOP_LEFT" styleClass="label-font-min-title" text="DD/MM/YYYY:" textFill="#0495cd" wrapText="true">
                <VBox.margin>
                   <Insets left="10.0" top="2.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="text" alignment="TOP_LEFT" styleClass="label-font" text="Lorem ispum" textFill="#03a8e8" wrapText="true">
+            <Label fx:id="text" alignment="TOP_LEFT" styleClass="label-font-min-title" text="Lorem ispum" textFill="#03a8e8" wrapText="true">
                <VBox.margin>
                   <Insets left="10.0" top="2.0" />
                </VBox.margin>
@@ -38,7 +38,7 @@
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/update.png" />
+                              <Image url="@../../images/update.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -50,7 +50,7 @@
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/delete.png" />
+                              <Image url="@../../images/delete.png" />
                            </image>
                         </ImageView>
                      </graphic>

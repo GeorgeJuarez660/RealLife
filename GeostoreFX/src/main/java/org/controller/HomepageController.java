@@ -1,6 +1,5 @@
 package org.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -8,15 +7,14 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import org.controller.item.NewsItemController;
 import org.models.*;
 import org.services.LoadPage;
 
 import java.net.URL;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class HomepageController {
@@ -37,19 +35,14 @@ public class HomepageController {
 
 
     public void save(BorderPane fxmlLoader, Cliente utente){
-        user = new Cliente();
-        user.setNome(utente.getNome());
-        user.setCognome(utente.getCognome());
-        user.setSesso(utente.getSesso());
-        user.setDataNascita(utente.getDataNascita());
-        user.setEmail(utente.getEmail());
-        user.setPassword(utente.getPassword());
 
         if(utente instanceof Amministratore){
-            Amministratore admin = (Amministratore) user;
+            Amministratore admin = (Amministratore) utente;
+            user = admin;
             isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank();
         }
         else{
+            user = utente;
             isAdmin = false;
         }
 
@@ -104,19 +97,19 @@ public class HomepageController {
 
         notizie = newsRep.getNotizieWithDB();
 
-        for (News value : notizie.values()) {
+        for (News notizia : notizie.values()) {
             try {
                 // Costruisce il percorso completo del file FXML
-                URL fileUrl = getClass().getResource("/org/scenes/newsInfoGets.fxml");
+                URL fileUrl = getClass().getResource("/org/scenes/item/newsItem.fxml");
                 if (fileUrl == null) {
                     throw new java.io.FileNotFoundException("FXML file can't be found");
                 }
 
                 FXMLLoader loader = new FXMLLoader(fileUrl);
                 HBox productItem = loader.load();
-                NewsInfoController newsInfoController = loader.getController();
-                newsInfoController.setValues(value);
-                newsInfoController.enableButtons(isAdmin);
+                NewsItemController newsItemController = loader.getController();
+                newsItemController.setValues(notizia);
+                newsItemController.enableButtons(isAdmin);
                 newsList.getChildren().add(productItem);
 
                 // Carica il file FXML
@@ -133,6 +126,12 @@ public class HomepageController {
     private void loadInfo(){
         System.out.println("goes to info");
         LoadPage.getPartialScene(fxmlLoader, "info", user, isAdmin);
+    }
+
+    @FXML
+    private void creaNotizia(){
+        System.out.println("goes to create news");
+        LoadPage.getPartialScene(fxmlLoader, "create", user, isAdmin);
     }
 
 

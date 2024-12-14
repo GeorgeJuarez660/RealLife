@@ -27,19 +27,13 @@ public class InfoController {
     private Boolean isAdmin;
 
     public void save(BorderPane fxmlLoader, Cliente utente){
-        user = new Cliente();
-        user.setNome(utente.getNome());
-        user.setCognome(utente.getCognome());
-        user.setSesso(utente.getSesso());
-        user.setDataNascita(utente.getDataNascita());
-        user.setEmail(utente.getEmail());
-        user.setPassword(utente.getPassword());
-
         if(utente instanceof Amministratore){
-            Amministratore admin = (Amministratore) user;
+            Amministratore admin = (Amministratore) utente;
+            user = admin;
             isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank();
         }
         else{
+            user = utente;
             isAdmin = false;
         }
 

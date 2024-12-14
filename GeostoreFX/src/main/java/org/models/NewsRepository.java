@@ -40,7 +40,7 @@ public class NewsRepository implements newsCRUD {
 
     @Override
     public HashMap<Integer, News> getNotizieWithDB() {
-        String sql = "SELECT * FROM News n";
+        String sql = "SELECT * FROM News n ORDER BY n.data_modifica DESC";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet rs = null;

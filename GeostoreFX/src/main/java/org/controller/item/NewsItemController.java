@@ -1,21 +1,16 @@
-package org.controller;
+package org.controller.item;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.text.TextAlignment;
 import org.models.News;
-import org.models.Prodotto;
 
 import java.net.URL;
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.Locale;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
-public class NewsInfoController implements Initializable {
+public class NewsItemController implements Initializable {
 
     @FXML
     private Label date, text;
@@ -23,8 +18,13 @@ public class NewsInfoController implements Initializable {
     private Button update, delete;
 
     public void setValues(News notizia){
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(notizia.getDataPub());
+        int giorno = calendario.get(Calendar.DAY_OF_MONTH);
+        int mese = calendario.get(Calendar.MONTH) + 1;
+        int anno = calendario.get(Calendar.YEAR);
 
-        date.setText(notizia.getDataPub().getDay()+"/"+notizia.getDataPub().getMonth()+"/"+ notizia.getDataPub().getYear()+":");
+        date.setText(giorno+"/"+mese+"/"+anno+":");
         text.setText(notizia.getTesto());
     }
 

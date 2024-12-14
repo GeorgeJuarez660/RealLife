@@ -54,7 +54,7 @@ public class LoadPage {
     }
 
     @FXML
-    public static void loginToMenu(Cliente user) {
+    public static void goesToMenu(Cliente user) {
         Pane view = null;
         try {
             // Costruisce il percorso completo del file FXML
@@ -238,6 +238,12 @@ public class LoadPage {
                 InfoController infoController = (InfoController) controller;
                 infoController.save(fxmlLoader, user);
                 infoController.setVersion("1.6.0");
+            }
+            else if(controller instanceof CreateController){
+                CreateController createController = (CreateController) controller;
+                createController.save(fxmlLoader, user);
+                createController.setTitle("Creazione notizia");
+                createController.loadMask("newsMask");
             }
             // Carica il file FXML
             // Imposta la scena caricata come contenuto centrale del BorderPane

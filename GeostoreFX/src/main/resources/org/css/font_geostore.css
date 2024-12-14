@@ -5,3 +5,31 @@
       -fx-font-weight: 400;
       -fx-backgoung: normal;
 }
+
+.label-font-max-btn {
+      -fx-font-family: 'Press Start 2P', system-ui;
+      -fx-font-weight: 400;
+      -fx-font-size: 14;
+      -fx-backgoung: normal;
+}
+
+.label-font-min-btn {
+      -fx-font-family: 'Press Start 2P', system-ui;
+      -fx-font-weight: 400;
+      -fx-font-size: 10;
+      -fx-backgoung: normal;
+}
+
+.label-font-max-title {
+      -fx-font-family: 'Press Start 2P', system-ui;
+      -fx-font-weight: 400;
+      -fx-font-size: 24;
+      -fx-backgoung: normal;
+}
+
+.label-font-min-title {
+      -fx-font-family: 'Press Start 2P', system-ui;
+      -fx-font-weight: 400;
+      -fx-font-size: 10;
+      -fx-backgoung: normal;
+}

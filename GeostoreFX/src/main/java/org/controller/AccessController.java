@@ -84,16 +84,16 @@ public class AccessController {
 
         LoadPage.loadingScene("ACCESSO IN CORSO...");
 
-        Cliente user = new Cliente();
-
-        user.setEmail(email.getText());
-        user.setPassword(password.getText());
+        Cliente user;
 
         UtenteRepository uRe = new UtenteRepository();
         int num = 0;
 
         if (codeAdmin != null && codeAdmin.getText() != null){
+            user = new Amministratore();
             Amministratore admin = (Amministratore) user;
+            admin.setEmail(email.getText());
+            admin.setPassword(password.getText());
             admin.setCodeAdmin(codeAdmin.getText());
 
             admin = uRe.checkAdmin(admin.getEmail(), admin.getPassword(), admin.getCodeAdmin());
@@ -105,6 +105,10 @@ public class AccessController {
             user = admin;
         }
         else{
+            user = new Cliente();
+            user.setEmail(email.getText());
+            user.setPassword(password.getText());
+
             user = uRe.checkCliente(user.getEmail(), user.getPassword());
 
             if(user.getEmail() != null){

@@ -100,7 +100,7 @@ public class Utility {
             PauseTransition delay = new PauseTransition(Duration.seconds(3));
             delay.setOnFinished(event -> {
                 // Dopo 2 secondi, carica la terza scena
-                LoadPage.loginToMenu(user);
+                LoadPage.goesToMenu(user);
             });
             delay.play();
         }
@@ -129,6 +129,23 @@ public class Utility {
         delay.setOnFinished(event -> {
             // Dopo 2 secondi, carica la terza scena
             LoadPage.getFullScene("prepage");
+        });
+        delay.play();
+    }
+
+    public static void sendResponse(Integer num, String dynamicEvent, Cliente user){
+        if(num > 0){
+            LoadPage.answerScene("positive", dynamicEvent + " CON SUCCESSO");
+        }
+        else{
+            LoadPage.answerScene("negative", dynamicEvent + " FALLITA");
+        }
+
+        //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+        PauseTransition delay = new PauseTransition(Duration.seconds(3));
+        delay.setOnFinished(event -> {
+            // Dopo 2 secondi, carica la terza scena
+            LoadPage.goesToMenu(user);
         });
         delay.play();
     }
