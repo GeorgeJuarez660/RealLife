@@ -1,4 +1,4 @@
-package org.controller;
+/*package org.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,4 +23,4 @@ public class ProductInfoController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-}
+}*/

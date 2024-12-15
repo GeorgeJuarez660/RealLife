@@ -69,12 +69,12 @@
       </HBox>
       <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="112.0" spacing="30.0">
          <children>
-            <Button fx:id="createNews" onAction="#creaNotizia" mnemonicParsing="false" prefHeight="10.0" prefWidth="140.0" style="-fx-background-color: #0495CD; -fx-background-radius: 15;" styleClass="label-font-min-btn" text="CREA NEWS" textFill="WHITE" wrapText="true">
+            <Button fx:id="createNews" onAction="#creating" mnemonicParsing="false" prefHeight="10.0" prefWidth="140.0" style="-fx-background-color: #0495CD; -fx-background-radius: 15;" styleClass="label-font-min-btn" text="CREA NEWS" textFill="WHITE" wrapText="true">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="10.0" prefWidth="140.0" style="-fx-background-color: #0495CD; -fx-background-radius: 15;" styleClass="label-font-min-btn" text="CERCA NEWS" textFill="WHITE" wrapText="true" />
+            <Button onAction="#searching" mnemonicParsing="false" prefHeight="10.0" prefWidth="140.0" style="-fx-background-color: #0495CD; -fx-background-radius: 15;" styleClass="label-font-min-btn" text="CERCA NEWS" textFill="WHITE" wrapText="true" />
          </children>
          <VBox.margin>
             <Insets top="30.0" />

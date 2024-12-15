@@ -1,4 +1,6 @@
-package org.utility;
+package org.services;
+
+import org.utility.Utility;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

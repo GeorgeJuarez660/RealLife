@@ -15,8 +15,8 @@ public class LoadingController {
     @FXML
     private Label response;
 
+    //------------------INIZIALIZE-----------------------
 
-    @FXML
     public void response(String answer) {
         System.out.println(answer);
 

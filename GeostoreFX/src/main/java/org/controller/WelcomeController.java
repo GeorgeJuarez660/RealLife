@@ -13,6 +13,7 @@ public class WelcomeController {
     @FXML
     private static Stage stage;// Questo è il BorderPane di menu.fxml
 
+    //------------------BUTTONS-----------------------
     @FXML
     private void goesToPrepage(ActionEvent event) {
         System.out.println("Clicked");

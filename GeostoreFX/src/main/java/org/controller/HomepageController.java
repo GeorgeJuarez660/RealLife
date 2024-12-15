@@ -10,6 +10,8 @@ import javafx.scene.layout.VBox;
 import org.controller.item.NewsItemController;
 import org.models.*;
 import org.services.LoadPage;
+import org.services.Service;
+import org.utility.PartialSceneDTO;
 
 import java.net.URL;
 import java.time.LocalTime;
@@ -28,11 +30,12 @@ public class HomepageController {
     private Cliente user;
     private Boolean isAdmin;
     private BorderPane fxmlLoader;
-    private NewsRepository newsRep;
+    private Service service;
 
     @FXML
     private VBox newsList;
 
+    //------------------INIZIALIZE-----------------------
 
     public void save(BorderPane fxmlLoader, Cliente utente){
 
@@ -49,7 +52,6 @@ public class HomepageController {
         this.fxmlLoader = fxmlLoader;
     }
 
-    @FXML
     public void title() {
         System.out.println("homepage");
 
@@ -92,25 +94,26 @@ public class HomepageController {
     }
 
     public void loadNews(){
-        newsRep = new NewsRepository();
+        service = new Service();
         Map<Integer, News> notizie = new HashMap();
 
-        notizie = newsRep.getNotizieWithDB();
+        notizie = service.elencoNotizie();
 
         for (News notizia : notizie.values()) {
             try {
                 // Costruisce il percorso completo del file FXML
-                URL fileUrl = getClass().getResource("/org/scenes/item/newsItem.fxml");
+                URL fileUrl = getClass().getResource("/org/scenes/item/newsItem.fxml"); //trova la scena news
                 if (fileUrl == null) {
                     throw new java.io.FileNotFoundException("FXML file can't be found");
                 }
 
                 FXMLLoader loader = new FXMLLoader(fileUrl);
-                HBox productItem = loader.load();
+                HBox newsItem = loader.load();
                 NewsItemController newsItemController = loader.getController();
+                newsItemController.save(fxmlLoader, user);
                 newsItemController.setValues(notizia);
                 newsItemController.enableButtons(isAdmin);
-                newsList.getChildren().add(productItem);
+                newsList.getChildren().add(newsItem);
 
                 // Carica il file FXML
                 // Imposta la scena caricata come contenuto centrale del BorderPane
@@ -122,26 +125,32 @@ public class HomepageController {
         }
     }
 
+    //------------------BUTTONS-----------------------
+
     @FXML
-    private void loadInfo(){
+    private void loadInfo(){ //button per andare alla pagina info
         System.out.println("goes to info");
-        LoadPage.getPartialScene(fxmlLoader, "info", user, isAdmin);
+        LoadPage.getPartialScene(fxmlLoader, "info", user);
     }
 
     @FXML
-    private void creaNotizia(){
+    private void creating(){ //button per andare alla pagina di creazione notizia
         System.out.println("goes to create news");
-        LoadPage.getPartialScene(fxmlLoader, "create", user, isAdmin);
+        PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+        partialSceneDTO.setFxmlLoader(fxmlLoader);
+        partialSceneDTO.setInnerScene("create");
+        partialSceneDTO.setUser(user);
+        LoadPage.getPartialSceneCRU(partialSceneDTO, null);
     }
 
+    @FXML
+    private void searching(){ //button per andare alla pagina di ricerca notizia
+        System.out.println("goes to create news");
+        PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+        partialSceneDTO.setFxmlLoader(fxmlLoader);
+        partialSceneDTO.setInnerScene("read");
+        partialSceneDTO.setUser(user);
+        LoadPage.getPartialSceneCRU(partialSceneDTO, null);
+    }
 
-
-
-    /*@FXML
-    private void caricaScene2() {
-        Pane scene2 = getPage("searchUsers.fxml"); // Usa il metodo generico per caricare la scena
-        if (scene2 != null) {
-            root.setCenter(scene2); // Imposta la scena nel centro del BorderPane
-        }
-    }*/
 }

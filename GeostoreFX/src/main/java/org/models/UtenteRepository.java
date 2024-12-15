@@ -1,6 +1,6 @@
 package org.models;
 
-import org.utility.DBConnection;
+import org.services.DBConnection;
 import org.utility.Utility;
 import org.utility.utentiCRUD;
 

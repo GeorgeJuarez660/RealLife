@@ -11,6 +11,7 @@ import org.models.Amministratore;
 import org.models.Cliente;
 import org.models.UtenteRepository;
 import org.services.LoadPage;
+import org.services.Service;
 import org.utility.Utility;
 import java.sql.Date;
 
@@ -24,6 +25,9 @@ public class AccessController {
     @FXML
     private DatePicker bornDate;
 
+    private Service service;
+
+    //------------------BUTTONS-----------------------
 
     @FXML
     private void signup(ActionEvent event) {
@@ -31,22 +35,10 @@ public class AccessController {
         LoadPage.saveStage(event);
         LoadPage.loadingScene("REGISTRAZIONE IN CORSO...");
 
-        Cliente user = new Cliente();
+        Cliente user;
+        service = new Service();
 
-        user.setNome(name.getText());
-        user.setCognome(surname.getText());
-        user.setSesso(sex.getText());
-        user.setDataNascita(Date.valueOf(bornDate.getValue()));
-        user.setTelefono(phoneNumber.getText());
-        user.setIndirizzo(address.getText());
-        user.setEmail(email.getText());
-
-        if(password.getText().equals(confirmPassword.getText())){
-            user.setPassword(password.getText());
-            user.setPortafoglio(Utility.insertBigDecimal("50"));
-            insertUser(user);
-        }
-        else{
+        if(!password.getText().equals(confirmPassword.getText())){
             LoadPage.answerScene("negative", "LE PASSWORD NON COINCIDONO");
             //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
             PauseTransition delay = new PauseTransition(Duration.seconds(3));
@@ -56,67 +48,65 @@ public class AccessController {
             });
             delay.play();
         }
-    }
-
-    private void insertUser(Cliente user){
-        UtenteRepository uRe = new UtenteRepository();
-        int num = 0;
-
-
-        if (codeAdmin != null && codeAdmin.getText() != null && !codeAdmin.getText().isEmpty()){
-            Amministratore admin = (Amministratore) user;
-            admin.setCodeAdmin(codeAdmin.getText());
-
-            num = uRe.insertUtenteWithDB(admin.getId(), admin);
-        }
         else{
-            num = uRe.insertUtenteWithDB(user.getId(), user);
+            if(codeAdmin != null && codeAdmin.getText() != null && !codeAdmin.getText().isEmpty() && !codeAdmin.getText().isBlank()){
+                user = new Amministratore();
+                Amministratore admin = (Amministratore) user;
+                admin.setNome(name.getText());
+                admin.setCognome(surname.getText());
+                admin.setSesso(sex.getText());
+                admin.setDataNascita(Date.valueOf(bornDate.getValue()));
+                admin.setTelefono(phoneNumber.getText());
+                admin.setIndirizzo(address.getText());
+                admin.setEmail(email.getText());
+                admin.setPassword(password.getText());
+                admin.setPortafoglio(Utility.insertBigDecimal("50"));
+                admin.setCodeAdmin(codeAdmin.getText());
+                user = admin;
+            }
+            else{
+                user = new Cliente();
+                user.setNome(name.getText());
+                user.setCognome(surname.getText());
+                user.setSesso(sex.getText());
+                user.setDataNascita(Date.valueOf(bornDate.getValue()));
+                user.setTelefono(phoneNumber.getText());
+                user.setIndirizzo(address.getText());
+                user.setEmail(email.getText());
+                user.setPassword(password.getText());
+                user.setPortafoglio(Utility.insertBigDecimal("50"));
+            }
+
+            service.creazioneUtente(user);
         }
 
-        Utility.sendResponseRegister(num);
     }
 
     @FXML
     private void signin(ActionEvent event) {
         System.out.println("Signing in");
-
         LoadPage.saveStage(event);
-
         LoadPage.loadingScene("ACCESSO IN CORSO...");
 
         Cliente user;
+        service = new Service();
 
-        UtenteRepository uRe = new UtenteRepository();
-        int num = 0;
-
-        if (codeAdmin != null && codeAdmin.getText() != null){
+        if(codeAdmin != null && codeAdmin.getText() != null && !codeAdmin.getText().isEmpty() && !codeAdmin.getText().isBlank()){
             user = new Amministratore();
             Amministratore admin = (Amministratore) user;
             admin.setEmail(email.getText());
             admin.setPassword(password.getText());
             admin.setCodeAdmin(codeAdmin.getText());
-
-            admin = uRe.checkAdmin(admin.getEmail(), admin.getPassword(), admin.getCodeAdmin());
-
-            if(admin.getEmail() != null){
-                num = 1;
-            }
-
             user = admin;
         }
         else{
             user = new Cliente();
             user.setEmail(email.getText());
             user.setPassword(password.getText());
-
-            user = uRe.checkCliente(user.getEmail(), user.getPassword());
-
-            if(user.getEmail() != null){
-                num = 1;
-            }
         }
 
-        Utility.sendResponseLogin(num, user);
+        service.loginUtente(user);
+
     }
 
     @FXML

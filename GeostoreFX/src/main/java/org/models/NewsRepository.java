@@ -1,6 +1,6 @@
 package org.models;
 
-import org.utility.DBConnection;
+import org.services.DBConnection;
 import org.utility.Utility;
 import org.utility.newsCRUD;
 
@@ -73,9 +73,8 @@ public class NewsRepository implements newsCRUD {
         return notizie;
     }
 
-    @Override
-    public News getNotiziaWithDB(String keyword) {
-        String sql = "SELECT * FROM News n WHERE n.TESTO LIKE ?";
+    public News getNotiziaWithByIdWithDB(String keyword) {
+        String sql = "SELECT * FROM News n WHERE n.id = ?";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet rs = null;
@@ -85,7 +84,6 @@ public class NewsRepository implements newsCRUD {
             //Connessione al db
             connection = DBConnection.sqlConnect();
             preparedStatement = connection.prepareStatement(sql);
-            keyword = "%" + keyword;
             preparedStatement.setString(1, keyword);
             rs = preparedStatement.executeQuery();
 
@@ -104,6 +102,43 @@ public class NewsRepository implements newsCRUD {
             Utility.msgInf("GEOSTORE", "Errore nel getNotiziaWithDB: " + e.getMessage());
         }
         return news;
+    }
+
+    @Override
+    public HashMap<Integer, News> getNotizieByKeywordWithDB(String keyword) {
+        String sql = "SELECT * FROM News n WHERE n.TESTO LIKE ?";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        notizie = new HashMap<>();
+
+        try{
+            //Connessione al db
+            connection = DBConnection.sqlConnect();
+            preparedStatement = connection.prepareStatement(sql);
+            keyword = "%" + keyword + "%";
+            preparedStatement.setString(1, keyword);
+            rs = preparedStatement.executeQuery();
+            News n;
+
+            while(rs.next()){
+                n = new News();
+                n.setId(rs.getInt("id"));
+                n.setTesto(rs.getString("testo"));
+                n.setDataPub(rs.getDate("data_pubblicazione"));
+                n.setDataMod(rs.getDate("data_modifica"));
+
+                notizie.put(n.getId(), n);
+            }
+            //chiudi la connessione
+            rs.close();
+            preparedStatement.close();
+            connection.close();
+        }catch(SQLException e){
+            Utility.msgInf("GEOSTORE", "Errore nel getNotizieByKeywordWithDB: " + e.getMessage());
+        }
+
+        return notizie;
     }
 
     @Override

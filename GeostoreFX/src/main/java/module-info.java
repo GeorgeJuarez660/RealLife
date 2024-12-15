@@ -23,4 +23,6 @@ module info {
     opens org.controller.item to javafx.fxml;
     exports org.controller.mask;
     opens org.controller.mask to javafx.fxml;
+    exports org.utility;
+    opens org.utility to javafx.fxml;
 }

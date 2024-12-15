@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import org.controller.*;
 import org.models.Cliente;
 import org.models.Utente;
+import org.utility.PartialSceneDTO;
 
 
 import java.net.URL;
@@ -67,7 +68,7 @@ public class LoadPage {
             Pane newScene = loader.load();
             MenuController menuController = loader.getController(); //Ottieni il controller della scena caricata
             menuController.saveUser(user);
-            menuController.loadHomepage();
+            menuController.loadHomepage(); //carica l'homepage
 
             //carica la scena
             double prefWidth = savedStage.getWidth(); //dimensione rimane invariata o mantenuta dall'utente
@@ -209,7 +210,7 @@ public class LoadPage {
 
 
     @FXML
-    public static void getPartialScene(BorderPane fxmlLoader, String innerScene, Cliente user, Boolean isAdmin) {
+    public static void getPartialScene(BorderPane fxmlLoader, String innerScene, Cliente user) {
         Pane view = null;
         try {
             // Costruisce il percorso completo del file FXML
@@ -222,15 +223,15 @@ public class LoadPage {
             Pane newScene = loader.load();
             Object controller = loader.getController(); // Ottieni il controller della scena caricata
 
-            // Se il controller è quello della scena 2, possiamo modificare titleGets
-            if (controller instanceof GetsController) {
+            // setta i il controller a seconda della scena caricata
+            /*if (controller instanceof GetsController) {
                 GetsController getsController = (GetsController) controller;
                 getsController.setTitle("Test Title");
-            }
-            else if(controller instanceof HomepageController){
+            }*/
+            if(controller instanceof HomepageController){
                 HomepageController homepageController = (HomepageController) controller;
                 homepageController.save(fxmlLoader, user);
-                homepageController.title();
+                homepageController.title(); //andare a homepage
                 homepageController.showButtonCreateNews();
                 homepageController.loadNews();
             }
@@ -239,15 +240,53 @@ public class LoadPage {
                 infoController.save(fxmlLoader, user);
                 infoController.setVersion("1.6.0");
             }
-            else if(controller instanceof CreateController){
-                CreateController createController = (CreateController) controller;
-                createController.save(fxmlLoader, user);
-                createController.setTitle("Creazione notizia");
-                createController.loadMask("newsMask");
-            }
             // Carica il file FXML
             // Imposta la scena caricata come contenuto centrale del BorderPane
             fxmlLoader.setCenter(newScene);
+
+        } catch (Exception e) {
+            System.out.println("No page found. Please check FXMLLoader.");
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public static void getPartialSceneCRU(PartialSceneDTO partialSceneDTO, String IDkey) {
+        Pane view = null;
+        try {
+            // Costruisce il percorso completo del file FXML
+            URL fileUrl = Main.class.getResource("/org/scenes/" + partialSceneDTO.getInnerScene() + ".fxml");
+            if (fileUrl == null) {
+                throw new java.io.FileNotFoundException("FXML file can't be found");
+            }
+
+            FXMLLoader loader = new FXMLLoader(fileUrl);
+            Pane newScene = loader.load();
+            Object controller = loader.getController(); // Ottieni il controller della scena caricata
+
+            // setta i il controller a seconda della scena caricata
+            if(controller instanceof CreateController){
+                CreateController createController = (CreateController) controller;
+                createController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
+                createController.setTitle("Creazione notizia");
+                createController.loadMask("newsMask");
+            }
+            else if(controller instanceof ReadController){
+                ReadController readController = (ReadController) controller;
+                readController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
+                readController.setTitle("Elenco notizie");
+                readController.loadItems("newsItem", IDkey);
+            }
+            else if(controller instanceof UpdateController){
+                UpdateController updateController = (UpdateController) controller;
+                updateController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
+                updateController.setTitle("Modifica notizia");
+                updateController.loadMask("newsMask", IDkey);
+            }
+
+            // Carica il file FXML
+            // Imposta la scena caricata come contenuto centrale del BorderPane
+            partialSceneDTO.getFxmlLoader().setCenter(newScene);
 
         } catch (Exception e) {
             System.out.println("No page found. Please check FXMLLoader.");

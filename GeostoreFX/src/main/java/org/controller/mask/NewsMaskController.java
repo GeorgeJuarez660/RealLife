@@ -3,7 +3,9 @@ package org.controller.mask;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import org.models.Cliente;
 import org.models.News;
+import org.services.Service;
 
 import java.net.URL;
 import java.text.ParseException;
@@ -21,6 +23,13 @@ public class NewsMaskController implements Initializable {
     @FXML
     private TextArea text;
 
+    private Service service;
+    private String IDkey; //usato per la ricerca/modifica/rimozione
+    private Cliente user; //usato per la ricerca/modifica/rimozione
+
+    //------------------INIZIALIZE-----------------------
+
+    //per la creazione notizia
     public void setDate(){
         Calendar calendario = Calendar.getInstance();
         calendario.setTime(Date.valueOf(LocalDate.now()));
@@ -31,8 +40,28 @@ public class NewsMaskController implements Initializable {
         date.setPromptText(giorno+"/"+mese+"/"+anno);
     }
 
+    //per la modifica notizia
+    public void getValues(String IDkey){
 
-    public News setValues() throws ParseException {
+        service = new Service();
+        News news = new News();
+        news = service.ottieniNotiziaByID(IDkey);
+
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(news.getDataMod());
+        int giorno = calendario.get(Calendar.DAY_OF_MONTH);
+        int mese = calendario.get(Calendar.MONTH) + 1;
+        int anno = calendario.get(Calendar.YEAR);
+
+        date.setPromptText(giorno+"/"+mese+"/"+anno);
+        text.setText(news.getTesto());
+        this.IDkey = IDkey;
+    }
+
+    //------------------GETTING FROM CRUD CONTROLLER-----------------------
+
+    //per la creazione notizia
+    public News setValues() throws ParseException { //recuperato da mask
         News news = new News();
         news.setTesto(text.getText());
 
@@ -41,6 +70,20 @@ public class NewsMaskController implements Initializable {
 
         news.setDataMod(Date.valueOf(localDate));
         news.setDataPub(Date.valueOf(localDate));
+        return news;
+    }
+
+    //per la modifica notizia
+    public News setValuesWithID() throws ParseException { //recuperato da mask
+        News news = new News();
+        news.setTesto(text.getText());
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate localDate = LocalDate.parse(date.getPromptText(), formatter);
+
+        news.setDataMod(Date.valueOf(localDate));
+        news.setDataPub(Date.valueOf(localDate));
+        news.setId(Integer.parseInt(IDkey));
         return news;
     }
 

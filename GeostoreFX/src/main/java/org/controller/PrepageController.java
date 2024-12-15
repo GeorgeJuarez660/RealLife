@@ -6,6 +6,8 @@ import org.services.LoadPage;
 
 public class PrepageController {
 
+    //------------------BUTTONS-----------------------
+
     @FXML
     private void register(ActionEvent event) {
         System.out.println("signing up");
@@ -30,14 +32,4 @@ public class PrepageController {
         LoadPage.access("User");
     }
 
-    // Metodo per cambiare il testo di titleGets
-
-
-    /*@FXML
-    private void caricaScene2() {
-        Pane scene2 = getPage("searchUsers.fxml"); // Usa il metodo generico per caricare la scena
-        if (scene2 != null) {
-            root.setCenter(scene2); // Imposta la scena nel centro del BorderPane
-        }
-    }*/
 }

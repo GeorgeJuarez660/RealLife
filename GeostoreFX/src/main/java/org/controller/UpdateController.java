@@ -1,6 +1,5 @@
 package org.controller;
 
-import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,26 +7,23 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 import org.controller.mask.NewsMaskController;
-import org.models.*;
+import org.models.Amministratore;
+import org.models.Cliente;
+import org.models.News;
 import org.services.LoadPage;
 import org.services.Service;
-import org.utility.Utility;
 
 import java.net.URL;
-import java.sql.Date;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
 
-public class CreateController {// Questo è il BorderPane di menu.fxml
+public class UpdateController {// Questo è il BorderPane di menu.fxml
 
     @FXML
     private Label title;
 
     @FXML
-    private HBox createMask;
+    private HBox updateMask;
 
     private Cliente user;
     private Boolean isAdmin;
@@ -57,9 +53,9 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
         title.setText(value);
     }
 
-    public void loadMask(String maskScene){
+    public void loadMask(String maskScene, String IDkey){
         try {
-            // Costruisce il percorso completo del file FXML
+            // Costruisce il percorso completo del file FXML della maschera
             URL fileUrl = getClass().getResource("/org/scenes/mask/" + maskScene + ".fxml");
             if (fileUrl == null) {
                 throw new java.io.FileNotFoundException("FXML file can't be found");
@@ -70,10 +66,10 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
             Object controller = loader.getController(); // Ottieni il controller della scena caricata
             if (controller instanceof NewsMaskController) {
                 NewsMaskController newsMaskController = (NewsMaskController) controller;
-                newsMaskController.setDate();
+                newsMaskController.getValues(IDkey);
                 maskController = newsMaskController;
             }
-            createMask.getChildren().add(mask);
+            updateMask.getChildren().add(mask);
 
             // Carica il file FXML
             // Imposta la scena caricata come contenuto centrale del BorderPane
@@ -89,19 +85,20 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
     @FXML
     private void back() { //button per tornare indietro
         System.out.println("Going back");
+
         LoadPage.getPartialScene(fxmlLoader, "homepage", user);
     }
 
     @FXML
-    private void create(ActionEvent event) throws ParseException { //button per creare
+    private void update(ActionEvent event) throws ParseException { //button per modificare
         System.out.println("Start creating");
         LoadPage.saveStage(event);
-        LoadPage.loadingScene("CREAZIONE IN CORSO...");
+        LoadPage.loadingScene("MODIFICA IN CORSO...");
 
         service = new Service();
 
         NewsMaskController newsMaskController = (NewsMaskController) maskController;
-        News n = newsMaskController.setValues();
-        service.creazioneNotizia(n, user);
+        News n = newsMaskController.setValuesWithID();
+        service.modificaNotizia(n, user);
     }
 }

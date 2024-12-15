@@ -25,13 +25,9 @@ public class MenuController {
     @FXML
     private Boolean isAdmin;
 
-    @FXML
-    private void clicking() {
-        System.out.println("Clicked");
-        LoadPage.getPartialScene(fxmlLoader, "gets", user, isAdmin);
-    }
+    //------------------INIZIALIZE-----------------------
 
-    @FXML //salvataggio utente per il menu
+    //salvataggio utente per il menu
     public void saveUser(Cliente utente) {
 
         if(utente instanceof Amministratore){
@@ -40,7 +36,6 @@ public class MenuController {
             isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank();
         }
         else{
-            user = new Cliente();
             user = utente;
             isAdmin = false;
         }
@@ -48,18 +43,18 @@ public class MenuController {
         setFields();
     }
 
-    @FXML
     private void setFields() {
         name.setText(user.getNome().toUpperCase());
         surname.setText(user.getCognome().toUpperCase());
     }
 
 
-    @FXML
     public void loadHomepage() {
         System.out.println("goes to homepage");
-        LoadPage.getPartialScene(fxmlLoader, "homepage", user, isAdmin);
+        LoadPage.getPartialScene(fxmlLoader, "homepage", user);
     }
+
+    //------------------BUTTONS-----------------------
 
     @FXML
     private void logout(ActionEvent event){

@@ -26,6 +26,8 @@ public class InfoController {
     @FXML
     private Boolean isAdmin;
 
+    //------------------INIZIALIZE-----------------------
+
     public void save(BorderPane fxmlLoader, Cliente utente){
         if(utente instanceof Amministratore){
             Amministratore admin = (Amministratore) utente;
@@ -40,17 +42,18 @@ public class InfoController {
         this.fxmlLoader = fxmlLoader;
     }
 
-    @FXML
     public void setVersion(String value) {
         System.out.println("info");
 
         version.setText(value);
     }
 
+    //------------------BUTTONS-----------------------
+
     @FXML
-    private void back() {
+    private void back() { //button per andare alla homepage
         System.out.println("Going back");
 
-        LoadPage.getPartialScene(fxmlLoader, "homepage", user, isAdmin);
+        LoadPage.getPartialScene(fxmlLoader, "homepage", user);
     }
 }
