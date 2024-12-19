@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="610.0" stylesheets="@../css/font_geostore.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="610.0" stylesheets="@../css/font_geostore.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controller.ChooseTUserAdminController">
    <children>
       <HBox alignment="CENTER" prefHeight="55.0">
          <children>
@@ -46,7 +46,7 @@
                   </HBox>
                   <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="175.0" prefWidth="610.0" spacing="50.0">
                      <children>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="120.0" prefWidth="250.0" style="-fx-background-color: #3F51B5; -fx-background-radius: 10;" styleClass="label-font" text="VISUALIZZA TUO PROFILO UTENTE" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                        <Button onAction="#lookUserProfile" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="120.0" prefWidth="250.0" style="-fx-background-color: #3F51B5; -fx-background-radius: 10;" styleClass="label-font" text="VISUALIZZA TUO PROFILO UTENTE" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
                         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="120.0" prefWidth="250.0" style="-fx-background-color: #3F51B5; -fx-background-radius: 10;" styleClass="label-font" text="VISUALIZZA PROFILI UTENTI" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
                      </children>
                   </HBox>

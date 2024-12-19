@@ -240,6 +240,10 @@ public class LoadPage {
                 infoController.save(fxmlLoader, user);
                 infoController.setVersion("1.6.0");
             }
+            else if(controller instanceof ChooseTUserAdminController){
+                ChooseTUserAdminController chooseTUserAdminController = (ChooseTUserAdminController) controller;
+                chooseTUserAdminController.save(fxmlLoader, user);
+            }
             // Carica il file FXML
             // Imposta la scena caricata come contenuto centrale del BorderPane
             fxmlLoader.setCenter(newScene);
@@ -276,6 +280,13 @@ public class LoadPage {
                 readController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
                 readController.setTitle("Elenco notizie");
                 readController.loadItems("newsItem", IDkey);
+            }
+            else if(controller instanceof ReadSoloController){
+                ReadSoloController readSoloController = (ReadSoloController) controller;
+                readSoloController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
+                readSoloController.setTitle("Profilo Utente");
+                readSoloController.loadItem("userProfileItem");
+                readSoloController.enableUpdateBtn();
             }
             else if(controller instanceof UpdateController){
                 UpdateController updateController = (UpdateController) controller;

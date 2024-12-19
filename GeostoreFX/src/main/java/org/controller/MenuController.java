@@ -11,6 +11,7 @@ import org.models.Cliente;
 import org.models.Utente;
 import org.services.LoadPage;
 import org.sqlite.util.StringUtils;
+import org.utility.PartialSceneDTO;
 
 public class MenuController {
     @FXML
@@ -25,7 +26,7 @@ public class MenuController {
     @FXML
     private Boolean isAdmin;
 
-    //------------------INIZIALIZE-----------------------
+    //------------------INITIALIZE-----------------------
 
     //salvataggio utente per il menu
     public void saveUser(Cliente utente) {
@@ -71,6 +72,27 @@ public class MenuController {
         delay.play();
 
     }
+
+    @FXML
+    private void user(){
+        if(isAdmin){
+            System.out.println("goes to user");
+            LoadPage.getPartialScene(fxmlLoader, "chooseTUserAdmin", user);
+        }
+        else{
+            System.out.println("goes to user");
+            PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+            partialSceneDTO.setFxmlLoader(fxmlLoader);
+            partialSceneDTO.setInnerScene("readSolo");
+            partialSceneDTO.setUser(user);
+            LoadPage.getPartialSceneCRU(partialSceneDTO, null);
+        }
+
+
+    }
+
+
+
 
 
     @FXML

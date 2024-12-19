@@ -20,11 +20,11 @@ public class Service {
     StatusRepository sr = new StatusRepository();
 
 
-    /*public void profiloUtente(Utente u){
-        view.printUtente(ur.getUtenteWithDB(u.getId()));
+    public Utente ottieniProfiloUtente(Integer idUtente){
+        return ur.getUtenteWithDB(idUtente);
     }
 
-    public void elencoUtenti(){
+    /*public void elencoUtenti(){
         view.printUtenti(ur.getUtentiWithDB());
     }*/
 

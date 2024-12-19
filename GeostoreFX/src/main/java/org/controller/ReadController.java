@@ -38,7 +38,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
     @FXML
     private VBox itemList;
 
-    //------------------INIZIALIZE-----------------------
+    //------------------INITIALIZE-----------------------
 
     public void save(BorderPane fxmlLoader, Cliente utente){
 

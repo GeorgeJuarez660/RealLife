@@ -6,62 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="8273ca0a-1299-4b65-b52d-47dc6a793eae" name="Changes" comment="AppJavaFx: creating example">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/AccessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/AccessController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/AnswerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/AnswerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/CreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/CreateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/GetsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/ReadController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/InfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/InfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/LoadingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/LoadingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/PrepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/PrepageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/ProductInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/ProductInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/WelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/WelcomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/ReadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/ReadController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/item/NewsItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/item/NewsItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/mask/NewsMaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/mask/NewsMaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/CategoriaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/CategoriaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/DisponibilitaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/DisponibilitaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/MateriaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/MateriaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/NewsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/NewsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/OrdineRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/OrdineRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/ProdottoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/ProdottoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/StatusRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/StatusRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/UtenteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/UtenteRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/utility/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/services/DBConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/utility/newsCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/utility/newsCRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/gets.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/read.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/homepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/homepage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/item/newsItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/item/newsItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/services/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/services/Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/chooseTUserAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/chooseTUserAdmin.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/AccessController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/AccessController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/AnswerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/AnswerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/CreateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/CreateController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/GetsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/HomepageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/HomepageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/InfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/InfoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/LoadingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/LoadingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/MenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/PrepageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/PrepageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/ProductInfoController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/WelcomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/WelcomeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/item/NewsItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/item/NewsItemController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/mask/NewsMaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/mask/NewsMaskController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/CategoriaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/CategoriaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/DisponibilitaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/DisponibilitaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/MateriaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/MateriaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/NewsRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/NewsRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/OrdineRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/OrdineRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/ProdottoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/ProdottoRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/StatusRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/StatusRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/UtenteRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/UtenteRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/homepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/homepage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/item/newsItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/item/newsItem.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/services/LoadPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/services/LoadPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/utility/DBConnection.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +32,7 @@
     <option name="defaultAccountId" value="0f21a078-c9f4-47d1-b6aa-3d775a060413" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/22-ea+11/javafx-fxml-22-ea+11-win.jar!/javafx/fxml/FXMLLoader.class" root0="SKIP_INSPECTION" />
     <setting file="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/22-ea+11/javafx-graphics-22-ea+11-win.jar!/javafx/scene/image/Image.class" root0="SKIP_INSPECTION" />
   </component>
   <component name="MavenImportPreferences">
@@ -131,10 +84,10 @@
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\css" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.controller.item" />
       <recent name="org.controller" />
       <recent name="org.models" />
       <recent name="org.services" />
-      <recent name="org.controller.item" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
@@ -354,8 +307,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/LoadPage.java</url>
-          <line>255</line>
+          <line>259</line>
           <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadSoloController.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/org/models/News.java</url>

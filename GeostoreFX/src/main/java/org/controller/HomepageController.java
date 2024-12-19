@@ -35,7 +35,7 @@ public class HomepageController {
     @FXML
     private VBox newsList;
 
-    //------------------INIZIALIZE-----------------------
+    //------------------INITIALIZE-----------------------
 
     public void save(BorderPane fxmlLoader, Cliente utente){
 
