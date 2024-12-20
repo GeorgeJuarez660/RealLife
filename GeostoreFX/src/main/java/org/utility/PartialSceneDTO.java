@@ -9,6 +9,7 @@ import java.util.Objects;
 public class PartialSceneDTO {
     private BorderPane fxmlLoader;
     private String innerScene;
+    private String itemScene;
     private Cliente user;
 
     public BorderPane getFxmlLoader() {
@@ -25,6 +26,14 @@ public class PartialSceneDTO {
 
     public void setInnerScene(String innerScene) {
         this.innerScene = innerScene;
+    }
+
+    public String getItemScene() {
+        return itemScene;
+    }
+
+    public void setItemScene(String itemScene) {
+        this.itemScene = itemScene;
     }
 
     public Cliente getUser() {

@@ -14,8 +14,8 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label styleClass="label-font" text="Nome:" wrapText="true" />
-                        <Label fx:id="name" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="XXX" wrapText="true">
+                        <Label styleClass="label-font" text="Nome:" wrapText="true" textFill="#0495cd"/>
+                        <Label fx:id="name" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="XXX" wrapText="true" textFill="#03A8E8">
                            <HBox.margin>
                               <Insets left="7.0" />
                            </HBox.margin>
@@ -27,8 +27,8 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="26.0" prefWidth="132.0" styleClass="label-font" text="Cognome:" wrapText="true" />
-                        <Label fx:id="surname" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="XXX" wrapText="true">
+                        <Label prefHeight="26.0" prefWidth="132.0" styleClass="label-font" text="Cognome:" wrapText="true" textFill="#0495cd"/>
+                        <Label fx:id="surname" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="XXX" wrapText="true" textFill="#03A8E8">
                            <HBox.margin>
                               <Insets left="7.0" />
                            </HBox.margin>
@@ -40,8 +40,8 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="26.0" prefWidth="89.0" styleClass="label-font" text="Sesso:" wrapText="true" />
-                        <Label fx:id="sex" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="X" wrapText="true">
+                        <Label prefHeight="26.0" prefWidth="89.0" styleClass="label-font" text="Sesso:" wrapText="true" textFill="#0495cd"/>
+                        <Label fx:id="sex" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="X" wrapText="true" textFill="#03A8E8">
                            <HBox.margin>
                               <Insets left="7.0" />
                            </HBox.margin>
@@ -53,8 +53,8 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="168.0" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="26.0" prefWidth="146.0" styleClass="label-font" text="Data di nascita:" wrapText="true" />
-                        <Label fx:id="bornDate" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="DD/MM/YYYY" wrapText="true">
+                        <Label prefHeight="26.0" prefWidth="146.0" styleClass="label-font" text="Data di nascita:" wrapText="true" textFill="#0495cd"/>
+                        <Label fx:id="bornDate" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="DD/MM/YYYY" wrapText="true" textFill="#03A8E8">
                            <HBox.margin>
                               <Insets left="7.0" />
                            </HBox.margin>
@@ -66,8 +66,8 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="188.0" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="26.0" prefWidth="154.0" styleClass="label-font" text="Telefono:" wrapText="true" />
-                        <Label fx:id="phoneNumber" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="123" wrapText="true">
+                        <Label prefHeight="26.0" prefWidth="154.0" styleClass="label-font" text="Telefono:" wrapText="true" textFill="#0495cd"/>
+                        <Label fx:id="phoneNumber" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="123" wrapText="true" textFill="#03A8E8">
                            <HBox.margin>
                               <Insets left="7.0" />
                            </HBox.margin>
@@ -83,8 +83,8 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="26.0" prefWidth="182.0" styleClass="label-font" text="Indirizzo:" wrapText="true" />
-                        <Label fx:id="address" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="XXX" wrapText="true">
+                        <Label prefHeight="26.0" prefWidth="182.0" styleClass="label-font" text="Indirizzo:" wrapText="true" textFill="#0495cd"/>
+                        <Label fx:id="address" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="XXX" wrapText="true" textFill="#03A8E8">
                            <HBox.margin>
                               <Insets left="7.0" />
                            </HBox.margin>
@@ -96,8 +96,8 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="26.0" prefWidth="90.0" styleClass="label-font" text="Email:" wrapText="true" />
-                        <Label fx:id="email" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="XXX@X.XXX" wrapText="true">
+                        <Label prefHeight="26.0" prefWidth="90.0" styleClass="label-font" text="Email:" wrapText="true" textFill="#0495cd"/>
+                        <Label fx:id="email" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="XXX@X.XXX" wrapText="true" textFill="#03A8E8">
                            <HBox.margin>
                               <Insets left="7.0" />
                            </HBox.margin>
@@ -109,8 +109,8 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="26.0" prefWidth="154.0" styleClass="label-font" text="Password:" wrapText="true" />
-                        <Label fx:id="password" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="XXX" wrapText="true">
+                        <Label prefHeight="26.0" prefWidth="154.0" styleClass="label-font" text="Password:" wrapText="true" textFill="#0495cd"/>
+                        <Label fx:id="password" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="XXX" wrapText="true" textFill="#03A8E8">
                            <HBox.margin>
                               <Insets left="7.0" />
                            </HBox.margin>
@@ -122,8 +122,8 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="26.0" prefWidth="97.0" styleClass="label-font" text="Codice admin:" wrapText="true" />
-                        <Label fx:id="adminCode" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="XXX123" wrapText="true">
+                        <Label prefHeight="26.0" prefWidth="97.0" styleClass="label-font" text="Codice admin:" wrapText="true" textFill="#0495cd"/>
+                        <Label fx:id="adminCode" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="XXX123" wrapText="true" textFill="#03A8E8">
                            <HBox.margin>
                               <Insets left="7.0" />
                            </HBox.margin>
@@ -135,8 +135,8 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="26.0" prefWidth="227.0" styleClass="label-font" text="Portafoglio:" wrapText="true" />
-                        <Label fx:id="wallet" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="123 C" wrapText="true">
+                        <Label prefHeight="26.0" prefWidth="227.0" styleClass="label-font" text="Portafoglio:" wrapText="true" textFill="#0495cd"/>
+                        <Label fx:id="wallet" prefHeight="35.0" prefWidth="200.0" styleClass="label-font" text="123 C" wrapText="true" textFill="#03A8E8">
                            <HBox.margin>
                               <Insets left="7.0" />
                            </HBox.margin>

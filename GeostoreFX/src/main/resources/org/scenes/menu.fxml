@@ -108,7 +108,7 @@
                   </HBox>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="170.0" style="-fx-background-radius: 15; -fx-background-color: #0495CD;">
+            <Button onAction="#loadHomepage" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="170.0" style="-fx-background-radius: 15; -fx-background-color: #0495CD;">
                <VBox.margin>
                   <Insets top="70.0" />
                </VBox.margin>

@@ -278,15 +278,15 @@ public class LoadPage {
             else if(controller instanceof ReadController){
                 ReadController readController = (ReadController) controller;
                 readController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
-                readController.setTitle("Elenco notizie");
-                readController.loadItems("newsItem", IDkey);
+                readController.setTitle(partialSceneDTO.getItemScene());
+                readController.loadItems(partialSceneDTO.getItemScene(), IDkey);
             }
             else if(controller instanceof ReadSoloController){
                 ReadSoloController readSoloController = (ReadSoloController) controller;
                 readSoloController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
                 readSoloController.setTitle("Profilo Utente");
                 readSoloController.loadItem("userProfileItem");
-                readSoloController.enableUpdateBtn();
+                readSoloController.enableBackBtn();
             }
             else if(controller instanceof UpdateController){
                 UpdateController updateController = (UpdateController) controller;

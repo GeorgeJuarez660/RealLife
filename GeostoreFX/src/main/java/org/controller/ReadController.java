@@ -9,10 +9,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.controller.item.NewsItemController;
+import org.controller.item.UserItemController;
 import org.controller.mask.NewsMaskController;
 import org.models.Amministratore;
 import org.models.Cliente;
 import org.models.News;
+import org.models.Utente;
 import org.services.LoadPage;
 import org.services.Service;
 import org.utility.PartialSceneDTO;
@@ -55,48 +57,93 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
         this.fxmlLoader = fxmlLoader;
     }
 
-    public void setTitle(String value) {
-        title.setText(value);
+    public void setTitle(String innerScene) {
+        if(innerScene.equals("user")){
+            title.setText("Elenco profili utente");
+        }
+        else{
+            title.setText("Elenco notizie");
+        }
     }
 
     public void loadItems(String itemScene, String IDkey){
         service = new Service();
-        Map<Integer, News> notizie = new HashMap();
+        Map<Integer, News> notizie = new HashMap<>();
+        Map<Integer, Utente> utenti = new HashMap<>();
 
         if (IDkey != null && !IDkey.isEmpty() && !IDkey.isBlank()){
-            notizie = service.ottieniNotizieByKeyword(IDkey);
+            if(itemScene.equals("user")){ //vede prima quale item riferisce
+                utenti = service.ottieniUtente(Integer.parseInt(IDkey));
+            }
+            else{
+                notizie = service.ottieniNotizieByKeyword(IDkey);
+            }
             search.setText(IDkey);
         }
         else{
-            notizie = service.elencoNotizie();
+            if(itemScene.equals("user")) { //vede prima quale item riferisce
+                utenti = service.elencoUtenti();
+            }
+            else{
+                notizie = service.elencoNotizie();
+            }
         }
 
         itemList.getChildren().clear(); //pulisce prima di aggiungere
 
-        for (News notizia : notizie.values()) {
-            try {
-                // Costruisce il percorso completo del file FXML
-                URL fileUrl = getClass().getResource("/org/scenes/item/" + itemScene + ".fxml"); //trova la scena news
-                if (fileUrl == null) {
-                    throw new java.io.FileNotFoundException("FXML file can't be found");
+        if(itemScene.equals("user")){
+            for (Utente utente : utenti.values()) {
+                try {
+                    // Costruisce il percorso completo del file FXML
+                    URL fileUrl = getClass().getResource("/org/scenes/item/userItem.fxml"); //trova la scena news
+                    if (fileUrl == null) {
+                        throw new java.io.FileNotFoundException("FXML file can't be found");
+                    }
+
+                    FXMLLoader loader = new FXMLLoader(fileUrl);
+                    HBox newsItem = loader.load();
+                    UserItemController userItemController = loader.getController();
+                    userItemController.save(fxmlLoader, user);
+                    userItemController.setValues(utente);
+                    userItemController.enableButtons(isAdmin);
+                    itemList.getChildren().add(newsItem);
+
+                    // Carica il file FXML
+                    // Imposta la scena caricata come contenuto centrale del BorderPane
+
+                } catch (Exception e) {
+                    System.out.println("No page found. Please check FXMLLoader.");
+                    e.printStackTrace();
                 }
-
-                FXMLLoader loader = new FXMLLoader(fileUrl);
-                HBox newsItem = loader.load();
-                NewsItemController newsItemController = loader.getController();
-                newsItemController.save(fxmlLoader, user);
-                newsItemController.setValues(notizia);
-                newsItemController.enableButtons(isAdmin);
-                itemList.getChildren().add(newsItem);
-
-                // Carica il file FXML
-                // Imposta la scena caricata come contenuto centrale del BorderPane
-
-            } catch (Exception e) {
-                System.out.println("No page found. Please check FXMLLoader.");
-                e.printStackTrace();
             }
         }
+        else{
+            for (News notizia : notizie.values()) {
+                try {
+                    // Costruisce il percorso completo del file FXML
+                    URL fileUrl = getClass().getResource("/org/scenes/item/" + itemScene + ".fxml"); //trova la scena news
+                    if (fileUrl == null) {
+                        throw new java.io.FileNotFoundException("FXML file can't be found");
+                    }
+
+                    FXMLLoader loader = new FXMLLoader(fileUrl);
+                    HBox newsItem = loader.load();
+                    NewsItemController newsItemController = loader.getController();
+                    newsItemController.save(fxmlLoader, user);
+                    newsItemController.setValues(notizia);
+                    newsItemController.enableButtons(isAdmin);
+                    itemList.getChildren().add(newsItem);
+
+                    // Carica il file FXML
+                    // Imposta la scena caricata come contenuto centrale del BorderPane
+
+                } catch (Exception e) {
+                    System.out.println("No page found. Please check FXMLLoader.");
+                    e.printStackTrace();
+                }
+            }
+        }
+
     }
 
     //------------------BUTTONS-----------------------

@@ -62,7 +62,7 @@ public class UtenteRepository implements utentiCRUD {
 
     @Override
     public HashMap<Integer, Utente> getUtentiWithDB() {
-        String sql = "select * from utenti u ";
+        String sql = "select * from utenti u";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet rs = null;

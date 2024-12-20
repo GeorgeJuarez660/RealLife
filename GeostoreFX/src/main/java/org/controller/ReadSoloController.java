@@ -29,7 +29,7 @@ public class ReadSoloController {// Questo è il BorderPane di menu.fxml
     @FXML
     private TextField search;
     @FXML
-    private Button updateBtn;
+    private HBox backBtn;
 
 
     private Cliente user;
@@ -91,9 +91,9 @@ public class ReadSoloController {// Questo è il BorderPane di menu.fxml
 
     }
 
-    public void enableUpdateBtn(){
-        updateBtn.setVisible(isAdmin);
-        updateBtn.setManaged(isAdmin);
+    public void enableBackBtn(){
+        backBtn.setVisible(isAdmin);
+        backBtn.setManaged(isAdmin);
     }
 
     //------------------BUTTONS-----------------------

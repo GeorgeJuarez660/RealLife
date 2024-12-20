@@ -6,6 +6,7 @@ import org.utility.Utility;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Service {
@@ -24,9 +25,16 @@ public class Service {
         return ur.getUtenteWithDB(idUtente);
     }
 
-    /*public void elencoUtenti(){
-        view.printUtenti(ur.getUtentiWithDB());
-    }*/
+    public Map<Integer, Utente> ottieniUtente(Integer idUtente){
+        Utente utente = ur.getUtenteWithDB(idUtente);
+        Map<Integer, Utente> onlyUtente = new HashMap<>();
+        onlyUtente.put(utente.getId(), utente);
+        return onlyUtente;
+    }
+
+    public Map<Integer, Utente> elencoUtenti(){
+        return ur.getUtentiWithDB();
+    }
 
     public void loginUtente(Cliente user){
         int num = 0;

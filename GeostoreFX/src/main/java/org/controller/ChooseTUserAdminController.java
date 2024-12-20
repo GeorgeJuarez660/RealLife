@@ -45,4 +45,15 @@ public class ChooseTUserAdminController {
         LoadPage.getPartialSceneCRU(partialSceneDTO, null);
     }
 
+    @FXML
+    private void lookUsers() {
+        System.out.println("goes to look user profile");
+        PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+        partialSceneDTO.setFxmlLoader(fxmlLoader);
+        partialSceneDTO.setInnerScene("read");
+        partialSceneDTO.setItemScene("user");
+        partialSceneDTO.setUser(user);
+        LoadPage.getPartialSceneCRU(partialSceneDTO, null);
+    }
+
 }
