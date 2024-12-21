@@ -5,6 +5,7 @@ import org.utility.Utility;
 
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -63,7 +64,7 @@ public class Service {
         Utility.sendResponseRegister(num);
     }
 
-    public HashMap<Integer, News> elencoNotizie(){
+    public ArrayList<News> elencoNotizie(){
         return nr.getNotizieWithDB();
     }
 
@@ -71,7 +72,7 @@ public class Service {
         return nr.getNotiziaWithByIdWithDB(IDNews);
     }
 
-    public HashMap<Integer, News> ottieniNotizieByKeyword(String keyword){
+    public ArrayList<News> ottieniNotizieByKeyword(String keyword){
         return nr.getNotizieByKeywordWithDB(keyword);
     }
 

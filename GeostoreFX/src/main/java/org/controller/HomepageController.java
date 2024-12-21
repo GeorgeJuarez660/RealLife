@@ -16,7 +16,9 @@ import org.utility.PartialSceneDTO;
 import java.net.URL;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class HomepageController {
@@ -95,11 +97,11 @@ public class HomepageController {
 
     public void loadNews(){
         service = new Service();
-        Map<Integer, News> notizie = new HashMap();
+        List<News> notizie = new ArrayList<>();
 
         notizie = service.elencoNotizie();
 
-        for (News notizia : notizie.values()) {
+        for (News notizia : notizie) {
             try {
                 // Costruisce il percorso completo del file FXML
                 URL fileUrl = getClass().getResource("/org/scenes/item/newsItem.fxml"); //trova la scena news

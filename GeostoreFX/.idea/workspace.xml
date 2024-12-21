@@ -6,18 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="8273ca0a-1299-4b65-b52d-47dc6a793eae" name="Changes" comment="AppJavaFx: creating example">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/ChooseTUserAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/ChooseTUserAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/ReadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/ReadController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/ReadSoloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/ReadSoloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/item/UserItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/item/UserItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/UtenteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/UtenteRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/NewsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/NewsRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/services/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/services/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/utility/PartialSceneDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/utility/PartialSceneDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/chooseTUserAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/chooseTUserAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/item/userProfileItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/item/userProfileItem.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/readSolo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/readSolo.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/utility/newsCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/utility/newsCRUD.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,26 +194,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/services/LoadPage.java</url>
-          <line>221</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/utility/Utility.java</url>
-          <line>90</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/services/LoadPage.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/utility/Utility.java</url>
-          <line>94</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/utility/Utility.java</url>
           <line>119</line>
           <option name="timeStamp" value="24" />
@@ -235,33 +209,8 @@
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java</url>
-          <line>72</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java</url>
-          <line>84</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java</url>
-          <line>75</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java</url>
-          <line>78</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java</url>
-          <line>81</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/models/NewsRepository.java</url>
-          <line>59</line>
+          <line>60</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -271,7 +220,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java</url>
-          <line>99</line>
+          <line>101</line>
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -281,17 +230,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java</url>
-          <line>44</line>
+          <line>46</line>
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/services/LoadPage.java</url>
-          <line>66</line>
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/Service.java</url>
-          <line>81</line>
+          <line>82</line>
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -306,7 +250,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
-          <line>161</line>
+          <line>160</line>
           <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -316,7 +260,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
-          <line>75</line>
+          <line>74</line>
           <option name="timeStamp" value="56" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -331,17 +275,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
-          <line>70</line>
+          <line>69</line>
           <option name="timeStamp" value="59" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/org/models/News.java</url>
-          <line>38</line>
-          <properties class="org.models.News" method="setDataPub">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="46" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/models/NewsRepository.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/models/NewsRepository.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="61" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

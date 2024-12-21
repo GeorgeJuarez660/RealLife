@@ -10,18 +10,17 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.controller.item.NewsItemController;
 import org.controller.item.UserItemController;
-import org.controller.mask.NewsMaskController;
 import org.models.Amministratore;
 import org.models.Cliente;
 import org.models.News;
 import org.models.Utente;
 import org.services.LoadPage;
 import org.services.Service;
-import org.utility.PartialSceneDTO;
 
 import java.net.URL;
-import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ReadController {// Questo è il BorderPane di menu.fxml
@@ -58,7 +57,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
     }
 
     public void setTitle(String innerScene) {
-        if(innerScene.equals("user")){
+        if(innerScene != null && innerScene.equals("user")){
             title.setText("Elenco profili utente");
         }
         else{
@@ -68,11 +67,11 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
 
     public void loadItems(String itemScene, String IDkey){
         service = new Service();
-        Map<Integer, News> notizie = new HashMap<>();
+        List<News> notizie = new ArrayList<>();
         Map<Integer, Utente> utenti = new HashMap<>();
 
         if (IDkey != null && !IDkey.isEmpty() && !IDkey.isBlank()){
-            if(itemScene.equals("user")){ //vede prima quale item riferisce
+            if(itemScene != null && itemScene.equals("user")){ //vede prima quale item riferisce
                 utenti = service.ottieniUtente(Integer.parseInt(IDkey));
             }
             else{
@@ -81,7 +80,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
             search.setText(IDkey);
         }
         else{
-            if(itemScene.equals("user")) { //vede prima quale item riferisce
+            if(itemScene != null && itemScene.equals("user")) { //vede prima quale item riferisce
                 utenti = service.elencoUtenti();
             }
             else{
@@ -91,7 +90,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
 
         itemList.getChildren().clear(); //pulisce prima di aggiungere
 
-        if(itemScene.equals("user")){
+        if(itemScene != null && itemScene.equals("user")){
             for (Utente utente : utenti.values()) {
                 try {
                     // Costruisce il percorso completo del file FXML
@@ -118,10 +117,10 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
             }
         }
         else{
-            for (News notizia : notizie.values()) {
+            for (News notizia : notizie) {
                 try {
                     // Costruisce il percorso completo del file FXML
-                    URL fileUrl = getClass().getResource("/org/scenes/item/" + itemScene + ".fxml"); //trova la scena news
+                    URL fileUrl = getClass().getResource("/org/scenes/item/newsItem.fxml"); //trova la scena news
                     if (fileUrl == null) {
                         throw new java.io.FileNotFoundException("FXML file can't be found");
                     }

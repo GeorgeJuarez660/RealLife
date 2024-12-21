@@ -55,7 +55,9 @@ public class UserItemController implements Initializable {
 
         if(utente instanceof Amministratore){
             Amministratore admin = (Amministratore) utente;
-            id.setText(admin.getId().toString());
+            if(id != null){
+                id.setText(admin.getId().toString());
+            }
             name.setText(admin.getNome());
             surname.setText(admin.getCognome());
             sex.setText(admin.getSesso());
@@ -69,7 +71,9 @@ public class UserItemController implements Initializable {
         }
         else{
             Cliente cliente = (Cliente) utente;
-            id.setText(cliente.getId().toString());
+            if(id != null){
+                id.setText(cliente.getId().toString());
+            }
             name.setText(cliente.getNome());
             surname.setText(cliente.getCognome());
             sex.setText(cliente.getSesso());

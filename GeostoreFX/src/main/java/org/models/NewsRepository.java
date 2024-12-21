@@ -5,11 +5,12 @@ import org.utility.Utility;
 import org.utility.newsCRUD;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class NewsRepository implements newsCRUD {
 
-    private HashMap<Integer, News> notizie = new HashMap<>();
+    private ArrayList<News> notizie = new ArrayList<>();
 
     @Override
     public int insertNotizieWithDB(Date dataPub, Date dataMod, String testo, Integer idAdmin) {
@@ -39,12 +40,12 @@ public class NewsRepository implements newsCRUD {
     }
 
     @Override
-    public HashMap<Integer, News> getNotizieWithDB() {
+    public ArrayList<News> getNotizieWithDB() {
         String sql = "SELECT * FROM News n ORDER BY n.data_modifica DESC";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet rs = null;
-        notizie = new HashMap<>();
+        notizie = new ArrayList<>();
 
         try{
             //Connessione al db
@@ -60,7 +61,7 @@ public class NewsRepository implements newsCRUD {
                 n.setDataPub(rs.getDate("data_pubblicazione"));
                 n.setDataMod(rs.getDate("data_modifica"));
 
-                notizie.put(n.getId(), n);
+                notizie.add(n);
             }
             //chiudi la connessione
             rs.close();
@@ -105,12 +106,12 @@ public class NewsRepository implements newsCRUD {
     }
 
     @Override
-    public HashMap<Integer, News> getNotizieByKeywordWithDB(String keyword) {
+    public ArrayList<News> getNotizieByKeywordWithDB(String keyword) {
         String sql = "SELECT * FROM News n WHERE n.TESTO LIKE ?";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet rs = null;
-        notizie = new HashMap<>();
+        notizie = new ArrayList<>();
 
         try{
             //Connessione al db
@@ -128,7 +129,7 @@ public class NewsRepository implements newsCRUD {
                 n.setDataPub(rs.getDate("data_pubblicazione"));
                 n.setDataMod(rs.getDate("data_modifica"));
 
-                notizie.put(n.getId(), n);
+                notizie.add(n);
             }
             //chiudi la connessione
             rs.close();
