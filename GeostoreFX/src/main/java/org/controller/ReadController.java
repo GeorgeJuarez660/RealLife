@@ -35,6 +35,8 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
     private Boolean isAdmin;
     private BorderPane fxmlLoader;
     private Service service;
+    private String itemScene;
+    private Boolean showSearch;
 
     @FXML
     private VBox itemList;
@@ -65,13 +67,20 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
         }
     }
 
+    public void showSearchBar(Boolean show){
+        search.setVisible(show);
+        search.setManaged(show);
+        showSearch = show;
+    }
+
     public void loadItems(String itemScene, String IDkey){
         service = new Service();
+        this.itemScene = itemScene;
         List<News> notizie = new ArrayList<>();
         Map<Integer, Utente> utenti = new HashMap<>();
 
         if (IDkey != null && !IDkey.isEmpty() && !IDkey.isBlank()){
-            if(itemScene != null && itemScene.equals("user")){ //vede prima quale item riferisce
+            if(this.itemScene != null && this.itemScene.equals("user")){ //vede prima quale item riferisce
                 utenti = service.ottieniUtente(Integer.parseInt(IDkey));
             }
             else{
@@ -80,7 +89,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
             search.setText(IDkey);
         }
         else{
-            if(itemScene != null && itemScene.equals("user")) { //vede prima quale item riferisce
+            if(this.itemScene != null && this.itemScene.equals("user")) { //vede prima quale item riferisce
                 utenti = service.elencoUtenti();
             }
             else{
@@ -90,7 +99,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
 
         itemList.getChildren().clear(); //pulisce prima di aggiungere
 
-        if(itemScene != null && itemScene.equals("user")){
+        if(this.itemScene != null && this.itemScene.equals("user")){
             for (Utente utente : utenti.values()) {
                 try {
                     // Costruisce il percorso completo del file FXML
@@ -158,8 +167,18 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
     private void searching(){ //button per cercare
         System.out.println("Start searching");
 
-        String keyword = search.getText();
-        loadItems("newsItem", keyword);
-
+        if(showSearch){
+            if(this.itemScene != null && this.itemScene.equals("user")){
+                String keyword = search.getText();
+                loadItems("user", keyword);
+            }
+            else{
+                String keyword = search.getText();
+                loadItems("news", keyword);
+            }
+        }
+        else{
+            showSearchBar(true);
+        }
     }
 }

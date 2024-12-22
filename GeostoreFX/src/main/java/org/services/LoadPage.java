@@ -188,9 +188,8 @@ public class LoadPage {
 
             FXMLLoader loader = new FXMLLoader(fileUrl);
             Pane newScene = loader.load();
-            Object controller = loader.getController(); //Ottieni il controller della scena caricata
 
-            LoadingController loadingController = (LoadingController) loader.getController();
+            LoadingController loadingController = (LoadingController) loader.getController(); //Ottieni il controller della scena caricata
             loadingController.response(response);
 
             //carica la scena
@@ -224,10 +223,6 @@ public class LoadPage {
             Object controller = loader.getController(); // Ottieni il controller della scena caricata
 
             // setta i il controller a seconda della scena caricata
-            /*if (controller instanceof GetsController) {
-                GetsController getsController = (GetsController) controller;
-                getsController.setTitle("Test Title");
-            }*/
             if(controller instanceof HomepageController){
                 HomepageController homepageController = (HomepageController) controller;
                 homepageController.save(fxmlLoader, user);
@@ -279,6 +274,7 @@ public class LoadPage {
                 ReadController readController = (ReadController) controller;
                 readController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
                 readController.setTitle(partialSceneDTO.getItemScene());
+                readController.showSearchBar(false);
                 readController.loadItems(partialSceneDTO.getItemScene(), IDkey);
             }
             else if(controller instanceof ReadSoloController){
