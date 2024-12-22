@@ -15,7 +15,7 @@ public class AnswerController {
     @FXML
     private Label response;
 
-    //------------------INIZIALIZE-----------------------
+    //------------------INITIALIZE-----------------------
 
     public void response(String answer) {
         System.out.println(answer);

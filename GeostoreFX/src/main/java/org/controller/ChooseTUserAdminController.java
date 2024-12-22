@@ -47,10 +47,21 @@ public class ChooseTUserAdminController {
 
     @FXML
     private void lookUsers() {
-        System.out.println("goes to look user profile");
+        System.out.println("goes to look users");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
         partialSceneDTO.setInnerScene("read");
+        partialSceneDTO.setItemScene("user");
+        partialSceneDTO.setUser(user);
+        LoadPage.getPartialSceneCRU(partialSceneDTO, null);
+    }
+
+    @FXML
+    private void createUser() {
+        System.out.println("goes to create user");
+        PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+        partialSceneDTO.setFxmlLoader(fxmlLoader);
+        partialSceneDTO.setInnerScene("create");
         partialSceneDTO.setItemScene("user");
         partialSceneDTO.setUser(user);
         LoadPage.getPartialSceneCRU(partialSceneDTO, null);

@@ -26,7 +26,7 @@ public class InfoController {
     @FXML
     private Boolean isAdmin;
 
-    //------------------INIZIALIZE-----------------------
+    //------------------INITIALIZE-----------------------
 
     public void save(BorderPane fxmlLoader, Cliente utente){
         if(utente instanceof Amministratore){

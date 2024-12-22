@@ -3,6 +3,7 @@ package org.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -31,6 +32,9 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
     @FXML
     private TextField search;
 
+    @FXML
+    private Button backBtn;
+
     private Cliente user;
     private Boolean isAdmin;
     private BorderPane fxmlLoader;
@@ -58,8 +62,8 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
         this.fxmlLoader = fxmlLoader;
     }
 
-    public void setTitle(String innerScene) {
-        if(innerScene != null && innerScene.equals("user")){
+    public void setTitle(String itemScene) {
+        if(itemScene != null && itemScene.equals("user")){
             title.setText("Elenco profili utente");
         }
         else{
@@ -159,8 +163,12 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
     @FXML
     private void back() { //button per tornare indietro
         System.out.println("Going back");
-
-        LoadPage.getPartialScene(fxmlLoader, "homepage", user);
+        if(this.itemScene != null && this.itemScene.equals("user")){
+            LoadPage.getPartialScene(fxmlLoader, "chooseTUserAdmin", user);
+        }
+        else{
+            LoadPage.getPartialScene(fxmlLoader, "homepage", user);
+        }
     }
 
     @FXML

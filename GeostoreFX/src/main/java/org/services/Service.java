@@ -59,9 +59,44 @@ public class Service {
         Utility.sendResponseLogin(num, user);
     }
 
-    public void creazioneUtente(Cliente user){
+    public void registerUtente(Cliente user){
         int num = ur.insertUtenteWithDB(user.getId(), user);
         Utility.sendResponseRegister(num);
+    }
+
+    public void creazioneUtente(Cliente user, Cliente userID){
+        int num = 0;
+
+        num = ur.insertUtenteWithDB(null, user);
+
+        if(num > 0){
+            Utility.sendResponse(num, "UTENTE CREATO", userID);
+        }
+        else{
+            Utility.sendResponse(num, "CREAZIONE UTENTE", userID);
+        }
+    }
+
+    public void modificaUtente(Utente u, Cliente userID){
+        int num = ur.updateUtenteWithDB(u.getId(), u);
+
+        if(num > 0){
+            Utility.sendResponse(num, "UTENTE MODIFICATO", userID);
+        }
+        else{
+            Utility.sendResponse(num, "MODIFICA UTENTE", userID);
+        }
+    }
+
+    public void eliminazioneUtente(String IDkey, Cliente userID){
+        int num = ur.deleteUtenteWithDB(Integer.parseInt(IDkey));
+
+        if(num > 0){
+            Utility.sendResponse(num, "UTENTE ELIMINATO", userID);
+        }
+        else{
+            Utility.sendResponse(num, "ELIMINAZIONE UTENTE", userID);
+        }
     }
 
     public ArrayList<News> elencoNotizie(){
@@ -116,79 +151,6 @@ public class Service {
             Utility.sendResponse(num, "ELIMINAZIONE NEWS", user);
         }
     }
-
-    /*public void modificaUtente(Utente u, boolean isAnotherUser){
-        Utente foundU;
-        if(isAnotherUser){
-            view.printUtenti(ur.getUtentiWithDB());
-            foundU = ur.getUtenteWithDB(Utility.insertInt("Inserisci l'id utente"));
-        }
-        else{
-            foundU = ur.getUtenteWithDB(u.getId());
-        }
-
-        if(foundU != null && foundU.getNome() != null){
-            Utility.msgInf("GEOSTORE", "Utente trovato\n");
-
-            if(foundU instanceof Amministratore) { //se l'oggetto trovato contiene l'istanza di una classe figlia
-                Amministratore aOld = (Amministratore) foundU;
-                Amministratore aNew = (Amministratore) view.maskUpdateUtente(aOld, new Amministratore());
-
-                int num = ur.updateUtenteWithDB(aNew.getId(), aNew);
-
-                if(num > 0){
-                    Utility.msgInf("GEOSTORE", "Amministratore aggiornato\n");
-                }
-                else{
-                    Utility.msgInf("GEOSTORE", "Amministratore non aggiornato\n");
-                }
-            }
-            else{
-                Cliente cOld = (Cliente) foundU;
-                Cliente cNew = (Cliente) view.maskUpdateUtente(cOld, new Cliente());
-
-                int num = ur.updateUtenteWithDB(cNew.getId(), cNew);
-
-                if(num > 0){
-                    Utility.msgInf("GEOSTORE", "Cliente aggiornato\n");
-                }
-                else{
-                    Utility.msgInf("GEOSTORE", "Cliente non aggiornato\n");
-                }
-            }
-
-        }
-        else{
-            Utility.msgInf("GEOSTORE", "Utente non trovato\n");
-        }
-    }*/
-
-    /*public void eliminazioneUtente(){
-        view.printUtenti(ur.getUtentiWithDB());
-        Utente u;
-        u = ur.getUtenteWithDB(Utility.insertInt("Inserisci l'id utente"));
-
-        if(u != null && u.getNome() != null){
-            Utility.msgInf("GEOSTORE", "Utente trovato\n");
-            if(Utility.insertString("Sei sicuro di voler eliminare questo utente?").equalsIgnoreCase("s")){
-                int num = ur.deleteUtenteWithDB(u.getId());
-
-                if(num > 0){
-                    Utility.msgInf("GEOSTORE", "Utente eliminato\n");
-                }
-                else{
-                    Utility.msgInf("GEOSTORE", "Utente non eliminato\n");
-                }
-
-            }
-            else{
-                Utility.msgInf("GEOSTORE", "Operazione annullata\n");
-            }
-        }
-        else{
-            Utility.msgInf("GEOSTORE", "Utente non trovato\n");
-        }
-    }*/
 
     /*public void creazioneProdotto(){
         Prodotto p = new Prodotto();

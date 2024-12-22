@@ -102,6 +102,6 @@ public class ReadSoloController {// Questo è il BorderPane di menu.fxml
     private void back() { //button per tornare indietro
         System.out.println("Going back");
 
-        LoadPage.getPartialScene(fxmlLoader, "homepage", user);
+        LoadPage.getPartialScene(fxmlLoader, "chooseTUserAdmin", user);
     }
 }

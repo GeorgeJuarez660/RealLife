@@ -33,3 +33,10 @@
       -fx-font-size: 10;
       -fx-backgoung: normal;
 }
+
+.label-font-min2-title {
+      -fx-font-family: 'Press Start 2P', system-ui;
+      -fx-font-weight: 400;
+      -fx-font-size: 11;
+      -fx-backgoung: normal;
+}

@@ -267,8 +267,8 @@ public class LoadPage {
             if(controller instanceof CreateController){
                 CreateController createController = (CreateController) controller;
                 createController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
-                createController.setTitle("Creazione notizia");
-                createController.loadMask("newsMask");
+                createController.setTitle(partialSceneDTO.getItemScene());
+                createController.loadMask(partialSceneDTO.getItemScene());
             }
             else if(controller instanceof ReadController){
                 ReadController readController = (ReadController) controller;
@@ -287,8 +287,8 @@ public class LoadPage {
             else if(controller instanceof UpdateController){
                 UpdateController updateController = (UpdateController) controller;
                 updateController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
-                updateController.setTitle("Modifica notizia");
-                updateController.loadMask("newsMask", IDkey);
+                updateController.setTitle(partialSceneDTO.getItemScene());
+                updateController.loadMask(partialSceneDTO.getItemScene(), IDkey);
             }
 
             // Carica il file FXML

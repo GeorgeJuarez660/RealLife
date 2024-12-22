@@ -1,10 +1,12 @@
 package org.controller.item;
 
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.util.Duration;
 import org.models.Amministratore;
 import org.models.Cliente;
 import org.models.News;
@@ -96,27 +98,41 @@ public class UserItemController implements Initializable {
 
     //------------------BUTTONS-----------------------
 
-    /*@FXML
+    @FXML
     private void updating(){ //button per andare alla pagina di modifica notizia
         System.out.println("goes to update news");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
         partialSceneDTO.setInnerScene("update");
+        partialSceneDTO.setItemScene("user");
         partialSceneDTO.setUser(user);
-        String idKey = id.getText().replace("#", "");
+        String idKey = id.getText();
         LoadPage.getPartialSceneCRU(partialSceneDTO, idKey);
     }
 
     @FXML
-    private void deleting(){ //button per andare alla pagina di modifica notizia
-        System.out.println("goes to delete news");
+    private void deleting(){ //button per eliminare notizia
+        System.out.println("goes to delete user");
         System.out.println("Start deleting");
         LoadPage.loadingScene("ELIMINAZIONE IN CORSO...");
 
         Service service = new Service();
 
-        service.eliminazioneNotizia(id.getText().replace("#", ""), user);
-    }*/
+        if(id.getText().equals(user.getId().toString())){
+            LoadPage.answerScene("negative", "NON PUOI ELIMINARE L'UTENTE LOGGATO");
+
+            //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+            PauseTransition delay = new PauseTransition(Duration.seconds(3));
+            delay.setOnFinished(event -> {
+                // Dopo 2 secondi, carica la terza scena
+                LoadPage.goesToMenu(user);
+            });
+            delay.play();
+        }
+        else{
+            service.eliminazioneUtente(id.getText(), user);
+        }
+    }
 
 
     @Override

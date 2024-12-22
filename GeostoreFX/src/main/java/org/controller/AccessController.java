@@ -77,7 +77,7 @@ public class AccessController {
                 user.setPortafoglio(Utility.insertBigDecimal("50"));
             }
 
-            service.creazioneUtente(user);
+            service.registerUtente(user);
         }
 
     }

@@ -77,7 +77,7 @@ public class NewsItemController implements Initializable {
     }
 
     @FXML
-    private void deleting(){ //button per andare alla pagina di modifica notizia
+    private void deleting(){ //button per eliminare notizia
         System.out.println("goes to delete news");
         System.out.println("Start deleting");
         LoadPage.loadingScene("ELIMINAZIONE IN CORSO...");

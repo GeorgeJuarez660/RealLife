@@ -25,9 +25,8 @@ public class NewsMaskController implements Initializable {
 
     private Service service;
     private String IDkey; //usato per la ricerca/modifica/rimozione
-    private Cliente user; //usato per la ricerca/modifica/rimozione
 
-    //------------------INIZIALIZE-----------------------
+    //------------------INITIALIZE-----------------------
 
     //per la creazione notizia
     public void setDate(){
