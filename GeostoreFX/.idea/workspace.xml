@@ -6,33 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="8273ca0a-1299-4b65-b52d-47dc6a793eae" name="Changes" comment="AppJavaFx: creating example">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/AccessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/AccessController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/AnswerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/AnswerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/ChooseTUserAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/ChooseTUserAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/CreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/CreateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/InfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/InfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/LoadingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/LoadingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/ChooseTUserAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/ChooseTUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/ProductInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/item/ProductItemController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/ReadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/ReadController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/ReadSoloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/ReadSoloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/UpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/UpdateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/item/NewsItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/item/NewsItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/item/UserItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/item/UserItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/mask/NewsMaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/mask/NewsMaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/services/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/services/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/css/font_geostore.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/css/font_geostore.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/chooseTUserAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/chooseTUserAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/item/userItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/item/userItem.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/AccessController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/AccessController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/ChooseTUserAdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/ChooseTUserAdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/CreateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/CreateController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/ReadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/ReadController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/ReadSoloController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/ReadSoloController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/mask/NewsMaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/mask/NewsMaskController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/css/font_geostore.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/css/font_geostore.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/chooseTUserAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/chooseTUserAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/services/LoadPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/services/LoadPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/services/Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/services/Service.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/productInfoGets.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/item/productItem.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +62,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "featureDev/desktop",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/giorg/OneDrive/Desktop/App/G&P/Programming/Java/GeostoreFX/src/main/resources/org/scenes/mask",
+    "last_opened_file_path": "C:/Users/giorg/OneDrive/Desktop/App/G&P/Programming/Java/GeostoreFX/src/main/resources/org/scenes",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.36666667",
@@ -89,23 +71,23 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes" />
+      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\java\org\controller" />
+      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\java\org\controller\mask" />
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes\mask" />
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes\item" />
-      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes" />
-      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\images" />
-      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\jar" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes\item" />
-      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes\mask" />
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes" />
+      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes\mask" />
+      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\java\org\controller\item" />
+      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes\item" />
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\images" />
-      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\css" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.controller" />
       <recent name="org.controller.mask" />
       <recent name="org.controller.item" />
-      <recent name="org.controller" />
       <recent name="org.models" />
       <recent name="org.services" />
     </key>
@@ -267,52 +249,52 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
-          <line>87</line>
+          <line>86</line>
           <option name="timeStamp" value="56" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/controller/ChooseTUserAdminController.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/org/controller/ChooseTUserController.java</url>
           <line>49</line>
           <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/LoadPage.java</url>
-          <line>256</line>
+          <line>258</line>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
-          <line>82</line>
+          <line>80</line>
           <option name="timeStamp" value="59" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
-          <line>85</line>
+          <line>84</line>
           <option name="timeStamp" value="63" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
-          <line>103</line>
+          <line>111</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
-          <line>105</line>
+          <line>113</line>
           <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
-          <line>131</line>
+          <line>165</line>
           <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
-          <line>177</line>
+          <line>211</line>
           <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/LoadPage.java</url>
-          <line>273</line>
+          <line>275</line>
           <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

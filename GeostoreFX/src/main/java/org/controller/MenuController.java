@@ -87,26 +87,23 @@ public class MenuController {
             partialSceneDTO.setUser(user);
             LoadPage.getPartialSceneCRU(partialSceneDTO, null);
         }
-
-
     }
 
-
-
-
+    @FXML
+    private void product(){
+        if(isAdmin){
+            System.out.println("goes to product");
+            LoadPage.getPartialScene(fxmlLoader, "chooseTProductAdmin", user);
+        }
+        else{
+            System.out.println("goes to product");
+            LoadPage.getPartialScene(fxmlLoader, "chooseTProductCliente", user);
+        }
+    }
 
     @FXML
     public void initialize() {
         System.out.println("Root inizializzato: " + fxmlLoader);
     }
 
-    // Metodo per cambiare il testo di titleGets
-
-    /*@FXML
-    private void caricaScene2() {
-        Pane scene2 = getPage("searchUsers.fxml"); // Usa il metodo generico per caricare la scena
-        if (scene2 != null) {
-            root.setCenter(scene2); // Imposta la scena nel centro del BorderPane
-        }
-    }*/
 }

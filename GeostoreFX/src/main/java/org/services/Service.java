@@ -152,6 +152,14 @@ public class Service {
         }
     }
 
+    public Map<Integer, Prodotto> elencoProdotti(){
+        return pr.getProdottiWithDB();
+    }
+
+    public Map<Integer, Prodotto> elencoProdottiDisponibili(){
+        return pr.getProdottiDispWithDB();
+    }
+
     /*public void creazioneProdotto(){
         Prodotto p = new Prodotto();
         boolean flagInsert;
@@ -587,10 +595,6 @@ public class Service {
         }
     }*/
 
-    /*public void elencoProdotti(){
-        view.printProdotti(pr.getProdottiWithDB());
-    }*/
-
     /*public void creazioneCategoria(){
         Categoria cat = new Categoria();
         view.maskInsertCategoria(cat);
@@ -826,10 +830,6 @@ public class Service {
         else{
             Utility.msgInf("GEOSTORE", "Non so cosa hai inserito\n");
         }
-    }*/
-
-    /*public void prodottiDisponibili(){
-        view.printProdotti(pr.getProdottiDispWithDB());
     }*/
 
     /*public void ordiniTotaliGiornalieri(Utente u){

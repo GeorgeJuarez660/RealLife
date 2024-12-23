@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="610.0" stylesheets="@../css/font_geostore.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controller.ChooseTUserAdminController">
+<VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="610.0" stylesheets="@../css/font_geostore.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controller.ChooseTUserController">
    <children>
       <HBox alignment="CENTER" prefHeight="55.0">
          <children>

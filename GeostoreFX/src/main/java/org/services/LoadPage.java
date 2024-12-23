@@ -6,12 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.controller.*;
 import org.models.Cliente;
-import org.models.Utente;
 import org.utility.PartialSceneDTO;
 
 
@@ -235,9 +233,13 @@ public class LoadPage {
                 infoController.save(fxmlLoader, user);
                 infoController.setVersion("1.6.0");
             }
-            else if(controller instanceof ChooseTUserAdminController){
-                ChooseTUserAdminController chooseTUserAdminController = (ChooseTUserAdminController) controller;
-                chooseTUserAdminController.save(fxmlLoader, user);
+            else if(controller instanceof ChooseTUserController){
+                ChooseTUserController chooseTUserController = (ChooseTUserController) controller;
+                chooseTUserController.save(fxmlLoader, user);
+            }
+            else if(controller instanceof ChooseTProductController){
+                ChooseTProductController chooseTProductController = (ChooseTProductController) controller;
+                chooseTProductController.save(fxmlLoader, user);
             }
             // Carica il file FXML
             // Imposta la scena caricata come contenuto centrale del BorderPane

@@ -10,11 +10,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.controller.item.NewsItemController;
+import org.controller.item.ProductItemController;
 import org.controller.item.UserItemController;
-import org.models.Amministratore;
-import org.models.Cliente;
-import org.models.News;
-import org.models.Utente;
+import org.models.*;
 import org.services.LoadPage;
 import org.services.Service;
 
@@ -82,6 +80,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
         this.itemScene = itemScene;
         List<News> notizie = new ArrayList<>();
         Map<Integer, Utente> utenti = new HashMap<>();
+        Map<Integer, Prodotto> prodotti = new HashMap<>();
 
         if (IDkey != null && !IDkey.isEmpty() && !IDkey.isBlank()){
             if(this.itemScene != null && this.itemScene.equals("user")){ //vede prima quale item riferisce
@@ -95,6 +94,15 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
         else{
             if(this.itemScene != null && this.itemScene.equals("user")) { //vede prima quale item riferisce
                 utenti = service.elencoUtenti();
+            }
+            else if(this.itemScene != null && this.itemScene.contains("product")){
+                String lastChar = this.itemScene.substring(this.itemScene.length() - 1);
+                if(lastChar.equals("1")){
+                    prodotti = service.elencoProdotti();
+                }
+                else{
+                    prodotti = service.elencoProdottiDisponibili();
+                }
             }
             else{
                 notizie = service.elencoNotizie();
@@ -113,12 +121,38 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                     }
 
                     FXMLLoader loader = new FXMLLoader(fileUrl);
-                    HBox newsItem = loader.load();
+                    HBox userItem = loader.load();
                     UserItemController userItemController = loader.getController();
                     userItemController.save(fxmlLoader, user);
                     userItemController.setValues(utente);
                     userItemController.enableButtons(isAdmin);
-                    itemList.getChildren().add(newsItem);
+                    itemList.getChildren().add(userItem);
+
+                    // Carica il file FXML
+                    // Imposta la scena caricata come contenuto centrale del BorderPane
+
+                } catch (Exception e) {
+                    System.out.println("No page found. Please check FXMLLoader.");
+                    e.printStackTrace();
+                }
+            }
+        }
+        else if(this.itemScene != null && this.itemScene.contains("product")){
+            for (Prodotto prodotto : prodotti.values()) {
+                try {
+                    // Costruisce il percorso completo del file FXML
+                    URL fileUrl = getClass().getResource("/org/scenes/item/productItem.fxml"); //trova la scena news
+                    if (fileUrl == null) {
+                        throw new java.io.FileNotFoundException("FXML file can't be found");
+                    }
+
+                    FXMLLoader loader = new FXMLLoader(fileUrl);
+                    HBox productItem = loader.load();
+                    ProductItemController productItemController = loader.getController();
+                    productItemController.save(fxmlLoader, user);
+                    productItemController.setValues(prodotto);
+                    productItemController.enableButtons(isAdmin);
+                    itemList.getChildren().add(productItem);
 
                     // Carica il file FXML
                     // Imposta la scena caricata come contenuto centrale del BorderPane

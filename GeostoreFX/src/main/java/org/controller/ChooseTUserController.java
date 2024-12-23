@@ -1,16 +1,14 @@
 package org.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import org.models.Amministratore;
 import org.models.Cliente;
 import org.services.LoadPage;
 import org.services.Service;
 import org.utility.PartialSceneDTO;
 
-public class ChooseTUserAdminController {
+public class ChooseTUserController {
     private Cliente user;
     private Boolean isAdmin;
     private BorderPane fxmlLoader;
