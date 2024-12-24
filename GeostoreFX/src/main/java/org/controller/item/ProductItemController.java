@@ -46,6 +46,7 @@ public class ProductItemController implements Initializable {
 
     public void setValues(Prodotto prodotto){
 
+        id.setText(prodotto.getId().toString());
         name.setText(prodotto.getNome());
         price.setText(prodotto.getPrezzo().toString());
         available.setText(prodotto.getDisponibilita().getCode());

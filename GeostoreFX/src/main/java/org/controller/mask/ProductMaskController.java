@@ -7,6 +7,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.models.Amministratore;
 import org.models.Cliente;
+import org.models.Prodotto;
 import org.models.Utente;
 import org.services.Service;
 
@@ -23,7 +24,7 @@ public class ProductMaskController implements Initializable {
     @FXML
     private DatePicker bornDate;
     @FXML
-    private TextField name, surname, sex, address, phoneNumber, email, adminCode, wallet;
+    private TextField name, price, available, category, material, quantity;;
     @FXML
     private PasswordField password;
 
@@ -33,7 +34,7 @@ public class ProductMaskController implements Initializable {
     //------------------INITIALIZE-----------------------
 
     //per la modifica utente
-    public void getValues(String IDkey){
+    /*public void getValues(String IDkey){
 
         service = new Service();
         Utente utente;
@@ -67,44 +68,23 @@ public class ProductMaskController implements Initializable {
         }
 
         this.IDkey = IDkey;
-    }
+    }*/
 
     //------------------GETTING FROM CRUD CONTROLLER-----------------------
 
-    //per la creazione utente
-    public Cliente setValues() throws ParseException { //recuperato da mask
-        Cliente cliente;
-        if(adminCode != null && adminCode.getText() != null && !adminCode.getText().isEmpty() && !adminCode.getText().isBlank()){
-            cliente = new Amministratore();
-            Amministratore admin = (Amministratore) cliente;
-            admin.setCodeAdmin(adminCode.getText());
-            admin.setNome(name.getText());
-            admin.setCognome(surname.getText());
-            admin.setSesso(sex.getText());
-            admin.setDataNascita(Date.valueOf(bornDate.getValue()));
-            admin.setIndirizzo(address.getText());
-            admin.setTelefono(phoneNumber.getText());
-            admin.setEmail(email.getText());
-            admin.setPassword(password.getText());
-            admin.setPortafoglio(new BigDecimal(wallet.getText()));
-        }
-        else{
-            cliente = new Cliente();
-            cliente.setNome(name.getText());
-            cliente.setCognome(surname.getText());
-            cliente.setSesso(sex.getText());
-            cliente.setDataNascita(Date.valueOf(bornDate.getValue()));
-            cliente.setIndirizzo(address.getText());
-            cliente.setTelefono(phoneNumber.getText());
-            cliente.setEmail(email.getText());
-            cliente.setPassword(password.getText());
-            cliente.setPortafoglio(new BigDecimal(wallet.getText()));
-        }
+    //per la creazione prodotto
+    public Prodotto setValues() throws ParseException { //recuperato da mask
+        Prodotto prodotto = new Prodotto();
+        service = new Service();
 
-        return cliente;
+        prodotto.setNome(name.getText());
+        prodotto.setPrezzo(new BigDecimal(price.getText()));
+
+
+        return prodotto;
     }
 
-    //per la modifica utente
+    //per la modifica prodotto
     public Cliente setValuesWithID() throws ParseException { //recuperato da mask
         Cliente cliente;
         if(adminCode != null && adminCode.getText() != null && !adminCode.getText().isEmpty() && !adminCode.getText().isBlank()){

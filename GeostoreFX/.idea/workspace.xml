@@ -6,15 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="8273ca0a-1299-4b65-b52d-47dc6a793eae" name="Changes" comment="AppJavaFx: creating example">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/ChooseTUserAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/ChooseTUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/ProductInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/item/ProductItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/CreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/CreateController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/ReadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/ReadController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/item/ProductItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/item/ProductItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/mask/ProductMaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/mask/ProductMaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/services/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/services/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/chooseTUserAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/chooseTUserAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/productInfoGets.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/item/productItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/item/productItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/item/productItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/mask/productMask.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/mask/productMask.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/item/productItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/item/productItem.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,7 +248,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
-          <line>86</line>
+          <line>95</line>
           <option name="timeStamp" value="56" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -264,32 +263,32 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
-          <line>80</line>
+          <line>89</line>
           <option name="timeStamp" value="59" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
-          <line>84</line>
+          <line>93</line>
           <option name="timeStamp" value="63" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
-          <line>111</line>
+          <line>129</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
-          <line>113</line>
+          <line>131</line>
           <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
-          <line>165</line>
+          <line>187</line>
           <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
-          <line>211</line>
+          <line>243</line>
           <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -301,6 +300,21 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/mask/UserMaskController.java</url>
           <line>81</line>
           <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
+          <line>159</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
+          <line>161</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
+          <line>160</line>
+          <option name="timeStamp" value="77" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -22,12 +22,12 @@
                      <children>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label prefHeight="24.0" prefWidth="29.0" styleClass="label-font-min-title" text="ID:" wrapText="true">
+                              <Label prefHeight="24.0" prefWidth="29.0" styleClass="label-font-min-title" text="ID:" wrapText="true" textFill="#0495cd">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="id" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true">
+                              <Label fx:id="id" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true" textFill="#03A8E8">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
@@ -36,12 +36,12 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label prefHeight="24.0" prefWidth="77.0" styleClass="label-font-min-title" text="Nome prodotto:" wrapText="true">
+                              <Label prefHeight="24.0" prefWidth="77.0" styleClass="label-font-min-title" text="Nome prodotto:" wrapText="true" textFill="#0495cd">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="name" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true">
+                              <Label fx:id="name" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true" textFill="#03A8E8">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
@@ -50,12 +50,12 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="95.0" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label prefHeight="24.0" prefWidth="59.0" styleClass="label-font-min-title" text="Prezzo:" wrapText="true">
+                              <Label prefHeight="24.0" prefWidth="59.0" styleClass="label-font-min-title" text="Prezzo:" wrapText="true" textFill="#0495cd">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="price" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true">
+                              <Label fx:id="price" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true" textFill="#03A8E8">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
@@ -64,12 +64,12 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="124.0" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label prefHeight="24.0" prefWidth="149.0" styleClass="label-font-min-title" text="Disponibilità:" wrapText="true">
+                              <Label prefHeight="24.0" prefWidth="149.0" styleClass="label-font-min-title" text="Disponibilità:" wrapText="true" textFill="#0495cd">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="available" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true">
+                              <Label fx:id="available" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true" textFill="#03A8E8">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
@@ -78,12 +78,12 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="137.0" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label prefHeight="24.0" prefWidth="85.0" styleClass="label-font-min-title" text="Categoria:" wrapText="true">
+                              <Label prefHeight="24.0" prefWidth="85.0" styleClass="label-font-min-title" text="Categoria:" wrapText="true" textFill="#0495cd">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="category" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true">
+                              <Label fx:id="category" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true" textFill="#03A8E8">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
@@ -92,12 +92,12 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="146.0" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label prefHeight="25.0" prefWidth="75.0" styleClass="label-font-min-title" text="Materia:" wrapText="true">
+                              <Label prefHeight="25.0" prefWidth="75.0" styleClass="label-font-min-title" text="Materia:" wrapText="true" textFill="#0495cd">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="material" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true">
+                              <Label fx:id="material" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true" textFill="#03A8E8">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
@@ -106,12 +106,12 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="151.0" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label prefHeight="25.0" prefWidth="120.0" styleClass="label-font-min-title" text="Quantità disponibile:" wrapText="true">
+                              <Label prefHeight="25.0" prefWidth="120.0" styleClass="label-font-min-title" text="Quantità disponibile:" wrapText="true" textFill="#0495cd">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="quantity" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true">
+                              <Label fx:id="quantity" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true" textFill="#03A8E8">
                                  <font>
                                     <Font size="8.0" />
                                  </font>

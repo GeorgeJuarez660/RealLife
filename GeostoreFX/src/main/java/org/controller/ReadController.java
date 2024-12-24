@@ -64,6 +64,15 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
         if(itemScene != null && itemScene.equals("user")){
             title.setText("Elenco profili utente");
         }
+        else if(itemScene != null && itemScene.contains("product")){
+            String lastChar = itemScene.substring(itemScene.length() - 1);
+            if(lastChar.equals("1")){
+                title.setText("Elenco prodotti in generale");
+            }
+            else{
+                title.setText("Elenco prodotti disponibili");
+            }
+        }
         else{
             title.setText("Elenco notizie");
         }
@@ -85,6 +94,15 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
         if (IDkey != null && !IDkey.isEmpty() && !IDkey.isBlank()){
             if(this.itemScene != null && this.itemScene.equals("user")){ //vede prima quale item riferisce
                 utenti = service.ottieniUtente(Integer.parseInt(IDkey));
+            }
+            else if(this.itemScene != null && this.itemScene.contains("product")){
+                String lastChar = this.itemScene.substring(this.itemScene.length() - 1);
+                if(lastChar.equals("1")){
+                    prodotti = service.ottieniProdotto(Integer.parseInt(IDkey));
+                }
+                else{
+                    prodotti = service.ottieniProdottoDisponibile(Integer.parseInt(IDkey));
+                }
             }
             else{
                 notizie = service.ottieniNotizieByKeyword(IDkey);
@@ -113,79 +131,85 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
 
         if(this.itemScene != null && this.itemScene.equals("user")){
             for (Utente utente : utenti.values()) {
-                try {
-                    // Costruisce il percorso completo del file FXML
-                    URL fileUrl = getClass().getResource("/org/scenes/item/userItem.fxml"); //trova la scena news
-                    if (fileUrl == null) {
-                        throw new java.io.FileNotFoundException("FXML file can't be found");
+                if(utente.getId() != null && utente.getId() != 0){
+                    try {
+                        // Costruisce il percorso completo del file FXML
+                        URL fileUrl = getClass().getResource("/org/scenes/item/userItem.fxml"); //trova la scena news
+                        if (fileUrl == null) {
+                            throw new java.io.FileNotFoundException("FXML file can't be found");
+                        }
+
+                        FXMLLoader loader = new FXMLLoader(fileUrl);
+                        HBox userItem = loader.load();
+                        UserItemController userItemController = loader.getController();
+                        userItemController.save(fxmlLoader, user);
+                        userItemController.setValues(utente);
+                        userItemController.enableButtons(isAdmin);
+                        itemList.getChildren().add(userItem);
+
+                        // Carica il file FXML
+                        // Imposta la scena caricata come contenuto centrale del BorderPane
+
+                    } catch (Exception e) {
+                        System.out.println("No page found. Please check FXMLLoader.");
+                        e.printStackTrace();
                     }
-
-                    FXMLLoader loader = new FXMLLoader(fileUrl);
-                    HBox userItem = loader.load();
-                    UserItemController userItemController = loader.getController();
-                    userItemController.save(fxmlLoader, user);
-                    userItemController.setValues(utente);
-                    userItemController.enableButtons(isAdmin);
-                    itemList.getChildren().add(userItem);
-
-                    // Carica il file FXML
-                    // Imposta la scena caricata come contenuto centrale del BorderPane
-
-                } catch (Exception e) {
-                    System.out.println("No page found. Please check FXMLLoader.");
-                    e.printStackTrace();
                 }
             }
         }
         else if(this.itemScene != null && this.itemScene.contains("product")){
             for (Prodotto prodotto : prodotti.values()) {
-                try {
-                    // Costruisce il percorso completo del file FXML
-                    URL fileUrl = getClass().getResource("/org/scenes/item/productItem.fxml"); //trova la scena news
-                    if (fileUrl == null) {
-                        throw new java.io.FileNotFoundException("FXML file can't be found");
+                if(prodotto.getId() != null && prodotto.getId() != 0){
+                    try {
+                        // Costruisce il percorso completo del file FXML
+                        URL fileUrl = getClass().getResource("/org/scenes/item/productItem.fxml"); //trova la scena news
+                        if (fileUrl == null) {
+                            throw new java.io.FileNotFoundException("FXML file can't be found");
+                        }
+
+                        FXMLLoader loader = new FXMLLoader(fileUrl);
+                        HBox productItem = loader.load();
+                        ProductItemController productItemController = loader.getController();
+                        productItemController.save(fxmlLoader, user);
+                        productItemController.setValues(prodotto);
+                        productItemController.enableButtons(isAdmin);
+                        itemList.getChildren().add(productItem);
+
+                        // Carica il file FXML
+                        // Imposta la scena caricata come contenuto centrale del BorderPane
+
+                    } catch (Exception e) {
+                        System.out.println("No page found. Please check FXMLLoader.");
+                        e.printStackTrace();
                     }
-
-                    FXMLLoader loader = new FXMLLoader(fileUrl);
-                    HBox productItem = loader.load();
-                    ProductItemController productItemController = loader.getController();
-                    productItemController.save(fxmlLoader, user);
-                    productItemController.setValues(prodotto);
-                    productItemController.enableButtons(isAdmin);
-                    itemList.getChildren().add(productItem);
-
-                    // Carica il file FXML
-                    // Imposta la scena caricata come contenuto centrale del BorderPane
-
-                } catch (Exception e) {
-                    System.out.println("No page found. Please check FXMLLoader.");
-                    e.printStackTrace();
                 }
             }
         }
         else{
             for (News notizia : notizie) {
-                try {
-                    // Costruisce il percorso completo del file FXML
-                    URL fileUrl = getClass().getResource("/org/scenes/item/newsItem.fxml"); //trova la scena news
-                    if (fileUrl == null) {
-                        throw new java.io.FileNotFoundException("FXML file can't be found");
+                if(notizia.getId() != null && notizia.getId() != 0){
+                    try {
+                        // Costruisce il percorso completo del file FXML
+                        URL fileUrl = getClass().getResource("/org/scenes/item/newsItem.fxml"); //trova la scena news
+                        if (fileUrl == null) {
+                            throw new java.io.FileNotFoundException("FXML file can't be found");
+                        }
+
+                        FXMLLoader loader = new FXMLLoader(fileUrl);
+                        HBox newsItem = loader.load();
+                        NewsItemController newsItemController = loader.getController();
+                        newsItemController.save(fxmlLoader, user);
+                        newsItemController.setValues(notizia);
+                        newsItemController.enableButtons(isAdmin);
+                        itemList.getChildren().add(newsItem);
+
+                        // Carica il file FXML
+                        // Imposta la scena caricata come contenuto centrale del BorderPane
+
+                    } catch (Exception e) {
+                        System.out.println("No page found. Please check FXMLLoader.");
+                        e.printStackTrace();
                     }
-
-                    FXMLLoader loader = new FXMLLoader(fileUrl);
-                    HBox newsItem = loader.load();
-                    NewsItemController newsItemController = loader.getController();
-                    newsItemController.save(fxmlLoader, user);
-                    newsItemController.setValues(notizia);
-                    newsItemController.enableButtons(isAdmin);
-                    itemList.getChildren().add(newsItem);
-
-                    // Carica il file FXML
-                    // Imposta la scena caricata come contenuto centrale del BorderPane
-
-                } catch (Exception e) {
-                    System.out.println("No page found. Please check FXMLLoader.");
-                    e.printStackTrace();
                 }
             }
         }
@@ -200,6 +224,14 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
         if(this.itemScene != null && this.itemScene.equals("user")){
             LoadPage.getPartialScene(fxmlLoader, "chooseTUserAdmin", user);
         }
+        else if(this.itemScene != null && this.itemScene.contains("product")){
+            if(isAdmin){
+                LoadPage.getPartialScene(fxmlLoader, "chooseTProductAdmin", user);
+            }
+            else{
+                LoadPage.getPartialScene(fxmlLoader, "chooseTProductCliente", user);
+            }
+        }
         else{
             LoadPage.getPartialScene(fxmlLoader, "homepage", user);
         }
@@ -213,6 +245,14 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
             if(this.itemScene != null && this.itemScene.equals("user")){
                 String keyword = search.getText();
                 loadItems("user", keyword);
+            }
+            else if(this.itemScene != null && this.itemScene.equals("product-1")){
+                String keyword = search.getText();
+                loadItems("product-1", keyword);
+            }
+            else if(this.itemScene != null && this.itemScene.equals("product-2")){
+                String keyword = search.getText();
+                loadItems("product-2", keyword);
             }
             else{
                 String keyword = search.getText();

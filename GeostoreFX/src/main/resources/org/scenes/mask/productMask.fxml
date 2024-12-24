@@ -19,7 +19,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font">
+                        <TextField fx:id="name" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -33,7 +33,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font">
+                        <TextField fx:id="price" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -47,7 +47,7 @@
                               <Font size="8.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font">
+                        <TextField fx:id="available" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -61,7 +61,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="26.0" style="-fx-background-radius: 7;" styleClass="label-font">
+                        <TextField fx:id="category" prefHeight="26.0" style="-fx-background-radius: 7;" styleClass="label-font">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -75,7 +75,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font">
+                        <TextField fx:id="material" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -93,7 +93,7 @@
                               <Font size="10.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="26.0" prefWidth="154.0" style="-fx-background-radius: 7;" styleClass="label-font">
+                        <TextField fx:id="quantity" prefHeight="26.0" prefWidth="154.0" style="-fx-background-radius: 7;" styleClass="label-font">
                            <font>
                               <Font size="11.0" />
                            </font>

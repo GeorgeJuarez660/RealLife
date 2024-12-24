@@ -89,6 +89,28 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
                 e.printStackTrace();
             }
         }
+        else if(this.itemScene != null && this.itemScene.equals("product")){
+            try {
+                // Costruisce il percorso completo del file FXML
+                URL fileUrl = getClass().getResource("/org/scenes/mask/productMask.fxml");
+                if (fileUrl == null) {
+                    throw new java.io.FileNotFoundException("FXML file can't be found");
+                }
+
+                FXMLLoader loader = new FXMLLoader(fileUrl);
+                VBox mask = loader.load();
+                UserMaskController userMaskController = loader.getController();// Ottieni il controller della scena caricata
+                maskController = userMaskController;
+                createMask.getChildren().add(mask);
+
+                // Carica il file FXML
+                // Imposta la scena caricata come contenuto centrale del BorderPane
+
+            } catch (Exception e) {
+                System.out.println("No page found. Please check FXMLLoader.");
+                e.printStackTrace();
+            }
+        }
         else{
             try {
                 // Costruisce il percorso completo del file FXML

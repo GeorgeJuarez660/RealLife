@@ -160,6 +160,20 @@ public class Service {
         return pr.getProdottiDispWithDB();
     }
 
+    public Map<Integer, Prodotto> ottieniProdotto(Integer idProdotto){
+        Prodotto prodotto = pr.getProdottoWithDB(idProdotto);
+        Map<Integer, Prodotto> onlyProdotto = new HashMap<>();
+        onlyProdotto.put(prodotto.getId(), prodotto);
+        return onlyProdotto;
+    }
+
+    public Map<Integer, Prodotto> ottieniProdottoDisponibile(Integer idProdotto){
+        Prodotto prodotto = pr.getProdottoDispWithDB(idProdotto);
+        Map<Integer, Prodotto> onlyProdotto = new HashMap<>();
+        onlyProdotto.put(prodotto.getId(), prodotto);
+        return onlyProdotto;
+    }
+
     /*public void creazioneProdotto(){
         Prodotto p = new Prodotto();
         boolean flagInsert;
