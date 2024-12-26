@@ -2,36 +2,66 @@ package org.controller.mask;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import org.models.Amministratore;
-import org.models.Cliente;
-import org.models.Prodotto;
-import org.models.Utente;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
+import org.models.*;
 import org.services.Service;
+import org.utility.Utility;
 
 import java.math.BigDecimal;
 import java.net.URL;
-import java.sql.Date;
 import java.text.ParseException;
-import java.time.LocalDate;
-import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class ProductMaskController implements Initializable {
 
     @FXML
     private DatePicker bornDate;
     @FXML
-    private TextField name, price, available, category, material, quantity;;
+    private TextField name, price, quantity;
     @FXML
     private PasswordField password;
+    @FXML
+    private ChoiceBox<String> available, category, material;
 
     private Service service;
     private String IDkey; //usato per la ricerca/modifica/rimozione
 
     //------------------INITIALIZE-----------------------
+
+    //per la creazione prodotto
+    public void setAvailable(){
+        service = new Service();
+        Map<Integer, Disponibilita> disp = new HashMap<>();
+        disp = service.ottieniDisponibilita();
+
+        for(Disponibilita disponibilita : disp.values()){
+            available.getItems().add(disponibilita.getId() + " - " + disponibilita.getCode());
+        }
+    }
+
+    public void setCategory(){
+        service = new Service();
+        Map<Integer, Categoria> cat = new HashMap<>();
+        cat = service.ottieniCategorie();
+
+        for(Categoria categoria : cat.values()){
+            category.getItems().add(categoria.getId() + " - " + categoria.getNome());
+        }
+    }
+
+    public void setMaterial(){
+        service = new Service();
+        Map<Integer, Materia> mat = new HashMap<>();
+        mat = service.ottieniMaterie();
+
+        for(Materia materia : mat.values()){
+            material.getItems().add(materia.getId() + " - " + materia.getNome());
+        }
+    }
 
     //per la modifica utente
     /*public void getValues(String IDkey){
@@ -78,14 +108,38 @@ public class ProductMaskController implements Initializable {
         service = new Service();
 
         prodotto.setNome(name.getText());
-        prodotto.setPrezzo(new BigDecimal(price.getText()));
 
+        if(price != null && price.getText() != null && !price.getText().isEmpty() && !price.getText().isBlank()) {
+            prodotto.setPrezzo(Utility.formatValueString(price.getText()));
+        }
+        else{
+            prodotto.setPrezzo(new BigDecimal(0));
+        }
+
+        Disponibilita disponibilita = new Disponibilita();
+        disponibilita.setId(Integer.parseInt(available.getValue().substring(0, 1)));
+        prodotto.setDisponibilita(disponibilita);
+
+        Categoria categoria = new Categoria();
+        categoria.setId(Integer.parseInt(category.getValue().substring(0, 1)));
+        prodotto.setCategoria(categoria);
+
+        Materia materia = new Materia();
+        materia.setId(Integer.parseInt(material.getValue().substring(0, 1)));
+        prodotto.setMateria(materia);
+
+        if(quantity != null && quantity.getText() != null && !quantity.getText().isEmpty() && !quantity.getText().isBlank()){
+            prodotto.setQuantita_disp(Integer.parseInt(quantity.getText()));
+        }
+        else{
+            prodotto.setQuantita_disp(0);
+        }
 
         return prodotto;
     }
 
     //per la modifica prodotto
-    public Cliente setValuesWithID() throws ParseException { //recuperato da mask
+    /*public Cliente setValuesWithID() throws ParseException { //recuperato da mask
         Cliente cliente;
         if(adminCode != null && adminCode.getText() != null && !adminCode.getText().isEmpty() && !adminCode.getText().isBlank()){
             cliente = new Amministratore();
@@ -116,6 +170,32 @@ public class ProductMaskController implements Initializable {
             cliente.setPortafoglio(new BigDecimal(wallet.getText()));
         }
         return cliente;
+    }*/
+
+    //------------------NUMBER FIELD (TEXT FIELD WITH PATTERN)-----------------------
+
+    @FXML
+    private void patternNumberQuantity(KeyEvent event){
+        String check = event.getCharacter();
+        if (!check.matches("[0-9]")) {
+            String currentText = quantity.getText();
+            quantity.setText(currentText.replaceAll("[^0-9]", ""));
+        }
+        else {
+            System.out.println("OK");
+        }
+    }
+
+    @FXML
+    private void patternNumberPrice(KeyEvent event){
+        String check = event.getCharacter();
+        if (!check.matches("[0-9,]")) {
+            String currentText = price.getText();
+            price.setText(currentText.replaceAll("[^0-9,]", ""));
+        }
+        else {
+            System.out.println("OK");
+        }
     }
 
     @Override

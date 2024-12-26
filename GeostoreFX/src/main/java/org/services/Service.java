@@ -15,9 +15,9 @@ public class Service {
     ProdottoRepository pr = new ProdottoRepository();
     UtenteRepository ur = new UtenteRepository();
     NewsRepository nr = new NewsRepository();
-    CategoriaRepository car = new CategoriaRepository();
+    CategoriaRepository cr = new CategoriaRepository();
     MateriaRepository mr = new MateriaRepository();
-    OrdineRepository odr = new OrdineRepository();
+    OrdineRepository or = new OrdineRepository();
     DisponibilitaRepository dr = new DisponibilitaRepository();
     StatusRepository sr = new StatusRepository();
 
@@ -174,49 +174,18 @@ public class Service {
         return onlyProdotto;
     }
 
-    /*public void creazioneProdotto(){
-        Prodotto p = new Prodotto();
-        boolean flagInsert;
-        view.maskInsertProdotto(p);
+    public void creazioneProdotto(Prodotto product, Cliente user){
+        int num = 0;
 
-        Categoria cat = car.getCategoriaWithDB(p.getCategoria().getId());
-        Materia m = mr.getMateriaWithDB(p.getMateria().getId());
-        Disponibilita d = dr.getDisponibilitaWithDB(p.getDisponibilita().getId());
+        num = pr.insertProdottoWithDB(product.getId(), product);
 
-        if(cat != null && m != null && d != null && cat.getNome() != null && m.getNome() != null && d.getCode() != null){
-            p.setCategoria(cat);
-            p.setMateria(m);
-            p.setDisponibilita(d);
-
-            do{
-                String question = Utility.insertString("Vuoi procedere? (s/n)");
-                if(question.equalsIgnoreCase("s")) {
-                    int num = pr.insertProdottoWithDB(p.getId(), p);
-
-                    if(num > 0){
-                        Utility.msgInf("GEOSTORE", "Nuovo prodotto aggiunto\n");
-                    }
-                    else{
-                        Utility.msgInf("GEOSTORE", "Prodotto non aggiunto\n");
-                    }
-
-                    flagInsert = false;
-                }else if(question.equalsIgnoreCase("n")){
-                    Utility.msgInf("GEOSTORE", "Operazione annullata\n");
-                    flagInsert = false;
-                }
-                else{
-                    Utility.msgInf("GEOSTORE", "Rileggi la domanda\n");
-                    flagInsert = true;
-                }
-            }while(flagInsert);
-
-
+        if(num > 0){
+            Utility.sendResponse(num, "PRODOTTO CREATO", user);
         }
         else{
-            Utility.msgInf("GEOSTORE", "Categoria e/o Materia inesistenti\n");
+            Utility.sendResponse(num, "CREAZIONE PRODOTTO", user);
         }
-    }*/
+    }
 
     /*public void modificaProdotto(){
         view.printProdotti(pr.getProdottiWithDB());
@@ -695,6 +664,10 @@ public class Service {
         }
     }*/
 
+    public HashMap<Integer, Categoria> ottieniCategorie() {
+        return cr.getCategorieWithDB();
+    }
+
     /*private void refundAfterDeleteOrder(Ordine o, Utente u){
         BigDecimal pagamento = o.getPrezzo_unitario().multiply(BigDecimal.valueOf(o.getQuantita()));
 
@@ -812,6 +785,10 @@ public class Service {
         }
     }*/
 
+    public HashMap<Integer, Materia> ottieniMaterie(){
+        return mr.getMaterieWithDB();
+    }
+
     /*public void prodottiViaMateria(){
         view.printMaterie(mr.getMaterieWithDB());
         Materia m = new Materia();
@@ -850,4 +827,8 @@ public class Service {
         String chooseDate = Utility.insertString("Inserisci la data in formato yyyy-mm-dd");
         view.printOrdiniTotGior(odr.getOrdineTotGiorWithDB(u, chooseDate));
     }*/
+
+    public HashMap<Integer, Disponibilita> ottieniDisponibilita(){
+        return dr.getDisponibilitaWithDB();
+    }
 }

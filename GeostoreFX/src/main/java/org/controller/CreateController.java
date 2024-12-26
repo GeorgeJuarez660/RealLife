@@ -10,6 +10,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import org.controller.mask.NewsMaskController;
+import org.controller.mask.ProductMaskController;
 import org.controller.mask.UserMaskController;
 import org.models.*;
 import org.services.LoadPage;
@@ -59,6 +60,9 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
         if(itemScene != null && itemScene.equals("user")){
             title.setText("Creazione utente");
         }
+        else if(itemScene != null && itemScene.equals("product")){
+            title.setText("Creazione prodotto");
+        }
         else{
             title.setText("Creazione notizia");
         }
@@ -99,8 +103,11 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
 
                 FXMLLoader loader = new FXMLLoader(fileUrl);
                 VBox mask = loader.load();
-                UserMaskController userMaskController = loader.getController();// Ottieni il controller della scena caricata
-                maskController = userMaskController;
+                ProductMaskController productMaskController = loader.getController();// Ottieni il controller della scena caricata
+                productMaskController.setAvailable();
+                productMaskController.setCategory();
+                productMaskController.setMaterial();
+                maskController = productMaskController;
                 createMask.getChildren().add(mask);
 
                 // Carica il file FXML
@@ -145,6 +152,9 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
         if(this.itemScene != null && this.itemScene.equals("user")){
             LoadPage.getPartialScene(fxmlLoader, "chooseTUserAdmin", user);
         }
+        else if(this.itemScene != null && this.itemScene.equals("product")){
+            LoadPage.getPartialScene(fxmlLoader, "chooseTProductAdmin", user);
+        }
         else{
             LoadPage.getPartialScene(fxmlLoader, "homepage", user);
         }
@@ -162,6 +172,11 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
             UserMaskController userMaskController = (UserMaskController) maskController;
             Cliente u = userMaskController.setValues();
             service.creazioneUtente(u, user);
+        }
+        else if(maskController instanceof ProductMaskController){
+            ProductMaskController productMaskController = (ProductMaskController) maskController;
+            Prodotto p = productMaskController.setValues();
+            service.creazioneProdotto(p, user);
         }
         else{
             NewsMaskController newsMaskController = (NewsMaskController) maskController;

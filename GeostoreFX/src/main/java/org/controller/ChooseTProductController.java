@@ -35,7 +35,7 @@ public class ChooseTProductController {
 
     @FXML
     private void lookAvailableProducts() {
-        System.out.println("goes to look user profile");
+        System.out.println("goes to look available products");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
         partialSceneDTO.setInnerScene("read");
@@ -46,7 +46,7 @@ public class ChooseTProductController {
 
     @FXML
     private void lookProducts() {
-        System.out.println("goes to look users");
+        System.out.println("goes to look products");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
         partialSceneDTO.setInnerScene("read");
@@ -57,11 +57,11 @@ public class ChooseTProductController {
 
     @FXML
     private void createProduct() {
-        System.out.println("goes to create user");
+        System.out.println("goes to create product");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
         partialSceneDTO.setInnerScene("create");
-        partialSceneDTO.setItemScene("user");
+        partialSceneDTO.setItemScene("product");
         partialSceneDTO.setUser(user);
         LoadPage.getPartialSceneCRU(partialSceneDTO, null);
     }

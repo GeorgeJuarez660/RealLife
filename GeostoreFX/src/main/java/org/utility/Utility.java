@@ -87,6 +87,15 @@ public class Utility {
         return formattedValue;
     }
 
+    public static BigDecimal formatValueString(String value){
+        BigDecimal formattedValue = new BigDecimal(0);
+
+        value = value.replace(",", ".");
+        formattedValue = new BigDecimal(value);
+
+        return formattedValue;
+    }
+
     public static void sendResponseLogin(Integer num, Cliente user){
         if(num > 0){
             LoadPage.answerScene("positive", "ACCESSO APPROVATO");
@@ -148,9 +157,5 @@ public class Utility {
             LoadPage.goesToMenu(user);
         });
         delay.play();
-    }
-
-    public static String formatValueInteger(Integer value){
-        return formatValueBigDecimal(BigDecimal.valueOf(value));
     }
 }
