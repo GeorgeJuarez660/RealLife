@@ -99,8 +99,8 @@ public class UserItemController implements Initializable {
     //------------------BUTTONS-----------------------
 
     @FXML
-    private void updating(){ //button per andare alla pagina di modifica notizia
-        System.out.println("goes to update news");
+    private void updating(){ //button per andare alla pagina di modifica utente
+        System.out.println("goes to update user");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
         partialSceneDTO.setInnerScene("update");
@@ -111,7 +111,7 @@ public class UserItemController implements Initializable {
     }
 
     @FXML
-    private void deleting(){ //button per eliminare notizia
+    private void deleting(){ //button per eliminare utente
         System.out.println("goes to delete user");
         System.out.println("Start deleting");
         LoadPage.loadingScene("ELIMINAZIONE IN CORSO...");

@@ -193,6 +193,75 @@ public class UtenteRepository implements utentiCRUD {
         return utente;
     }
 
+    public HashMap<Integer, Utente> getUtentiByKeywordWithDB(String keyword) {
+        String sql = "select * from utenti u where u.nome LIKE ? ";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        utenti = new HashMap<>();
+
+        try{
+            //Connessione al db
+            connection = DBConnection.sqlConnect();
+            preparedStatement = connection.prepareStatement(sql);
+            keyword = "%" + keyword + "%";
+            preparedStatement.setString(1, keyword);
+            rs = preparedStatement.executeQuery();
+            Utente foundUt, ut;
+
+            while(rs.next()){
+                String codeAdmin = rs.getString("codice_admin");
+
+                if(codeAdmin != null) {
+                    foundUt = new Amministratore();
+                }
+                else {
+                    foundUt = new Cliente();
+                }
+
+                if(foundUt instanceof Amministratore){
+                    Amministratore foundAm = (Amministratore) foundUt;
+                    foundAm.setId(rs.getInt("id"));
+                    foundAm.setNome(rs.getString("nome"));
+                    foundAm.setCognome(rs.getString("cognome"));
+                    foundAm.setSesso(rs.getString("sesso"));
+                    foundAm.setDataNascita(rs.getDate("data_nascita"));
+                    foundAm.setEmail(rs.getString("email"));
+                    foundAm.setPassword(rs.getString("password"));
+                    foundAm.setIndirizzo(rs.getString("indirizzo"));
+                    foundAm.setTelefono(rs.getString("telefono"));
+                    foundAm.setCodeAdmin(rs.getString("codice_admin"));
+                    foundAm.setPortafoglio(rs.getBigDecimal("portafoglio"));
+                    ut = foundAm;
+                }
+                else{
+                    Cliente foundCl = (Cliente) foundUt;
+                    foundCl.setId(rs.getInt("id"));
+                    foundCl.setNome(rs.getString("nome"));
+                    foundCl.setCognome(rs.getString("cognome"));
+                    foundCl.setSesso(rs.getString("sesso"));
+                    foundCl.setDataNascita(rs.getDate("data_nascita"));
+                    foundCl.setEmail(rs.getString("email"));
+                    foundCl.setPassword(rs.getString("password"));
+                    foundCl.setIndirizzo(rs.getString("indirizzo"));
+                    foundCl.setTelefono(rs.getString("telefono"));
+                    foundCl.setPortafoglio(rs.getBigDecimal("portafoglio"));
+                    ut = foundCl;
+                }
+
+                utenti.put(ut.getId(), ut);
+            }
+            //chiudi la connessione
+            rs.close();
+            preparedStatement.close();
+            connection.close();
+        }catch(SQLException e){
+            Utility.msgInf("GEOSTORE", "Errore nel getUtentiByKeywordWithDB: " + e.getMessage());
+        }
+
+        return utenti;
+    }
+
     public Cliente checkCliente(String email, String password) {
         String sql = "";
         boolean pwdEmpty = false;

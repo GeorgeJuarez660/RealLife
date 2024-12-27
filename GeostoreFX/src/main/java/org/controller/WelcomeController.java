@@ -7,16 +7,11 @@ import javafx.stage.Stage;
 import org.services.LoadPage;
 
 public class WelcomeController {
-    @FXML
-    private BorderPane welcomeLoader;
-
-    @FXML
-    private static Stage stage;// Questo è il BorderPane di menu.fxml
 
     //------------------BUTTONS-----------------------
     @FXML
     private void goesToPrepage(ActionEvent event) {
-        System.out.println("Clicked");
+        System.out.println("goes to prepage");
         LoadPage.saveStage(event);
 
         LoadPage.getFullScene("prepage");
@@ -25,6 +20,6 @@ public class WelcomeController {
 
     @FXML
     public void initialize() {
-        System.out.println("Root inizializzato: " + welcomeLoader);
+        System.out.println("Welcome");
     }
 }

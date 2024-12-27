@@ -65,8 +65,8 @@ public class ProductItemController implements Initializable {
 
     //------------------BUTTONS-----------------------
 
-    /*@FXML
-    private void updating(){ //button per andare alla pagina di modifica notizia
+    @FXML
+    private void updating(){ //button per andare alla pagina di modifica prodotto
         System.out.println("goes to update product");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
@@ -75,31 +75,18 @@ public class ProductItemController implements Initializable {
         partialSceneDTO.setUser(user);
         String idKey = id.getText();
         LoadPage.getPartialSceneCRU(partialSceneDTO, idKey);
-    }*/
+    }
 
-    /*@FXML
-    private void deleting(){ //button per eliminare notizia
-        System.out.println("goes to delete user");
+    @FXML
+    private void deleting(){ //button per eliminare prodotto
+        System.out.println("goes to delete product");
         System.out.println("Start deleting");
         LoadPage.loadingScene("ELIMINAZIONE IN CORSO...");
 
         Service service = new Service();
 
-        if(id.getText().equals(user.getId().toString())){
-            LoadPage.answerScene("negative", "NON PUOI ELIMINARE L'UTENTE LOGGATO");
-
-            //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
-            PauseTransition delay = new PauseTransition(Duration.seconds(3));
-            delay.setOnFinished(event -> {
-                // Dopo 2 secondi, carica la terza scena
-                LoadPage.goesToMenu(user);
-            });
-            delay.play();
-        }
-        else{
-            service.eliminazioneUtente(id.getText(), user);
-        }
-    }*/
+        service.eliminazioneProdotto(id.getText(), user);
+    }
 
 
     @Override

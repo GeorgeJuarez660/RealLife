@@ -93,15 +93,15 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
 
         if (IDkey != null && !IDkey.isEmpty() && !IDkey.isBlank()){
             if(this.itemScene != null && this.itemScene.equals("user")){ //vede prima quale item riferisce
-                utenti = service.ottieniUtente(Integer.parseInt(IDkey));
+                utenti = service.ottieniUtenteByKeyword(IDkey);
             }
             else if(this.itemScene != null && this.itemScene.contains("product")){
                 String lastChar = this.itemScene.substring(this.itemScene.length() - 1);
                 if(lastChar.equals("1")){
-                    prodotti = service.ottieniProdotto(Integer.parseInt(IDkey));
+                    prodotti = service.ottieniProdottoByKeyword(IDkey);
                 }
                 else{
-                    prodotti = service.ottieniProdottoDisponibile(Integer.parseInt(IDkey));
+                    prodotti = service.ottieniProdottoDisponibileByKeyword(IDkey);
                 }
             }
             else{

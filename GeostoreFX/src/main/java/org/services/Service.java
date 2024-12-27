@@ -26,11 +26,8 @@ public class Service {
         return ur.getUtenteWithDB(idUtente);
     }
 
-    public Map<Integer, Utente> ottieniUtente(Integer idUtente){
-        Utente utente = ur.getUtenteWithDB(idUtente);
-        Map<Integer, Utente> onlyUtente = new HashMap<>();
-        onlyUtente.put(utente.getId(), utente);
-        return onlyUtente;
+    public Map<Integer, Utente> ottieniUtenteByKeyword(String keyword){
+        return ur.getUtentiByKeywordWithDB(keyword);
     }
 
     public Map<Integer, Utente> elencoUtenti(){
@@ -160,18 +157,16 @@ public class Service {
         return pr.getProdottiDispWithDB();
     }
 
-    public Map<Integer, Prodotto> ottieniProdotto(Integer idProdotto){
-        Prodotto prodotto = pr.getProdottoWithDB(idProdotto);
-        Map<Integer, Prodotto> onlyProdotto = new HashMap<>();
-        onlyProdotto.put(prodotto.getId(), prodotto);
-        return onlyProdotto;
+    public Map<Integer, Prodotto> ottieniProdottoByKeyword(String keyword){
+        return pr.getProdottoByKeywordWithDB(keyword);
     }
 
-    public Map<Integer, Prodotto> ottieniProdottoDisponibile(Integer idProdotto){
-        Prodotto prodotto = pr.getProdottoDispWithDB(idProdotto);
-        Map<Integer, Prodotto> onlyProdotto = new HashMap<>();
-        onlyProdotto.put(prodotto.getId(), prodotto);
-        return onlyProdotto;
+    public Prodotto ottieniProdotto(Integer idProdotto){
+        return pr.getProdottoWithDB(idProdotto);
+    }
+
+    public Map<Integer, Prodotto> ottieniProdottoDisponibileByKeyword(String keyword){
+        return pr.getProdottoDispByKeywordWithDB(keyword);
     }
 
     public void creazioneProdotto(Prodotto product, Cliente user){
@@ -187,90 +182,51 @@ public class Service {
         }
     }
 
-    /*public void modificaProdotto(){
-        view.printProdotti(pr.getProdottiWithDB());
-        Prodotto p = pr.getProdottoWithDB(Utility.insertInt("Inserisci l'id prodotto"));
+    public void modificaProdotto(Prodotto product, Cliente user){
+        int num = 0;
+        num = pr.updateProdottoWithDB(product.getId(), product);
 
-        if(p != null && p.getNome() != null){
-            Utility.msgInf("GEOSTORE", "Prodotto trovato\n");
-
-            Prodotto pNew = view.maskUpdateProdotto(p, new Prodotto());
-
-            Categoria cat = car.getCategoriaWithDB(pNew.getCategoria().getId());
-            Materia m = mr.getMateriaWithDB(pNew.getMateria().getId());
-            Disponibilita d = dr.getDisponibilitaWithDB(pNew.getDisponibilita().getId());
-
-            if(cat != null && m != null && d != null && cat.getNome() != null && m.getNome() != null && d.getCode() != null){
-                pNew.setCategoria(cat);
-                pNew.setMateria(m);
-                pNew.setDisponibilita(d);
-                int num = pr.updateProdottoWithDB(pNew.getId(), pNew);
-
-                if(num > 0){
-                    Utility.msgInf("GEOSTORE", "Prodotto aggiornato\n");
-                }
-                else{
-                    Utility.msgInf("GEOSTORE", "Prodotto non aggiornato\n");
-                }
-            }
-            else{
-                Utility.msgInf("GEOSTORE", "Categoria e/o Materia inesistenti\n");
-            }
-
+        if(num > 0){
+            Utility.sendResponse(num, "PRODOTTO MODIFICATO", user);
         }
         else{
-            Utility.msgInf("GEOSTORE", "Prodotto non trovato\n");
+            Utility.sendResponse(num, "MODIFICA PRODOTTO", user);
         }
-    }*/
+    }
 
-    /*public void eliminazioneProdotto(){
-        view.printProdotti(pr.getProdottiWithDB());
-        Prodotto p = pr.getProdottoWithDB(Utility.insertInt("Inserisci l'id prodotto"));
+    public void eliminazioneProdotto(String IDkey, Cliente user){
+        HashMap<Integer, Ordine> ordini = or.getOrdiniByProductWithDB(Integer.parseInt(IDkey));
 
-        if(p != null && p.getNome() != null){
-            Utility.msgInf("GEOSTORE", "Prodotto trovato\n");
-            if(Utility.insertString("Sei sicuro di voler eliminare questo prodotto?").equalsIgnoreCase("s")){
-
-                HashMap<Integer, Ordine> ordini = odr.getOrdiniByProductWithDB(p.getId());
-
-                for(Ordine ordine : ordini.values()){
-                    //il prodotto è più cruciale rispetto all'ordine, motivo per cui vengono rimborsati anche se gli ordini sono in stato divrso da RIFIUTATO
-                    if(ordine.getStato().getId() != 3 && ordine.getStato().getId() != 5){
-                        refundAfterDeleteOrder(ordine, ordine.getUtente());
-                    }
-                    else{
-                        Utility.msgInf("GEOSTORE", "L'ordine è già stato rifiutato oppure consegnato\n");
-                    }
-                }
-
-                int num = odr.deleteOrdineAfterDeleteProduct(p.getId());
-
-                if(num > 0){
-                    Utility.msgInf("GEOSTORE", "Ordini eliminati\n");
-                }
-                else{
-                    Utility.msgInf("GEOSTORE", "Ordini non eliminati\n");
-                }
-
-                num = 0;
-                num = pr.deleteProdottoWithDB(p.getId());
-
-                if(num > 0){
-                    Utility.msgInf("GEOSTORE", "Prodotto eliminato\n");
-                }
-                else{
-                    Utility.msgInf("GEOSTORE", "Prodotto non eliminato\n");
-                }
-
+        for(Ordine ordine : ordini.values()){
+            //il prodotto è più cruciale rispetto all'ordine, motivo per cui vengono rimborsati anche se gli ordini sono in stato divrso da RIFIUTATO
+            if(ordine.getStato().getId() != 3 && ordine.getStato().getId() != 5){
+                refundAfterDeleteOrder(ordine, ordine.getUtente());
             }
             else{
-                Utility.msgInf("GEOSTORE", "Operazione annullata\n");
+                Utility.msgInf("GEOSTORE", "L'ordine è già stato rifiutato oppure consegnato\n");
             }
         }
-        else{
-            Utility.msgInf("GEOSTORE", "Prodotto non trovato\n");
+
+        int num = or.deleteOrdineAfterDeleteProduct(Integer.parseInt(IDkey));
+
+        if(num > 0){
+            Utility.msgInf("GEOSTORE", "Ordini eliminati\n");
         }
-    }*/
+        else{
+            Utility.msgInf("GEOSTORE", "Ordini non eliminati\n");
+        }
+
+        num = 0;
+        num = pr.deleteProdottoWithDB(Integer.parseInt(IDkey));
+
+        if(num > 0){
+            Utility.sendResponseDeletedProducts(num, user);
+        }
+        else{
+            Utility.sendResponseDeletedProducts(num, user);
+        }
+
+    }
 
     /*public void ordinazioneProdotto(Utente u){
         Ordine o;
@@ -668,7 +624,7 @@ public class Service {
         return cr.getCategorieWithDB();
     }
 
-    /*private void refundAfterDeleteOrder(Ordine o, Utente u){
+    public void refundAfterDeleteOrder(Ordine o, Utente u){
         BigDecimal pagamento = o.getPrezzo_unitario().multiply(BigDecimal.valueOf(o.getQuantita()));
 
         if(u instanceof Amministratore){
@@ -690,7 +646,7 @@ public class Service {
         else{
             Utility.msgInf("GEOSTORE", "Denaro non rimborsato\n");
         }
-    }*/
+    }
 
     /*public void prodottiViaCategoria(){
         view.printCategorie(car.getCategorieWithDB());

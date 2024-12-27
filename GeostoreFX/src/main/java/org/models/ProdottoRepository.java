@@ -294,6 +294,58 @@ public class ProdottoRepository implements prodottiCRUD {
         return prodotto;
     }
 
+    public HashMap<Integer, Prodotto> getProdottoByKeywordWithDB(String keyword) {
+        String sql = "select c.id as cat_id, c.nome as cat_nome, d.id as disp_id, d.code as disp_code, m.id as mat_id, m.nome as mat_nome, o.id, o.nome, o.prezzo, o.disponibilita, o.categoria, o.materia, o.quantita_disp \n" +
+                "from prodotti o join categorie c on(o.categoria=c.id)\n" +
+                "join materie m on(o.materia=m.id)\n" +
+                "join disponibilita d on(o.disponibilita=d.id)\n" +
+                "where o.nome LIKE ?";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        prodotti = new HashMap<>();
+
+        try{
+            //Connessione al db
+            connection = DBConnection.sqlConnect();
+            preparedStatement = connection.prepareStatement(sql);
+            keyword = "%" + keyword + "%";
+            preparedStatement.setString(1, keyword);
+            rs = preparedStatement.executeQuery();
+            Prodotto prodotto;
+
+            while(rs.next()){
+                prodotto = new Prodotto();
+                prodotto.setId(rs.getInt("id"));
+                prodotto.setNome(rs.getString("nome"));
+                prodotto.setPrezzo(rs.getBigDecimal("prezzo"));
+                Disponibilita disponibilita = new Disponibilita();
+                disponibilita.setId(rs.getInt("disp_id"));
+                disponibilita.setCode(rs.getString("disp_code"));
+                prodotto.setDisponibilita(disponibilita);
+                Categoria categoria = new Categoria();
+                categoria.setId(rs.getInt("cat_id"));
+                categoria.setNome(rs.getString("cat_nome"));
+                prodotto.setCategoria(categoria);
+                Materia materia = new Materia();
+                materia.setId(rs.getInt("mat_id"));
+                materia.setNome(rs.getString("mat_nome"));
+                prodotto.setMateria(materia);
+                prodotto.setQuantita_disp(rs.getInt("quantita_disp"));
+
+                prodotti.put(prodotto.getId(), prodotto);
+            }
+            //chiudi la connessione
+            rs.close();
+            preparedStatement.close();
+            connection.close();
+        }catch(SQLException e){
+            Utility.msgInf("GEOSTORE", "Errore nel getProdottoByKeywordWithDB: " + e.getMessage());
+        }
+
+        return prodotti;
+    }
+
     public Prodotto getProdottoDispWithDB(Integer id) {
         String sql = "select c.id as cat_id, c.nome as cat_nome, d.id as disp_id, d.code as disp_code, m.id as mat_id, m.nome as mat_nome, o.id, o.nome, o.prezzo, o.disponibilita, o.categoria, o.materia, o.quantita_disp \n" +
                 "from prodotti o join categorie c on(o.categoria=c.id)\n" +
@@ -338,6 +390,58 @@ public class ProdottoRepository implements prodottiCRUD {
         }
 
         return prodotto;
+    }
+
+    public HashMap<Integer, Prodotto> getProdottoDispByKeywordWithDB(String keyword) {
+        String sql = "select c.id as cat_id, c.nome as cat_nome, d.id as disp_id, d.code as disp_code, m.id as mat_id, m.nome as mat_nome, o.id, o.nome, o.prezzo, o.disponibilita, o.categoria, o.materia, o.quantita_disp \n" +
+                "from prodotti o join categorie c on(o.categoria=c.id)\n" +
+                "join materie m on(o.materia=m.id)\n" +
+                "join disponibilita d on(o.disponibilita=d.id)\n" +
+                "where o.nome LIKE ? AND (o.disponibilita = 1 OR o.disponibilita = 3)";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        prodotti = new HashMap<>();
+
+        try{
+            //Connessione al db
+            connection = DBConnection.sqlConnect();
+            preparedStatement = connection.prepareStatement(sql);
+            keyword = "%" + keyword + "%";
+            preparedStatement.setString(1, keyword);
+            rs = preparedStatement.executeQuery();
+            Prodotto prodotto;
+
+            while(rs.next()){
+                prodotto = new Prodotto();
+                prodotto.setId(rs.getInt("id"));
+                prodotto.setNome(rs.getString("nome"));
+                prodotto.setPrezzo(rs.getBigDecimal("prezzo"));
+                Disponibilita disponibilita = new Disponibilita();
+                disponibilita.setId(rs.getInt("disp_id"));
+                disponibilita.setCode(rs.getString("disp_code"));
+                prodotto.setDisponibilita(disponibilita);
+                Categoria categoria = new Categoria();
+                categoria.setId(rs.getInt("cat_id"));
+                categoria.setNome(rs.getString("cat_nome"));
+                prodotto.setCategoria(categoria);
+                Materia materia = new Materia();
+                materia.setId(rs.getInt("mat_id"));
+                materia.setNome(rs.getString("mat_nome"));
+                prodotto.setMateria(materia);
+                prodotto.setQuantita_disp(rs.getInt("quantita_disp"));
+
+                prodotti.put(prodotto.getId(), prodotto);
+            }
+            //chiudi la connessione
+            rs.close();
+            preparedStatement.close();
+            connection.close();
+        }catch(SQLException e){
+            Utility.msgInf("GEOSTORE", "Errore nel getProdottoDispByKeywordWithDB: " + e.getMessage());
+        }
+
+        return prodotti;
     }
 
     @Override

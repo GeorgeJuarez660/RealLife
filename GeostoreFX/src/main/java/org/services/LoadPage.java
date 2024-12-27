@@ -151,6 +151,12 @@ public class LoadPage {
                     throw new java.io.FileNotFoundException("Nessun file FXML trovato");
                 }
             }
+            else if(choose.equals("info")){
+                fileUrl = Main.class.getResource("/org/scenes/infoAnswer.fxml");
+                if (fileUrl == null) {
+                    throw new java.io.FileNotFoundException("Nessun file FXML trovato");
+                }
+            }
 
             FXMLLoader loader = new FXMLLoader(fileUrl);
             Pane newScene = loader.load();
