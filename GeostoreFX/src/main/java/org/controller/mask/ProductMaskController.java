@@ -94,6 +94,7 @@ public class ProductMaskController implements Initializable {
 
         Disponibilita disponibilita = new Disponibilita();
         disponibilita.setId(Integer.parseInt(available.getValue().substring(0, 1)));
+        disponibilita.setCode(available.getValue().substring(4));
         prodotto.setDisponibilita(disponibilita);
 
         Categoria categoria = new Categoria();

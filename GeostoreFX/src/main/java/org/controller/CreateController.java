@@ -20,8 +20,10 @@ import org.utility.Utility;
 import java.net.URL;
 import java.sql.Date;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class CreateController {// Questo è il BorderPane di menu.fxml
 
@@ -176,6 +178,16 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
         else if(maskController instanceof ProductMaskController){
             ProductMaskController productMaskController = (ProductMaskController) maskController;
             Prodotto p = productMaskController.setValues();
+
+            //notizia per la creazione prodotto
+            News notiziaCreazione = new News();
+            notiziaCreazione.setUtente(user);
+            notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
+            notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
+            notiziaCreazione.setTesto("È stato pubblicato un nuovo prodotto: " + p.getNome() + " a soli " + Utility.formatValueBigDecimal(p.getPrezzo()) + " C. " + p.getDisponibilita().getCode() + " su GeoStore");
+            service.creazioneNotiziaSenzaRisposta(notiziaCreazione);
+
+            //crea prodotto
             service.creazioneProdotto(p, user);
         }
         else{

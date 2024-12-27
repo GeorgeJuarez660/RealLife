@@ -122,6 +122,12 @@ public class Service {
         }
     }
 
+    public void creazioneNotiziaSenzaRisposta(News notizia){
+        int num = 0;
+
+        nr.insertNotizieWithDB(notizia.getDataPub(), notizia.getDataMod(), notizia.getTesto(), notizia.getUtente().getId());
+    }
+
     public void modificaNotizia(News notizia, Cliente user){
         notizia.setUtente(user);
         int num = 0;
