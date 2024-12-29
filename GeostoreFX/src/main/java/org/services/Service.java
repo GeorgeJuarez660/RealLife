@@ -655,6 +655,10 @@ public class Service {
         }
     }
 
+    public Ordine ordiniTotaliGiornalieri(Utente u, String chooseDate){
+        return or.getOrdineTotGiorWithDB(u, chooseDate);
+    }
+
     /*public void prodottiViaCategoria(){
         view.printCategorie(car.getCategorieWithDB());
         Categoria cat = new Categoria();
@@ -757,11 +761,6 @@ public class Service {
         Materia m = new Materia();
         view.maskObjViaMat(m);
         view.printProdotti(pr.getProdottiViaMateriaWithDB(m.getId()));
-    }*/
-
-    /*public void ordiniTotaliGiornalieri(Utente u){
-        String chooseDate = Utility.insertString("Inserisci la data in formato yyyy-mm-dd");
-        view.printOrdiniTotGior(odr.getOrdineTotGiorWithDB(u, chooseDate));
     }*/
 
     public HashMap<Integer, Disponibilita> ottieniDisponibilita(){

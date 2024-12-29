@@ -57,7 +57,7 @@ public class OrderMaskController implements Initializable {
         productOrder = prodotto;
     }
 
-    //per la modifica prodotto
+    //per la modifica ordine
     /*public void getValues(String IDkey){
 
         service = new Service();

@@ -31,9 +31,6 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
     @FXML
     private TextField search;
 
-    @FXML
-    private Button backBtn;
-
     private Cliente user;
     private Boolean isAdmin;
     private BorderPane fxmlLoader;
@@ -70,7 +67,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
             if(lastChar.equals("1")){
                 title.setText("Elenco prodotti in generale");
             }
-            if(lastChar.equals("O")){
+            if(lastChar.equals("O")){ //per l'ordinazione prodotto
                 title.setText("Elenco prodotti da ordinare");
             }
             else{
@@ -115,7 +112,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                 if(lastChar.equals("1")){
                     prodotti = service.ottieniProdottoByKeyword(IDkey);
                 }
-                else if(lastChar.equals("O")){
+                else if(lastChar.equals("O")){ //per l'ordinazione prodotto
                     prodotti = service.ottieniProdottoByKeyword(IDkey);
                 }
                 else{
@@ -146,7 +143,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                 if(lastChar.equals("1")){
                     prodotti = service.elencoProdotti();
                 }
-                else if(lastChar.equals("O")){
+                else if(lastChar.equals("O")){ //per l'ordinazione prodotto
                     prodotti = service.elencoProdotti();
                 }
                 else{
@@ -212,7 +209,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                         ProductItemController productItemController = loader.getController();
                         productItemController.save(fxmlLoader, user);
                         productItemController.setValues(prodotto);
-                        if(this.itemScene.equals("product-O")){
+                        if(this.itemScene.equals("product-O")){ //per l'ordinazione prodotto
                             productItemController.enableButtons(false, true);
                         }
                         else{
@@ -299,7 +296,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
         }
         else if(this.itemScene != null && this.itemScene.contains("product")){
             if(isAdmin){
-                if(this.itemScene.equals("product-O")){
+                if(this.itemScene.equals("product-O")){ //per l'ordinazione prodotto
                     LoadPage.getPartialScene(fxmlLoader, "chooseTOrderAdmin", user);
                 }
                 else{
@@ -307,7 +304,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                 }
             }
             else{
-                if(this.itemScene.equals("product-O")){
+                if(this.itemScene.equals("product-O")){ //per l'ordinazione prodotto
                     LoadPage.getPartialScene(fxmlLoader, "chooseTOrderCliente", user);
                 }
                 else{
@@ -345,7 +342,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                 String keyword = search.getText();
                 loadItems("product-2", keyword);
             }
-            else if(this.itemScene != null && this.itemScene.equals("product-O")){
+            else if(this.itemScene != null && this.itemScene.equals("product-O")){ //per l'ordinazione prodotto
                 String keyword = search.getText();
                 loadItems("product-O", keyword);
             }
