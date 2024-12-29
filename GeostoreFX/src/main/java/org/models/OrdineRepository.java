@@ -77,7 +77,7 @@ public class OrdineRepository implements ordiniCRUD {
                     foundAdmin.setNome(rs.getString("nome_utente"));
                     foundAdmin.setCognome(rs.getString("cognome_utente"));
                     foundAdmin.setSesso(rs.getString("sesso_utente"));
-                    foundAdmin.setDataNascita(rs.getDate("dataNas_utente"));
+                    foundAdmin.setDataNascita(rs.getDate("dataNascita_utente"));
                     foundAdmin.setCodeAdmin(codeAdmin);
                     foundAdmin.setPortafoglio(rs.getBigDecimal("portafoglio_utente"));
                     foundAdmin.setEmail(rs.getString("email_utente"));
@@ -90,7 +90,7 @@ public class OrdineRepository implements ordiniCRUD {
                     foundCliente.setNome(rs.getString("nome_utente"));
                     foundCliente.setCognome(rs.getString("cognome_utente"));
                     foundCliente.setSesso(rs.getString("sesso_utente"));
-                    foundCliente.setDataNascita(rs.getDate("dataNas_utente"));
+                    foundCliente.setDataNascita(rs.getDate("dataNascita_utente"));
                     foundCliente.setEmail(rs.getString("email_utente"));
                     foundCliente.setTelefono(rs.getString("telefono_utente"));
                     foundCliente.setPortafoglio(rs.getBigDecimal("portafoglio_utente"));
@@ -121,6 +121,93 @@ public class OrdineRepository implements ordiniCRUD {
             connection.close();
         }catch(SQLException e){
             Utility.msgInf("GEOSTORE", "Errore nel getOrdiniWithDB: " + e.getMessage());
+        }
+
+        return ordini;
+    }
+
+    public HashMap<Integer, Ordine> getOrdiniByEmailWithDB(String email) {
+        String sql = "SELECT o.id, u.id AS id_utente, u.nome AS nome_utente, u.cognome AS cognome_utente, u.sesso AS sesso_utente, u.data_nascita AS dataNascita_utente, u.email AS email_utente, u.telefono AS telefono_utente, u.codice_admin AS code_admin, u.portafoglio AS portafoglio_utente, u.codice_admin AS code_admin, og.id AS id_prodotto, og.nome AS nome_prodotto, og.quantita_disp AS quant_disp_prod, o.data_ordine, o.quantita, o.prezzo_unitario, s.id as st_id, s.code as st_code " +
+                " FROM ordini o JOIN utenti u ON(o.utente_id =u.id ) \n" +
+                " JOIN stato s ON(o.stato_id=s.id)\n" +
+                "JOIN prodotti og ON(o.prodotto_id =og.id )\n" +
+                "WHERE u.email LIKE ?";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        ordini = new HashMap<>();
+
+        try{
+            //Connessione al db
+            connection = DBConnection.sqlConnect();
+            preparedStatement = connection.prepareStatement(sql);
+            email = "%" + email + "%";
+            preparedStatement.setString(1, email);
+            rs = preparedStatement.executeQuery();
+            Ordine ord;
+            Utente foundUtente;
+
+            while(rs.next()){
+
+                String codeAdmin = rs.getString("code_admin");
+
+                if(codeAdmin != null) {
+                    foundUtente = new Amministratore();
+                }
+                else {
+                    foundUtente = new Cliente();
+                }
+
+                if(foundUtente instanceof Amministratore){
+                    Amministratore foundAdmin = (Amministratore) foundUtente;
+                    foundAdmin.setId(rs.getInt("id_utente"));
+                    foundAdmin.setNome(rs.getString("nome_utente"));
+                    foundAdmin.setCognome(rs.getString("cognome_utente"));
+                    foundAdmin.setSesso(rs.getString("sesso_utente"));
+                    foundAdmin.setDataNascita(rs.getDate("dataNascita_utente"));
+                    foundAdmin.setCodeAdmin(codeAdmin);
+                    foundAdmin.setPortafoglio(rs.getBigDecimal("portafoglio_utente"));
+                    foundAdmin.setEmail(rs.getString("email_utente"));
+                    foundAdmin.setTelefono(rs.getString("telefono_utente"));
+                    foundUtente = foundAdmin;
+                }
+                else{
+                    Cliente foundCliente = (Cliente) foundUtente;
+                    foundCliente.setId(rs.getInt("id_utente"));
+                    foundCliente.setNome(rs.getString("nome_utente"));
+                    foundCliente.setCognome(rs.getString("cognome_utente"));
+                    foundCliente.setSesso(rs.getString("sesso_utente"));
+                    foundCliente.setDataNascita(rs.getDate("dataNascita_utente"));
+                    foundCliente.setEmail(rs.getString("email_utente"));
+                    foundCliente.setTelefono(rs.getString("telefono_utente"));
+                    foundCliente.setPortafoglio(rs.getBigDecimal("portafoglio_utente"));
+                    foundUtente = foundCliente;
+                }
+
+                ord = new Ordine();
+                ord.setId(rs.getInt("id"));
+                ord.setUtente(foundUtente);
+                Prodotto prodotto = new Prodotto();
+                prodotto.setId(rs.getInt("id_prodotto"));
+                prodotto.setNome(rs.getString("nome_prodotto"));
+                prodotto.setQuantita_disp(rs.getInt("quant_disp_prod"));
+                ord.setProdotto(prodotto);
+                ord.setData_ordine(Timestamp.valueOf(rs.getString("data_ordine")));
+                ord.setQuantita(rs.getInt("quantita"));
+                ord.setPrezzo_unitario(rs.getBigDecimal("prezzo_unitario"));
+                Stato stato = new Stato();
+                stato.setId(rs.getInt("st_id"));
+                stato.setCode(rs.getString("st_code"));
+                ord.setStato(stato);
+
+                ordini.put(ord.getId(), ord);
+            }
+            //chiudi la connessione
+            rs.close();
+            preparedStatement.close();
+            connection.close();
+        }catch(SQLException e){
+            Utility.msgInf("GEOSTORE", "Errore nel getOrdiniByEmailWithDB: " + e.getMessage());
         }
 
         return ordini;
@@ -162,7 +249,7 @@ public class OrdineRepository implements ordiniCRUD {
                     foundAdmin.setNome(rs.getString("nome_utente"));
                     foundAdmin.setCognome(rs.getString("cognome_utente"));
                     foundAdmin.setSesso(rs.getString("sesso_utente"));
-                    foundAdmin.setDataNascita(rs.getDate("dataNas_utente"));
+                    foundAdmin.setDataNascita(rs.getDate("dataNascita_utente"));
                     foundAdmin.setCodeAdmin(codeAdmin);
                     foundAdmin.setEmail(rs.getString("email_utente"));
                     foundAdmin.setTelefono(rs.getString("telefono_utente"));
@@ -175,7 +262,7 @@ public class OrdineRepository implements ordiniCRUD {
                     foundCliente.setNome(rs.getString("nome_utente"));
                     foundCliente.setCognome(rs.getString("cognome_utente"));
                     foundCliente.setSesso(rs.getString("sesso_utente"));
-                    foundCliente.setDataNascita(rs.getDate("dataNas_utente"));
+                    foundCliente.setDataNascita(rs.getDate("dataNascita_utente"));
                     foundCliente.setEmail(rs.getString("email_utente"));
                     foundCliente.setTelefono(rs.getString("telefono_utente"));
                     foundCliente.setPortafoglio(rs.getBigDecimal("portafoglio_utente"));
@@ -206,6 +293,93 @@ public class OrdineRepository implements ordiniCRUD {
             connection.close();
         }catch(SQLException e){
             Utility.msgInf("GEOSTORE", "Errore nel getOrdiniByUserWithDB: " + e.getMessage());
+        }
+
+        return ordini;
+    }
+
+    public HashMap<Integer, Ordine> getOrdiniByUserAndKeywordWithDB(Integer idUtente, String keyword) {
+        String sql = "SELECT o.id, u.id AS id_utente, u.nome AS nome_utente, u.cognome AS cognome_utente, u.sesso AS sesso_utente, u.data_nascita AS dataNascita_utente, u.email AS email_utente, u.telefono AS telefono_utente, u.portafoglio AS portafoglio_utente, u.codice_admin AS code_admin, og.nome AS nome_prodotto, og.id AS id_prodotto, og.quantita_disp AS quant_disp_prod, o.data_ordine, o.quantita, o.prezzo_unitario, s.id as st_id, s.code as st_code " +
+                " FROM ordini o JOIN utenti u ON(o.utente_id =u.id ) \n" +
+                " JOIN stato s ON(o.stato_id=s.id)\n" +
+                "JOIN prodotti og ON(o.prodotto_id =og.id )\n" +
+                "WHERE o.utente_id = ? AND og.nome LIKE ?";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        ordini = new HashMap<>();
+
+        try{
+            //Connessione al db
+            connection = DBConnection.sqlConnect();
+            preparedStatement = connection.prepareStatement(sql);
+            keyword = "%" + keyword + "%";
+            preparedStatement.setInt(1, idUtente);
+            preparedStatement.setString(2, keyword);
+            rs = preparedStatement.executeQuery();
+            Ordine ord;
+            Utente foundUtente;
+
+            while(rs.next()){
+                String codeAdmin = rs.getString("code_admin");
+
+                if(codeAdmin != null) {
+                    foundUtente = new Amministratore();
+                }
+                else {
+                    foundUtente = new Cliente();
+                }
+
+                if(foundUtente instanceof Amministratore){
+                    Amministratore foundAdmin = (Amministratore) foundUtente;
+                    foundAdmin.setId(rs.getInt("id_utente"));
+                    foundAdmin.setNome(rs.getString("nome_utente"));
+                    foundAdmin.setCognome(rs.getString("cognome_utente"));
+                    foundAdmin.setSesso(rs.getString("sesso_utente"));
+                    foundAdmin.setDataNascita(rs.getDate("dataNascita_utente"));
+                    foundAdmin.setCodeAdmin(codeAdmin);
+                    foundAdmin.setEmail(rs.getString("email_utente"));
+                    foundAdmin.setTelefono(rs.getString("telefono_utente"));
+                    foundAdmin.setPortafoglio(rs.getBigDecimal("portafoglio_utente"));
+                    foundUtente = foundAdmin;
+                }
+                else{
+                    Cliente foundCliente = (Cliente) foundUtente;
+                    foundCliente.setId(rs.getInt("id_utente"));
+                    foundCliente.setNome(rs.getString("nome_utente"));
+                    foundCliente.setCognome(rs.getString("cognome_utente"));
+                    foundCliente.setSesso(rs.getString("sesso_utente"));
+                    foundCliente.setDataNascita(rs.getDate("dataNascita_utente"));
+                    foundCliente.setEmail(rs.getString("email_utente"));
+                    foundCliente.setTelefono(rs.getString("telefono_utente"));
+                    foundCliente.setPortafoglio(rs.getBigDecimal("portafoglio_utente"));
+                    foundUtente = foundCliente;
+                }
+
+                ord = new Ordine();
+                ord.setId(rs.getInt("id"));
+                ord.setUtente(foundUtente);
+                Prodotto prodotto = new Prodotto();
+                prodotto.setId(rs.getInt("id_prodotto"));
+                prodotto.setNome(rs.getString("nome_prodotto"));
+                prodotto.setQuantita_disp(rs.getInt("quant_disp_prod"));
+                ord.setProdotto(prodotto);
+                ord.setData_ordine(Timestamp.valueOf(rs.getString("data_ordine")));
+                ord.setQuantita(rs.getInt("quantita"));
+                ord.setPrezzo_unitario(rs.getBigDecimal("prezzo_unitario"));
+                Stato stato = new Stato();
+                stato.setId(rs.getInt("st_id"));
+                stato.setCode(rs.getString("st_code"));
+                ord.setStato(stato);
+
+                ordini.put(ord.getId(), ord);
+            }
+            //chiudi la connessione
+            rs.close();
+            preparedStatement.close();
+            connection.close();
+        }catch(SQLException e){
+            Utility.msgInf("GEOSTORE", "Errore nel getOrdiniByUserAndKeywordWithDB: " + e.getMessage());
         }
 
         return ordini;
@@ -247,7 +421,7 @@ public class OrdineRepository implements ordiniCRUD {
                     foundAdmin.setNome(rs.getString("nome_utente"));
                     foundAdmin.setCognome(rs.getString("cognome_utente"));
                     foundAdmin.setSesso(rs.getString("sesso_utente"));
-                    foundAdmin.setDataNascita(rs.getDate("dataNas_utente"));
+                    foundAdmin.setDataNascita(rs.getDate("dataNascita_utente"));
                     foundAdmin.setCodeAdmin(codeAdmin);
                     foundAdmin.setEmail(rs.getString("email_utente"));
                     foundAdmin.setTelefono(rs.getString("telefono_utente"));
@@ -260,7 +434,7 @@ public class OrdineRepository implements ordiniCRUD {
                     foundCliente.setNome(rs.getString("nome_utente"));
                     foundCliente.setCognome(rs.getString("cognome_utente"));
                     foundCliente.setSesso(rs.getString("sesso_utente"));
-                    foundCliente.setDataNascita(rs.getDate("dataNas_utente"));
+                    foundCliente.setDataNascita(rs.getDate("dataNascita_utente"));
                     foundCliente.setEmail(rs.getString("email_utente"));
                     foundCliente.setTelefono(rs.getString("telefono_utente"));
                     foundCliente.setPortafoglio(rs.getBigDecimal("portafoglio_utente"));
@@ -290,7 +464,7 @@ public class OrdineRepository implements ordiniCRUD {
             preparedStatement.close();
             connection.close();
         }catch(SQLException e){
-            Utility.msgInf("GEOSTORE", "Errore nel getOrdiniByUserWithDB: " + e.getMessage());
+            Utility.msgInf("GEOSTORE", "Errore nel getOrdiniByProductWithDB: " + e.getMessage());
         }
 
         return ordini;
@@ -332,7 +506,7 @@ public class OrdineRepository implements ordiniCRUD {
                     foundAdmin.setNome(rs.getString("nome_utente"));
                     foundAdmin.setCognome(rs.getString("cognome_utente"));
                     foundAdmin.setSesso(rs.getString("sesso_utente"));
-                    foundAdmin.setDataNascita(rs.getDate("dataNas_utente"));
+                    foundAdmin.setDataNascita(rs.getDate("dataNascita_utente"));
                     foundAdmin.setCodeAdmin(codeAdmin);
                     foundAdmin.setEmail(rs.getString("email_utente"));
                     foundAdmin.setTelefono(rs.getString("telefono_utente"));
@@ -345,7 +519,7 @@ public class OrdineRepository implements ordiniCRUD {
                     foundCliente.setNome(rs.getString("nome_utente"));
                     foundCliente.setCognome(rs.getString("cognome_utente"));
                     foundCliente.setSesso(rs.getString("sesso_utente"));
-                    foundCliente.setDataNascita(rs.getDate("dataNas_utente"));
+                    foundCliente.setDataNascita(rs.getDate("dataNascita_utente"));
                     foundCliente.setEmail(rs.getString("email_utente"));
                     foundCliente.setTelefono(rs.getString("telefono_utente"));
                     foundCliente.setPortafoglio(rs.getBigDecimal("portafoglio_utente"));
@@ -373,7 +547,7 @@ public class OrdineRepository implements ordiniCRUD {
             preparedStatement.close();
             connection.close();
         }catch(SQLException e){
-            Utility.msgInf("GEOSTORE", "Errore nel getOrdiniByUserWithDB: " + e.getMessage());
+            Utility.msgInf("GEOSTORE", "Errore nel getOrdineByUserWithDB: " + e.getMessage());
         }
 
         return ord;
@@ -415,7 +589,7 @@ public class OrdineRepository implements ordiniCRUD {
                     foundAdmin.setNome(rs.getString("nome_utente"));
                     foundAdmin.setCognome(rs.getString("cognome_utente"));
                     foundAdmin.setSesso(rs.getString("sesso_utente"));
-                    foundAdmin.setDataNascita(rs.getDate("dataNas_utente"));
+                    foundAdmin.setDataNascita(rs.getDate("dataNascita_utente"));
                     foundAdmin.setCodeAdmin(codeAdmin);
                     foundAdmin.setEmail(rs.getString("email_utente"));
                     foundAdmin.setTelefono(rs.getString("telefono_utente"));
@@ -428,7 +602,7 @@ public class OrdineRepository implements ordiniCRUD {
                     foundCliente.setNome(rs.getString("nome_utente"));
                     foundCliente.setCognome(rs.getString("cognome_utente"));
                     foundCliente.setSesso(rs.getString("sesso_utente"));
-                    foundCliente.setDataNascita(rs.getDate("dataNas_utente"));
+                    foundCliente.setDataNascita(rs.getDate("dataNascita_utente"));
                     foundCliente.setEmail(rs.getString("email_utente"));
                     foundCliente.setTelefono(rs.getString("telefono_utente"));
                     foundCliente.setPortafoglio(rs.getBigDecimal("portafoglio_utente"));

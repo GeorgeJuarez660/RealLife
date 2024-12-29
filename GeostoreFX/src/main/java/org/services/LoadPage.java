@@ -247,6 +247,10 @@ public class LoadPage {
                 ChooseTProductController chooseTProductController = (ChooseTProductController) controller;
                 chooseTProductController.save(fxmlLoader, user);
             }
+            else if(controller instanceof ChooseTOrderController){
+                ChooseTOrderController chooseTOrderController = (ChooseTOrderController) controller;
+                chooseTOrderController.save(fxmlLoader, user);
+            }
             // Carica il file FXML
             // Imposta la scena caricata come contenuto centrale del BorderPane
             fxmlLoader.setCenter(newScene);
@@ -276,7 +280,7 @@ public class LoadPage {
                 CreateController createController = (CreateController) controller;
                 createController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
                 createController.setTitle(partialSceneDTO.getItemScene());
-                createController.loadMask(partialSceneDTO.getItemScene());
+                createController.loadMask(partialSceneDTO.getItemScene(), IDkey);
             }
             else if(controller instanceof ReadController){
                 ReadController readController = (ReadController) controller;
@@ -285,12 +289,12 @@ public class LoadPage {
                 readController.showSearchBar(false);
                 readController.loadItems(partialSceneDTO.getItemScene(), IDkey);
             }
-            else if(controller instanceof ReadSoloController){
-                ReadSoloController readSoloController = (ReadSoloController) controller;
-                readSoloController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
-                readSoloController.setTitle("Profilo Utente");
-                readSoloController.loadItem("userProfileItem");
-                readSoloController.enableBackBtn();
+            else if(controller instanceof ReadProfileUserController){
+                ReadProfileUserController readProfileUserController = (ReadProfileUserController) controller;
+                readProfileUserController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
+                readProfileUserController.setTitle("Profilo Utente");
+                readProfileUserController.loadItem("userProfileItem");
+                readProfileUserController.enableBackBtn();
             }
             else if(controller instanceof UpdateController){
                 UpdateController updateController = (UpdateController) controller;

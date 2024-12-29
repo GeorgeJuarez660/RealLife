@@ -234,40 +234,39 @@ public class Service {
 
     }
 
-    /*public void ordinazioneProdotto(Utente u){
-        Ordine o;
-        view.printProdotti(pr.getProdottiDispWithDB());
-        o = new Ordine();
-        view.maskInsertOrdine(o, u);
+    public Map<Integer, Ordine> elencoOrdini(){
+        return or.getOrdiniWithDB();
+    }
 
-        boolean flagInsert;
-        do{
-            String question = Utility.insertString("Vuoi procedere? (s/n)");
-            if(question.equalsIgnoreCase("s")) {
+    public Map<Integer, Ordine> elencoPropriOrdini(Integer idUtente){
+        return or.getOrdiniByUserWithDB(idUtente);
+    }
 
-                boolean canOrder = checkAmountOrderAndSufficientWallet(o, u);
+    public Map<Integer, Ordine> elencoOrdiniByEmail(String email){
+        return or.getOrdiniByEmailWithDB(email);
+    }
 
-                if(canOrder) {
-                    int num = odr.insertOrdineWithDB(null, o);
-                    if(num > 0){
-                        Utility.msgInf("GEOSTORE", "Ordine effettuato\n");
-                    }
-                    else{
-                        Utility.msgInf("GEOSTORE", "Ordine non effettuato\n");
-                    }
-                }
+    public Map<Integer, Ordine> elencoPropriOrdiniByKeyword(Integer idUtente, String keyword){
+        return or.getOrdiniByUserAndKeywordWithDB(idUtente, keyword);
+    }
 
-                flagInsert = false;
-            }else if(question.equalsIgnoreCase("n")){
-                Utility.msgInf("GEOSTORE", "Operazione annullata\n");
-                flagInsert = false;
+    public void ordinazioneProdotto(Ordine o, Cliente user){
+        String canOrder = checkAmountOrderAndSufficientWallet(o, user);
+        char firstchar = canOrder.charAt(0);
+        String response = canOrder.substring(4);
+        if(firstchar == 'T'){
+            int num = or.insertOrdineWithDB(null, o);
+            if(num > 0){
+                Utility.sendResponseOrderedProducts(num, response, user);
             }
             else{
-                Utility.msgInf("GEOSTORE", "Rileggi la domanda\n");
-                flagInsert = true;
+                Utility.sendResponseOrderedProducts(num, response, user);
             }
-        }while(flagInsert);
-    }*/
+        }
+        else{
+            Utility.sendResponseOrderedProducts(0, response, user);
+        }
+    }
 
     /*public void modificaOrdine(){
         view.printOrdini(odr.getOrdiniWithDB());
@@ -301,8 +300,8 @@ public class Service {
         }
     }*/
 
-    /*private static boolean checkAmountOrderAndSufficientWallet(Ordine o, Utente u){
-        boolean canOrder = true;
+    private static String checkAmountOrderAndSufficientWallet(Ordine o, Utente u){
+        String canOrder = "";
         ProdottoRepository pr = new ProdottoRepository();
         UtenteRepository ur = new UtenteRepository();
 
@@ -344,29 +343,31 @@ public class Service {
                     int num = ur.updateWalletUtente(u.getId(), u);
 
                     if(num > 0){
-                        Utility.msgInf("GEOSTORE", "Pagamento riuscito\n");
+                        Utility.msgInf("GEOSTORE", "T - Pagamento riuscito\n");
+                        canOrder = "T - Pagamento riuscito".toUpperCase();
                     }
                     else{
-                        Utility.msgInf("GEOSTORE", "Pagamento non riuscito\n");
+                        Utility.msgInf("GEOSTORE", "F - Pagamento non riuscito\n");
+                        canOrder = "F - Pagamento non riuscito".toUpperCase();
                     }
 
                 }
                 else{
-                    Utility.msgInf("GEOSTORE", "Non hai abbastanza denaro\n");
-                    canOrder = false;
+                    Utility.msgInf("GEOSTORE", "F - Non hai abbastanza denaro\n");
+                    canOrder = "F - Non hai abbastanza denaro".toUpperCase();
                 }
             }
             else{
-                Utility.msgInf("GEOSTORE", "La quantità ordinata supera quella disponibile\n");
-                canOrder = false;
+                Utility.msgInf("GEOSTORE", "F - La quantità ordinata supera quella disponibile\n");
+                canOrder = "F - La quantità ordinata supera quella disponibile".toUpperCase();
             }
         }
         else{
-            Utility.msgInf("GEOSTORE", "L'oggetto ordinato non è disponibile oppure è inesistente\n");
-            canOrder = false;
+            Utility.msgInf("GEOSTORE", "F - L'oggetto ordinato non è disponibile oppure è inesistente\n");
+            canOrder = "F - L'oggetto ordinato non è disponibile oppure è inesistente".toUpperCase();
         }
         return canOrder;
-    }*/
+    }
 
     /*private static void checkOrderChanged(Ordine oOld, Ordine oNew, Utente u){
         UtenteRepository ur = new UtenteRepository();
@@ -756,33 +757,6 @@ public class Service {
         Materia m = new Materia();
         view.maskObjViaMat(m);
         view.printProdotti(pr.getProdottiViaMateriaWithDB(m.getId()));
-    }*/
-
-    /*public void ordiniEffettuati(Utente u, boolean youCanChoose){
-        int choose = 0;
-        if(youCanChoose){
-            choose = Utility.insertInt("1 - tuoi ordini, 2 - di un'altra persona, 3 - generale");
-        }
-
-        if(choose == 1 || !youCanChoose){
-            Utility.msgInf("GEOSTORE", "Tuoi ordini\n");
-            view.printOrdini(odr.getOrdiniByUserWithDB(u.getId()));
-        }
-        else if(choose == 2){
-            Utility.msgInf("GEOSTORE", "Ordini di qualcun'altro\n");
-
-            view.printUtenti(ur.getUtentiWithDB());
-            Integer anotherUser = Utility.insertInt("Inserisci l'id di un'altra persona");
-            view.printOrdini(odr.getOrdiniByUserWithDB(anotherUser));
-        }
-        else if(choose == 3){
-            Utility.msgInf("GEOSTORE", "Ordini in generale\n");
-
-            view.printOrdini(odr.getOrdiniWithDB());
-        }
-        else{
-            Utility.msgInf("GEOSTORE", "Non so cosa hai inserito\n");
-        }
     }*/
 
     /*public void ordiniTotaliGiornalieri(Utente u){

@@ -10,6 +10,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import org.controller.mask.NewsMaskController;
+import org.controller.mask.OrderMaskController;
 import org.controller.mask.ProductMaskController;
 import org.controller.mask.UserMaskController;
 import org.models.*;
@@ -65,12 +66,15 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
         else if(itemScene != null && itemScene.equals("product")){
             title.setText("Creazione prodotto");
         }
+        else if(itemScene != null && itemScene.equals("order")){
+            title.setText("Ordinazione prodotto");
+        }
         else{
             title.setText("Creazione notizia");
         }
     }
 
-    public void loadMask(String itemScene){
+    public void loadMask(String itemScene, String IDOrderKey){ //idOrderKey usato per l'ordinazione prodotto
         this.itemScene = itemScene;
 
         if(this.itemScene != null && this.itemScene.equals("user")){
@@ -120,6 +124,29 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
                 e.printStackTrace();
             }
         }
+        else if(this.itemScene != null && this.itemScene.equals("order")){
+            try {
+                // Costruisce il percorso completo del file FXML
+                URL fileUrl = getClass().getResource("/org/scenes/mask/orderMask.fxml");
+                if (fileUrl == null) {
+                    throw new java.io.FileNotFoundException("FXML file can't be found");
+                }
+
+                FXMLLoader loader = new FXMLLoader(fileUrl);
+                VBox mask = loader.load();
+                OrderMaskController orderMaskController = loader.getController();// Ottieni il controller della scena caricata
+                orderMaskController.getValuesForOrder(IDOrderKey, user);
+                maskController = orderMaskController;
+                createMask.getChildren().add(mask);
+
+                // Carica il file FXML
+                // Imposta la scena caricata come contenuto centrale del BorderPane
+
+            } catch (Exception e) {
+                System.out.println("No page found. Please check FXMLLoader.");
+                e.printStackTrace();
+            }
+        }
         else{
             try {
                 // Costruisce il percorso completo del file FXML
@@ -157,6 +184,14 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
         else if(this.itemScene != null && this.itemScene.equals("product")){
             LoadPage.getPartialScene(fxmlLoader, "chooseTProductAdmin", user);
         }
+        else if(this.itemScene != null && this.itemScene.equals("order")){
+            if(isAdmin){
+                LoadPage.getPartialScene(fxmlLoader, "chooseTOrderAdmin", user);
+            }
+            else{
+                LoadPage.getPartialScene(fxmlLoader, "chooseTOrderCliente", user);
+            }
+        }
         else{
             LoadPage.getPartialScene(fxmlLoader, "homepage", user);
         }
@@ -189,6 +224,13 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
 
             //crea prodotto
             service.creazioneProdotto(p, user);
+        }
+        else if(maskController instanceof OrderMaskController){
+            OrderMaskController orderMaskController = (OrderMaskController) maskController;
+            Ordine o = orderMaskController.setValues();
+
+            //ordina prodotto
+            service.ordinazioneProdotto(o, user);
         }
         else{
             NewsMaskController newsMaskController = (NewsMaskController) maskController;

@@ -83,7 +83,7 @@ public class MenuController {
             System.out.println("goes to user");
             PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
             partialSceneDTO.setFxmlLoader(fxmlLoader);
-            partialSceneDTO.setInnerScene("readSolo");
+            partialSceneDTO.setInnerScene("readProfileUser");
             partialSceneDTO.setUser(user);
             LoadPage.getPartialSceneCRU(partialSceneDTO, null);
         }
@@ -98,6 +98,18 @@ public class MenuController {
         else{
             System.out.println("goes to product");
             LoadPage.getPartialScene(fxmlLoader, "chooseTProductCliente", user);
+        }
+    }
+
+    @FXML
+    private void order(){
+        if(isAdmin){
+            System.out.println("goes to order");
+            LoadPage.getPartialScene(fxmlLoader, "chooseTOrderAdmin", user);
+        }
+        else{
+            System.out.println("goes to order");
+            LoadPage.getPartialScene(fxmlLoader, "chooseTOrderCliente", user);
         }
     }
 

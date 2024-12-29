@@ -2,26 +2,21 @@ package org.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import org.controller.item.NewsItemController;
 import org.controller.item.UserItemController;
 import org.models.Amministratore;
 import org.models.Cliente;
-import org.models.News;
 import org.models.Utente;
 import org.services.LoadPage;
 import org.services.Service;
 
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
-public class ReadSoloController {// Questo è il BorderPane di menu.fxml
+public class ReadProfileUserController {// Questo è il BorderPane di menu.fxml
 
     @FXML
     private Label title;

@@ -1,13 +1,14 @@
 package org.controller.item;
 
-import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.util.Duration;
-import org.models.*;
+import org.models.Amministratore;
+import org.models.Cliente;
+import org.models.Ordine;
+import org.models.Prodotto;
 import org.services.LoadPage;
 import org.services.Service;
 import org.utility.PartialSceneDTO;
@@ -17,12 +18,12 @@ import java.net.URL;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
-public class ProductItemController implements Initializable {
+public class OrderItemController implements Initializable {
 
     @FXML
-    private Label id, name, price, available, category, material, quantity;
+    private Label id, userEmail, productName, orderDate, status, orderQuantity, productPrice;
     @FXML
-    private Button update, delete, shop;
+    private Button update, delete;
 
     private Cliente user;
     private Boolean isAdmin;
@@ -45,30 +46,44 @@ public class ProductItemController implements Initializable {
         this.fxmlLoader = fxmlLoader;
     }
 
-    public void setValues(Prodotto prodotto){
+    public void setValues(Ordine ordine){
 
-        id.setText(prodotto.getId().toString());
-        name.setText(prodotto.getNome());
-        price.setText(Utility.formatValueBigDecimal(prodotto.getPrezzo()) + " C");
-        available.setText(prodotto.getDisponibilita().getCode());
-        category.setText(prodotto.getCategoria().getNome());
-        material.setText(prodotto.getMateria().getNome());
-        quantity.setText(prodotto.getQuantita_disp().toString());
+        id.setText(ordine.getId().toString());
+
+        if(ordine.getUtente() instanceof Amministratore){
+            Amministratore admin = (Amministratore) ordine.getUtente();
+            userEmail.setText(admin.getEmail());
+        }
+        else{
+            Cliente cliente = (Cliente) ordine.getUtente();
+            userEmail.setText(cliente.getEmail());
+        }
+
+        productName.setText(ordine.getProdotto().getNome());
+
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(ordine.getData_ordine());
+        int giorno = calendario.get(Calendar.DAY_OF_MONTH);
+        int mese = calendario.get(Calendar.MONTH) + 1;
+        int anno = calendario.get(Calendar.YEAR);
+
+        orderDate.setText(giorno+"/"+mese+"/"+anno);
+        status.setText(ordine.getStato().getCode());
+        orderQuantity.setText(ordine.getQuantita().toString());
+        productPrice.setText(Utility.formatValueBigDecimal(ordine.getPrezzo_unitario()) + " C");
 
     }
 
-    public void enableButtons(Boolean isAdmin, Boolean canOrder){
+    public void enableButtons(Boolean isAdmin){
         update.setVisible(isAdmin);
         update.setManaged(isAdmin);
         delete.setVisible(isAdmin);
         delete.setManaged(isAdmin);
-        shop.setVisible(canOrder);
-        shop.setManaged(canOrder);
     }
 
     //------------------BUTTONS-----------------------
 
-    @FXML
+    /*@FXML
     private void updating(){ //button per andare alla pagina di modifica prodotto
         System.out.println("goes to update product");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
@@ -78,9 +93,9 @@ public class ProductItemController implements Initializable {
         partialSceneDTO.setUser(user);
         String idKey = id.getText();
         LoadPage.getPartialSceneCRU(partialSceneDTO, idKey);
-    }
+    }*/
 
-    @FXML
+    /*@FXML
     private void deleting(){ //button per eliminare prodotto
         System.out.println("goes to delete product");
         System.out.println("Start deleting");
@@ -89,19 +104,7 @@ public class ProductItemController implements Initializable {
         Service service = new Service();
 
         service.eliminazioneProdotto(id.getText(), user);
-    }
-
-    @FXML
-    private void shopping(){ //button per andare alla pagina di ordinazione prodotto
-        System.out.println("goes to update product");
-        PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
-        partialSceneDTO.setFxmlLoader(fxmlLoader);
-        partialSceneDTO.setInnerScene("create");
-        partialSceneDTO.setItemScene("order");
-        partialSceneDTO.setUser(user);
-        String idKey = id.getText();
-        LoadPage.getPartialSceneCRU(partialSceneDTO, idKey);
-    }
+    }*/
 
 
     @Override

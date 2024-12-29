@@ -191,4 +191,37 @@ public class Utility {
             delay.play();
         }
     }
+
+    public static void sendResponseOrderedProducts(Integer num, String response, Cliente user){
+        if(num > 0){
+            LoadPage.answerScene("positive", response);
+
+            //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+            PauseTransition delay = new PauseTransition(Duration.seconds(3));
+            delay.setOnFinished(event -> {
+                // Dopo 2 secondi, carica la terza scena
+                LoadPage.answerScene("info", "LA RICORDIAMO CHE IL PAGAMENTO È STATO EFFETTUATO CON SUCCESSO");
+            });
+            delay.play();
+
+            //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+            PauseTransition delay2 = new PauseTransition(Duration.seconds(9));
+            delay2.setOnFinished(event -> {
+                // Dopo 2 secondi, carica la terza scena
+                LoadPage.goesToMenu(user);
+            });
+            delay2.play();
+        }
+        else{
+            LoadPage.answerScene("negative", response);
+
+            //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+            PauseTransition delay = new PauseTransition(Duration.seconds(6));
+            delay.setOnFinished(event -> {
+                // Dopo 2 secondi, carica la terza scena
+                LoadPage.goesToMenu(user);
+            });
+            delay.play();
+        }
+    }
 }

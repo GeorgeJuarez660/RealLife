@@ -8,7 +8,7 @@ import org.services.LoadPage;
 import org.services.Service;
 import org.utility.PartialSceneDTO;
 
-public class ChooseTUserController {
+public class ChooseTOrderController {
     private Cliente user;
     private Boolean isAdmin;
     private BorderPane fxmlLoader;
@@ -34,33 +34,34 @@ public class ChooseTUserController {
     //------------------BUTTONS-----------------------
 
     @FXML
-    private void lookUserProfile() {
-        System.out.println("goes to look user profile");
-        PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
-        partialSceneDTO.setFxmlLoader(fxmlLoader);
-        partialSceneDTO.setInnerScene("readProfileUser");
-        partialSceneDTO.setUser(user);
-        LoadPage.getPartialSceneCRU(partialSceneDTO, null);
-    }
-
-    @FXML
-    private void lookUsers() {
-        System.out.println("goes to look users");
+    private void lookYourOrders() {
+        System.out.println("goes to look your orders");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
         partialSceneDTO.setInnerScene("read");
-        partialSceneDTO.setItemScene("user");
+        partialSceneDTO.setItemScene("order-2");
         partialSceneDTO.setUser(user);
         LoadPage.getPartialSceneCRU(partialSceneDTO, null);
     }
 
     @FXML
-    private void createUser() {
-        System.out.println("goes to create user");
+    private void lookAnotherOrders() {
+        System.out.println("goes to look another orders");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
-        partialSceneDTO.setInnerScene("create");
-        partialSceneDTO.setItemScene("user");
+        partialSceneDTO.setInnerScene("read");
+        partialSceneDTO.setItemScene("order-1");
+        partialSceneDTO.setUser(user);
+        LoadPage.getPartialSceneCRU(partialSceneDTO, null);
+    }
+
+    @FXML
+    private void orderProduct() {
+        System.out.println("goes to order product");
+        PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+        partialSceneDTO.setFxmlLoader(fxmlLoader);
+        partialSceneDTO.setInnerScene("read");
+        partialSceneDTO.setItemScene("product-O");
         partialSceneDTO.setUser(user);
         LoadPage.getPartialSceneCRU(partialSceneDTO, null);
     }
