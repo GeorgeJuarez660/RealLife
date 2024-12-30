@@ -250,6 +250,10 @@ public class Service {
         return or.getOrdiniByUserAndKeywordWithDB(idUtente, keyword);
     }
 
+    public Ordine ottieniOrdine(Integer idOrdine){
+        return or.getOrdineWithDB(idOrdine);
+    }
+
     public void ordinazioneProdotto(Ordine o, Cliente user){
         String canOrder = checkAmountOrderAndSufficientWallet(o, user);
         char firstchar = canOrder.charAt(0);
@@ -268,37 +272,35 @@ public class Service {
         }
     }
 
-    /*public void modificaOrdine(){
-        view.printOrdini(odr.getOrdiniWithDB());
-        Ordine o = odr.getOrdineWithDB(Utility.insertInt("Inserisci l'id ordine"));
+    public void modificaOrdine(Ordine order, Cliente user){
 
-        if(o != null && o.getProdotto() != null && o.getProdotto().getNome() != null){
-            Utility.msgInf("GEOSTORE", "Ordine trovato\n");
+        Stato s = sr.getStatoWithDB(order.getStato().getId());
 
-            Ordine oNew = view.maskUpdateOrdine(o, new Ordine());
-            //TODO: inserire il check
-            Stato s = sr.getStatoWithDB(oNew.getStato().getId());
+        if(s != null && s.getCode() != null){
+            Ordine orderOld = or.getOrdineWithDB(order.getId());
+            Utente u = ur.getUtenteWithDB(orderOld.getUtente().getId());
+            String responseCheckOrder;
 
-            if(s != null && s.getCode() != null){
-                Utente u = ur.getUtenteWithDB(o.getUtente().getId());
-                checkOrderChanged(o, oNew, u);
+            responseCheckOrder = checkOrderChanged(orderOld, order, u);
+            char firstchar = responseCheckOrder.charAt(0);
+            String response = responseCheckOrder.substring(4);
+            if(firstchar == 'T'){
+                changeStatusProdottoAfterOrder(orderOld, order);
 
-                changeStatusProdottoAfterOrder(o, oNew);
-
-                int num = odr.updateOrdineWithDB(oNew.getId(), oNew);
+                int num = or.updateOrdineWithDB(order.getId(), order);
 
                 if(num > 0){
-                    Utility.msgInf("GEOSTORE", "Ordine aggiornato\n");
+                    Utility.sendResponse(num, response, user);
                 }
                 else{
-                    Utility.msgInf("GEOSTORE", "Ordine non aggiornato\n");
+                    Utility.sendResponse(num, response, user);
                 }
             }
+            else{
+                Utility.sendResponse(0, response, user);
+            }
         }
-        else{
-            Utility.msgInf("GEOSTORE", "Ordine non trovato\n");
-        }
-    }*/
+    }
 
     private static String checkAmountOrderAndSufficientWallet(Ordine o, Utente u){
         String canOrder = "";
@@ -369,27 +371,34 @@ public class Service {
         return canOrder;
     }
 
-    /*private static void checkOrderChanged(Ordine oOld, Ordine oNew, Utente u){
+    private String checkOrderChanged(Ordine oOld, Ordine oNew, Utente u){
         UtenteRepository ur = new UtenteRepository();
         BigDecimal pagamentoNuovo = new BigDecimal(0);
         BigDecimal pagamentoVecchio = new BigDecimal(0);
         BigDecimal pagamentoDecisivo = new BigDecimal(0);
         BigDecimal denaro;
-        String choose = "";
+        String choose = "", response = "";
 
         if(!Objects.equals(oOld.getQuantita(), oNew.getQuantita())){
             Utility.msgInf("GEOSTORE", "è stata modificata la quantità ordinata\n");
 
             if(oOld.getQuantita() < oNew.getQuantita()) {
-                Utility.msgInf("GEOSTORE", "Procediamo con il pagamento del denaro richiesto\n");
 
-                pagamentoNuovo = oNew.getPrezzo_unitario().multiply(BigDecimal.valueOf(oNew.getQuantita()));
-                pagamentoVecchio = oOld.getPrezzo_unitario().multiply(BigDecimal.valueOf(oOld.getQuantita()));
+                Prodotto p = pr.getProdottoDispWithDB(oNew.getProdotto().getId());
+                if(oNew.getQuantita() > p.getQuantita_disp()){
+                    choose = "N";
+                }
+                else{
+                    Utility.msgInf("GEOSTORE", "Procediamo con il pagamento del denaro richiesto\n");
 
-                pagamentoDecisivo = pagamentoNuovo.subtract(pagamentoVecchio);
-                denaro = new BigDecimal(0);
+                    pagamentoNuovo = oNew.getPrezzo_unitario().multiply(BigDecimal.valueOf(oNew.getQuantita()));
+                    pagamentoVecchio = oOld.getPrezzo_unitario().multiply(BigDecimal.valueOf(oOld.getQuantita()));
 
-                choose = "S";
+                    pagamentoDecisivo = pagamentoNuovo.subtract(pagamentoVecchio);
+                    denaro = new BigDecimal(0);
+
+                    choose = "S";
+                }
             }
             else if(oOld.getQuantita() > oNew.getQuantita()) {
                 Utility.msgInf("GEOSTORE", "Procediamo con il rimborso del denaro in eccesso\n");
@@ -411,6 +420,8 @@ public class Service {
                 denaro = cDenaro.getPortafoglio();
             }
 
+
+
             if(choose.equals("S")){
                 if (pagamentoDecisivo.compareTo(denaro) <= 0) {
 
@@ -430,13 +441,16 @@ public class Service {
 
                     if(num > 0){
                         Utility.msgInf("GEOSTORE", "Pagamento riuscito\n");
+                        response = "T - Pagamento riuscito. Ordine modificato".toUpperCase();
                     }
                     else{
                         Utility.msgInf("GEOSTORE", "Pagamento non riuscito\n");
+                        response = "F - Pagamento non riuscito. Modifica ordine".toUpperCase();
                     }
                 }
                 else{
                     Utility.msgInf("GEOSTORE", "Denaro insufficiente\n");
+                    response = "F - Denaro insufficiente. Modifica ordine".toUpperCase();
                 }
             }
             else if(choose.equals("A")){
@@ -456,15 +470,21 @@ public class Service {
 
                 if(num > 0){
                     Utility.msgInf("GEOSTORE", "Rimborso riuscito\n");
+                    response = "T - Rimborso riuscito. Ordine modificato".toUpperCase();
                 }
                 else{
                     Utility.msgInf("GEOSTORE", "Rimborso non riuscito\n");
+                    response = "F - Rimborso non riuscito. Modifica ordine".toUpperCase();
                 }
             }
+            else if(choose.equals("N")){
+                response = "F - La quantita ordinata supera quella disponibile. Modifica ordine".toUpperCase();
+            }
         }
-    }*/
+        return response;
+    }
 
-    /*public void changeStatusProdottoAfterOrder(Ordine oOld, Ordine oNew){
+    public void changeStatusProdottoAfterOrder(Ordine oOld, Ordine oNew){
         OrdineRepository or = new OrdineRepository();
         if(oOld.getStato().getId() == 1 && oNew.getStato().getId() == 2){
             ProdottoRepository pr = new ProdottoRepository();
@@ -496,7 +516,7 @@ public class Service {
 
             refundAfterDeleteOrder(oOld, u);
         }
-    }*/
+    }
 
     /*public void eliminazioneOrdine(Utente u, boolean onlyOwnUser){
         Ordine o;
@@ -765,5 +785,9 @@ public class Service {
 
     public HashMap<Integer, Disponibilita> ottieniDisponibilita(){
         return dr.getDisponibilitaWithDB();
+    }
+
+    public HashMap<Integer, Stato> ottieniStato(){
+        return sr.getStatusWithDB();
     }
 }

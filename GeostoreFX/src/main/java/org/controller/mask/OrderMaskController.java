@@ -25,6 +25,8 @@ public class OrderMaskController implements Initializable {
     private TextField productName, userEmail, quantity, productPrice;
     @FXML
     private DatePicker orderDate;
+    @FXML
+    private ChoiceBox<String> status;
 
     private Service service;
     private String IDkey; //usato per la ricerca/modifica/rimozione
@@ -58,21 +60,49 @@ public class OrderMaskController implements Initializable {
     }
 
     //per la modifica ordine
-    /*public void getValues(String IDkey){
+    public void setStatus(){
+        service = new Service();
+        Map<Integer, Stato> st = new HashMap<>();
+        st = service.ottieniStato();
+
+        for(Stato stato : st.values()){
+            status.getItems().add(stato.getId() + " - " + stato.getCode());
+        }
+    }
+
+    public void getValues(String IDkey){
 
         service = new Service();
-        Prodotto prodotto;
-        prodotto = service.ottieniProdotto(Integer.parseInt(IDkey));
+        Ordine ordine;
+        ordine = service.ottieniOrdine(Integer.parseInt(IDkey));
 
-        name.setText(prodotto.getNome());
-        price.setText(Utility.formatValueBigDecimal(prodotto.getPrezzo()));
-        available.setValue(prodotto.getDisponibilita().getId() + " - " + prodotto.getDisponibilita().getCode());
-        category.setValue(prodotto.getCategoria().getId() + " - " + prodotto.getCategoria().getNome());
-        material.setValue(prodotto.getMateria().getId() + " - " + prodotto.getMateria().getNome());
-        quantity.setText(prodotto.getQuantita_disp().toString());
+        productName.setText(ordine.getProdotto().getNome());
+
+        if(ordine.getUtente() instanceof Amministratore){
+            Amministratore admin = (Amministratore) ordine.getUtente();
+            userEmail.setText(admin.getEmail());
+            userOrder = admin;
+        }
+        else{
+            Cliente cliente = (Cliente) ordine.getUtente();
+            userEmail.setText(cliente.getEmail());
+            userOrder = cliente;
+        }
+
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(ordine.getData_ordine());
+        int giorno = calendario.get(Calendar.DAY_OF_MONTH);
+        int mese = calendario.get(Calendar.MONTH) + 1;
+        int anno = calendario.get(Calendar.YEAR);
+
+        orderDate.setPromptText(giorno+"/"+mese+"/"+anno);
+        quantity.setText(ordine.getQuantita().toString());
+        productPrice.setText(Utility.formatValueBigDecimal(ordine.getPrezzo_unitario()));
+        status.setValue(ordine.getStato().getId() + " - " + ordine.getStato().getCode());
 
         this.IDkey = IDkey;
-    }*/
+        productOrder = ordine.getProdotto();
+    }
 
     //------------------GETTING FROM CRUD CONTROLLER-----------------------
 
@@ -110,42 +140,40 @@ public class OrderMaskController implements Initializable {
         return ordine;
     }
 
-    //per la modifica prodotto
-    /*public Prodotto setValuesWithID() throws ParseException { //recuperato da mask
-        Prodotto prodotto = new Prodotto();
-        service = new Service();
+    //per la modifica ordine
+    public Ordine setValuesWithID() throws ParseException { //recuperato da mask
+        Ordine ordine = new Ordine();
 
-        prodotto.setId(Integer.parseInt(IDkey));
-        prodotto.setNome(name.getText());
+        ordine.setId(Integer.parseInt(IDkey));
+        ordine.setUtente(userOrder);
+        ordine.setProdotto(productOrder);
 
-        if(price != null && price.getText() != null && !price.getText().isEmpty() && !price.getText().isBlank()) {
-            prodotto.setPrezzo(Utility.formatValueString(price.getText()));
+        if(productPrice != null && productPrice.getText() != null && !productPrice.getText().isEmpty() && !productPrice.getText().isBlank()) {
+            ordine.setPrezzo_unitario(Utility.formatValueString(productPrice.getText()));
         }
         else{
-            prodotto.setPrezzo(new BigDecimal(0));
+            ordine.setPrezzo_unitario(new BigDecimal(0));
         }
 
-        Disponibilita disponibilita = new Disponibilita();
-        disponibilita.setId(Integer.parseInt(available.getValue().substring(0, 1)));
-        prodotto.setDisponibilita(disponibilita);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate localDate = LocalDate.parse(orderDate.getPromptText(), formatter);
 
-        Categoria categoria = new Categoria();
-        categoria.setId(Integer.parseInt(category.getValue().substring(0, 1)));
-        prodotto.setCategoria(categoria);
-
-        Materia materia = new Materia();
-        materia.setId(Integer.parseInt(material.getValue().substring(0, 1)));
-        prodotto.setMateria(materia);
+        ordine.setData_ordine(Timestamp.valueOf(localDate.atStartOfDay()));
 
         if(quantity != null && quantity.getText() != null && !quantity.getText().isEmpty() && !quantity.getText().isBlank()){
-            prodotto.setQuantita_disp(Integer.parseInt(quantity.getText()));
+            ordine.setQuantita(Integer.parseInt(quantity.getText()));
         }
         else{
-            prodotto.setQuantita_disp(0);
+            ordine.setQuantita(0);
         }
 
-        return prodotto;
-    }*/
+        Stato stato = new Stato();
+        stato.setId(Integer.parseInt(status.getValue().substring(0,1)));
+
+        ordine.setStato(stato);
+
+        return ordine;
+    }
 
     //------------------NUMBER FIELD (TEXT FIELD WITH PATTERN)-----------------------
 

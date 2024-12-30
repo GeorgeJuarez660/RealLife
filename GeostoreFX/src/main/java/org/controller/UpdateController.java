@@ -8,12 +8,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.controller.mask.NewsMaskController;
+import org.controller.mask.OrderMaskController;
 import org.controller.mask.ProductMaskController;
 import org.controller.mask.UserMaskController;
-import org.models.Amministratore;
-import org.models.Cliente;
-import org.models.News;
-import org.models.Prodotto;
+import org.models.*;
 import org.services.LoadPage;
 import org.services.Service;
 
@@ -59,6 +57,9 @@ public class UpdateController {// Questo è il BorderPane di menu.fxml
         }
         else if(itemScene != null && itemScene.equals("product")){
             title.setText("Modifica prodotto");
+        }
+        else if(itemScene != null && itemScene.equals("order")){
+            title.setText("Modifica ordine");
         }
         else{
             title.setText("Modifica notizia");
@@ -107,6 +108,30 @@ public class UpdateController {// Questo è il BorderPane di menu.fxml
                 productMaskController.setMaterial();
                 productMaskController.getValues(IDkey);
                 maskController = productMaskController;
+                updateMask.getChildren().add(mask);
+
+                // Carica il file FXML
+                // Imposta la scena caricata come contenuto centrale del HBox
+
+            } catch (Exception e) {
+                System.out.println("No page found. Please check FXMLLoader.");
+                e.printStackTrace();
+            }
+        }
+        else if(this.itemScene != null && this.itemScene.equals("order")){
+            try {
+                // Costruisce il percorso completo del file FXML della maschera
+                URL fileUrl = getClass().getResource("/org/scenes/mask/orderUpdateMask.fxml");
+                if (fileUrl == null) {
+                    throw new java.io.FileNotFoundException("FXML file can't be found");
+                }
+
+                FXMLLoader loader = new FXMLLoader(fileUrl);
+                VBox mask = loader.load();
+                OrderMaskController orderMaskController = loader.getController();// Ottieni il controller della scena caricata
+                orderMaskController.setStatus();
+                orderMaskController.getValues(IDkey);
+                maskController = orderMaskController;
                 updateMask.getChildren().add(mask);
 
                 // Carica il file FXML
@@ -176,6 +201,11 @@ public class UpdateController {// Questo è il BorderPane di menu.fxml
             ProductMaskController productMaskController = (ProductMaskController) maskController;
             Prodotto p = productMaskController.setValuesWithID();
             service.modificaProdotto(p, user);
+        }
+        else if(maskController instanceof OrderMaskController) {
+            OrderMaskController orderMaskController = (OrderMaskController) maskController;
+            Ordine o = orderMaskController.setValuesWithID();
+            service.modificaOrdine(o, user);
         }
         else{
             NewsMaskController newsMaskController = (NewsMaskController) maskController;

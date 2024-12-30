@@ -83,21 +83,21 @@ public class OrderItemController implements Initializable {
 
     //------------------BUTTONS-----------------------
 
-    /*@FXML
-    private void updating(){ //button per andare alla pagina di modifica prodotto
-        System.out.println("goes to update product");
+    @FXML
+    private void updating(){ //button per andare alla pagina di modifica ordine
+        System.out.println("goes to update order");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
         partialSceneDTO.setInnerScene("update");
-        partialSceneDTO.setItemScene("product");
+        partialSceneDTO.setItemScene("order");
         partialSceneDTO.setUser(user);
         String idKey = id.getText();
         LoadPage.getPartialSceneCRU(partialSceneDTO, idKey);
-    }*/
+    }
 
     /*@FXML
-    private void deleting(){ //button per eliminare prodotto
-        System.out.println("goes to delete product");
+    private void deleting(){ //button per eliminare ordine
+        System.out.println("goes to delete order");
         System.out.println("Start deleting");
         LoadPage.loadingScene("ELIMINAZIONE IN CORSO...");
 
