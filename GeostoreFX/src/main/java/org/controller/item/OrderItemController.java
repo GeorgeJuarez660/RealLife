@@ -95,7 +95,7 @@ public class OrderItemController implements Initializable {
         LoadPage.getPartialSceneCRU(partialSceneDTO, idKey);
     }
 
-    /*@FXML
+    @FXML
     private void deleting(){ //button per eliminare ordine
         System.out.println("goes to delete order");
         System.out.println("Start deleting");
@@ -103,8 +103,8 @@ public class OrderItemController implements Initializable {
 
         Service service = new Service();
 
-        service.eliminazioneProdotto(id.getText(), user);
-    }*/
+        service.eliminazioneOrdine(id.getText(), user);
+    }
 
 
     @Override

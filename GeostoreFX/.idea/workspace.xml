@@ -5,20 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8273ca0a-1299-4b65-b52d-47dc6a793eae" name="Changes" comment="AppJavaFx: creating example">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/mask/orderUpdateMask.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/scenes/mask/orderUpdateMask.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/UpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/UpdateController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/item/OrderItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/item/OrderItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/mask/OrderMaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/mask/OrderMaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/services/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/services/Service.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/utility/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/utility/Utility.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/item/orderItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/item/orderItem.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/UpdateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/UpdateController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/item/OrderItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/item/OrderItemController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/mask/OrderMaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/mask/OrderMaskController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/item/orderItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/item/orderItem.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/services/Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/services/Service.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,19 +208,9 @@
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/controller/item/NewsItemController.java</url>
-          <line>60</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/HomepageController.java</url>
           <line>101</line>
           <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/controller/item/NewsItemController.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/Service.java</url>
@@ -340,6 +321,21 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/OrderTotalPriceController.java</url>
           <line>67</line>
           <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/services/Service.java</url>
+          <line>284</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/services/Service.java</url>
+          <line>375</line>
+          <option name="timeStamp" value="83" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/services/Service.java</url>
+          <line>381</line>
+          <option name="timeStamp" value="84" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

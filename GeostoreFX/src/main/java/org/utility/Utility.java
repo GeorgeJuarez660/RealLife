@@ -192,6 +192,39 @@ public class Utility {
         }
     }
 
+    public static void sendResponseDeletedOrders(Integer num, Cliente user){
+        if(num > 0){
+            LoadPage.answerScene("positive", "ORDINE ELIMINATO CON SUCCESSO");
+
+            //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+            PauseTransition delay = new PauseTransition(Duration.seconds(3));
+            delay.setOnFinished(event -> {
+                // Dopo 2 secondi, carica la terza scena
+                LoadPage.answerScene("info", "LA RICORDIAMO CHE È STATO EFFETTUATO DEL RIMBORSO ALL'UTENTE CHE AVEVA ORDINATO QUESTO PRODOTTO");
+            });
+            delay.play();
+
+            //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+            PauseTransition delay2 = new PauseTransition(Duration.seconds(9));
+            delay2.setOnFinished(event -> {
+                // Dopo 2 secondi, carica la terza scena
+                LoadPage.goesToMenu(user);
+            });
+            delay2.play();
+        }
+        else{
+            LoadPage.answerScene("negative", "ELIMINAZIONE ORDINE FALLITA");
+
+            //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+            PauseTransition delay = new PauseTransition(Duration.seconds(3));
+            delay.setOnFinished(event -> {
+                // Dopo 2 secondi, carica la terza scena
+                LoadPage.goesToMenu(user);
+            });
+            delay.play();
+        }
+    }
+
     public static void sendResponseOrderedProducts(Integer num, String response, Cliente user){
         if(num > 0){
             LoadPage.answerScene("positive", response);

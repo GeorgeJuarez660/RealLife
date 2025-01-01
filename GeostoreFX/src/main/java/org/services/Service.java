@@ -481,6 +481,9 @@ public class Service {
                 response = "F - La quantita ordinata supera quella disponibile. Modifica ordine".toUpperCase();
             }
         }
+        else{
+            response = "T - Nessun cambiamento. Ordine modificato".toUpperCase();
+        }
         return response;
     }
 
@@ -518,48 +521,25 @@ public class Service {
         }
     }
 
-    /*public void eliminazioneOrdine(Utente u, boolean onlyOwnUser){
-        Ordine o;
-        if(onlyOwnUser){
-            view.printOrdini(odr.getOrdiniByUserWithDB(u.getId()));
-            o = odr.getOrdineByUserWithDB(u.getId(), Utility.insertInt("Inserisci l'id ordine"));
+    public void eliminazioneOrdine(String IDkey, Cliente user){
+        Ordine order = or.getOrdineWithDB(Integer.parseInt(IDkey));
 
-        }
-        else{
-            view.printOrdini(odr.getOrdiniWithDB());
-            o = odr.getOrdineWithDB(Utility.insertInt("Inserisci l'id ordine"));
-        }
+        if(order.getStato().getId() == 1) {
+            //solo l'ordine con stato ELABORAZIONE si può effettuare il rimborso
+            Utente uOrd = order.getUtente();
+            refundAfterDeleteOrder(order, uOrd);
 
-        if(o != null && o.getProdotto() != null && o.getProdotto().getNome() != null){
-            Utility.msgInf("GEOSTORE", "Ordine trovato\n");
-            if(Utility.insertString("Sei sicuro di voler eliminare quest'ordine?").equalsIgnoreCase("s")){
-
-                if(o.getStato().getId() == 1 || (!onlyOwnUser && (o.getStato().getId() != 3 && o.getStato().getId() != 5))){
-                    //solo l'ordine con stato ELABORAZIONE si può effettuare il rimborso
-                    Utente uOrd = o.getUtente();
-                    refundAfterDeleteOrder(o, uOrd);
-
-                    int num = odr.deleteOrdineWithDB(o.getId());
-                    if(num > 0){
-                        Utility.msgInf("GEOSTORE", "Ordine eliminato\n");
-                    }
-                    else{
-                        Utility.msgInf("GEOSTORE", "Ordine non eliminato\n");
-                    }
-                }
-                else{
-                    Utility.msgInf("GEOSTORE", "Non puoi eliminare l'ordine perchè lo stato è in " + o.getStato().getCode());
-                }
-
-            }
-            else{
-                Utility.msgInf("GEOSTORE", "Operazione annullata\n");
+            int num = or.deleteOrdineWithDB(order.getId());
+            if (num > 0) {
+                Utility.sendResponseDeletedOrders(num, user);
+            } else {
+                Utility.sendResponseDeletedOrders(num, user);
             }
         }
         else{
-            Utility.msgInf("GEOSTORE", "Ordine non trovato\n");
+            Utility.sendResponse(0, "Non puoi eliminare l'ordine perchè lo stato è in " + order.getStato().getCode() + ". Eliminazione ordine".toUpperCase(), user);
         }
-    }*/
+    }
 
     /*public void creazioneCategoria(){
         Categoria cat = new Categoria();
