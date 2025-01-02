@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import org.controller.item.UserItemController;
+import org.controller.items.UserItemController;
 import org.models.Amministratore;
 import org.models.Cliente;
 import org.models.Utente;
@@ -64,7 +64,7 @@ public class ReadProfileUserController {// Questo è il BorderPane di menu.fxml
 
         try {
             // Costruisce il percorso completo del file FXML
-            URL fileUrl = getClass().getResource("/org/scenes/item/" + itemScene + ".fxml"); //trova la scena news
+            URL fileUrl = getClass().getResource("/org/scenes/items/" + itemScene + ".fxml"); //trova la scena news
             if (fileUrl == null) {
                 throw new java.io.FileNotFoundException("FXML file can't be found");
             }

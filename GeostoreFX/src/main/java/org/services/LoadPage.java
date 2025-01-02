@@ -9,7 +9,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.controller.*;
-import org.controller.item.OrderTotalPriceItemController;
 import org.models.Cliente;
 import org.utility.PartialSceneDTO;
 
@@ -256,6 +255,10 @@ public class LoadPage {
                 OrderTotalPriceController orderTotalPriceController = (OrderTotalPriceController) controller;
                 orderTotalPriceController.save(fxmlLoader, user);
             }
+            else if(controller instanceof ChooseTCategoryController){
+                ChooseTCategoryController chooseTCategoryController = (ChooseTCategoryController) controller;
+                chooseTCategoryController.save(fxmlLoader, user);
+            }
             // Carica il file FXML
             // Imposta la scena caricata come contenuto centrale del BorderPane
             fxmlLoader.setCenter(newScene);
@@ -306,6 +309,13 @@ public class LoadPage {
                 readOrderTotalPriceController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
                 readOrderTotalPriceController.setTitle("Totale ordini effettuati del giorno", IDkey);
                 readOrderTotalPriceController.loadItem("orderItemTotalPrice", IDkey);
+            }
+            else if(controller instanceof ReadProductTypeController){
+                ReadProductTypeController readProductTypeController = (ReadProductTypeController) controller;
+                readProductTypeController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
+                readProductTypeController.setTitle(partialSceneDTO.getItemScene());
+                readProductTypeController.loadButtons(partialSceneDTO.getItemScene());
+                readProductTypeController.enableBackBtn();
             }
             else if(controller instanceof UpdateController){
                 UpdateController updateController = (UpdateController) controller;

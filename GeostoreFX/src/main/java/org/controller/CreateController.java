@@ -1,6 +1,5 @@
 package org.controller;
 
-import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,11 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
-import org.controller.mask.NewsMaskController;
-import org.controller.mask.OrderMaskController;
-import org.controller.mask.ProductMaskController;
-import org.controller.mask.UserMaskController;
+import org.controller.masks.NewsMaskController;
+import org.controller.masks.OrderMaskController;
+import org.controller.masks.ProductMaskController;
+import org.controller.masks.UserMaskController;
 import org.models.*;
 import org.services.LoadPage;
 import org.services.Service;
@@ -22,9 +20,6 @@ import java.net.URL;
 import java.sql.Date;
 import java.text.ParseException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 public class CreateController {// Questo è il BorderPane di menu.fxml
 
@@ -80,7 +75,7 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
         if(this.itemScene != null && this.itemScene.equals("user")){
             try {
                 // Costruisce il percorso completo del file FXML
-                URL fileUrl = getClass().getResource("/org/scenes/mask/userMask.fxml");
+                URL fileUrl = getClass().getResource("/org/scenes/masks/userMask.fxml");
                 if (fileUrl == null) {
                     throw new java.io.FileNotFoundException("FXML file can't be found");
                 }
@@ -102,7 +97,7 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
         else if(this.itemScene != null && this.itemScene.equals("product")){
             try {
                 // Costruisce il percorso completo del file FXML
-                URL fileUrl = getClass().getResource("/org/scenes/mask/productMask.fxml");
+                URL fileUrl = getClass().getResource("/org/scenes/masks/productMask.fxml");
                 if (fileUrl == null) {
                     throw new java.io.FileNotFoundException("FXML file can't be found");
                 }
@@ -127,7 +122,7 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
         else if(this.itemScene != null && this.itemScene.equals("order")){
             try {
                 // Costruisce il percorso completo del file FXML
-                URL fileUrl = getClass().getResource("/org/scenes/mask/orderMask.fxml");
+                URL fileUrl = getClass().getResource("/org/scenes/masks/orderMask.fxml");
                 if (fileUrl == null) {
                     throw new java.io.FileNotFoundException("FXML file can't be found");
                 }
@@ -150,7 +145,7 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
         else{
             try {
                 // Costruisce il percorso completo del file FXML
-                URL fileUrl = getClass().getResource("/org/scenes/mask/newsMask.fxml");
+                URL fileUrl = getClass().getResource("/org/scenes/masks/newsMask.fxml");
                 if (fileUrl == null) {
                     throw new java.io.FileNotFoundException("FXML file can't be found");
                 }

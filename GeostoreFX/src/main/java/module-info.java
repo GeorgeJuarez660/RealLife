@@ -19,10 +19,10 @@ module info {
     opens org.services to javafx.fxml;
     exports org.models;
     opens org.models to javafx.fxml;
-    exports org.controller.item;
-    opens org.controller.item to javafx.fxml;
-    exports org.controller.mask;
-    opens org.controller.mask to javafx.fxml;
+    exports org.controller.items;
+    opens org.controller.items to javafx.fxml;
+    exports org.controller.masks;
+    opens org.controller.masks to javafx.fxml;
     exports org.utility;
     opens org.utility to javafx.fxml;
 }

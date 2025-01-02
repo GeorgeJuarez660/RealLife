@@ -1,18 +1,15 @@
 package org.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import org.controller.item.NewsItemController;
-import org.controller.item.OrderItemController;
-import org.controller.item.ProductItemController;
-import org.controller.item.UserItemController;
+import org.controller.items.*;
 import org.models.*;
 import org.services.LoadPage;
 import org.services.Service;
@@ -171,7 +168,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                 if(utente.getId() != null && utente.getId() != 0){
                     try {
                         // Costruisce il percorso completo del file FXML
-                        URL fileUrl = getClass().getResource("/org/scenes/item/userItem.fxml"); //trova la scena user
+                        URL fileUrl = getClass().getResource("/org/scenes/items/userItem.fxml"); //trova la scena user
                         if (fileUrl == null) {
                             throw new java.io.FileNotFoundException("FXML file can't be found");
                         }
@@ -199,7 +196,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                 if(prodotto.getId() != null && prodotto.getId() != 0){
                     try {
                         // Costruisce il percorso completo del file FXML
-                        URL fileUrl = getClass().getResource("/org/scenes/item/productItem.fxml"); //trova la scena product
+                        URL fileUrl = getClass().getResource("/org/scenes/items/productItem.fxml"); //trova la scena product
                         if (fileUrl == null) {
                             throw new java.io.FileNotFoundException("FXML file can't be found");
                         }
@@ -232,7 +229,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                 if(ordine.getId() != null && ordine.getId() != 0){
                     try {
                         // Costruisce il percorso completo del file FXML
-                        URL fileUrl = getClass().getResource("/org/scenes/item/orderItem.fxml"); //trova la scena order
+                        URL fileUrl = getClass().getResource("/org/scenes/items/orderItem.fxml"); //trova la scena order
                         if (fileUrl == null) {
                             throw new java.io.FileNotFoundException("FXML file can't be found");
                         }
@@ -260,7 +257,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                 if(notizia.getId() != null && notizia.getId() != 0){
                     try {
                         // Costruisce il percorso completo del file FXML
-                        URL fileUrl = getClass().getResource("/org/scenes/item/newsItem.fxml"); //trova la scena news
+                        URL fileUrl = getClass().getResource("/org/scenes/items/newsItem.fxml"); //trova la scena news
                         if (fileUrl == null) {
                             throw new java.io.FileNotFoundException("FXML file can't be found");
                         }

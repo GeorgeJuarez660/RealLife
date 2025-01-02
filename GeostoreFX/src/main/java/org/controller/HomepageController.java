@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import org.controller.item.NewsItemController;
+import org.controller.items.NewsItemController;
 import org.models.*;
 import org.services.LoadPage;
 import org.services.Service;
@@ -17,9 +17,7 @@ import java.net.URL;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class HomepageController {
 
@@ -104,7 +102,7 @@ public class HomepageController {
         for (News notizia : notizie) {
             try {
                 // Costruisce il percorso completo del file FXML
-                URL fileUrl = getClass().getResource("/org/scenes/item/newsItem.fxml"); //trova la scena news
+                URL fileUrl = getClass().getResource("/org/scenes/items/newsItem.fxml"); //trova la scena news
                 if (fileUrl == null) {
                     throw new java.io.FileNotFoundException("FXML file can't be found");
                 }

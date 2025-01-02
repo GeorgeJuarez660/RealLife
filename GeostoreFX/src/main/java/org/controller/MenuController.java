@@ -114,6 +114,40 @@ public class MenuController {
     }
 
     @FXML
+    private void category(){
+        if(isAdmin){
+            System.out.println("goes to category");
+            LoadPage.getPartialScene(fxmlLoader, "chooseTCategoryAdmin", user);
+        }
+        else{
+            System.out.println("goes to category");
+            PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+            partialSceneDTO.setFxmlLoader(fxmlLoader);
+            partialSceneDTO.setInnerScene("readProductType");
+            partialSceneDTO.setItemScene("category");
+            partialSceneDTO.setUser(user);
+            LoadPage.getPartialSceneCRU(partialSceneDTO, null);
+        }
+    }
+
+    @FXML
+    private void material(){
+        if(isAdmin){
+            System.out.println("goes to material");
+            LoadPage.getPartialScene(fxmlLoader, "chooseTMaterialAdmin", user);
+        }
+        else{
+            System.out.println("goes to material");
+            PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+            partialSceneDTO.setFxmlLoader(fxmlLoader);
+            partialSceneDTO.setInnerScene("readProductType");
+            partialSceneDTO.setItemScene("material");
+            partialSceneDTO.setUser(user);
+            LoadPage.getPartialSceneCRU(partialSceneDTO, null);
+        }
+    }
+
+    @FXML
     public void initialize() {
         System.out.println("Root inizializzato: " + fxmlLoader);
     }
