@@ -259,6 +259,10 @@ public class LoadPage {
                 ChooseTCategoryController chooseTCategoryController = (ChooseTCategoryController) controller;
                 chooseTCategoryController.save(fxmlLoader, user);
             }
+            else if(controller instanceof ChooseTMaterialController){
+                ChooseTMaterialController chooseTMaterialController = (ChooseTMaterialController) controller;
+                chooseTMaterialController.save(fxmlLoader, user);
+            }
             // Carica il file FXML
             // Imposta la scena caricata come contenuto centrale del BorderPane
             fxmlLoader.setCenter(newScene);

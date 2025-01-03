@@ -13,6 +13,7 @@ import org.controller.items.*;
 import org.models.*;
 import org.services.LoadPage;
 import org.services.Service;
+import org.utility.PartialSceneDTO;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -64,8 +65,14 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
             if(lastChar.equals("1")){
                 title.setText("Elenco prodotti in generale");
             }
-            if(lastChar.equals("O")){ //per l'ordinazione prodotto
+            else if(lastChar.equals("O")){ //per l'ordinazione prodotto
                 title.setText("Elenco prodotti da ordinare");
+            }
+            else if(lastChar.equals("C")){ //per via categoria
+                title.setText("Prodotti per categoria");
+            }
+            else if(lastChar.equals("M")){ //per via materia
+                title.setText("Prodotti per materia");
             }
             else{
                 title.setText("Elenco prodotti disponibili");
@@ -111,6 +118,12 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                 }
                 else if(lastChar.equals("O")){ //per l'ordinazione prodotto
                     prodotti = service.ottieniProdottoByKeyword(IDkey);
+                }
+                else if(lastChar.equals("C")){ //per prodotti via categoria
+                    prodotti = service.prodottiViaCategoria(IDkey);
+                }
+                else if(lastChar.equals("M")){ //per prodotti via materia
+                    prodotti = service.prodottiViaMateria(IDkey);
                 }
                 else{
                     prodotti = service.ottieniProdottoDisponibileByKeyword(IDkey);
@@ -296,6 +309,24 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                 if(this.itemScene.equals("product-O")){ //per l'ordinazione prodotto
                     LoadPage.getPartialScene(fxmlLoader, "chooseTOrderAdmin", user);
                 }
+                else if(this.itemScene.equals("product-C")){
+                    System.out.println("goes to category");
+                    PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+                    partialSceneDTO.setFxmlLoader(fxmlLoader);
+                    partialSceneDTO.setInnerScene("readProductType");
+                    partialSceneDTO.setItemScene("category");
+                    partialSceneDTO.setUser(user);
+                    LoadPage.getPartialSceneCRU(partialSceneDTO, null);
+                }
+                else if(this.itemScene.equals("product-M")){
+                    System.out.println("goes to material");
+                    PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+                    partialSceneDTO.setFxmlLoader(fxmlLoader);
+                    partialSceneDTO.setInnerScene("readProductType");
+                    partialSceneDTO.setItemScene("material");
+                    partialSceneDTO.setUser(user);
+                    LoadPage.getPartialSceneCRU(partialSceneDTO, null);
+                }
                 else{
                     LoadPage.getPartialScene(fxmlLoader, "chooseTProductAdmin", user);
                 }
@@ -303,6 +334,24 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
             else{
                 if(this.itemScene.equals("product-O")){ //per l'ordinazione prodotto
                     LoadPage.getPartialScene(fxmlLoader, "chooseTOrderCliente", user);
+                }
+                else if(this.itemScene.equals("product-C")){
+                    System.out.println("goes to category");
+                    PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+                    partialSceneDTO.setFxmlLoader(fxmlLoader);
+                    partialSceneDTO.setInnerScene("readProductType");
+                    partialSceneDTO.setItemScene("category");
+                    partialSceneDTO.setUser(user);
+                    LoadPage.getPartialSceneCRU(partialSceneDTO, null);
+                }
+                else if(this.itemScene.equals("product-M")){
+                    System.out.println("goes to material");
+                    PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+                    partialSceneDTO.setFxmlLoader(fxmlLoader);
+                    partialSceneDTO.setInnerScene("readProductType");
+                    partialSceneDTO.setItemScene("material");
+                    partialSceneDTO.setUser(user);
+                    LoadPage.getPartialSceneCRU(partialSceneDTO, null);
                 }
                 else{
                     LoadPage.getPartialScene(fxmlLoader, "chooseTProductCliente", user);
@@ -342,6 +391,14 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
             else if(this.itemScene != null && this.itemScene.equals("product-O")){ //per l'ordinazione prodotto
                 String keyword = search.getText();
                 loadItems("product-O", keyword);
+            }
+            else if(this.itemScene != null && this.itemScene.equals("product-C")){ //per i prodotti di via categoria
+                String keyword = search.getText();
+                loadItems("product-1", keyword);
+            }
+            else if(this.itemScene != null && this.itemScene.equals("product-M")){ //per i prodotti di via materia
+                String keyword = search.getText();
+                loadItems("product-1", keyword);
             }
             else if(this.itemScene != null && this.itemScene.equals("order-1")){
                 String keyword = search.getText();

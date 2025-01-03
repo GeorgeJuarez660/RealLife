@@ -85,6 +85,30 @@ public class ProductTypeButtonController implements Initializable {
         service.eliminazioneNotizia(id.getText().replace("#", ""), user);
     }
 
+    @FXML
+    private void lookProductsByCategory(){ //button per cercare i prodotti via categoria
+        System.out.println("goes to look products by category");
+        PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+        partialSceneDTO.setFxmlLoader(fxmlLoader);
+        partialSceneDTO.setInnerScene("read");
+        partialSceneDTO.setItemScene("product-C");
+        partialSceneDTO.setUser(user);
+        String idKey = id.getText().replace("#", "");
+        LoadPage.getPartialSceneCRU(partialSceneDTO, idKey);
+    }
+
+    @FXML
+    private void lookProductsByMaterial(){ //button per cercare i prodotti via materia
+        System.out.println("goes to look products by category");
+        PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+        partialSceneDTO.setFxmlLoader(fxmlLoader);
+        partialSceneDTO.setInnerScene("read");
+        partialSceneDTO.setItemScene("product-M");
+        partialSceneDTO.setUser(user);
+        String idKey = id.getText().replace("#", "");
+        LoadPage.getPartialSceneCRU(partialSceneDTO, idKey);
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

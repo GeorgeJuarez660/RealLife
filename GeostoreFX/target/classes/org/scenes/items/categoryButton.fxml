@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="120.0" prefWidth="250.0" style="-fx-background-color: #3F51B5; -fx-background-radius: 10;" styleClass="label-font" stylesheets="@../../css/font_geostore.css" textAlignment="CENTER" textFill="WHITE" wrapText="true" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controller.items.ProductTypeButtonController">
+<Button onAction="#lookProductsByCategory" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="120.0" prefWidth="250.0" style="-fx-background-color: #3F51B5; -fx-background-radius: 10;" styleClass="label-font" stylesheets="@../../css/font_geostore.css" textAlignment="CENTER" textFill="WHITE" wrapText="true" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controller.items.ProductTypeButtonController">
    <padding>
       <Insets top="10.0" />
    </padding>

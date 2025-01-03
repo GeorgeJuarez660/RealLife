@@ -4,20 +4,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import org.controller.items.*;
 import org.models.*;
 import org.services.LoadPage;
 import org.services.Service;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ReadProductTypeController {// Questo è il BorderPane di menu.fxml
@@ -89,7 +85,7 @@ public class ReadProductTypeController {// Questo è il BorderPane di menu.fxml
                 if(categoria.getId() != null && categoria.getId() != 0){
                     try {
                         // Costruisce il percorso completo del file FXML
-                        URL fileUrl = getClass().getResource("/org/scenes/items/productTypeButton.fxml"); //trova la scena pulsante category
+                        URL fileUrl = getClass().getResource("/org/scenes/items/categoryButton.fxml"); //trova la scena pulsante category
                         if (fileUrl == null) {
                             throw new java.io.FileNotFoundException("FXML file can't be found");
                         }
@@ -117,7 +113,7 @@ public class ReadProductTypeController {// Questo è il BorderPane di menu.fxml
                 if(materia.getId() != null && materia.getId() != 0){
                     try {
                         // Costruisce il percorso completo del file FXML
-                        URL fileUrl = getClass().getResource("/org/scenes/items/productTypeButton.fxml"); //trova la scena pulsante category
+                        URL fileUrl = getClass().getResource("/org/scenes/items/materialButton.fxml"); //trova la scena pulsante material
                         if (fileUrl == null) {
                             throw new java.io.FileNotFoundException("FXML file can't be found");
                         }

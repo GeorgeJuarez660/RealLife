@@ -659,12 +659,9 @@ public class Service {
         return or.getOrdineTotGiorWithDB(u, chooseDate);
     }
 
-    /*public void prodottiViaCategoria(){
-        view.printCategorie(car.getCategorieWithDB());
-        Categoria cat = new Categoria();
-        view.maskObjViaCat(cat);
-        view.printProdotti(pr.getProdottiViaCategoriaWithDB(cat.getId()));
-    }*/
+    public Map<Integer, Prodotto> prodottiViaCategoria(String IDCategoryKey){
+        return pr.getProdottiViaCategoriaWithDB(Integer.parseInt(IDCategoryKey));
+    }
 
     /*public void creazioneMateria(){
         Materia m = new Materia();
@@ -756,12 +753,9 @@ public class Service {
         return mr.getMaterieWithDB();
     }
 
-    /*public void prodottiViaMateria(){
-        view.printMaterie(mr.getMaterieWithDB());
-        Materia m = new Materia();
-        view.maskObjViaMat(m);
-        view.printProdotti(pr.getProdottiViaMateriaWithDB(m.getId()));
-    }*/
+    public HashMap<Integer, Prodotto> prodottiViaMateria(String IDMaterialKey){
+        return pr.getProdottiViaMateriaWithDB(Integer.parseInt(IDMaterialKey));
+    }
 
     public HashMap<Integer, Disponibilita> ottieniDisponibilita(){
         return dr.getDisponibilitaWithDB();
