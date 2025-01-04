@@ -258,4 +258,70 @@ public class Utility {
         }
     }
 
+    public static void sendResponseDeletedCategories(Integer num, Cliente user){
+        if(num > 0){
+            LoadPage.answerScene("positive", "CATEGORIA ELIMINATA CON SUCCESSO");
+
+            //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+            PauseTransition delay = new PauseTransition(Duration.seconds(3));
+            delay.setOnFinished(event -> {
+                // Dopo 2 secondi, carica la terza scena
+                LoadPage.answerScene("info", "LA RICORDIAMO CHE I PRODOTTI APPARTENENTI ALLA PRECEDENTE CATEGORIA SONO SPOSTATI SU N/A");
+            });
+            delay.play();
+
+            //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+            PauseTransition delay2 = new PauseTransition(Duration.seconds(9));
+            delay2.setOnFinished(event -> {
+                // Dopo 2 secondi, carica la terza scena
+                LoadPage.goesToMenu(user);
+            });
+            delay2.play();
+        }
+        else{
+            LoadPage.answerScene("negative", "ELIMINAZIONE CATEGORIA FALLITA");
+
+            //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+            PauseTransition delay = new PauseTransition(Duration.seconds(3));
+            delay.setOnFinished(event -> {
+                // Dopo 2 secondi, carica la terza scena
+                LoadPage.goesToMenu(user);
+            });
+            delay.play();
+        }
+    }
+
+    public static void sendResponseDeletedMaterials(Integer num, Cliente user){
+        if(num > 0){
+            LoadPage.answerScene("positive", "MATERIA ELIMINATA CON SUCCESSO");
+
+            //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+            PauseTransition delay = new PauseTransition(Duration.seconds(3));
+            delay.setOnFinished(event -> {
+                // Dopo 2 secondi, carica la terza scena
+                LoadPage.answerScene("info", "LA RICORDIAMO CHE I PRODOTTI APPARTENENTI ALLA PRECEDENTE MATERIA SONO SPOSTATI SU N/A");
+            });
+            delay.play();
+
+            //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+            PauseTransition delay2 = new PauseTransition(Duration.seconds(9));
+            delay2.setOnFinished(event -> {
+                // Dopo 2 secondi, carica la terza scena
+                LoadPage.goesToMenu(user);
+            });
+            delay2.play();
+        }
+        else{
+            LoadPage.answerScene("negative", "ELIMINAZIONE MATERIA FALLITA");
+
+            //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+            PauseTransition delay = new PauseTransition(Duration.seconds(3));
+            delay.setOnFinished(event -> {
+                // Dopo 2 secondi, carica la terza scena
+                LoadPage.goesToMenu(user);
+            });
+            delay.play();
+        }
+    }
+
 }

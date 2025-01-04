@@ -321,6 +321,13 @@ public class LoadPage {
                 readProductTypeController.loadButtons(partialSceneDTO.getItemScene());
                 readProductTypeController.enableBackBtn();
             }
+            else if(controller instanceof ReadProductsByCMController){
+                ReadProductsByCMController readProductsByCMController = (ReadProductsByCMController) controller;
+                readProductsByCMController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
+                readProductsByCMController.setTitle(partialSceneDTO.getItemScene());
+                readProductsByCMController.showSearchBar(false);
+                readProductsByCMController.loadItems(partialSceneDTO.getItemScene(), IDkey);
+            }
             else if(controller instanceof UpdateController){
                 UpdateController updateController = (UpdateController) controller;
                 updateController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());

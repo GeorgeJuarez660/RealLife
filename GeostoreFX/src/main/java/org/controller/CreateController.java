@@ -7,10 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import org.controller.masks.NewsMaskController;
-import org.controller.masks.OrderMaskController;
-import org.controller.masks.ProductMaskController;
-import org.controller.masks.UserMaskController;
+import org.controller.masks.*;
 import org.models.*;
 import org.services.LoadPage;
 import org.services.Service;
@@ -63,6 +60,12 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
         }
         else if(itemScene != null && itemScene.equals("order")){
             title.setText("Ordinazione prodotto");
+        }
+        else if(itemScene != null && itemScene.equals("category")){
+            title.setText("Creazione categoria");
+        }
+        else if(itemScene != null && itemScene.equals("material")){
+            title.setText("Creazione materia");
         }
         else{
             title.setText("Creazione notizia");
@@ -142,6 +145,50 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
                 e.printStackTrace();
             }
         }
+        else if(this.itemScene != null && this.itemScene.equals("category")){
+            try {
+                // Costruisce il percorso completo del file FXML
+                URL fileUrl = getClass().getResource("/org/scenes/masks/categoryMask.fxml");
+                if (fileUrl == null) {
+                    throw new java.io.FileNotFoundException("FXML file can't be found");
+                }
+
+                FXMLLoader loader = new FXMLLoader(fileUrl);
+                VBox mask = loader.load();
+                CategoryMaskController categoryMaskController = loader.getController();// Ottieni il controller della scena caricata
+                maskController = categoryMaskController;
+                createMask.getChildren().add(mask);
+
+                // Carica il file FXML
+                // Imposta la scena caricata come contenuto centrale del BorderPane
+
+            } catch (Exception e) {
+                System.out.println("No page found. Please check FXMLLoader.");
+                e.printStackTrace();
+            }
+        }
+        else if(this.itemScene != null && this.itemScene.equals("material")){
+            try {
+                // Costruisce il percorso completo del file FXML
+                URL fileUrl = getClass().getResource("/org/scenes/masks/materialMask.fxml");
+                if (fileUrl == null) {
+                    throw new java.io.FileNotFoundException("FXML file can't be found");
+                }
+
+                FXMLLoader loader = new FXMLLoader(fileUrl);
+                VBox mask = loader.load();
+                MaterialMaskController materialMaskController = loader.getController();// Ottieni il controller della scena caricata
+                maskController = materialMaskController;
+                createMask.getChildren().add(mask);
+
+                // Carica il file FXML
+                // Imposta la scena caricata come contenuto centrale del BorderPane
+
+            } catch (Exception e) {
+                System.out.println("No page found. Please check FXMLLoader.");
+                e.printStackTrace();
+            }
+        }
         else{
             try {
                 // Costruisce il percorso completo del file FXML
@@ -187,6 +234,12 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
                 LoadPage.getPartialScene(fxmlLoader, "chooseTOrderCliente", user);
             }
         }
+        else if(this.itemScene != null && this.itemScene.equals("category")){
+            LoadPage.getPartialScene(fxmlLoader, "chooseTCategoryAdmin", user);
+        }
+        else if(this.itemScene != null && this.itemScene.equals("material")){
+            LoadPage.getPartialScene(fxmlLoader, "chooseTMaterialAdmin", user);
+        }
         else{
             LoadPage.getPartialScene(fxmlLoader, "homepage", user);
         }
@@ -203,19 +256,12 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
         if(maskController instanceof UserMaskController){
             UserMaskController userMaskController = (UserMaskController) maskController;
             Cliente u = userMaskController.setValues();
+
             service.creazioneUtente(u, user);
         }
         else if(maskController instanceof ProductMaskController){
             ProductMaskController productMaskController = (ProductMaskController) maskController;
             Prodotto p = productMaskController.setValues();
-
-            //notizia per la creazione prodotto
-            News notiziaCreazione = new News();
-            notiziaCreazione.setUtente(user);
-            notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
-            notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
-            notiziaCreazione.setTesto("È stato pubblicato un nuovo prodotto: " + p.getNome() + " a soli " + Utility.formatValueBigDecimal(p.getPrezzo()) + " C. " + p.getDisponibilita().getCode() + " su GeoStore");
-            service.creazioneNotiziaSenzaRisposta(notiziaCreazione);
 
             //crea prodotto
             service.creazioneProdotto(p, user);
@@ -227,9 +273,22 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
             //ordina prodotto
             service.ordinazioneProdotto(o, user);
         }
+        else if(maskController instanceof CategoryMaskController){
+            CategoryMaskController categoryMaskController = (CategoryMaskController) maskController;
+            Categoria c = categoryMaskController.setValues();
+
+            service.creazioneCategoria(c, user);
+        }
+        else if(maskController instanceof MaterialMaskController){
+            MaterialMaskController materialMaskController = (MaterialMaskController) maskController;
+            Materia m = materialMaskController.setValues();
+
+            service.creazioneMateria(m, user);
+        }
         else{
             NewsMaskController newsMaskController = (NewsMaskController) maskController;
             News n = newsMaskController.setValues();
+
             service.creazioneNotizia(n, user);
         }
 

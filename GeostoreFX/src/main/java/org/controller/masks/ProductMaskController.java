@@ -92,16 +92,16 @@ public class ProductMaskController implements Initializable {
         }
 
         Disponibilita disponibilita = new Disponibilita();
-        disponibilita.setId(Integer.parseInt(available.getValue().substring(0, 1)));
-        disponibilita.setCode(available.getValue().substring(4));
+        disponibilita.setId(Integer.parseInt(available.getValue().replaceAll("[^0-9]", "")));
+        disponibilita.setCode(available.getValue().replaceAll(".*[^a-zA-Z]", ""));
         prodotto.setDisponibilita(disponibilita);
 
         Categoria categoria = new Categoria();
-        categoria.setId(Integer.parseInt(category.getValue().substring(0, 1)));
+        categoria.setId(Integer.parseInt(category.getValue().replaceAll("[^0-9]", "")));
         prodotto.setCategoria(categoria);
 
         Materia materia = new Materia();
-        materia.setId(Integer.parseInt(material.getValue().substring(0, 1)));
+        materia.setId(Integer.parseInt(material.getValue().replaceAll("[^0-9]", "")));
         prodotto.setMateria(materia);
 
         if(quantity != null && quantity.getText() != null && !quantity.getText().isEmpty() && !quantity.getText().isBlank()){
@@ -130,15 +130,15 @@ public class ProductMaskController implements Initializable {
         }
 
         Disponibilita disponibilita = new Disponibilita();
-        disponibilita.setId(Integer.parseInt(available.getValue().substring(0, 1)));
+        disponibilita.setId(Integer.parseInt(available.getValue().replaceAll("[^0-9]", "")));
         prodotto.setDisponibilita(disponibilita);
 
         Categoria categoria = new Categoria();
-        categoria.setId(Integer.parseInt(category.getValue().substring(0, 1)));
+        categoria.setId(Integer.parseInt(category.getValue().replaceAll("[^0-9]", "")));
         prodotto.setCategoria(categoria);
 
         Materia materia = new Materia();
-        materia.setId(Integer.parseInt(material.getValue().substring(0, 1)));
+        materia.setId(Integer.parseInt(material.getValue().replaceAll("[^0-9]", "")));
         prodotto.setMateria(materia);
 
         if(quantity != null && quantity.getText() != null && !quantity.getText().isEmpty() && !quantity.getText().isBlank()){

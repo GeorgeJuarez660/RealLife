@@ -5,6 +5,8 @@ import org.utility.Utility;
 
 
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -177,6 +179,14 @@ public class Service {
 
     public void creazioneProdotto(Prodotto product, Cliente user){
         int num = 0;
+
+        //notizia per la creazione prodotto
+        News notiziaCreazione = new News();
+        notiziaCreazione.setUtente(user);
+        notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
+        notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
+        notiziaCreazione.setTesto("È stato pubblicato un nuovo prodotto: " + product.getNome() + " a soli " + Utility.formatValueBigDecimal(product.getPrezzo()) + " C. " + product.getDisponibilita().getCode() + " su GeoStore");
+        this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
 
         num = pr.insertProdottoWithDB(product.getId(), product);
 
@@ -541,94 +551,76 @@ public class Service {
         }
     }
 
-    /*public void creazioneCategoria(){
-        Categoria cat = new Categoria();
-        view.maskInsertCategoria(cat);
-        boolean flagInsert;
-        do{
-            String question = Utility.insertString("Vuoi procedere? (s/n)");
-            if(question.equalsIgnoreCase("s")) {
-                int num = car.insertCategoriaWithDB(cat.getId(), cat);
+    public void creazioneCategoria(Categoria category, Cliente user){
+        int num = 0;
 
-                if (num > 0) {
-                    Utility.msgInf("GEOSTORE", "Nuova categoria aggiunta\n");
-                } else {
-                    Utility.msgInf("GEOSTORE", "Categoria non aggiunta\n");
-                }
+        //notizia per la creazione categoria
+        News notiziaCreazione = new News();
+        notiziaCreazione.setUtente(user);
+        notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
+        notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
+        notiziaCreazione.setTesto("È stata allestita una nuova categoria: " + category.getNome() + ". Presto i prodotti di questa categoria saranno disponibili su Geostore");
+        this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
 
-                flagInsert = false;
-            }else if(question.equalsIgnoreCase("n")){
-                Utility.msgInf("GEOSTORE", "Operazione annullata\n");
-                flagInsert = false;
-            }
-            else{
-                Utility.msgInf("GEOSTORE", "Rileggi la domanda\n");
-                flagInsert = true;
-            }
-        }while(flagInsert);
+        num = cr.insertCategoriaWithDB(category.getId(), category);
 
-    }*/
-
-    /*public void modificaCategoria(){
-        view.printCategorie(car.getCategorie());
-        Categoria cat = car.getCategoriaWithDB(Utility.insertInt("Inserisci l'id categoria"));
-
-        if(cat != null && cat.getNome() != null){
-            Utility.msgInf("GEOSTORE", "Categoria trovata\n");
-
-            Categoria cNew = view.maskUpdateCategoria(cat, new Categoria());
-
-            int num = car.updateCategoriaWithDB(cNew.getId(), cNew);
-
-            if(num > 0){
-                Utility.msgInf("GEOSTORE", "Categoria aggiornata\n");
-            }
-            else{
-                Utility.msgInf("GEOSTORE", "Categoria non aggiornata\n");
-            }
-
+        if(num > 0){
+            Utility.sendResponse(num, "CATEGORIA AGGIUNTA", user);
         }
         else{
-            Utility.msgInf("GEOSTORE", "Categoria non trovata\n");
+            Utility.sendResponse(num, "CREAZIONE CATEGORIA", user);
         }
-    }*/
 
-    /*public void eliminazioneCategoria(){
-        view.printCategorie(car.getCategorieWithDB());
-        Categoria cat = car.getCategoriaWithDB(Utility.insertInt("Inserisci l'id categoria"));
+    }
 
-        if(cat != null && cat.getNome() != null){
-            Utility.msgInf("GEOSTORE", "Categoria trovata\n");
-            if(Utility.insertString("Sei sicuro di voler eliminare questa categoria?").equalsIgnoreCase("s")){
+    public void modificaCategoria(Categoria category, Cliente user){
+        int num = 0;
 
-                int num = pr.updateIdAfterDeleteCategory(0, cat.getId());
-                if(num > 0){
-                    Utility.msgInf("GEOSTORE", "Prodotti aggiornati\n");
-                }
-                else{
-                    Utility.msgInf("GEOSTORE", "Prodotti non aggiornati\n");
-                }
+        num = cr.updateCategoriaWithDB(category.getId(), category);
 
-                num = 0;
-                num = car.deleteCategoriaWithDB(cat.getId());
-                if(num > 0){
-                    Utility.msgInf("GEOSTORE", "Categoria eliminata\n");
-                }
-                else{
-                    Utility.msgInf("GEOSTORE", "Categoria non eliminata\n");
-                }
-            }
-            else{
-                Utility.msgInf("GEOSTORE", "Operazione annullata\n");
-            }
+        if(num > 0){
+            Utility.sendResponse(num, "CATEGORIA MODIFICATA", user);
         }
         else{
-            Utility.msgInf("GEOSTORE", "Categoria non trovata\n");
+            Utility.sendResponse(num, "MODIFICA CATEGORIA", user);
         }
-    }*/
+    }
+
+    public void eliminazioneCategoria(String IDKey, Cliente user){
+        Categoria category = cr.getCategoriaWithDB(Integer.parseInt(IDKey));
+
+        int num = pr.updateIdAfterDeleteCategory(0, category.getId());
+        if(num > 0){
+            Utility.msgInf("GEOSTORE", "Prodotti aggiornati\n");
+        }
+        else{
+            Utility.msgInf("GEOSTORE", "Prodotti non aggiornati\n");
+        }
+
+        //notizia per l'eliminazione categoria
+        News notiziaCreazione = new News();
+        notiziaCreazione.setUtente(user);
+        notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
+        notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
+        notiziaCreazione.setTesto("È stata dismessa la categoria: " + category.getNome() + ". I prodotti appartenenti a questa categoria sono stati spostati in N/A");
+        this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
+
+        num = cr.deleteCategoriaWithDB(category.getId());
+
+        if(num > 0){
+            Utility.sendResponseDeletedCategories(num, user);
+        }
+        else{
+            Utility.sendResponseDeletedCategories(num, user);
+        }
+    }
 
     public HashMap<Integer, Categoria> ottieniCategorie() {
         return cr.getCategorieWithDB();
+    }
+
+    public Categoria ottieniCategoria(Integer idCategoria) {
+        return cr.getCategoriaWithDB(idCategoria);
     }
 
     public void refundAfterDeleteOrder(Ordine o, Utente u){
@@ -663,98 +655,71 @@ public class Service {
         return pr.getProdottiViaCategoriaWithDB(Integer.parseInt(IDCategoryKey));
     }
 
-    /*public void creazioneMateria(){
-        Materia m = new Materia();
-        view.maskInsertMateria(m);
-        boolean flagInsert;
-        do{
-            String question = Utility.insertString("Vuoi procedere? (s/n)");
-            if(question.equalsIgnoreCase("s")) {
-                int num = mr.insertMateriaWithDB(m.getId(), m);
+    public Map<Integer, Prodotto> prodottiViaCategoriaByKeyword(String IDCategoryKey, String keyword){
+        return pr.getProdottiViaCategoriaByKeywordWithDB(Integer.parseInt(IDCategoryKey), keyword);
+    }
 
+    public void creazioneMateria(Materia material, Cliente user){
+        int num = 0;
 
-                if (num > 0) {
-                    Utility.msgInf("GEOSTORE", "Nuova materia aggiunta\n");
-                } else {
-                    Utility.msgInf("GEOSTORE", "Materia non aggiunta\n");
-                }
+        num = mr.insertMateriaWithDB(material.getId(), material);
 
-                flagInsert = false;
-            }else if(question.equalsIgnoreCase("n")){
-                Utility.msgInf("GEOSTORE", "Operazione annullata\n");
-                flagInsert = false;
-            }
-            else{
-                Utility.msgInf("GEOSTORE", "Rileggi la domanda\n");
-                flagInsert = true;
-            }
-        }while(flagInsert);
-    }*/
-
-    /*public void modificaMateria(){
-        view.printMaterie(mr.getMaterieWithDB());
-        Materia m = mr.getMateriaWithDB(Utility.insertInt("Inserisci l'id materia"));
-
-        if(m != null && m.getNome() != null){
-            Utility.msgInf("GEOSTORE", "Materia trovata\n");
-
-            Materia mNew = view.maskUpdateMateria(m, new Materia());
-
-            int num = mr.updateMateriaWithDB(mNew.getId(), mNew);
-
-            if(num > 0){
-                Utility.msgInf("GEOSTORE", "Materia aggiornata\n");
-            }
-            else{
-                Utility.msgInf("GEOSTORE", "Materia non aggiornata\n");
-            }
-
+        if(num > 0){
+            Utility.sendResponse(num, "MATERIA AGGIUNTA", user);
         }
         else{
-            Utility.msgInf("GEOSTORE", "Materia non trovata\n");
+            Utility.sendResponse(num, "CREAZIONE MATERIA", user);
         }
-    }*/
+    }
 
-    /*public void eliminazioneMateria(){
-        view.printMaterie(mr.getMaterieWithDB());
-        Materia m = mr.getMateriaWithDB(Utility.insertInt("Inserisci l'id materia"));
+    public void modificaMateria(Materia material, Cliente user){
+        int num = 0;
 
-        if(m != null && m.getNome() != null){
-            Utility.msgInf("GEOSTORE", "Materia trovata\n");
-            if(Utility.insertString("Sei sicuro di voler eliminare questa materia?").equalsIgnoreCase("s")){
+        num = mr.updateMateriaWithDB(material.getId(), material);
 
-                int num = pr.updateIdAfterDeleteMaterial(0, m.getId());
-                if(num > 0){
-                    Utility.msgInf("GEOSTORE", "Prodotti aggiornati\n");
-                }
-                else{
-                    Utility.msgInf("GEOSTORE", "Prodotti non aggiornati\n");
-                }
-
-                num = 0;
-                num = mr.deleteMateriaWithDB(m.getId());
-                if(num > 0){
-                    Utility.msgInf("GEOSTORE", "Materia eliminata\n");
-                }
-                else{
-                    Utility.msgInf("GEOSTORE", "Materia non eliminata\n");
-                }
-            }
-            else{
-                Utility.msgInf("GEOSTORE", "Operazione annullata\n");
-            }
+        if(num > 0){
+            Utility.sendResponse(num, "MATERIA MODIFICATA", user);
         }
         else{
-            Utility.msgInf("GEOSTORE", "Materia non trovata\n");
+            Utility.sendResponse(num, "MODIFICA MATERIA", user);
         }
-    }*/
+    }
+
+    public void eliminazioneMateria(String IDKey, Cliente user){
+        Materia material = mr.getMateriaWithDB(Integer.parseInt(IDKey));
+
+        int num = pr.updateIdAfterDeleteMaterial(0, material.getId());
+        if(num > 0){
+            Utility.msgInf("GEOSTORE", "Prodotti aggiornati\n");
+        }
+        else{
+            Utility.msgInf("GEOSTORE", "Prodotti non aggiornati\n");
+        }
+
+        num = mr.deleteMateriaWithDB(material.getId());
+
+        if(num > 0){
+            Utility.sendResponseDeletedMaterials(num, user);
+        }
+        else{
+            Utility.sendResponseDeletedMaterials(num, user);
+        }
+    }
 
     public HashMap<Integer, Materia> ottieniMaterie(){
         return mr.getMaterieWithDB();
     }
 
+    public Materia ottieniMateria(Integer idMateria){
+        return mr.getMateriaWithDB(idMateria);
+    }
+
     public HashMap<Integer, Prodotto> prodottiViaMateria(String IDMaterialKey){
         return pr.getProdottiViaMateriaWithDB(Integer.parseInt(IDMaterialKey));
+    }
+
+    public Map<Integer, Prodotto> prodottiViaMateriaByKeyword(String IDMaterialKey, String keyword){
+        return pr.getProdottiViaMateriaByKeywordWithDB(Integer.parseInt(IDMaterialKey), keyword);
     }
 
     public HashMap<Integer, Disponibilita> ottieniDisponibilita(){

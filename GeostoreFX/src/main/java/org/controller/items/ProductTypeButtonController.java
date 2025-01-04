@@ -1,5 +1,6 @@
 package org.controller.items;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -11,6 +12,8 @@ import org.services.Service;
 import org.utility.PartialSceneDTO;
 
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
@@ -64,25 +67,56 @@ public class ProductTypeButtonController implements Initializable {
     //------------------BUTTONS-----------------------
 
     @FXML
-    private void updating(){ //button per andare alla pagina di modifica categoria
+    private void updatingCategory(ActionEvent event){ //button per andare alla pagina di modifica categoria
         System.out.println("goes to update category");
+        event.consume(); //evita che si propaga al pulsante esterno (non viene cliccato il pusante categoria)
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
         partialSceneDTO.setInnerScene("update");
+        partialSceneDTO.setItemScene("category");
         partialSceneDTO.setUser(user);
         String idKey = id.getText().replace("#", "");
         LoadPage.getPartialSceneCRU(partialSceneDTO, idKey);
     }
 
     @FXML
-    private void deleting(){ //button per eliminare categoria
+    private void updatingMaterial(ActionEvent event){ //button per andare alla pagina di modifica materia
+        System.out.println("goes to update material");
+        event.consume(); //evita che si propaga al pulsante esterno (non viene cliccato il pusante materia)
+        PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+        partialSceneDTO.setFxmlLoader(fxmlLoader);
+        partialSceneDTO.setInnerScene("update");
+        partialSceneDTO.setItemScene("material");
+        partialSceneDTO.setUser(user);
+        String idKey = id.getText().replace("#", "");
+        LoadPage.getPartialSceneCRU(partialSceneDTO, idKey);
+    }
+
+    @FXML
+    private void deletingCategory(ActionEvent event){ //button per eliminare categoria
         System.out.println("goes to delete category");
+        event.consume(); //evita che si propaga al pulsante esterno (non viene cliccato il pusante categoria)
         System.out.println("Start deleting");
         LoadPage.loadingScene("ELIMINAZIONE IN CORSO...");
 
         Service service = new Service();
 
-        service.eliminazioneNotizia(id.getText().replace("#", ""), user);
+        //notizia per la creazione categoria
+
+
+        service.eliminazioneCategoria(id.getText().replace("#", ""), user);
+    }
+
+    @FXML
+    private void deletingMaterial(ActionEvent event){ //button per eliminare materia
+        System.out.println("goes to delete material");
+        event.consume(); //evita che si propaga al pulsante esterno (non viene cliccato il pusante materia)
+        System.out.println("Start deleting");
+        LoadPage.loadingScene("ELIMINAZIONE IN CORSO...");
+
+        Service service = new Service();
+
+        service.eliminazioneMateria(id.getText().replace("#", ""), user);
     }
 
     @FXML
@@ -90,7 +124,7 @@ public class ProductTypeButtonController implements Initializable {
         System.out.println("goes to look products by category");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
-        partialSceneDTO.setInnerScene("read");
+        partialSceneDTO.setInnerScene("readProductsByCM");
         partialSceneDTO.setItemScene("product-C");
         partialSceneDTO.setUser(user);
         String idKey = id.getText().replace("#", "");
@@ -102,7 +136,7 @@ public class ProductTypeButtonController implements Initializable {
         System.out.println("goes to look products by category");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
-        partialSceneDTO.setInnerScene("read");
+        partialSceneDTO.setInnerScene("readProductsByCM");
         partialSceneDTO.setItemScene("product-M");
         partialSceneDTO.setUser(user);
         String idKey = id.getText().replace("#", "");

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" prefHeight="41.0" prefWidth="300.0" stylesheets="@../../css/font_geostore.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controller.masks.MaterialMaskController">
+   <children>
+      <HBox alignment="TOP_CENTER" maxWidth="500.0" prefHeight="50.0" prefWidth="300.0" spacing="20.0" style="-fx-background-color: #3F51B5; -fx-background-radius: 12;">
+         <children>
+            <VBox alignment="CENTER" prefHeight="42.0" prefWidth="260.0" spacing="10.0">
+               <children>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="31.0" spacing="5.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" styleClass="label-font" text="Nome materia" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="name" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font-min-title">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>
