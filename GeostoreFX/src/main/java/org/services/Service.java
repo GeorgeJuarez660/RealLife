@@ -59,44 +59,69 @@ public class Service {
     }
 
     public void registerUtente(Cliente user){
-        int num = ur.insertUtenteWithDB(user.getId(), user);
-        Utility.sendResponseRegister(num);
+        int num = 0;
+        num = ur.checkDuplicatesUtente(user);
+
+        if(num == 0){
+            num = ur.insertUtenteWithDB(user.getId(), user);
+            Utility.sendResponseRegister(num);
+        }
+        else{
+            Utility.sendResponseRegister(0);
+        }
+
     }
 
     public void creazioneUtente(Cliente user, Cliente userID){
         int num = 0;
 
-        if(Utility.getAge(user.getDataNascita())){
-            num = ur.insertUtenteWithDB(null, user);
+        num = ur.checkDuplicatesUtente(user);
 
-            if(num > 0){
-                Utility.sendResponse(num, "UTENTE CREATO", userID);
+        if(num == 0){
+            if(Utility.getAge(user.getDataNascita())){
+                num = ur.insertUtenteWithDB(null, user);
+
+                if(num > 0){
+                    Utility.sendResponse(num, "UTENTE CREATO", userID);
+                }
+                else{
+                    Utility.sendResponse(num, "CREAZIONE UTENTE", userID);
+                }
             }
             else{
-                Utility.sendResponse(num, "CREAZIONE UTENTE", userID);
+                Utility.sendResponse(0, "L'UTENTE DEVE AVERE ALMENO 13 ANNI. CREAZIONE UTENTE", userID);
             }
         }
         else{
-            Utility.sendResponse(0, "L'UTENTE DEVE AVERE ALMENO 13 ANNI. CREAZIONE UTENTE", userID);
+            Utility.sendResponse(0, "L'UTENTE GIÀ ESISTE. CREAZIONE UTENTE", userID);
         }
 
     }
 
     public void modificaUtente(Utente u, Cliente userID){
+        int num = 0;
 
-        if(Utility.getAge(u.getDataNascita())){
-            int num = ur.updateUtenteWithDB(u.getId(), u);
+        num = ur.checkDuplicatesUtente(u);
 
-            if(num > 0){
-                Utility.sendResponse(num, "UTENTE MODIFICATO", userID);
+        if(num == 0){
+            if(Utility.getAge(u.getDataNascita())){
+                num = ur.updateUtenteWithDB(u.getId(), u);
+
+                if(num > 0){
+                    Utility.sendResponse(num, "UTENTE MODIFICATO", userID);
+                }
+                else{
+                    Utility.sendResponse(num, "MODIFICA UTENTE", userID);
+                }
             }
             else{
-                Utility.sendResponse(num, "MODIFICA UTENTE", userID);
+                Utility.sendResponse(0, "L'UTENTE DEVE AVERE ALMENO 13 ANNI. MODIFICA UTENTE", userID);
             }
         }
         else{
-            Utility.sendResponse(0, "L'UTENTE DEVE AVERE ALMENO 13 ANNI. MODIFICA UTENTE", userID);
+            Utility.sendResponse(0, "L'UTENTE GIÀ ESISTE. MODIFICA UTENTE", userID);
         }
+
     }
 
     public void eliminazioneUtente(String IDkey, Cliente userID){
@@ -192,17 +217,17 @@ public class Service {
     public void creazioneProdotto(Prodotto product, Cliente user){
         int num = 0;
 
-        //notizia per la creazione prodotto
-        News notiziaCreazione = new News();
-        notiziaCreazione.setUtente(user);
-        notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
-        notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
-        notiziaCreazione.setTesto("È stato pubblicato un nuovo prodotto: " + product.getNome() + " a soli " + Utility.formatValueBigDecimal(product.getPrezzo()) + " C. " + product.getDisponibilita().getCode() + " su GeoStore");
-        this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
-
         num = pr.insertProdottoWithDB(product.getId(), product);
 
         if(num > 0){
+            //notizia per la creazione prodotto
+            News notiziaCreazione = new News();
+            notiziaCreazione.setUtente(user);
+            notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
+            notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
+            notiziaCreazione.setTesto("È stato pubblicato un nuovo prodotto: " + product.getNome() + " a soli " + Utility.formatValueBigDecimal(product.getPrezzo()) + " C. " + product.getDisponibilita().getCode() + " su GeoStore");
+            this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
+
             Utility.sendResponse(num, "PRODOTTO CREATO", user);
         }
         else{
@@ -223,6 +248,7 @@ public class Service {
     }
 
     public void eliminazioneProdotto(String IDkey, Cliente user){
+        Prodotto product = pr.getProdottoWithDB(Integer.parseInt(IDkey));
         HashMap<Integer, Ordine> ordini = or.getOrdiniByProductWithDB(Integer.parseInt(IDkey));
 
         for(Ordine ordine : ordini.values()){
@@ -248,6 +274,14 @@ public class Service {
         num = pr.deleteProdottoWithDB(Integer.parseInt(IDkey));
 
         if(num > 0){
+            //notizia per l'eliminazione prodotto
+            News notiziaCreazione = new News();
+            notiziaCreazione.setUtente(user);
+            notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
+            notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
+            notiziaCreazione.setTesto("È stato rimosso il prodotto: " + product.getNome() + ". Sono stati effettuati i rimborsi agli utenti che avevano ordinato questo prodotto");
+            this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
+
             Utility.sendResponseDeletedProducts(num, user);
         }
         else{
@@ -566,36 +600,53 @@ public class Service {
     public void creazioneCategoria(Categoria category, Cliente user){
         int num = 0;
 
-        //notizia per la creazione categoria
-        News notiziaCreazione = new News();
-        notiziaCreazione.setUtente(user);
-        notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
-        notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
-        notiziaCreazione.setTesto("È stata allestita una nuova categoria: " + category.getNome() + ". Presto i prodotti di questa categoria saranno disponibili su Geostore");
-        this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
+        num = cr.checkDuplicatesCategoria(category);
 
-        num = cr.insertCategoriaWithDB(category.getId(), category);
+        if(num == 0){
 
-        if(num > 0){
-            Utility.sendResponse(num, "CATEGORIA AGGIUNTA", user);
+            num = cr.insertCategoriaWithDB(category.getId(), category);
+
+            if(num > 0){
+                //notizia per la creazione categoria
+                News notiziaCreazione = new News();
+                notiziaCreazione.setUtente(user);
+                notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
+                notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
+                notiziaCreazione.setTesto("È stata allestita una nuova categoria: " + category.getNome() + ". Presto i prodotti di questa categoria saranno disponibili su Geostore");
+                this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
+
+                Utility.sendResponse(num, "CATEGORIA AGGIUNTA", user);
+            }
+            else{
+                Utility.sendResponse(num, "CREAZIONE CATEGORIA", user);
+            }
         }
         else{
-            Utility.sendResponse(num, "CREAZIONE CATEGORIA", user);
+            Utility.sendResponse(0, "LA CATEGORIA GIÀ ESISTE. CREAZIONE CATEGORIA", user);
         }
+
 
     }
 
     public void modificaCategoria(Categoria category, Cliente user){
         int num = 0;
 
-        num = cr.updateCategoriaWithDB(category.getId(), category);
+        num = cr.checkDuplicatesCategoria(category);
 
-        if(num > 0){
-            Utility.sendResponse(num, "CATEGORIA MODIFICATA", user);
+        if(num == 0){
+            num = cr.updateCategoriaWithDB(category.getId(), category);
+
+            if(num > 0){
+                Utility.sendResponse(num, "CATEGORIA MODIFICATA", user);
+            }
+            else{
+                Utility.sendResponse(num, "MODIFICA CATEGORIA", user);
+            }
         }
         else{
-            Utility.sendResponse(num, "MODIFICA CATEGORIA", user);
+            Utility.sendResponse(0, "LA CATEGORIA GIÀ ESISTE. MODIFICA CATEGORIA", user);
         }
+
     }
 
     public void eliminazioneCategoria(String IDKey, Cliente user){
@@ -609,17 +660,17 @@ public class Service {
             Utility.msgInf("GEOSTORE", "Prodotti non aggiornati\n");
         }
 
-        //notizia per l'eliminazione categoria
-        News notiziaCreazione = new News();
-        notiziaCreazione.setUtente(user);
-        notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
-        notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
-        notiziaCreazione.setTesto("È stata dismessa la categoria: " + category.getNome() + ". I prodotti appartenenti a questa categoria sono stati spostati in N/A");
-        this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
-
         num = cr.deleteCategoriaWithDB(category.getId());
 
         if(num > 0){
+            //notizia per l'eliminazione categoria
+            News notiziaCreazione = new News();
+            notiziaCreazione.setUtente(user);
+            notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
+            notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
+            notiziaCreazione.setTesto("È stata dismessa la categoria: " + category.getNome() + ". I prodotti appartenenti a questa categoria sono stati spostati in N/A");
+            this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
+
             Utility.sendResponseDeletedCategories(num, user);
         }
         else{
@@ -674,27 +725,43 @@ public class Service {
     public void creazioneMateria(Materia material, Cliente user){
         int num = 0;
 
-        num = mr.insertMateriaWithDB(material.getId(), material);
+        num = mr.checkDuplicatesMateria(material);
 
-        if(num > 0){
-            Utility.sendResponse(num, "MATERIA AGGIUNTA", user);
+        if(num == 0){
+            num = mr.insertMateriaWithDB(material.getId(), material);
+
+            if(num > 0){
+                Utility.sendResponse(num, "MATERIA AGGIUNTA", user);
+            }
+            else{
+                Utility.sendResponse(num, "CREAZIONE MATERIA", user);
+            }
         }
         else{
-            Utility.sendResponse(num, "CREAZIONE MATERIA", user);
+            Utility.sendResponse(0, "LA MATERIA GIÀ ESISTE. CREAZIONE MATERIA", user);
         }
+
     }
 
     public void modificaMateria(Materia material, Cliente user){
         int num = 0;
 
-        num = mr.updateMateriaWithDB(material.getId(), material);
+        num = mr.checkDuplicatesMateria(material);
 
-        if(num > 0){
-            Utility.sendResponse(num, "MATERIA MODIFICATA", user);
+        if(num == 0){
+            num = mr.updateMateriaWithDB(material.getId(), material);
+
+            if(num > 0){
+                Utility.sendResponse(num, "MATERIA MODIFICATA", user);
+            }
+            else{
+                Utility.sendResponse(num, "MODIFICA MATERIA", user);
+            }
         }
         else{
-            Utility.sendResponse(num, "MODIFICA MATERIA", user);
+            Utility.sendResponse(0, "LA MATERIA GIÀ ESISTE. MODIFICA MATERIA", user);
         }
+
     }
 
     public void eliminazioneMateria(String IDKey, Cliente user){

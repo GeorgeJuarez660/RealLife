@@ -51,7 +51,10 @@ public class NewsItemController implements Initializable {
         int mese = calendario.get(Calendar.MONTH) + 1;
         int anno = calendario.get(Calendar.YEAR);
 
-        date.setText(giorno+"/"+mese+"/"+anno+":");
+        String giornoEsatto = String.format("%02d", giorno);
+        String meseEsatto = String.format("%02d", mese);
+
+        date.setText(giornoEsatto+"/"+meseEsatto+"/"+anno+":");
         text.setText(notizia.getTesto());
         id.setText("#"+notizia.getId().toString());
     }

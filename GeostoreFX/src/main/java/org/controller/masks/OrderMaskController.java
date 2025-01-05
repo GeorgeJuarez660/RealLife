@@ -52,7 +52,10 @@ public class OrderMaskController implements Initializable {
         int mese = calendario.get(Calendar.MONTH) + 1;
         int anno = calendario.get(Calendar.YEAR);
 
-        orderDate.setPromptText(giorno+"/"+mese+"/"+anno);
+        String giornoEsatto = String.format("%02d", giorno);
+        String meseEsatto = String.format("%02d", mese);
+
+        orderDate.setPromptText(giornoEsatto+"/"+meseEsatto+"/"+anno);
         productPrice.setText(Utility.formatValueBigDecimal(prodotto.getPrezzo()));
 
         userOrder = user;
@@ -95,7 +98,10 @@ public class OrderMaskController implements Initializable {
         int mese = calendario.get(Calendar.MONTH) + 1;
         int anno = calendario.get(Calendar.YEAR);
 
-        orderDate.setPromptText(giorno+"/"+mese+"/"+anno);
+        String giornoEsatto = String.format("%02d", giorno);
+        String meseEsatto = String.format("%02d", mese);
+
+        orderDate.setPromptText(giornoEsatto+"/"+meseEsatto+"/"+anno);
         quantity.setText(ordine.getQuantita().toString());
         productPrice.setText(Utility.formatValueBigDecimal(ordine.getPrezzo_unitario()));
         status.setValue(ordine.getStato().getId() + " - " + ordine.getStato().getCode());

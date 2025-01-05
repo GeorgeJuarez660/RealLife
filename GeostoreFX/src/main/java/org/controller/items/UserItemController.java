@@ -54,6 +54,9 @@ public class UserItemController implements Initializable {
         int mese = calendario.get(Calendar.MONTH) + 1;
         int anno = calendario.get(Calendar.YEAR);
 
+        String giornoEsatto = String.format("%02d", giorno);
+        String meseEsatto = String.format("%02d", mese);
+
         if(utente instanceof Amministratore){
             Amministratore admin = (Amministratore) utente;
             if(id != null){
@@ -62,7 +65,7 @@ public class UserItemController implements Initializable {
             name.setText(admin.getNome());
             surname.setText(admin.getCognome());
             sex.setText(admin.getSesso());
-            bornDate.setText(giorno+"/"+mese+"/"+anno);
+            bornDate.setText(giornoEsatto+"/"+meseEsatto+"/"+anno);
             phoneNumber.setText(admin.getTelefono());
             address.setText(admin.getIndirizzo());
             email.setText(admin.getEmail());
@@ -78,7 +81,7 @@ public class UserItemController implements Initializable {
             name.setText(cliente.getNome());
             surname.setText(cliente.getCognome());
             sex.setText(cliente.getSesso());
-            bornDate.setText(giorno+"/"+mese+"/"+anno);
+            bornDate.setText(giornoEsatto+"/"+meseEsatto+"/"+anno);
             phoneNumber.setText(cliente.getTelefono());
             address.setText(cliente.getIndirizzo());
             email.setText(cliente.getEmail());

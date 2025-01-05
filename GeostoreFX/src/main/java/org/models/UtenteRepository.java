@@ -482,8 +482,68 @@ public class UtenteRepository implements utentiCRUD {
         return num;
     }
 
-    //metodi override per operazioni CRUD
 
+    public int checkDuplicatesUtente(Utente u) {
+        String sql = "";
+        String adminCode;
+
+        if(u instanceof Amministratore){
+            Amministratore a = (Amministratore) u;
+            adminCode = a.getCodeAdmin();
+        }
+        else {
+            adminCode = null;
+        }
+
+        if(adminCode != null){
+            sql = "select count(*) as duplicates from utenti u where nome = ? and cognome = ? and sesso = ? and email = ? and password = ? and telefono = ? and indirizzo = ? and codice_admin = ?";
+        }
+        else{
+            sql = "select count(*) as duplicates from utenti u where nome = ? and cognome = ? and sesso = ? and email = ? and password = ? and telefono = ? and indirizzo = ?";
+        }
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        int num = 0;
+
+        try{
+            //Connessione al db
+            connection = DBConnection.sqlConnect();
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, u.getNome());
+            preparedStatement.setString(2, u.getCognome());
+            preparedStatement.setString(3, u.getSesso());
+            preparedStatement.setString(6, u.getTelefono());
+            preparedStatement.setString(7, u.getIndirizzo());
+
+            if(u instanceof Amministratore){
+                Amministratore a = (Amministratore) u;
+                preparedStatement.setString(4, a.getEmail());
+                preparedStatement.setString(5, a.getPassword());
+                preparedStatement.setString(8, a.getCodeAdmin());
+            }
+            else if(u instanceof Cliente){
+                Cliente c = (Cliente) u;
+                preparedStatement.setString(4, c.getEmail());
+                preparedStatement.setString(5, c.getPassword());
+            }
+
+            rs = preparedStatement.executeQuery();
+
+            while(rs.next()){
+                num = rs.getInt("duplicates");
+            }
+            //chiudi la connessione
+            rs.close();
+            preparedStatement.close();
+            connection.close();
+        }catch(SQLException e){
+            Utility.msgInf("GEOSTORE", "Errore nel checkDuplicatesUtente: " + e.getMessage());
+        }
+
+        return num;
+    }
 
 
 

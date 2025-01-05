@@ -153,4 +153,34 @@ public class MateriaRepository implements materieCRUD {
         return num;
     }
 
+    public int checkDuplicatesMateria(Materia m) {
+        String sql = "select count(*) as duplicates from materie m where nome = ?";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        int num = 0;
+
+        try{
+            //Connessione al db
+            connection = DBConnection.sqlConnect();
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, m.getNome());
+
+            rs = preparedStatement.executeQuery();
+
+            while(rs.next()){
+                num = rs.getInt("duplicates");
+            }
+            //chiudi la connessione
+            rs.close();
+            preparedStatement.close();
+            connection.close();
+        }catch(SQLException e){
+            Utility.msgInf("GEOSTORE", "Errore nel checkDuplicatesMateria: " + e.getMessage());
+        }
+
+        return num;
+    }
+
 }

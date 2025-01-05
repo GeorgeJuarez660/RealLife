@@ -34,7 +34,10 @@ public class NewsMaskController implements Initializable {
         int mese = calendario.get(Calendar.MONTH) + 1;
         int anno = calendario.get(Calendar.YEAR);
 
-        date.setPromptText(giorno+"/"+mese+"/"+anno);
+        String giornoEsatto = String.format("%02d", giorno);
+        String meseEsatto = String.format("%02d", mese);
+
+        date.setPromptText(giornoEsatto+"/"+meseEsatto+"/"+anno);
     }
 
     //per la modifica notizia
@@ -50,7 +53,10 @@ public class NewsMaskController implements Initializable {
         int mese = calendario.get(Calendar.MONTH) + 1;
         int anno = calendario.get(Calendar.YEAR);
 
-        date.setPromptText(giorno+"/"+mese+"/"+anno);
+        String giornoEsatto = String.format("%02d", giorno);
+        String meseEsatto = String.format("%02d", mese);
+
+        date.setPromptText(giornoEsatto+"/"+meseEsatto+"/"+anno);
         text.setText(news.getTesto());
         this.IDkey = IDkey;
     }

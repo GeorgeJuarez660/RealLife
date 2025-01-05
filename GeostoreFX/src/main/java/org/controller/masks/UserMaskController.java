@@ -5,10 +5,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import org.models.Amministratore;
 import org.models.Cliente;
 import org.models.Utente;
 import org.services.Service;
+import org.utility.Utility;
 
 import java.math.BigDecimal;
 import java.net.URL;
@@ -57,13 +59,13 @@ public class UserMaskController implements Initializable {
             email.setText(admin.getEmail());
             password.setText(admin.getPassword());
             adminCode.setText(admin.getCodeAdmin());
-            wallet.setText(admin.getPortafoglio().toString());
+            wallet.setText(Utility.formatValueBigDecimal(admin.getPortafoglio()));
         }
         else{
             Cliente cliente = (Cliente) utente;
             email.setText(cliente.getEmail());
             password.setText(cliente.getPassword());
-            wallet.setText(cliente.getPortafoglio().toString());
+            wallet.setText(Utility.formatValueBigDecimal(cliente.getPortafoglio()));
         }
 
         this.IDkey = IDkey;
@@ -86,9 +88,14 @@ public class UserMaskController implements Initializable {
             admin.setTelefono(phoneNumber.getText());
             admin.setEmail(email.getText());
             admin.setPassword(password.getText());
-            admin.setPortafoglio(new BigDecimal(wallet.getText()));
+            if(wallet != null && wallet.getText() != null && !wallet.getText().isEmpty() && !wallet.getText().isBlank()) {
+                admin.setPortafoglio(Utility.formatValueString(wallet.getText()));
+            }
+            else {
+                admin.setPortafoglio(new BigDecimal(0));
+            }
         }
-        else{
+        else {
             cliente = new Cliente();
             cliente.setNome(name.getText());
             cliente.setCognome(surname.getText());
@@ -98,9 +105,12 @@ public class UserMaskController implements Initializable {
             cliente.setTelefono(phoneNumber.getText());
             cliente.setEmail(email.getText());
             cliente.setPassword(password.getText());
-            cliente.setPortafoglio(new BigDecimal(wallet.getText()));
+            if (wallet != null && wallet.getText() != null && !wallet.getText().isEmpty() && !wallet.getText().isBlank()) {
+                cliente.setPortafoglio(Utility.formatValueString(wallet.getText()));
+            } else {
+                cliente.setPortafoglio(new BigDecimal(0));
+            }
         }
-
         return cliente;
     }
 
@@ -120,7 +130,12 @@ public class UserMaskController implements Initializable {
             admin.setTelefono(phoneNumber.getText());
             admin.setEmail(email.getText());
             admin.setPassword(password.getText());
-            admin.setPortafoglio(new BigDecimal(wallet.getText()));
+            if(wallet != null && wallet.getText() != null && !wallet.getText().isEmpty() && !wallet.getText().isBlank()) {
+                admin.setPortafoglio(Utility.formatValueString(wallet.getText()));
+            }
+            else {
+                admin.setPortafoglio(new BigDecimal(0));
+            }
         }
         else{
             cliente = new Cliente();
@@ -133,9 +148,28 @@ public class UserMaskController implements Initializable {
             cliente.setTelefono(phoneNumber.getText());
             cliente.setEmail(email.getText());
             cliente.setPassword(password.getText());
-            cliente.setPortafoglio(new BigDecimal(wallet.getText()));
+            if(wallet != null && wallet.getText() != null && !wallet.getText().isEmpty() && !wallet.getText().isBlank()) {
+                cliente.setPortafoglio(Utility.formatValueString(wallet.getText()));
+            }
+            else {
+                cliente.setPortafoglio(new BigDecimal(0));
+            }
         }
         return cliente;
+    }
+
+    //------------------NUMBER FIELD (TEXT FIELD WITH PATTERN)-----------------------
+
+    @FXML
+    private void patternNumberWallet(KeyEvent event){
+        String check = event.getCharacter();
+        if (!check.matches("[0-9,]")) {
+            String currentText = wallet.getText();
+            wallet.setText(currentText.replaceAll("[^0-9,]", ""));
+        }
+        else {
+            System.out.println("OK");
+        }
     }
 
     @Override

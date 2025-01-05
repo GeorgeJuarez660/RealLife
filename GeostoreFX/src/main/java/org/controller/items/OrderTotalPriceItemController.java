@@ -28,7 +28,10 @@ public class OrderTotalPriceItemController implements Initializable {
         int mese = calendario.get(Calendar.MONTH) + 1;
         int anno = calendario.get(Calendar.YEAR);
 
-        totalOrderDate.setText(giorno+"/"+mese+"/"+anno);
+        String giornoEsatto = String.format("%02d", giorno);
+        String meseEsatto = String.format("%02d", mese);
+
+        totalOrderDate.setText(giornoEsatto+"/"+meseEsatto+"/"+anno);
         totalOrderPrice.setText(Utility.formatValueBigDecimal(ordine.getPrezzo_unitario()) + " C");
 
     }
