@@ -66,24 +66,36 @@ public class Service {
     public void creazioneUtente(Cliente user, Cliente userID){
         int num = 0;
 
-        num = ur.insertUtenteWithDB(null, user);
+        if(Utility.getAge(user.getDataNascita())){
+            num = ur.insertUtenteWithDB(null, user);
 
-        if(num > 0){
-            Utility.sendResponse(num, "UTENTE CREATO", userID);
+            if(num > 0){
+                Utility.sendResponse(num, "UTENTE CREATO", userID);
+            }
+            else{
+                Utility.sendResponse(num, "CREAZIONE UTENTE", userID);
+            }
         }
         else{
-            Utility.sendResponse(num, "CREAZIONE UTENTE", userID);
+            Utility.sendResponse(0, "L'UTENTE DEVE AVERE ALMENO 13 ANNI. CREAZIONE UTENTE", userID);
         }
+
     }
 
     public void modificaUtente(Utente u, Cliente userID){
-        int num = ur.updateUtenteWithDB(u.getId(), u);
 
-        if(num > 0){
-            Utility.sendResponse(num, "UTENTE MODIFICATO", userID);
+        if(Utility.getAge(u.getDataNascita())){
+            int num = ur.updateUtenteWithDB(u.getId(), u);
+
+            if(num > 0){
+                Utility.sendResponse(num, "UTENTE MODIFICATO", userID);
+            }
+            else{
+                Utility.sendResponse(num, "MODIFICA UTENTE", userID);
+            }
         }
         else{
-            Utility.sendResponse(num, "MODIFICA UTENTE", userID);
+            Utility.sendResponse(0, "L'UTENTE DEVE AVERE ALMENO 13 ANNI. MODIFICA UTENTE", userID);
         }
     }
 

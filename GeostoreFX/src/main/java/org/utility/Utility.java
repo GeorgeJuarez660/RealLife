@@ -6,10 +6,14 @@ import javafx.util.Duration;
 import org.models.Cliente;
 import org.models.Utente;
 import org.services.LoadPage;
+import java.time.Period;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -94,6 +98,31 @@ public class Utility {
         formattedValue = new BigDecimal(value);
 
         return formattedValue;
+    }
+
+    public static boolean getAge(Date userDate){
+        boolean canRegister;
+
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(userDate);
+        int giorno = calendario.get(Calendar.DAY_OF_MONTH);
+        int mese = calendario.get(Calendar.MONTH) + 1;
+        int anno = calendario.get(Calendar.YEAR);
+
+        LocalDate bornDate = LocalDate.of(anno, mese, giorno);
+        LocalDate currentDate = LocalDate.now();
+
+        Period period = Period.between(bornDate, currentDate);
+        int age = period.getYears();
+
+        if(age >= 13){
+            canRegister = true;
+        }
+        else{
+            canRegister = false;
+        }
+
+        return canRegister;
     }
 
     public static void sendResponseLogin(Integer num, Cliente user){

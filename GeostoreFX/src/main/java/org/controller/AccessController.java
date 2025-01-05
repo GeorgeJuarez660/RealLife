@@ -48,6 +48,16 @@ public class AccessController {
             });
             delay.play();
         }
+        else if(!Utility.getAge(Date.valueOf(bornDate.getValue()))){
+            LoadPage.answerScene("negative", "DEVI AVERE ALMENO 13 ANNI PER REGISTRARTI");
+            //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
+            PauseTransition delay = new PauseTransition(Duration.seconds(3));
+            delay.setOnFinished(e -> {
+                // Dopo 2 secondi, carica la terza scena
+                LoadPage.getFullScene("register");
+            });
+            delay.play();
+        }
         else{
             if(codeAdmin != null && codeAdmin.getText() != null && !codeAdmin.getText().isEmpty() && !codeAdmin.getText().isBlank()){
                 user = new Amministratore();

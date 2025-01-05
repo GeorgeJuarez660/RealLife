@@ -20,8 +20,9 @@ public class GeostoreMain extends Application {
         stage.setScene(scene);
         stage.show();
 
+        //regola la chiusura del programma
         stage.setOnCloseRequest(event -> {
-            event.consume();
+            event.consume(); //utilizzato per ritardare la chiusura imminente
             LoadPage.saveStageForClose(event);
             LoadPage.getFullScene("goodbye");
 

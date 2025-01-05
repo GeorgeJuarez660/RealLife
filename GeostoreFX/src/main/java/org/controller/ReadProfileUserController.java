@@ -13,6 +13,7 @@ import org.models.Cliente;
 import org.models.Utente;
 import org.services.LoadPage;
 import org.services.Service;
+import org.utility.PartialSceneDTO;
 
 import java.net.URL;
 
@@ -98,5 +99,17 @@ public class ReadProfileUserController {// Questo è il BorderPane di menu.fxml
         System.out.println("Going back");
 
         LoadPage.getPartialScene(fxmlLoader, "chooseTUserAdmin", user);
+    }
+
+    @FXML
+    private void updating(){ //button per andare alla pagina di modifica utente
+        System.out.println("goes to update user");
+        PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+        partialSceneDTO.setFxmlLoader(fxmlLoader);
+        partialSceneDTO.setInnerScene("update");
+        partialSceneDTO.setItemScene("user");
+        partialSceneDTO.setUser(user);
+        String idKey = user.getId().toString();
+        LoadPage.getPartialSceneCRU(partialSceneDTO, idKey);
     }
 }
