@@ -6,26 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="8273ca0a-1299-4b65-b52d-47dc6a793eae" name="Changes" comment="AppJavaFx: creating example">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/items/NewsItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/items/NewsItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/items/OrderItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/items/OrderItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/items/OrderTotalPriceItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/items/OrderTotalPriceItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/items/UserItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/items/UserItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/masks/NewsMaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/masks/NewsMaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/masks/OrderMaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/masks/OrderMaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/masks/UserMaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/masks/UserMaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/CategoriaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/CategoriaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/MateriaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/MateriaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/UtenteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/UtenteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/masks/CategoryMaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/masks/CategoryMaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/masks/MaterialMaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/masks/MaterialMaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/services/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/services/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/masks/userMask.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/masks/userMask.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/MainPreview.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/masks/CategoryMaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/masks/CategoryMaskController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/masks/MaterialMaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/masks/MaterialMaskController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/controller/masks/UserMaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/masks/UserMaskController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/previewLogin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/CategoriaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/CategoriaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/MateriaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/MateriaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/UtenteRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/UtenteRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/masks/userMask.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/masks/userMask.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/preview.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/services/Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/services/Service.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -322,7 +309,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/Service.java</url>
-          <line>313</line>
+          <line>442</line>
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -337,17 +324,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/Service.java</url>
-          <line>340</line>
+          <line>469</line>
           <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/Service.java</url>
-          <line>431</line>
+          <line>560</line>
           <option name="timeStamp" value="83" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/Service.java</url>
-          <line>437</line>
+          <line>566</line>
           <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -362,7 +349,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/Service.java</url>
-          <line>721</line>
+          <line>860</line>
           <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -419,6 +406,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/models/UtenteRepository.java</url>
           <line>489</line>
           <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/controller/masks/UserMaskController.java</url>
+          <line>164</line>
+          <option name="timeStamp" value="105" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

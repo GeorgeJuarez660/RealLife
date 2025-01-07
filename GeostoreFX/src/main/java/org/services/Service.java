@@ -237,9 +237,138 @@ public class Service {
 
     public void modificaProdotto(Prodotto product, Cliente user){
         int num = 0;
+
+        Prodotto p = pr.getProdottoWithDB(product.getId()); //per la notizia della modifica
+
         num = pr.updateProdottoWithDB(product.getId(), product);
 
         if(num > 0){
+            //notizia per la modifica prodotto
+            News notiziaCreazione;
+
+            if(!p.getNome().equals(product.getNome())){
+                notiziaCreazione = new News();
+                notiziaCreazione.setUtente(user);
+                notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
+                notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
+                notiziaCreazione.setTesto("È stato aggiornato il nome prodotto: da " + p.getNome() + " è stato rinominato in " + product.getNome());
+                this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
+            }
+
+            if(!p.getPrezzo().equals(product.getPrezzo())){
+                notiziaCreazione = new News();
+                notiziaCreazione.setUtente(user);
+                notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
+                notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
+
+                if(p.getPrezzo().compareTo(product.getPrezzo()) > 0){
+                    notiziaCreazione.setTesto("È stato diminuito il prezzo del prodotto " + product.getNome() + ": da " + Utility.formatValueBigDecimal(p.getPrezzo()) + " C il prodotto ora è a soli " + Utility.formatValueBigDecimal(product.getPrezzo()) + " C");
+                }
+                else{
+                    notiziaCreazione.setTesto("È stato aumentato il prezzo del prodotto " + product.getNome() + ": da " + Utility.formatValueBigDecimal(p.getPrezzo()) + " C il prodotto ora è a soli " + Utility.formatValueBigDecimal(product.getPrezzo()) + " C");
+                }
+
+                this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
+            }
+
+            if(!p.getCategoria().equals(product.getCategoria())){
+                notiziaCreazione = new News();
+                notiziaCreazione.setUtente(user);
+                notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
+                notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
+                notiziaCreazione.setTesto("È stato spostato il prodotto " + product.getNome() + " in un'altra categoria: da " + p.getCategoria().getNome() + " è stato spostato in " + product.getCategoria().getNome());
+                this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
+            }
+
+            if(!p.getMateria().equals(product.getMateria())){
+                notiziaCreazione = new News();
+                notiziaCreazione.setUtente(user);
+                notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
+                notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
+                notiziaCreazione.setTesto("È stata modificata la materia del prodotto " + product.getNome() + " in un'altra categoria: da " + p.getCategoria().getNome() + " è stato spostato in " + product.getCategoria().getNome());
+                this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
+            }
+
+            if(!p.getDisponibilita().equals(product.getDisponibilita())){
+                notiziaCreazione = new News();
+                notiziaCreazione.setUtente(user);
+                notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
+                notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
+
+                if(p.getDisponibilita().getId() == 1){
+                    if(product.getDisponibilita().getId() == 2){
+                        notiziaCreazione.setTesto("Il prodotto " + product.getNome() + " è IN " + product.getDisponibilita().getCode() + " su GeoStore");
+                    }
+                    else if(product.getDisponibilita().getId() == 3){
+                        notiziaCreazione.setTesto("Il prodotto " + product.getNome() + " è IN " + product.getDisponibilita().getCode() + ". Approfittane! Sono rimasti solo " + product.getQuantita_disp() + " pezzi");
+                    }
+                    else if(product.getDisponibilita().getId() == 4){
+                        notiziaCreazione.setTesto("Il prodotto " + product.getNome() + " è " + product.getDisponibilita().getCode() + ". Presto sarà di nuovo disponibile su GeoStore");
+                    }
+                    else{
+                        notiziaCreazione.setTesto("Il prodotto " + product.getNome() + " è in stato " + product.getDisponibilita().getCode() + ". Presto sarà di nuovo disponibile su GeoStore");
+                    }
+                }
+                else if(p.getDisponibilita().getId() == 2){
+                    if(product.getDisponibilita().getId() == 1){
+                        notiziaCreazione.setTesto("Ora il prodotto " + product.getNome() + " è " + product.getDisponibilita().getCode() + " su GeoStore");
+                    }
+                    else if(product.getDisponibilita().getId() == 3){
+                        notiziaCreazione.setTesto("Ora il prodotto " + product.getNome() + " è disponibile su GeoStore ma è IN " + product.getDisponibilita().getCode() + ". Approfittane! Sono rimasti solo " + product.getQuantita_disp() + " pezzi");
+                    }
+                    else if(product.getDisponibilita().getId() == 4){
+                        notiziaCreazione.setTesto("Il prodotto " + product.getNome() + " è " + product.getDisponibilita().getCode() + ". Presto sarà di nuovo disponibile su GeoStore");
+                    }
+                    else{
+                        notiziaCreazione.setTesto("Il prodotto " + product.getNome() + " è in stato " + product.getDisponibilita().getCode() + ". Presto sarà di nuovo disponibile su GeoStore");
+                    }
+                }
+                else if(p.getDisponibilita().getId() == 3){
+                    if(product.getDisponibilita().getId() == 1){
+                        notiziaCreazione.setTesto("Il prodotto " + product.getNome() + " è di nuovo " + product.getDisponibilita().getCode() + " su GeoStore");
+                    }
+                    else if(product.getDisponibilita().getId() == 2){
+                        notiziaCreazione.setTesto("Il prodotto " + product.getNome() + " è IN " + product.getDisponibilita().getCode() + ". su GeoStore");
+                    }
+                    else if(product.getDisponibilita().getId() == 4){
+                        notiziaCreazione.setTesto("Il prodotto " + product.getNome() + " è " + product.getDisponibilita().getCode() + ". Presto sarà di nuovo disponibile su GeoStore");
+                    }
+                    else{
+                        notiziaCreazione.setTesto("Il prodotto " + product.getNome() + " è in stato " + product.getDisponibilita().getCode() + ". Presto sarà di nuovo disponibile su GeoStore");
+                    }
+                }
+                else if(p.getDisponibilita().getId() == 4){
+                    if(product.getDisponibilita().getId() == 1){
+                        notiziaCreazione.setTesto("Ora il prodotto " + product.getNome() + " è " + product.getDisponibilita().getCode() + " su GeoStore");
+                    }
+                    else if(product.getDisponibilita().getId() == 2){
+                        notiziaCreazione.setTesto("Il prodotto " + product.getNome() + " è IN " + product.getDisponibilita().getCode() + " su GeoStore");
+                    }
+                    else if(product.getDisponibilita().getId() == 3){
+                        notiziaCreazione.setTesto("Ora il prodotto " + product.getNome() + " è disponibile su GeoStore ma è IN " + product.getDisponibilita().getCode() + ". Approfittane! Sono rimasti solo " + product.getQuantita_disp() + " pezzi");
+                    }
+                    else{
+                        notiziaCreazione.setTesto("Il prodotto " + product.getNome() + " è in stato " + product.getDisponibilita().getCode() + ". Presto sarà di nuovo disponibile su GeoStore");
+                    }
+                }
+                else{
+                    if(product.getDisponibilita().getId() == 1){
+                        notiziaCreazione.setTesto("Ora il prodotto " + product.getNome() + " è " + product.getDisponibilita().getCode() + " su GeoStore");
+                    }
+                    else if(product.getDisponibilita().getId() == 2){
+                        notiziaCreazione.setTesto("Il prodotto " + product.getNome() + " è IN " + product.getDisponibilita().getCode() + " su GeoStore");
+                    }
+                    else if(product.getDisponibilita().getId() == 3){
+                        notiziaCreazione.setTesto("Ora il prodotto " + product.getNome() + " è disponibile su GeoStore ma è IN " + product.getDisponibilita().getCode() + ". Approfittane! Sono rimasti solo " + product.getQuantita_disp() + " pezzi");
+                    }
+                    else{
+                        notiziaCreazione.setTesto("Il prodotto " + product.getNome() + " è " + product.getDisponibilita().getCode() + ". Presto sarà di nuovo disponibile su GeoStore");
+                    }
+                }
+
+                this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
+            }
+
             Utility.sendResponse(num, "PRODOTTO MODIFICATO", user);
         }
         else{
@@ -279,7 +408,7 @@ public class Service {
             notiziaCreazione.setUtente(user);
             notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
             notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
-            notiziaCreazione.setTesto("È stato rimosso il prodotto: " + product.getNome() + ". Sono stati effettuati i rimborsi agli utenti che avevano ordinato questo prodotto");
+            notiziaCreazione.setTesto("È stato rimosso il prodotto " + product.getNome() + ". Sono stati effettuati i rimborsi agli utenti che avevano ordinato questo prodotto");
             this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
 
             Utility.sendResponseDeletedProducts(num, user);
@@ -631,12 +760,22 @@ public class Service {
     public void modificaCategoria(Categoria category, Cliente user){
         int num = 0;
 
+        Categoria c = cr.getCategoriaWithDB(category.getId()); //per la notizia della modifica
+
         num = cr.checkDuplicatesCategoria(category);
 
         if(num == 0){
             num = cr.updateCategoriaWithDB(category.getId(), category);
 
             if(num > 0){
+                //notizia per la modifica categoria
+                News notiziaCreazione = new News();
+                notiziaCreazione.setUtente(user);
+                notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
+                notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
+                notiziaCreazione.setTesto("È stato modificato il nome categoria: da " + c.getNome() + " è stata rimoninata in " + category.getNome());
+                this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
+
                 Utility.sendResponse(num, "CATEGORIA MODIFICATA", user);
             }
             else{
@@ -668,7 +807,7 @@ public class Service {
             notiziaCreazione.setUtente(user);
             notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
             notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
-            notiziaCreazione.setTesto("È stata dismessa la categoria: " + category.getNome() + ". I prodotti appartenenti a questa categoria sono stati spostati in N/A");
+            notiziaCreazione.setTesto("È stata dismessa la categoria " + category.getNome() + ". I prodotti appartenenti a questa categoria sono stati spostati in N/A");
             this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
 
             Utility.sendResponseDeletedCategories(num, user);

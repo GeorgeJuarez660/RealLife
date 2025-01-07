@@ -39,7 +39,7 @@ public class MaterialMaskController implements Initializable {
     public Materia setValues() throws ParseException { //recuperato da mask
         Materia materia = new Materia();
 
-        materia.setNome(name.getText());
+        materia.setNome(name.getText().toUpperCase());
 
         return materia;
     }
@@ -49,7 +49,7 @@ public class MaterialMaskController implements Initializable {
         Materia materia = new Materia();
 
         materia.setId(Integer.parseInt(IDkey));
-        materia.setNome(name.getText());
+        materia.setNome(name.getText().toUpperCase());
 
         return materia;
     }

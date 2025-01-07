@@ -47,7 +47,7 @@ public class CategoryMaskController implements Initializable {
     public Categoria setValues() throws ParseException { //recuperato da mask
         Categoria categoria = new Categoria();
 
-        categoria.setNome(name.getText());
+        categoria.setNome(name.getText().toUpperCase());
 
         return categoria;
     }
@@ -57,7 +57,7 @@ public class CategoryMaskController implements Initializable {
         Categoria categoria = new Categoria();
 
         categoria.setId(Integer.parseInt(IDkey));
-        categoria.setNome(name.getText());
+        categoria.setNome(name.getText().toUpperCase());
 
         return categoria;
     }
