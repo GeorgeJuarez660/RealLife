@@ -8,7 +8,7 @@ import org.services.LoadPage;
 import org.services.Service;
 import org.utility.PartialSceneDTO;
 
-public class ChooseTUserController {
+public class ChooseTCodeController {
     private Cliente user;
     private Boolean isAdmin;
     private BorderPane fxmlLoader;
@@ -34,39 +34,40 @@ public class ChooseTUserController {
     //------------------BUTTONS-----------------------
 
     @FXML
-    private void lookUserProfile() {
-        System.out.println("goes to look user profile");
-        PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
-        partialSceneDTO.setFxmlLoader(fxmlLoader);
-        partialSceneDTO.setInnerScene("readProfileUser");
-        partialSceneDTO.setUser(user);
-        LoadPage.getPartialSceneCRU(partialSceneDTO, null);
+    private void back() { //button per tornare indietro
+        System.out.println("goes to user");
+        LoadPage.getPartialScene(fxmlLoader, "chooseTUserAdmin", user);
     }
 
     @FXML
-    private void lookUsers() {
-        System.out.println("goes to look users");
+    private void lookAssociatedCodes() {
+        System.out.println("goes to look associated codes");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
         partialSceneDTO.setInnerScene("read");
-        partialSceneDTO.setItemScene("user");
+        partialSceneDTO.setItemScene("code-A");
         partialSceneDTO.setUser(user);
         LoadPage.getPartialSceneCRU(partialSceneDTO, null);
     }
 
     @FXML
     private void lookCodes() {
-        System.out.println("goes to code");
-        LoadPage.getPartialScene(fxmlLoader, "chooseTCodeAdmin", user);
+        System.out.println("goes to look codes");
+        PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+        partialSceneDTO.setFxmlLoader(fxmlLoader);
+        partialSceneDTO.setInnerScene("read");
+        partialSceneDTO.setItemScene("code");
+        partialSceneDTO.setUser(user);
+        LoadPage.getPartialSceneCRU(partialSceneDTO, null);
     }
 
     @FXML
-    private void createUser() {
-        System.out.println("goes to create user");
+    private void createCode() {
+        System.out.println("goes to create code");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
         partialSceneDTO.setInnerScene("create");
-        partialSceneDTO.setItemScene("user");
+        partialSceneDTO.setItemScene("code");
         partialSceneDTO.setUser(user);
         LoadPage.getPartialSceneCRU(partialSceneDTO, null);
     }

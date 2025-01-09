@@ -482,6 +482,16 @@ public class UtenteRepository implements utentiCRUD {
         return num;
     }
 
+    @Override
+    public int associateCodiceWithDB(Integer id, Codice newC) {
+        return 0;
+    }
+
+    @Override
+    public int dissociateCodiceWithDB(Integer id, Codice newC) {
+        return 0;
+    }
+
 
     public int checkDuplicatesUtente(Utente u) {
         String sql = "";

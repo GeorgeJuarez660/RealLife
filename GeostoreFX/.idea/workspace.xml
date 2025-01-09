@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="8273ca0a-1299-4b65-b52d-47dc6a793eae" name="Changes" comment="AppJavaFx: creating example">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/ChooseTUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/ChooseTUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/CreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/CreateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/UtenteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/UtenteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/utility/utentiCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/utility/utentiCRUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/chooseTUserAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/chooseTUserAdmin.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,18 +76,18 @@
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes\mask" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes\masks" />
+      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes\items" />
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes" />
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes\mask" />
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\java\org\controller\item" />
-      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes\item" />
-      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\images" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.models" />
+      <recent name="org.utility" />
       <recent name="org.controller.masks" />
       <recent name="org.controller" />
       <recent name="org.controller.items" />
-      <recent name="org.controller.item" />
-      <recent name="org.controller.mask" />
     </key>
   </component>
   <component name="RunManager" selected="Application.GeostoreMain">
@@ -236,7 +242,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/LoadPage.java</url>
-          <line>286</line>
+          <line>290</line>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -271,7 +277,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/LoadPage.java</url>
-          <line>303</line>
+          <line>307</line>
           <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -391,12 +397,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/models/UtenteRepository.java</url>
-          <line>503</line>
+          <line>513</line>
           <option name="timeStamp" value="102" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/models/UtenteRepository.java</url>
-          <line>489</line>
+          <line>499</line>
           <option name="timeStamp" value="103" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

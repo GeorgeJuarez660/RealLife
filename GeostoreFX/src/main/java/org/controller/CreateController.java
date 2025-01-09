@@ -55,6 +55,9 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
         if(itemScene != null && itemScene.equals("user")){
             title.setText("Creazione utente");
         }
+        if(itemScene != null && itemScene.equals("code")){
+            title.setText("Creazione codice");
+        }
         else if(itemScene != null && itemScene.equals("product")){
             title.setText("Creazione prodotto");
         }
@@ -87,6 +90,28 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
                 VBox mask = loader.load();
                 UserMaskController userMaskController = loader.getController();// Ottieni il controller della scena caricata
                 maskController = userMaskController;
+                createMask.getChildren().add(mask);
+
+                // Carica il file FXML
+                // Imposta la scena caricata come contenuto centrale del BorderPane
+
+            } catch (Exception e) {
+                System.out.println("No page found. Please check FXMLLoader.");
+                e.printStackTrace();
+            }
+        }
+        else if(this.itemScene != null && this.itemScene.equals("code")){
+            try {
+                // Costruisce il percorso completo del file FXML
+                URL fileUrl = getClass().getResource("/org/scenes/masks/codeMask.fxml");
+                if (fileUrl == null) {
+                    throw new java.io.FileNotFoundException("FXML file can't be found");
+                }
+
+                FXMLLoader loader = new FXMLLoader(fileUrl);
+                VBox mask = loader.load();
+                CodeMaskController codeMaskController = loader.getController();// Ottieni il controller della scena caricata
+                maskController = codeMaskController;
                 createMask.getChildren().add(mask);
 
                 // Carica il file FXML
@@ -222,6 +247,9 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
         System.out.println("Going back");
         if(this.itemScene != null && this.itemScene.equals("user")){
             LoadPage.getPartialScene(fxmlLoader, "chooseTUserAdmin", user);
+        }
+        else if(this.itemScene != null && this.itemScene.equals("code")){
+            LoadPage.getPartialScene(fxmlLoader, "chooseTCodeAdmin", user);
         }
         else if(this.itemScene != null && this.itemScene.equals("product")){
             LoadPage.getPartialScene(fxmlLoader, "chooseTProductAdmin", user);
