@@ -104,6 +104,41 @@ public class CodiceRepository implements codiciCRUD {
         return c;
     }
 
+    public HashMap<Integer, Codice> getCodiceByKeyword(String keyword) {
+        String sql = "SELECT * FROM admin_codes ac WHERE ac.codice LIKE ?";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        codici = new HashMap<>();
+
+        try{
+            //Connessione al db
+            connection = DBConnection.sqlConnect();
+            preparedStatement = connection.prepareStatement(sql);
+            keyword = "%" + keyword + "%";
+            preparedStatement.setString(1, keyword);
+            rs = preparedStatement.executeQuery();
+            Codice c;
+
+            while(rs.next()){
+                c = new Codice();
+                c.setId(rs.getInt("id"));
+                c.setCodice(rs.getString("codice"));
+                c.setDescrizione(rs.getString("descrizione"));
+
+                codici.put(c.getId(), c);
+            }
+            //chiudi la connessione
+            rs.close();
+            preparedStatement.close();
+            connection.close();
+        }catch(SQLException e){
+            Utility.msgInf("GEOSTORE", "Errore nel getCodiceByKeyword: " + e.getMessage());
+        }
+
+        return codici;
+    }
+
     @Override
     public int updateCodiceWithDB(Integer id, Codice newC) {
         String sql = "UPDATE `admin_codes` SET `codice` = ?, `descrizione` = ? WHERE id = ? ";
@@ -150,6 +185,36 @@ public class CodiceRepository implements codiciCRUD {
             connection.close();
         }catch(SQLException e){
             Utility.msgInf("GEOSTORE", "Errore nel deleteCodiceWithDB: " + e.getMessage());
+        }
+
+        return num;
+    }
+
+    public int checkDuplicatesCodice(Codice c) {
+        String sql = "select count(*) as duplicates from admin_codes ac where codice = ?";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        int num = 0;
+
+        try{
+            //Connessione al db
+            connection = DBConnection.sqlConnect();
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, c.getCodice());
+
+            rs = preparedStatement.executeQuery();
+
+            while(rs.next()){
+                num = rs.getInt("duplicates");
+            }
+            //chiudi la connessione
+            rs.close();
+            preparedStatement.close();
+            connection.close();
+        }catch(SQLException e){
+            Utility.msgInf("GEOSTORE", "Errore nel checkDuplicatesCodice: " + e.getMessage());
         }
 
         return num;

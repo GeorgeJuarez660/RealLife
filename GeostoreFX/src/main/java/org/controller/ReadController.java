@@ -72,6 +72,9 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                 title.setText("Elenco prodotti disponibili");
             }
         }
+        else if(itemScene != null && itemScene.equals("code")){
+            title.setText("Lista di codici admin");
+        }
         else if(itemScene != null && itemScene.contains("order")){
             String lastChar = itemScene.substring(itemScene.length() - 1);
             if(lastChar.equals("1")){
@@ -98,12 +101,16 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
 
         List<News> notizie = new ArrayList<>();
         Map<Integer, Utente> utenti = new HashMap<>();
+        Map<Integer, Codice> codici = new HashMap<>();
         Map<Integer, Prodotto> prodotti = new HashMap<>();
         Map<Integer, Ordine> ordini = new HashMap<>();
 
         if (IDkey != null && !IDkey.isEmpty() && !IDkey.isBlank()){
             if(this.itemScene != null && this.itemScene.equals("user")){ //vede prima quale item riferisce
                 utenti = service.ottieniUtenteByKeyword(IDkey);
+            }
+            else if(this.itemScene != null && this.itemScene.equals("code")){ //vede prima quale item riferisce
+                codici = service.ottieniCodiceByKeyword(IDkey);
             }
             else if(this.itemScene != null && this.itemScene.contains("product")){
                 String lastChar = this.itemScene.substring(this.itemScene.length() - 1);
@@ -148,6 +155,9 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                     prodotti = service.elencoProdottiDisponibili();
                 }
             }
+            else if(this.itemScene != null && this.itemScene.equals("code")) { //vede prima quale item riferisce
+                codici = service.elencoCodici();
+            }
             else if(this.itemScene != null && this.itemScene.contains("order")){
                 String lastChar = this.itemScene.substring(this.itemScene.length() - 1);
                 if(lastChar.equals("1")){
@@ -180,6 +190,34 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                         userItemController.save(fxmlLoader, user);
                         userItemController.setValues(utente);
                         userItemController.enableButtons(isAdmin);
+                        itemList.getChildren().add(userItem);
+
+                        // Carica il file FXML
+                        // Imposta la scena caricata come contenuto centrale del BorderPane
+
+                    } catch (Exception e) {
+                        System.out.println("No page found. Please check FXMLLoader.");
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        else if(this.itemScene != null && this.itemScene.equals("code")){
+            for (Codice codice : codici.values()) {
+                if(codice.getId() != null && codice.getId() != 0){
+                    try {
+                        // Costruisce il percorso completo del file FXML
+                        URL fileUrl = getClass().getResource("/org/scenes/items/codeItem.fxml"); //trova la scena user
+                        if (fileUrl == null) {
+                            throw new java.io.FileNotFoundException("FXML file can't be found");
+                        }
+
+                        FXMLLoader loader = new FXMLLoader(fileUrl);
+                        HBox userItem = loader.load();
+                        CodeItemController codeItemController = loader.getController();
+                        codeItemController.save(fxmlLoader, user);
+                        codeItemController.setValues(codice);
+                        codeItemController.enableButtons(isAdmin);
                         itemList.getChildren().add(userItem);
 
                         // Carica il file FXML
@@ -292,6 +330,9 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
         if(this.itemScene != null && this.itemScene.equals("user")){
             LoadPage.getPartialScene(fxmlLoader, "chooseTUserAdmin", user);
         }
+        else if(this.itemScene != null && this.itemScene.equals("code")){
+            LoadPage.getPartialScene(fxmlLoader, "chooseTCodeAdmin", user);
+        }
         else if(this.itemScene != null && this.itemScene.contains("product")){
             if(isAdmin){
                 if(this.itemScene.equals("product-O")){ //per l'ordinazione prodotto
@@ -331,6 +372,10 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
             if(this.itemScene != null && this.itemScene.equals("user")){
                 String keyword = search.getText();
                 loadItems("user", keyword);
+            }
+            else if(this.itemScene != null && this.itemScene.equals("code")){
+                String keyword = search.getText();
+                loadItems("code", keyword);
             }
             else if(this.itemScene != null && this.itemScene.equals("product-1")){
                 String keyword = search.getText();

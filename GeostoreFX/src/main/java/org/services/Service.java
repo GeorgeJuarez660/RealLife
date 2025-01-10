@@ -16,6 +16,7 @@ public class Service {
 
     ProdottoRepository pr = new ProdottoRepository();
     UtenteRepository ur = new UtenteRepository();
+    CodiceRepository cor = new CodiceRepository();
     NewsRepository nr = new NewsRepository();
     CategoriaRepository cr = new CategoriaRepository();
     MateriaRepository mr = new MateriaRepository();
@@ -133,6 +134,35 @@ public class Service {
         else{
             Utility.sendResponse(num, "ELIMINAZIONE UTENTE", userID);
         }
+    }
+
+    public Map<Integer, Codice> elencoCodici(){
+        return cor.getCodiciWithDB();
+    }
+
+    public Map<Integer, Codice> ottieniCodiceByKeyword(String keyword){
+        return cor.getCodiceByKeyword(keyword);
+    }
+
+    public void creazioneCodice(Codice code, Cliente user){
+        int num = 0;
+
+        num = cor.checkDuplicatesCodice(code);
+
+        if(num == 0){
+            num = cor.insertCodiceWithDB(null, code);
+
+            if(num > 0){
+                Utility.sendResponse(num, "CODICE CREATO", user);
+            }
+            else{
+                Utility.sendResponse(num, "CREAZIONE CODICE", user);
+            }
+        }
+        else{
+            Utility.sendResponse(0, "IL CODICE GIÀ ESISTE. CREAZIONE CODICE", user);
+        }
+
     }
 
     public ArrayList<News> elencoNotizie(){

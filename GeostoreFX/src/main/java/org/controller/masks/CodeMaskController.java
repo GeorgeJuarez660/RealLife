@@ -3,12 +3,10 @@ package org.controller.masks;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import org.models.Categoria;
-import org.models.Disponibilita;
-import org.models.Materia;
-import org.models.Prodotto;
+import org.models.*;
 import org.services.Service;
 import org.utility.Utility;
 
@@ -22,9 +20,9 @@ import java.util.ResourceBundle;
 public class CodeMaskController implements Initializable {
 
     @FXML
-    private TextField name, price, quantity;
+    private TextField code;
     @FXML
-    private ChoiceBox<String> available, category, material;
+    private TextArea description;
 
     private Service service;
     private String IDkey; //usato per la ricerca/modifica/rimozione
@@ -51,40 +49,14 @@ public class CodeMaskController implements Initializable {
     //------------------GETTING FROM CRUD CONTROLLER-----------------------
 
     //per la creazione codice
-    public Prodotto setValues() throws ParseException { //recuperato da mask
-        Prodotto prodotto = new Prodotto();
+    public Codice setValues() throws ParseException { //recuperato da mask
+        Codice codice = new Codice();
         service = new Service();
 
-        prodotto.setNome(name.getText());
+        codice.setCodice(code.getText());
+        codice.setDescrizione(description.getText());
 
-        if(price != null && price.getText() != null && !price.getText().isEmpty() && !price.getText().isBlank()) {
-            prodotto.setPrezzo(Utility.formatValueString(price.getText()));
-        }
-        else{
-            prodotto.setPrezzo(new BigDecimal(0));
-        }
-
-        Disponibilita disponibilita = new Disponibilita();
-        disponibilita.setId(Integer.parseInt(available.getValue().replaceAll("[^0-9]", "")));
-        disponibilita.setCode(available.getValue().replaceAll(".*[^a-zA-Z]", ""));
-        prodotto.setDisponibilita(disponibilita);
-
-        Categoria categoria = new Categoria();
-        categoria.setId(Integer.parseInt(category.getValue().replaceAll("[^0-9]", "")));
-        prodotto.setCategoria(categoria);
-
-        Materia materia = new Materia();
-        materia.setId(Integer.parseInt(material.getValue().replaceAll("[^0-9]", "")));
-        prodotto.setMateria(materia);
-
-        if(quantity != null && quantity.getText() != null && !quantity.getText().isEmpty() && !quantity.getText().isBlank()){
-            prodotto.setQuantita_disp(Integer.parseInt(quantity.getText()));
-        }
-        else{
-            prodotto.setQuantita_disp(0);
-        }
-
-        return prodotto;
+        return codice;
     }
 
     //per la modifica codice

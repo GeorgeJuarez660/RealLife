@@ -63,7 +63,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="bornDate" onKeyTyped="#patternDateBornDate" prefHeight="26.0" prefWidth="166.0" style="-fx-background-radius: 7;" styleClass="label-font-min2-title" />
+                        <DatePicker fx:id="bornDate" prefHeight="26.0" prefWidth="166.0" style="-fx-background-radius: 7;" styleClass="label-font-min2-title" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="104.0" prefHeight="31.0" prefWidth="200.0" spacing="5.0">

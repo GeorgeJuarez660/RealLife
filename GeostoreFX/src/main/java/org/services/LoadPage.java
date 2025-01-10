@@ -250,8 +250,8 @@ public class LoadPage {
                 chooseTUserController.save(fxmlLoader, user);
             }
             else if(controller instanceof ChooseTCodeController){
-                ChooseTUserController chooseTUserController = (ChooseTUserController) controller;
-                chooseTUserController.save(fxmlLoader, user);
+                ChooseTCodeController chooseTCodeController = (ChooseTCodeController) controller;
+                chooseTCodeController.save(fxmlLoader, user);
             }
             else if(controller instanceof ChooseTProductController){
                 ChooseTProductController chooseTProductController = (ChooseTProductController) controller;
