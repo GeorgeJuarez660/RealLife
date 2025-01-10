@@ -5,6 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8273ca0a-1299-4b65-b52d-47dc6a793eae" name="Changes" comment="AppJavaFx: creating example">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/controller/items/CodeItemController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/controller/ChooseTCodeController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/controller/items/CodeItemController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/controller/masks/CodeMaskController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/models/Codice.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/models/CodiceRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/scenes/chooseTCodeAdmin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/scenes/createAssociateCode.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/scenes/items/codeAssociateItem.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/scenes/items/codeItem.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/scenes/masks/codeAssociateMask.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/scenes/masks/codeMask.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/utility/codiciCRUD.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/CreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/CreateController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/ReadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/ReadController.java" afterDir="false" />
@@ -15,6 +28,16 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/items/codeAssociateItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/items/codeAssociateItem.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/items/codeItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/items/codeItem.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/masks/codeAssociateMask.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/masks/codeAssociateMask.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/ChooseTUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/ChooseTUserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/CreateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/CreateController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/ReadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/ReadController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/masks/UserMaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/masks/UserMaskController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/models/UtenteRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/UtenteRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/chooseTUserAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/chooseTUserAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/masks/userMask.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/masks/userMask.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/services/LoadPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/services/LoadPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/services/Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/services/Service.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/utility/utentiCRUD.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/utility/utentiCRUD.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
