@@ -140,6 +140,10 @@ public class Service {
         return cor.getCodiciWithDB();
     }
 
+    public Codice ottieniCodice(Integer idCodice){
+        return cor.getCodiceWithDB(idCodice);
+    }
+
     public Map<Integer, Codice> ottieniCodiceByKeyword(String keyword){
         return cor.getCodiceByKeyword(keyword);
     }
@@ -161,6 +165,39 @@ public class Service {
         }
         else{
             Utility.sendResponse(0, "IL CODICE GIÀ ESISTE. CREAZIONE CODICE", user);
+        }
+
+    }
+
+    public Map<Integer, CodiceAssociateDTO> elencoCodiciAssociati(){
+        return cor.getCodiciAssociatiWithDB();
+    }
+
+    public CodiceAssociateDTO ottieniCodiceAssociato(String emailCodiceAssociato){
+        return cor.getCodiceAssociatoWithDB(emailCodiceAssociato);
+    }
+
+    public Map<Integer, CodiceAssociateDTO> ottieniCodiceAssociatoByKeyword(String keyword){
+        return cor.getCodiceAssociatoByEmailKeyword(keyword);
+    }
+
+    public void associazioneCodice(CodiceAssociateDTO codeAssociate, Cliente user){
+        int num = 0;
+
+        num = cor.checkAlreadyAssociatedCodice(codeAssociate.getCodiceAdmin().getId(), codeAssociate.getEmailUtente());
+
+        if(num == 0){
+            num = cor.associateCodiceToUtenteWithDB(codeAssociate.getCodiceAdmin().getId(), codeAssociate.getEmailUtente());
+
+            if(num > 0){
+                Utility.sendResponse(num, "CODICE ASSOCIATO", user);
+            }
+            else{
+                Utility.sendResponse(num, "ASSOCIAZIONE CODICE", user);
+            }
+        }
+        else{
+            Utility.sendResponse(0, "IL CODICE È GIÀ STATO ASSOCIATO ALL'UTENTE. ASSOCIAZIONE CODICE", user);
         }
 
     }

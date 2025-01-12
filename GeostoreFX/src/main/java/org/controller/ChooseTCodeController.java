@@ -44,7 +44,7 @@ public class ChooseTCodeController {
         System.out.println("goes to look associated codes");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
-        partialSceneDTO.setInnerScene("read");
+        partialSceneDTO.setInnerScene("readCodes");
         partialSceneDTO.setItemScene("code-A");
         partialSceneDTO.setUser(user);
         LoadPage.getPartialSceneCRU(partialSceneDTO, null);
@@ -55,8 +55,8 @@ public class ChooseTCodeController {
         System.out.println("goes to look codes");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
-        partialSceneDTO.setInnerScene("read");
-        partialSceneDTO.setItemScene("code");
+        partialSceneDTO.setInnerScene("readCodes");
+        partialSceneDTO.setItemScene("code-C");
         partialSceneDTO.setUser(user);
         LoadPage.getPartialSceneCRU(partialSceneDTO, null);
     }

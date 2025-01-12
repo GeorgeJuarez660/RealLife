@@ -304,12 +304,25 @@ public class LoadPage {
                 createController.setTitle(partialSceneDTO.getItemScene());
                 createController.loadMask(partialSceneDTO.getItemScene(), IDkey);
             }
+            else if(controller instanceof CreateAssociateUserController){
+                CreateAssociateUserController createAssociateUserController = (CreateAssociateUserController) controller;
+                createAssociateUserController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
+                createAssociateUserController.loadMask("codeAssociateMask");
+            }
             else if(controller instanceof ReadController){
                 ReadController readController = (ReadController) controller;
                 readController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
                 readController.setTitle(partialSceneDTO.getItemScene());
                 readController.showSearchBar(false);
                 readController.loadItems(partialSceneDTO.getItemScene(), IDkey);
+            }
+            else if(controller instanceof ReadCodesController){
+                ReadCodesController readCodesController = (ReadCodesController) controller;
+                readCodesController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
+                readCodesController.setTitle(partialSceneDTO.getItemScene());
+                readCodesController.showSearchBar(false);
+                readCodesController.enableAssociateCodici(partialSceneDTO.getItemScene());
+                readCodesController.loadItems(partialSceneDTO.getItemScene(), IDkey);
             }
             else if(controller instanceof ReadProfileUserController){
                 ReadProfileUserController readProfileUserController = (ReadProfileUserController) controller;

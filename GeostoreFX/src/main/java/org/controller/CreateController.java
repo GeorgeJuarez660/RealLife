@@ -287,7 +287,7 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
 
             service.creazioneUtente(u, user);
         }
-        if(maskController instanceof CodeMaskController){
+        else if(maskController instanceof CodeMaskController){
             CodeMaskController codeMaskController = (CodeMaskController) maskController;
             Codice c = codeMaskController.setValues();
 

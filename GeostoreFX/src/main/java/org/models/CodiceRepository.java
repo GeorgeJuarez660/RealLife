@@ -13,6 +13,7 @@ import java.util.HashMap;
 public class CodiceRepository implements codiciCRUD {
 
     private HashMap<Integer, Codice> codici = new HashMap<>();
+    private HashMap<Integer, CodiceAssociateDTO> codiciAssociati = new HashMap<>();
 
     @Override
     public int insertCodiceWithDB(Integer id, Codice c) {
@@ -71,6 +72,44 @@ public class CodiceRepository implements codiciCRUD {
         }
 
         return codici;
+    }
+
+    public HashMap<Integer, CodiceAssociateDTO> getCodiciAssociatiWithDB() {
+        String sql = "SELECT * FROM utenti u join admin_codes ac on(u.codice_id=ac.id) " +
+                     " WHERE u.codice_id IS NOT NULL";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        codiciAssociati = new HashMap<>();
+
+        try{
+            //Connessione al db
+            connection = DBConnection.sqlConnect();
+            preparedStatement = connection.prepareStatement(sql);
+            rs = preparedStatement.executeQuery();
+            CodiceAssociateDTO c;
+
+            while(rs.next()){
+                c = new CodiceAssociateDTO();
+
+                Codice codice = new Codice();
+                codice.setId(rs.getInt("id"));
+                codice.setCodice(rs.getString("codice"));
+
+                c.setCodiceAdmin(codice);
+                c.setEmailUtente(rs.getString("email"));
+
+                codiciAssociati.put(c.getCodiceAdmin().getId(), c);
+            }
+            //chiudi la connessione
+            rs.close();
+            preparedStatement.close();
+            connection.close();
+        }catch(SQLException e){
+            Utility.msgInf("GEOSTORE", "Errore nel getCodiciAssociatiWithDB: " + e.getMessage());
+        }
+
+        return codiciAssociati;
     }
 
     @Override
@@ -137,6 +176,80 @@ public class CodiceRepository implements codiciCRUD {
         }
 
         return codici;
+    }
+
+    public CodiceAssociateDTO getCodiceAssociatoWithDB(String email) {
+        String sql = "SELECT * FROM utenti u join admin_codes ac on(u.codice_id=ac.id) " +
+                "  WHERE u.codice_id IS NOT NULL and u.email = ?";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        CodiceAssociateDTO c = null;
+
+        try{
+            //Connessione al db
+            connection = DBConnection.sqlConnect();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, email);
+            rs = preparedStatement.executeQuery();
+
+            while(rs.next()){
+                c = new CodiceAssociateDTO();
+                Codice codice = new Codice();
+                codice.setId(rs.getInt("id"));
+                codice.setCodice(rs.getString("codice"));
+
+                c.setCodiceAdmin(codice);
+                c.setEmailUtente(rs.getString("email"));
+            }
+            //chiudi la connessione
+            rs.close();
+            preparedStatement.close();
+            connection.close();
+        }catch(SQLException e){
+            Utility.msgInf("GEOSTORE", "Errore nel getCodiceWithDB: " + e.getMessage());
+        }
+        return c;
+    }
+
+    public HashMap<Integer, CodiceAssociateDTO> getCodiceAssociatoByEmailKeyword(String keyword) {
+        String sql = "SELECT * FROM utenti u join admin_codes ac on(u.codice_id=ac.id) " +
+                " WHERE u.codice_id IS NOT NULL and u.email LIKE ? ";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        codiciAssociati = new HashMap<>();
+
+        try{
+            //Connessione al db
+            connection = DBConnection.sqlConnect();
+            preparedStatement = connection.prepareStatement(sql);
+            keyword = "%" + keyword + "%";
+            preparedStatement.setString(1, keyword);
+            rs = preparedStatement.executeQuery();
+            CodiceAssociateDTO c;
+
+            while(rs.next()){
+                c = new CodiceAssociateDTO();
+
+                Codice codice = new Codice();
+                codice.setId(rs.getInt("id"));
+                codice.setCodice(rs.getString("codice"));
+
+                c.setCodiceAdmin(codice);
+                c.setEmailUtente(rs.getString("email"));
+
+                codiciAssociati.put(c.getCodiceAdmin().getId(), c);
+            }
+            //chiudi la connessione
+            rs.close();
+            preparedStatement.close();
+            connection.close();
+        }catch(SQLException e){
+            Utility.msgInf("GEOSTORE", "Errore nel getCodiceAssociatoByEmailKeyword: " + e.getMessage());
+        }
+
+        return codiciAssociati;
     }
 
     @Override
@@ -215,6 +328,62 @@ public class CodiceRepository implements codiciCRUD {
             connection.close();
         }catch(SQLException e){
             Utility.msgInf("GEOSTORE", "Errore nel checkDuplicatesCodice: " + e.getMessage());
+        }
+
+        return num;
+    }
+
+    public int associateCodiceToUtenteWithDB(Integer codiceId, String email) {
+        String sql = "UPDATE `utenti` SET `codice_id` = ? WHERE email = ? ";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        int num = 0;
+
+        try{
+            //Connessione al db
+            connection = DBConnection.sqlConnect();
+            preparedStatement = connection.prepareStatement(sql);
+            //int num = 0;
+
+            preparedStatement.setInt(1, codiceId);
+            preparedStatement.setString(2, email);
+            num = preparedStatement.executeUpdate();
+            //chiudi la connessione
+            preparedStatement.close();
+            connection.close();
+        }catch(SQLException e){
+            Utility.msgInf("GEOSTORE", "Errore nel associateCodiceToUtenteWithDB: " + e.getMessage());
+        }
+
+        return num;
+    }
+
+    public int checkAlreadyAssociatedCodice(Integer codiceId, String email) {
+        String sql = "select count(*) as duplicates from utenti u where codice_id = ? and email = ?";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        int num = 0;
+
+        try{
+            //Connessione al db
+            connection = DBConnection.sqlConnect();
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setInt(1, codiceId);
+            preparedStatement.setString(2, email);
+
+            rs = preparedStatement.executeQuery();
+
+            while(rs.next()){
+                num = rs.getInt("duplicates");
+            }
+            //chiudi la connessione
+            rs.close();
+            preparedStatement.close();
+            connection.close();
+        }catch(SQLException e){
+            Utility.msgInf("GEOSTORE", "Errore nel checkAlreadyAssociatedCodice: " + e.getMessage());
         }
 
         return num;

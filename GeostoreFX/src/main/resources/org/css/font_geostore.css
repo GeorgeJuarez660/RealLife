@@ -20,6 +20,13 @@
       -fx-backgoung: normal;
 }
 
+.label-font-min2-btn {
+      -fx-font-family: 'Press Start 2P', system-ui;
+      -fx-font-weight: 400;
+      -fx-font-size: 8;
+      -fx-backgoung: normal;
+}
+
 .label-font-max-title {
       -fx-font-family: 'Press Start 2P', system-ui;
       -fx-font-weight: 400;

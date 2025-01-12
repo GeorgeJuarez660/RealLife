@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="101.0" prefWidth="282.0" stylesheets="@../../css/font_geostore.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controller.masks.ProductMaskController">
+<VBox alignment="TOP_CENTER" prefHeight="101.0" prefWidth="282.0" stylesheets="@../../css/font_geostore.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controller.masks.CodeAssociateMaskController">
    <children>
       <HBox alignment="TOP_CENTER" maxWidth="1000.0" prefHeight="101.0" prefWidth="60.0" spacing="20.0" style="-fx-background-color: #3F51B5; -fx-background-radius: 12;">
          <children>
