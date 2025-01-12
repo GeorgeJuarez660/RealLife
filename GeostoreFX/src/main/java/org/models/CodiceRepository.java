@@ -303,6 +303,31 @@ public class CodiceRepository implements codiciCRUD {
         return num;
     }
 
+    public int setNullAfterDeleteCode(Integer idCodiceOld) {
+        String sql = "UPDATE `utenti` SET `codice_id` = NULL WHERE codice_id = ? ";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        int num = 0;
+
+        try{
+            //Connessione al db
+            connection = DBConnection.sqlConnect();
+            preparedStatement = connection.prepareStatement(sql);
+            //int num = 0;
+
+            preparedStatement.setInt(1, idCodiceOld);
+
+            num = preparedStatement.executeUpdate();
+            //chiudi la connessione
+            preparedStatement.close();
+            connection.close();
+        }catch(SQLException e){
+            Utility.msgInf("GEOSTORE", "Errore nel setNullAfterDeleteCode: " + e.getMessage());
+        }
+
+        return num;
+    }
+
     public int checkDuplicatesCodice(Codice c) {
         String sql = "select count(*) as duplicates from admin_codes ac where codice = ?";
         Connection connection = null;

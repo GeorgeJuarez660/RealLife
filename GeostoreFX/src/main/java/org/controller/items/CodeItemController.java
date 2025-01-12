@@ -62,8 +62,8 @@ public class CodeItemController implements Initializable {
     //------------------BUTTONS-----------------------
 
     @FXML
-    private void updating(){ //button per andare alla pagina di modifica prodotto
-        System.out.println("goes to update product");
+    private void updating(){ //button per andare alla pagina di modifica codice
+        System.out.println("goes to update code");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
         partialSceneDTO.setInnerScene("update");
@@ -74,14 +74,14 @@ public class CodeItemController implements Initializable {
     }
 
     @FXML
-    private void deleting(){ //button per eliminare prodotto
-        System.out.println("goes to delete product");
+    private void deleting(){ //button per eliminare codice
+        System.out.println("goes to delete codice");
         System.out.println("Start deleting");
         LoadPage.loadingScene("ELIMINAZIONE IN CORSO...");
 
         Service service = new Service();
 
-        service.eliminazioneProdotto(id.getText(), user);
+        service.eliminazioneCodice(id.getText(), user);
     }
 
 

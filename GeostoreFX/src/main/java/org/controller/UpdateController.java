@@ -52,6 +52,9 @@ public class UpdateController {// Questo è il BorderPane di menu.fxml
         if(itemScene != null && itemScene.equals("user")){
             title.setText("Modifica utente");
         }
+        else if(itemScene != null && itemScene.equals("code")){
+            title.setText("Modifica codice");
+        }
         else if(itemScene != null && itemScene.equals("product")){
             title.setText("Modifica prodotto");
         }
@@ -85,6 +88,29 @@ public class UpdateController {// Questo è il BorderPane di menu.fxml
                 UserMaskController userMaskController = loader.getController();// Ottieni il controller della scena caricata
                 userMaskController.getValues(IDkey);
                 maskController = userMaskController;
+                updateMask.getChildren().add(mask);
+
+                // Carica il file FXML
+                // Imposta la scena caricata come contenuto centrale del HBox
+
+            } catch (Exception e) {
+                System.out.println("No page found. Please check FXMLLoader.");
+                e.printStackTrace();
+            }
+        }
+        else if(this.itemScene != null && this.itemScene.equals("code")){
+            try {
+                // Costruisce il percorso completo del file FXML della maschera
+                URL fileUrl = getClass().getResource("/org/scenes/masks/codeMask.fxml");
+                if (fileUrl == null) {
+                    throw new java.io.FileNotFoundException("FXML file can't be found");
+                }
+
+                FXMLLoader loader = new FXMLLoader(fileUrl);
+                VBox mask = loader.load();
+                CodeMaskController codeMaskController = loader.getController();// Ottieni il controller della scena caricata
+                codeMaskController.getValues(IDkey);
+                maskController = codeMaskController;
                 updateMask.getChildren().add(mask);
 
                 // Carica il file FXML
@@ -225,6 +251,9 @@ public class UpdateController {// Questo è il BorderPane di menu.fxml
         if(this.itemScene != null && this.itemScene.equals("user")){
             LoadPage.getPartialScene(fxmlLoader, "chooseTUserAdmin", user);
         }
+        else if(this.itemScene != null && this.itemScene.equals("code")){
+            LoadPage.getPartialScene(fxmlLoader, "chooseTCodeAdmin", user);
+        }
         else if(this.itemScene != null && this.itemScene.equals("product")){
             LoadPage.getPartialScene(fxmlLoader, "chooseTProductAdmin", user);
         }
@@ -254,6 +283,11 @@ public class UpdateController {// Questo è il BorderPane di menu.fxml
             UserMaskController userMaskController = (UserMaskController) maskController;
             Cliente u = userMaskController.setValuesWithID();
             service.modificaUtente(u, user);
+        }
+        else if(maskController instanceof CodeMaskController) {
+            CodeMaskController codeMaskController = (CodeMaskController) maskController;
+            Codice c = codeMaskController.setValuesWithID();
+            service.modificaCodice(c, user);
         }
         else if(maskController instanceof ProductMaskController) {
             ProductMaskController productMaskController = (ProductMaskController) maskController;

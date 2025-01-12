@@ -49,8 +49,8 @@ public class CodeAssociateMaskController implements Initializable {
     /*public void getValues(String IDkey){
 
         service = new Service();
-        Prodotto prodotto;
-        prodotto = service.ottieniProdotto(Integer.parseInt(IDkey));
+        CodiceAssociateDTO codiceAssociate;
+        codiceAssociate = service.ottieniCodiceAssociato(IDkey);
 
         name.setText(prodotto.getNome());
         price.setText(Utility.formatValueBigDecimal(prodotto.getPrezzo()));

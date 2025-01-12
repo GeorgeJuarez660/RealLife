@@ -169,6 +169,49 @@ public class Service {
 
     }
 
+    public void modificaCodice(Codice code, Cliente user){
+        int num = 0;
+
+        num = cor.checkDuplicatesCodice(code);
+
+        if(num == 0){
+            num = cor.updateCodiceWithDB(code.getId(), code);
+
+            if(num > 0){
+                Utility.sendResponse(num, "CODICE MODIFICATO", user);
+            }
+            else{
+                Utility.sendResponse(num, "MODIFICA CODICE", user);
+            }
+        }
+        else{
+            Utility.sendResponse(0, "IL CODICE GIÀ ESISTE. MODIFICA CODICE", user);
+        }
+
+    }
+
+    public void eliminazioneCodice(String IDkey, Cliente user){
+        int num = 0;
+
+        num = cor.setNullAfterDeleteCode(Integer.parseInt(IDkey));
+        if(num > 0){
+            Utility.msgInf("GEOSTORE", "Utenti aggiornati\n");
+        }
+        else{
+            Utility.msgInf("GEOSTORE", "Utenti non aggiornati\n");
+        }
+
+        num = cor.deleteCodiceWithDB(Integer.parseInt(IDkey));
+
+        if(num > 0){
+            Utility.sendResponse(num, "CODICE ELIMINATO", user);
+        }
+        else{
+            Utility.sendResponse(num, "ELIMINAZIONE CODICE", user);
+        }
+
+    }
+
     public Map<Integer, CodiceAssociateDTO> elencoCodiciAssociati(){
         return cor.getCodiciAssociatiWithDB();
     }

@@ -60,7 +60,7 @@ public class CodeAssociateItemController implements Initializable {
 
     //------------------BUTTONS-----------------------
 
-    /*@FXML
+    @FXML
     private void updating(){ //button per andare alla pagina di modifica prodotto
         System.out.println("goes to update product");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
@@ -68,9 +68,9 @@ public class CodeAssociateItemController implements Initializable {
         partialSceneDTO.setInnerScene("update");
         partialSceneDTO.setItemScene("code");
         partialSceneDTO.setUser(user);
-        String idKey = id.getText();
+        String idKey = email.getText();
         LoadPage.getPartialSceneCRU(partialSceneDTO, idKey);
-    }*/
+    }
 
     /*@FXML
     private void deleting(){ //button per eliminare prodotto

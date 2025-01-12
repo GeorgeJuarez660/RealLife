@@ -30,21 +30,17 @@ public class CodeMaskController implements Initializable {
     //------------------INITIALIZE-----------------------
 
     //per la modifica prodotto
-    /*public void getValues(String IDkey){
+    public void getValues(String IDkey){
 
         service = new Service();
-        Prodotto prodotto;
-        prodotto = service.ottieniProdotto(Integer.parseInt(IDkey));
+        Codice codice;
+        codice = service.ottieniCodice(Integer.parseInt(IDkey));
 
-        name.setText(prodotto.getNome());
-        price.setText(Utility.formatValueBigDecimal(prodotto.getPrezzo()));
-        available.setValue(prodotto.getDisponibilita().getId() + " - " + prodotto.getDisponibilita().getCode());
-        category.setValue(prodotto.getCategoria().getId() + " - " + prodotto.getCategoria().getNome());
-        material.setValue(prodotto.getMateria().getId() + " - " + prodotto.getMateria().getNome());
-        quantity.setText(prodotto.getQuantita_disp().toString());
+        code.setText(codice.getCodice());
+        description.setText(codice.getDescrizione());
 
         this.IDkey = IDkey;
-    }*/
+    }
 
     //------------------GETTING FROM CRUD CONTROLLER-----------------------
 
@@ -60,41 +56,16 @@ public class CodeMaskController implements Initializable {
     }
 
     //per la modifica codice
-    /*public Prodotto setValuesWithID() throws ParseException { //recuperato da mask
-        Prodotto prodotto = new Prodotto();
+    public Codice setValuesWithID() throws ParseException { //recuperato da mask
+        Codice codice = new Codice();
         service = new Service();
 
-        prodotto.setId(Integer.parseInt(IDkey));
-        prodotto.setNome(name.getText());
+        codice.setId(Integer.parseInt(IDkey));
+        codice.setCodice(code.getText());
+        codice.setDescrizione(description.getText());
 
-        if(price != null && price.getText() != null && !price.getText().isEmpty() && !price.getText().isBlank()) {
-            prodotto.setPrezzo(Utility.formatValueString(price.getText()));
-        }
-        else{
-            prodotto.setPrezzo(new BigDecimal(0));
-        }
-
-        Disponibilita disponibilita = new Disponibilita();
-        disponibilita.setId(Integer.parseInt(available.getValue().replaceAll("[^0-9]", "")));
-        prodotto.setDisponibilita(disponibilita);
-
-        Categoria categoria = new Categoria();
-        categoria.setId(Integer.parseInt(category.getValue().replaceAll("[^0-9]", "")));
-        prodotto.setCategoria(categoria);
-
-        Materia materia = new Materia();
-        materia.setId(Integer.parseInt(material.getValue().replaceAll("[^0-9]", "")));
-        prodotto.setMateria(materia);
-
-        if(quantity != null && quantity.getText() != null && !quantity.getText().isEmpty() && !quantity.getText().isBlank()){
-            prodotto.setQuantita_disp(Integer.parseInt(quantity.getText()));
-        }
-        else{
-            prodotto.setQuantita_disp(0);
-        }
-
-        return prodotto;
-    }*/
+        return codice;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
