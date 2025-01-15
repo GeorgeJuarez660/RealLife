@@ -156,7 +156,7 @@ public class ReadCodesController {// Questo è il BorderPane di menu.fxml
         }
         else if(this.itemScene != null && this.itemScene.contains("code-A")){
             for (CodiceAssociateDTO associateDTO : codiciAssociati.values()) {
-                if(associateDTO.getCodiceAdmin().getId() != null && associateDTO.getCodiceAdmin().getId() != 0){
+                if(associateDTO.getIdCodice() != null && associateDTO.getIdCodice() != 0){
                     try {
                         // Costruisce il percorso completo del file FXML
                         URL fileUrl = getClass().getResource("/org/scenes/items/codeAssociateItem.fxml"); //trova la scena codice associato

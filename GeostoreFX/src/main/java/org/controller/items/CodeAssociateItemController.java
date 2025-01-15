@@ -47,7 +47,7 @@ public class CodeAssociateItemController implements Initializable {
     public void setValues(CodiceAssociateDTO codiceAssociato){
 
         email.setText(codiceAssociato.getEmailUtente());
-        code.setText(codiceAssociato.getCodiceAdmin().getCodice());
+        code.setText(codiceAssociato.getCodiceAdmin());
 
     }
 
@@ -61,27 +61,26 @@ public class CodeAssociateItemController implements Initializable {
     //------------------BUTTONS-----------------------
 
     @FXML
-    private void updating(){ //button per andare alla pagina di modifica prodotto
-        System.out.println("goes to update product");
+    private void updating(){ //button per andare alla pagina di modifica associazione codice
+        System.out.println("goes to update associate code");
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
-        partialSceneDTO.setInnerScene("update");
-        partialSceneDTO.setItemScene("code");
+        partialSceneDTO.setInnerScene("updateAssociateCode");
         partialSceneDTO.setUser(user);
-        String idKey = email.getText();
-        LoadPage.getPartialSceneCRU(partialSceneDTO, idKey);
+        String emailKey = email.getText();
+        LoadPage.getPartialSceneCRU(partialSceneDTO, emailKey);
     }
 
-    /*@FXML
-    private void deleting(){ //button per eliminare prodotto
-        System.out.println("goes to delete product");
+    @FXML
+    private void dissociating(){ //button per dissociare codice
+        System.out.println("goes to dissociate code");
         System.out.println("Start deleting");
-        LoadPage.loadingScene("ELIMINAZIONE IN CORSO...");
+        LoadPage.loadingScene("DISSOCIAZIONE IN CORSO...");
 
         Service service = new Service();
 
-        service.eliminazioneProdotto(id.getText(), user);
-    }*/
+        service.dissociazioneCodice(email.getText(), user);
+    }
 
 
     @Override

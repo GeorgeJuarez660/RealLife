@@ -61,7 +61,7 @@
          <children>
             <HBox alignment="BOTTOM_CENTER" prefHeight="170.0" prefWidth="136.0" spacing="13.0">
                <children>
-                  <Button fx:id="update" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="40.0" style="-fx-background-radius: 7; -fx-background-color: #2352A4;" textAlignment="CENTER">
+                  <Button fx:id="update" onAction="#updating" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="40.0" style="-fx-background-radius: 7; -fx-background-color: #2352A4;" textAlignment="CENTER">
                      <HBox.margin>
                         <Insets bottom="5.0" />
                      </HBox.margin>
@@ -73,7 +73,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="delete" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="40.0" style="-fx-background-radius: 7; -fx-background-color: #FF5757;" textAlignment="CENTER">
+                  <Button fx:id="delete" onAction="#dissociating" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="40.0" style="-fx-background-radius: 7; -fx-background-color: #FF5757;" textAlignment="CENTER">
                      <HBox.margin>
                         <Insets bottom="5.0" />
                      </HBox.margin>

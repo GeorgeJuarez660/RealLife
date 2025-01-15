@@ -227,10 +227,10 @@ public class Service {
     public void associazioneCodice(CodiceAssociateDTO codeAssociate, Cliente user){
         int num = 0;
 
-        num = cor.checkAlreadyAssociatedCodice(codeAssociate.getCodiceAdmin().getId(), codeAssociate.getEmailUtente());
+        num = cor.checkAlreadyAssociatedCodice(codeAssociate.getIdCodice(), codeAssociate.getEmailUtente());
 
         if(num == 0){
-            num = cor.associateCodiceToUtenteWithDB(codeAssociate.getCodiceAdmin().getId(), codeAssociate.getEmailUtente());
+            num = cor.associateCodiceToUtenteWithDB(codeAssociate.getIdCodice(), codeAssociate.getEmailUtente());
 
             if(num > 0){
                 Utility.sendResponse(num, "CODICE ASSOCIATO", user);
@@ -243,6 +243,53 @@ public class Service {
             Utility.sendResponse(0, "IL CODICE È GIÀ STATO ASSOCIATO ALL'UTENTE. ASSOCIAZIONE CODICE", user);
         }
 
+    }
+
+    public void modificaAssociazioneCodice(CodiceAssociateDTO codeAssociate, Cliente user){
+        int num = 0;
+
+        num = cor.checkAlreadyAssociatedCodice(codeAssociate.getIdCodice(), codeAssociate.getEmailUtente());
+
+        if(num == 0){
+
+            num = cor.dissociateCodiceToUtenteWithDB(codeAssociate.getIdCodice(), codeAssociate.getKey());
+
+            if(num > 0){
+                Utility.msgInf("GEOSTORE", "Codice dissociato all'utente precedente\n");
+            }
+            else{
+                Utility.msgInf("GEOSTORE", "Utenti aggiornati\n");
+            }
+
+
+            num = cor.associateCodiceToUtenteWithDB(codeAssociate.getIdCodice(), codeAssociate.getEmailUtente());
+
+            if(num > 0){
+                Utility.sendResponse(num, "CODICE ASSOCIATO", user);
+            }
+            else{
+                Utility.sendResponse(num, "ASSOCIAZIONE CODICE", user);
+            }
+        }
+        else{
+            Utility.sendResponse(0, "IL CODICE È GIÀ STATO ASSOCIATO ALL'UTENTE. ASSOCIAZIONE CODICE", user);
+        }
+
+    }
+
+    public void dissociazioneCodice(String email, Cliente user){
+        int num = 0;
+
+        CodiceAssociateDTO codiceAssociateDTO = cor.getCodiceAssociatoWithDB(email);
+
+        num = cor.dissociateCodiceToUtenteWithDB(codiceAssociateDTO.getIdCodice(), email);
+
+        if(num > 0){
+            Utility.sendResponse(num, "CODICE DISSOCIATO", user);
+        }
+        else{
+            Utility.sendResponse(num, "DISSOCIAZIONE CODICE", user);
+        }
     }
 
     public ArrayList<News> elencoNotizie(){

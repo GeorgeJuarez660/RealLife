@@ -98,9 +98,9 @@ public class UpdateAssociateUserController {// Questo è il BorderPane di menu.f
 
         if(maskController instanceof CodeAssociateMaskController){
             CodeAssociateMaskController codeAssociateMaskController = (CodeAssociateMaskController) maskController;
-            CodiceAssociateDTO ca = codeAssociateMaskController.setValues();
+            CodiceAssociateDTO ca = codeAssociateMaskController.setValuesWithID();
 
-            service.associazioneCodice(ca, user);
+            service.modificaAssociazioneCodice(ca, user);
         }
 
     }

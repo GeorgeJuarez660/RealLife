@@ -1,15 +1,42 @@
 package org.models;
 
 public class CodiceAssociateDTO {
-    private Codice codiceAdmin;
+    private String key;
+    private Integer idCodice;
+    private String codiceAdmin;
+    private Integer idUtente;
     private String emailUtente;
 
-    public Codice getCodiceAdmin() {
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public Integer getIdCodice() {
+        return idCodice;
+    }
+
+    public void setIdCodice(Integer idCodice) {
+        this.idCodice = idCodice;
+    }
+
+    public String getCodiceAdmin() {
         return codiceAdmin;
     }
 
-    public void setCodiceAdmin(Codice codiceAdmin) {
+    public void setCodiceAdmin(String codiceAdmin) {
         this.codiceAdmin = codiceAdmin;
+    }
+
+    public Integer getIdUtente() {
+        return idUtente;
+    }
+
+    public void setIdUtente(Integer idUtente) {
+        this.idUtente = idUtente;
     }
 
     public String getEmailUtente() {

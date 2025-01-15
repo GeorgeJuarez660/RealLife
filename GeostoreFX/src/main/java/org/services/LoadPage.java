@@ -357,6 +357,11 @@ public class LoadPage {
                 updateController.setTitle(partialSceneDTO.getItemScene());
                 updateController.loadMask(partialSceneDTO.getItemScene(), IDkey);
             }
+            else if(controller instanceof UpdateAssociateUserController){
+                UpdateAssociateUserController updateAssociateUserController = (UpdateAssociateUserController) controller;
+                updateAssociateUserController.save(partialSceneDTO.getFxmlLoader(), partialSceneDTO.getUser());
+                updateAssociateUserController.loadMask("codeAssociateMask", IDkey);
+            }
 
             // Carica il file FXML
             // Imposta la scena caricata come contenuto centrale del BorderPane

@@ -75,7 +75,7 @@ public class CodiceRepository implements codiciCRUD {
     }
 
     public HashMap<Integer, CodiceAssociateDTO> getCodiciAssociatiWithDB() {
-        String sql = "SELECT * FROM utenti u join admin_codes ac on(u.codice_id=ac.id) " +
+        String sql = "SELECT u.id as id_utente, u.email as email_utente, ac.id as id_codice, ac.codice as codice_ass FROM utenti u join admin_codes ac on(u.codice_id=ac.id) " +
                      " WHERE u.codice_id IS NOT NULL";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -92,14 +92,12 @@ public class CodiceRepository implements codiciCRUD {
             while(rs.next()){
                 c = new CodiceAssociateDTO();
 
-                Codice codice = new Codice();
-                codice.setId(rs.getInt("id"));
-                codice.setCodice(rs.getString("codice"));
+                c.setIdUtente(rs.getInt("id_utente"));
+                c.setIdCodice(rs.getInt("id_codice"));
+                c.setEmailUtente(rs.getString("email_utente"));
+                c.setCodiceAdmin(rs.getString("codice_ass"));
 
-                c.setCodiceAdmin(codice);
-                c.setEmailUtente(rs.getString("email"));
-
-                codiciAssociati.put(c.getCodiceAdmin().getId(), c);
+                codiciAssociati.put(c.getIdUtente(), c);
             }
             //chiudi la connessione
             rs.close();
@@ -179,7 +177,7 @@ public class CodiceRepository implements codiciCRUD {
     }
 
     public CodiceAssociateDTO getCodiceAssociatoWithDB(String email) {
-        String sql = "SELECT * FROM utenti u join admin_codes ac on(u.codice_id=ac.id) " +
+        String sql = "SELECT u.id as id_utente, u.email as email_utente, ac.id as id_codice, ac.codice as codice_ass FROM utenti u join admin_codes ac on(u.codice_id=ac.id) " +
                 "  WHERE u.codice_id IS NOT NULL and u.email = ?";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -195,12 +193,11 @@ public class CodiceRepository implements codiciCRUD {
 
             while(rs.next()){
                 c = new CodiceAssociateDTO();
-                Codice codice = new Codice();
-                codice.setId(rs.getInt("id"));
-                codice.setCodice(rs.getString("codice"));
 
-                c.setCodiceAdmin(codice);
-                c.setEmailUtente(rs.getString("email"));
+                c.setIdUtente(rs.getInt("id_utente"));
+                c.setIdCodice(rs.getInt("id_codice"));
+                c.setEmailUtente(rs.getString("email_utente"));
+                c.setCodiceAdmin(rs.getString("codice_ass"));
             }
             //chiudi la connessione
             rs.close();
@@ -213,7 +210,7 @@ public class CodiceRepository implements codiciCRUD {
     }
 
     public HashMap<Integer, CodiceAssociateDTO> getCodiceAssociatoByEmailKeyword(String keyword) {
-        String sql = "SELECT * FROM utenti u join admin_codes ac on(u.codice_id=ac.id) " +
+        String sql = "SELECT u.id as id_utente, u.email as email_utente, ac.id as id_codice, ac.codice as codice_ass FROM utenti u join admin_codes ac on(u.codice_id=ac.id) " +
                 " WHERE u.codice_id IS NOT NULL and u.email LIKE ? ";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -232,14 +229,12 @@ public class CodiceRepository implements codiciCRUD {
             while(rs.next()){
                 c = new CodiceAssociateDTO();
 
-                Codice codice = new Codice();
-                codice.setId(rs.getInt("id"));
-                codice.setCodice(rs.getString("codice"));
+                c.setIdUtente(rs.getInt("id_utente"));
+                c.setIdCodice(rs.getInt("id_codice"));
+                c.setEmailUtente(rs.getString("email_utente"));
+                c.setCodiceAdmin(rs.getString("codice_ass"));
 
-                c.setCodiceAdmin(codice);
-                c.setEmailUtente(rs.getString("email"));
-
-                codiciAssociati.put(c.getCodiceAdmin().getId(), c);
+                codiciAssociati.put(c.getIdUtente(), c);
             }
             //chiudi la connessione
             rs.close();
@@ -378,6 +373,31 @@ public class CodiceRepository implements codiciCRUD {
             connection.close();
         }catch(SQLException e){
             Utility.msgInf("GEOSTORE", "Errore nel associateCodiceToUtenteWithDB: " + e.getMessage());
+        }
+
+        return num;
+    }
+
+    public int dissociateCodiceToUtenteWithDB(Integer codiceId, String email) {
+        String sql = "UPDATE `utenti` SET `codice_id` = NULL WHERE `codice_id` = ? AND `email` = ?";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        int num = 0;
+
+        try{
+            //Connessione al db
+            connection = DBConnection.sqlConnect();
+            preparedStatement = connection.prepareStatement(sql);
+            //int num = 0;
+
+            preparedStatement.setInt(1, codiceId);
+            preparedStatement.setString(2, email);
+            num = preparedStatement.executeUpdate();
+            //chiudi la connessione
+            preparedStatement.close();
+            connection.close();
+        }catch(SQLException e){
+            Utility.msgInf("GEOSTORE", "Errore nel dissociateCodiceToUtenteWithDB: " + e.getMessage());
         }
 
         return num;
