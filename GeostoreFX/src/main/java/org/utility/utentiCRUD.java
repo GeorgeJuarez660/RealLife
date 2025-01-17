@@ -16,6 +16,4 @@ public interface utentiCRUD {
     public Utente getUtenteWithDB(Integer id);
     public int updateUtenteWithDB(Integer id, Utente newU);
     public int deleteUtenteWithDB(Integer id);
-    public int associateCodiceWithDB(Integer id, Codice newC);
-    public int dissociateCodiceWithDB(Integer id, Codice newC);
 }

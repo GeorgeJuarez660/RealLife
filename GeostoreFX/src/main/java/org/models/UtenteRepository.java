@@ -16,7 +16,7 @@ public class UtenteRepository implements utentiCRUD {
 
     @Override
     public int insertUtenteWithDB(Integer id, Utente u) {
-        String sql = "INSERT INTO `utenti`(`nome`, `cognome`, `sesso`, `data_nascita`, `email`, `password`, `telefono`, `indirizzo`, `portafoglio`, `codice_admin`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+        String sql = "INSERT INTO `utenti`(`nome`, `cognome`, `sesso`, `data_nascita`, `email`, `password`, `telefono`, `indirizzo`, `portafoglio`, `codice_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         int num = 0;
@@ -62,7 +62,7 @@ public class UtenteRepository implements utentiCRUD {
 
     @Override
     public HashMap<Integer, Utente> getUtentiWithDB() {
-        String sql = "select * from utenti u";
+        String sql = "select * from utenti u left join admin_codes ac on(u.codice_id = ac.id)";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet rs = null;
@@ -76,9 +76,9 @@ public class UtenteRepository implements utentiCRUD {
             Utente foundUt, ut;
 
             while(rs.next()){
-                String codeAdmin = rs.getString("codice_admin");
+                int codeAdmin = rs.getInt("codice_id");
 
-                if(codeAdmin != null) {
+                if(codeAdmin != 0) {
                     foundUt = new Amministratore();
                 }
                 else {
@@ -96,7 +96,7 @@ public class UtenteRepository implements utentiCRUD {
                     foundAm.setPassword(rs.getString("password"));
                     foundAm.setIndirizzo(rs.getString("indirizzo"));
                     foundAm.setTelefono(rs.getString("telefono"));
-                    foundAm.setCodeAdmin(rs.getString("codice_admin"));
+                    foundAm.setCodeAdmin(rs.getString("codice"));
                     foundAm.setPortafoglio(rs.getBigDecimal("portafoglio"));
                     ut = foundAm;
                 }
@@ -130,7 +130,7 @@ public class UtenteRepository implements utentiCRUD {
 
     @Override
     public Utente getUtenteWithDB(Integer id) {
-        String sql = "select * from utenti u where u.id = ? ";
+        String sql = "select * from utenti u left join admin_codes ac on(u.codice_id = ac.id) where u.id = ? ";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet rs = null;
@@ -143,9 +143,9 @@ public class UtenteRepository implements utentiCRUD {
             rs = preparedStatement.executeQuery();
 
             while(rs.next()){
-                String codeAdmin = rs.getString("codice_admin");
+                int codeAdmin = rs.getInt("codice_id");
 
-                if(codeAdmin != null) {
+                if(codeAdmin != 0) {
                     foundUtente = new Amministratore();
                 }
                 else {
@@ -163,7 +163,7 @@ public class UtenteRepository implements utentiCRUD {
                     foundAdmin.setPassword(rs.getString("password"));
                     foundAdmin.setIndirizzo(rs.getString("indirizzo"));
                     foundAdmin.setTelefono(rs.getString("telefono"));
-                    foundAdmin.setCodeAdmin(codeAdmin);
+                    foundAdmin.setCodeAdmin(rs.getString("codice"));
                     foundAdmin.setPortafoglio(rs.getBigDecimal("portafoglio"));
                     utente = foundAdmin;
                 }
@@ -194,7 +194,7 @@ public class UtenteRepository implements utentiCRUD {
     }
 
     public HashMap<Integer, Utente> getUtentiByKeywordWithDB(String keyword) {
-        String sql = "select * from utenti u where u.nome LIKE ? ";
+        String sql = "select * from utenti u left join admin_codes ac on(u.codice_id = ac.id) where u.nome LIKE ? ";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet rs = null;
@@ -210,9 +210,9 @@ public class UtenteRepository implements utentiCRUD {
             Utente foundUt, ut;
 
             while(rs.next()){
-                String codeAdmin = rs.getString("codice_admin");
+                int codeAdmin = rs.getInt("codice_id");
 
-                if(codeAdmin != null) {
+                if(codeAdmin != 0) {
                     foundUt = new Amministratore();
                 }
                 else {
@@ -230,7 +230,7 @@ public class UtenteRepository implements utentiCRUD {
                     foundAm.setPassword(rs.getString("password"));
                     foundAm.setIndirizzo(rs.getString("indirizzo"));
                     foundAm.setTelefono(rs.getString("telefono"));
-                    foundAm.setCodeAdmin(rs.getString("codice_admin"));
+                    foundAm.setCodeAdmin(rs.getString("codice"));
                     foundAm.setPortafoglio(rs.getBigDecimal("portafoglio"));
                     ut = foundAm;
                 }
@@ -315,18 +315,18 @@ public class UtenteRepository implements utentiCRUD {
         boolean pwdEmpty = false, codeEmpty = false;
 
         if(password != null && codeAdmin != null){
-            sql = "select * from utenti u where u.email = ? and u.password = ? and u.codice_admin = ? ";
+            sql = "select * from utenti u join admin_codes ac on(u.codice_id = ac.id) where u.email = ? and u.password = ? and ac.codice = ? ";
         }
         else if(password != null && codeAdmin == null){
-            sql = "select * from utenti u where u.email = ? and u.password = ? and u.codice_admin is null ";
+            sql = "select * from utenti u where u.email = ? and u.password = ? and u.codice_id is null ";
             codeEmpty = true;
         }
         else if(password == null && codeAdmin != null){
-            sql = "select * from utenti u where u.email = ? and u.password is null and u.codice_admin = ? ";
+            sql = "select * from utenti u join admin_codes ac on(u.codice_id = ac.id) where u.email = ? and u.password is null and ac.codice = ? ";
             pwdEmpty = true;
         }
         else {
-            sql = "select * from utenti u where u.email = ? and u.password is null and u.codice_admin is null ";
+            sql = "select * from utenti u where u.email = ? and u.password is null and u.codice_id is null ";
             pwdEmpty = true;
             codeEmpty = true;
         }
@@ -361,7 +361,7 @@ public class UtenteRepository implements utentiCRUD {
                 foundAdmin.setPassword(rs.getString("password"));
                 foundAdmin.setIndirizzo(rs.getString("indirizzo"));
                 foundAdmin.setTelefono(rs.getString("telefono"));
-                foundAdmin.setCodeAdmin(rs.getString("codice_admin"));
+                foundAdmin.setCodeAdmin(rs.getString("codice"));
                 foundAdmin.setPortafoglio(rs.getBigDecimal("portafoglio"));
             }
             //chiudi la connessione
@@ -377,7 +377,7 @@ public class UtenteRepository implements utentiCRUD {
 
     @Override
     public int updateUtenteWithDB(Integer id, Utente newU) {
-        String sql = "UPDATE `utenti` SET `nome` = ?, `cognome` = ?, `sesso` = ?, `data_nascita` = ?, `email` = ?, `password` = ?, `telefono` = ?, `indirizzo` = ?, `codice_admin` = ?, `portafoglio` = ? WHERE id = ? ";
+        String sql = "UPDATE `utenti` SET `nome` = ?, `cognome` = ?, `sesso` = ?, `data_nascita` = ?, `email` = ?, `password` = ?, `telefono` = ?, `indirizzo` = ?, `codice_id` = ?, `portafoglio` = ? WHERE id = ? ";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         int num = 0;
@@ -482,17 +482,6 @@ public class UtenteRepository implements utentiCRUD {
         return num;
     }
 
-    @Override
-    public int associateCodiceWithDB(Integer id, Codice newC) {
-        return 0;
-    }
-
-    @Override
-    public int dissociateCodiceWithDB(Integer id, Codice newC) {
-        return 0;
-    }
-
-
     public int checkDuplicatesUtente(Utente u) {
         String sql = "";
         String adminCode;
@@ -506,7 +495,7 @@ public class UtenteRepository implements utentiCRUD {
         }
 
         if(adminCode != null){
-            sql = "select count(*) as duplicates from utenti u where nome = ? and cognome = ? and sesso = ? and email = ? and password = ? and telefono = ? and indirizzo = ? and codice_admin = ?";
+            sql = "select count(*) as duplicates from utenti u where nome = ? and cognome = ? and sesso = ? and email = ? and password = ? and telefono = ? and indirizzo = ? and codice_id = ?";
         }
         else{
             sql = "select count(*) as duplicates from utenti u where nome = ? and cognome = ? and sesso = ? and email = ? and password = ? and telefono = ? and indirizzo = ?";
@@ -554,7 +543,5 @@ public class UtenteRepository implements utentiCRUD {
 
         return num;
     }
-
-
 
 }

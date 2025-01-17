@@ -61,40 +61,71 @@ public class Service {
 
     public void registerUtente(Cliente user){
         int num = 0;
-        num = ur.checkDuplicatesUtente(user);
 
-        if(num == 0){
-            num = ur.insertUtenteWithDB(user.getId(), user);
-            Utility.sendResponseRegister(num);
+        if(user instanceof Amministratore){
+            Amministratore admin = (Amministratore) user;
+            num = cor.getIDIfExistCode(admin.getCodeAdmin());
+            admin.setCodeAdmin(String.valueOf(num));
+        }
+        else{
+            num = 1;
+        }
+
+        if(num > 0){
+            num = ur.checkDuplicatesUtente(user);
+
+            if(num == 0){
+                num = ur.insertUtenteWithDB(user.getId(), user);
+
+                Utility.sendResponseRegister(num);
+            }
+            else{
+                Utility.sendResponseRegister(0);
+            }
         }
         else{
             Utility.sendResponseRegister(0);
         }
+
 
     }
 
     public void creazioneUtente(Cliente user, Cliente userID){
         int num = 0;
 
-        num = ur.checkDuplicatesUtente(user);
+        if(user instanceof Amministratore){
+            Amministratore admin = (Amministratore) user;
+            num = cor.getIDIfExistCode(admin.getCodeAdmin());
+            admin.setCodeAdmin(String.valueOf(num));
+        }
+        else{
+            num = 1;
+        }
 
-        if(num == 0){
-            if(Utility.getAge(user.getDataNascita())){
-                num = ur.insertUtenteWithDB(null, user);
+        if(num > 0){
+            num = ur.checkDuplicatesUtente(user);
 
-                if(num > 0){
-                    Utility.sendResponse(num, "UTENTE CREATO", userID);
+            if(num == 0){
+                if(Utility.getAge(user.getDataNascita())){
+                    num = ur.insertUtenteWithDB(null, user);
+
+                    if(num > 0){
+                        Utility.sendResponse(num, "UTENTE CREATO", userID);
+                    }
+                    else{
+                        Utility.sendResponse(num, "CREAZIONE UTENTE", userID);
+                    }
                 }
                 else{
-                    Utility.sendResponse(num, "CREAZIONE UTENTE", userID);
+                    Utility.sendResponse(0, "L'UTENTE DEVE AVERE ALMENO 13 ANNI. CREAZIONE UTENTE", userID);
                 }
             }
             else{
-                Utility.sendResponse(0, "L'UTENTE DEVE AVERE ALMENO 13 ANNI. CREAZIONE UTENTE", userID);
+                Utility.sendResponse(0, "L'UTENTE GIÀ ESISTE. CREAZIONE UTENTE", userID);
             }
         }
         else{
-            Utility.sendResponse(0, "L'UTENTE GIÀ ESISTE. CREAZIONE UTENTE", userID);
+            Utility.sendResponse(0, "NON ESISTE TALE CODICE ADMIN DICHIARATO. CREAZIONE UTENTE", userID);
         }
 
     }
@@ -102,9 +133,16 @@ public class Service {
     public void modificaUtente(Utente u, Cliente userID){
         int num = 0;
 
-        num = ur.checkDuplicatesUtente(u);
+        if(u instanceof Amministratore){
+            Amministratore admin = (Amministratore) u;
+            num = cor.getIDIfExistCode(admin.getCodeAdmin());
+            admin.setCodeAdmin(String.valueOf(num));
+        }
+        else{
+            num = 1;
+        }
 
-        if(num == 0){
+        if(num > 0){
             if(Utility.getAge(u.getDataNascita())){
                 num = ur.updateUtenteWithDB(u.getId(), u);
 
@@ -120,8 +158,9 @@ public class Service {
             }
         }
         else{
-            Utility.sendResponse(0, "L'UTENTE GIÀ ESISTE. MODIFICA UTENTE", userID);
+            Utility.sendResponse(0, "NON ESISTE TALE CODICE ADMIN DICHIARATO. MODIFICA UTENTE", userID);
         }
+
 
     }
 

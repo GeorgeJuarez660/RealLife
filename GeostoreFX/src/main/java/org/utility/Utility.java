@@ -51,7 +51,7 @@ public class Utility {
     }
 
     public static BigDecimal insertBigDecimal(String value){
-        System.out.println("Portafoglio iniziale: " + value);
+        System.out.println("Portafoglio iniziale: " + value + " C");
         BigDecimal num = new BigDecimal(0);
         boolean flag;
 

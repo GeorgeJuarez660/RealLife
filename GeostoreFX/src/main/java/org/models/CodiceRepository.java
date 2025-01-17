@@ -434,4 +434,35 @@ public class CodiceRepository implements codiciCRUD {
         return num;
     }
 
+
+    public int getIDIfExistCode(String code) {
+        String sql = "select id from admin_codes ac where codice = ?";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        int num = 0;
+
+        try{
+            //Connessione al db
+            connection = DBConnection.sqlConnect();
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, code);
+
+            rs = preparedStatement.executeQuery();
+
+            while(rs.next()){
+                num = rs.getInt("id");
+            }
+            //chiudi la connessione
+            rs.close();
+            preparedStatement.close();
+            connection.close();
+        }catch(SQLException e){
+            Utility.msgInf("GEOSTORE", "Errore nel checkIfExistCode: " + e.getMessage());
+        }
+
+        return num;
+    }
+
 }
