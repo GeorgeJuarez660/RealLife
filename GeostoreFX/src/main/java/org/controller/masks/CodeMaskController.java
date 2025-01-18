@@ -15,6 +15,7 @@ import java.net.URL;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class CodeMaskController implements Initializable {
@@ -49,7 +50,11 @@ public class CodeMaskController implements Initializable {
         Codice codice = new Codice();
         service = new Service();
 
-        codice.setCodice(code.getText());
+        //funzione random che va da 100 a 999
+        Random random = new Random();
+        int num = random.nextInt(900) + 100;
+
+        codice.setCodice(code.getText().toUpperCase() + num); //inserisce i primi tre caratteri e il numero random
         codice.setDescrizione(description.getText());
 
         return codice;

@@ -79,14 +79,14 @@ public class UserMaskController implements Initializable {
         if(adminCode != null && adminCode.getText() != null && !adminCode.getText().isEmpty() && !adminCode.getText().isBlank()){
             cliente = new Amministratore();
             Amministratore admin = (Amministratore) cliente;
-            admin.setCodeAdmin(adminCode.getText());
-            admin.setNome(name.getText());
-            admin.setCognome(surname.getText());
+            admin.setCodeAdmin(adminCode.getText().toUpperCase());
+            admin.setNome(Utility.getStringFirstLetterMaiusc(name.getText()));
+            admin.setCognome(Utility.getStringFirstLetterMaiusc(surname.getText()));
             admin.setSesso(sex.getText());
             admin.setDataNascita(Date.valueOf(bornDate.getValue()));
-            admin.setIndirizzo(address.getText());
+            admin.setIndirizzo(Utility.getStringFirstLetterMaiusc(address.getText()));
             admin.setTelefono(phoneNumber.getText());
-            admin.setEmail(email.getText());
+            admin.setEmail(email.getText().toLowerCase());
             admin.setPassword(password.getText());
             if(wallet != null && wallet.getText() != null && !wallet.getText().isEmpty() && !wallet.getText().isBlank()) {
                 admin.setPortafoglio(Utility.formatValueString(wallet.getText()));
@@ -97,13 +97,13 @@ public class UserMaskController implements Initializable {
         }
         else {
             cliente = new Cliente();
-            cliente.setNome(name.getText());
-            cliente.setCognome(surname.getText());
+            cliente.setNome(Utility.getStringFirstLetterMaiusc(name.getText()));
+            cliente.setCognome(Utility.getStringFirstLetterMaiusc(surname.getText()));
             cliente.setSesso(sex.getText());
             cliente.setDataNascita(Date.valueOf(bornDate.getValue()));
-            cliente.setIndirizzo(address.getText());
+            cliente.setIndirizzo(Utility.getStringFirstLetterMaiusc(address.getText()));
             cliente.setTelefono(phoneNumber.getText());
-            cliente.setEmail(email.getText());
+            cliente.setEmail(email.getText().toLowerCase());
             cliente.setPassword(password.getText());
             if (wallet != null && wallet.getText() != null && !wallet.getText().isEmpty() && !wallet.getText().isBlank()) {
                 cliente.setPortafoglio(Utility.formatValueString(wallet.getText()));
@@ -121,14 +121,14 @@ public class UserMaskController implements Initializable {
             cliente = new Amministratore();
             Amministratore admin = (Amministratore) cliente;
             admin.setId(Integer.parseInt(IDkey));
-            admin.setCodeAdmin(adminCode.getText());
-            admin.setNome(name.getText());
-            admin.setCognome(surname.getText());
+            admin.setCodeAdmin(adminCode.getText().toUpperCase());
+            admin.setNome(Utility.getStringFirstLetterMaiusc(name.getText()));
+            admin.setCognome(Utility.getStringFirstLetterMaiusc(surname.getText()));
             admin.setSesso(sex.getText());
             admin.setDataNascita(Date.valueOf(bornDate.getValue()));
-            admin.setIndirizzo(address.getText());
+            admin.setIndirizzo(Utility.getStringFirstLetterMaiusc(address.getText()));
             admin.setTelefono(phoneNumber.getText());
-            admin.setEmail(email.getText());
+            admin.setEmail(email.getText().toLowerCase());
             admin.setPassword(password.getText());
             if(wallet != null && wallet.getText() != null && !wallet.getText().isEmpty() && !wallet.getText().isBlank()) {
                 admin.setPortafoglio(Utility.formatValueString(wallet.getText()));
@@ -140,13 +140,13 @@ public class UserMaskController implements Initializable {
         else{
             cliente = new Cliente();
             cliente.setId(Integer.parseInt(IDkey));
-            cliente.setNome(name.getText());
-            cliente.setCognome(surname.getText());
+            cliente.setNome(Utility.getStringFirstLetterMaiusc(name.getText()));
+            cliente.setCognome(Utility.getStringFirstLetterMaiusc(surname.getText()));
             cliente.setSesso(sex.getText());
             cliente.setDataNascita(Date.valueOf(bornDate.getValue()));
-            cliente.setIndirizzo(address.getText());
+            cliente.setIndirizzo(Utility.getStringFirstLetterMaiusc(address.getText()));
             cliente.setTelefono(phoneNumber.getText());
-            cliente.setEmail(email.getText());
+            cliente.setEmail(email.getText().toLowerCase());
             cliente.setPassword(password.getText());
             if(wallet != null && wallet.getText() != null && !wallet.getText().isEmpty() && !wallet.getText().isBlank()) {
                 cliente.setPortafoglio(Utility.formatValueString(wallet.getText()));
@@ -166,6 +166,18 @@ public class UserMaskController implements Initializable {
         if (!check.matches("[0-9,]")) {
             String currentText = wallet.getText();
             wallet.setText(currentText.replaceAll("[^0-9,]", ""));
+        }
+        else {
+            System.out.println("OK");
+        }
+    }
+
+    @FXML
+    private void patternPhoneNumber(KeyEvent event){
+        String check = event.getCharacter();
+        if (!check.matches("[0-9]")) {
+            String currentText = wallet.getText();
+            wallet.setText(currentText.replaceAll("[^0-9]", ""));
         }
         else {
             System.out.println("OK");

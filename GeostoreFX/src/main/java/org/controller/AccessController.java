@@ -62,27 +62,27 @@ public class AccessController {
             if(codeAdmin != null && codeAdmin.getText() != null && !codeAdmin.getText().isEmpty() && !codeAdmin.getText().isBlank()){
                 user = new Amministratore();
                 Amministratore admin = (Amministratore) user;
-                admin.setNome(name.getText());
-                admin.setCognome(surname.getText());
+                admin.setNome(Utility.getStringFirstLetterMaiusc(name.getText()));
+                admin.setCognome(Utility.getStringFirstLetterMaiusc(surname.getText()));
                 admin.setSesso(sex.getText());
                 admin.setDataNascita(Date.valueOf(bornDate.getValue()));
                 admin.setTelefono(phoneNumber.getText());
-                admin.setIndirizzo(address.getText());
-                admin.setEmail(email.getText());
+                admin.setIndirizzo(Utility.getStringFirstLetterMaiusc(address.getText()));
+                admin.setEmail(email.getText().toLowerCase());
                 admin.setPassword(password.getText());
                 admin.setPortafoglio(Utility.insertBigDecimal("50"));
-                admin.setCodeAdmin(codeAdmin.getText());
+                admin.setCodeAdmin(codeAdmin.getText().toUpperCase());
                 user = admin;
             }
             else{
                 user = new Cliente();
-                user.setNome(name.getText());
-                user.setCognome(surname.getText());
+                user.setNome(Utility.getStringFirstLetterMaiusc(name.getText()));
+                user.setCognome(Utility.getStringFirstLetterMaiusc(surname.getText()));
                 user.setSesso(sex.getText());
                 user.setDataNascita(Date.valueOf(bornDate.getValue()));
                 user.setTelefono(phoneNumber.getText());
-                user.setIndirizzo(address.getText());
-                user.setEmail(email.getText());
+                user.setIndirizzo(Utility.getStringFirstLetterMaiusc(address.getText()));
+                user.setEmail(email.getText().toLowerCase());
                 user.setPassword(password.getText());
                 user.setPortafoglio(Utility.insertBigDecimal("50"));
             }
@@ -104,14 +104,14 @@ public class AccessController {
         if(codeAdmin != null && codeAdmin.getText() != null && !codeAdmin.getText().isEmpty() && !codeAdmin.getText().isBlank()){
             user = new Amministratore();
             Amministratore admin = (Amministratore) user;
-            admin.setEmail(email.getText());
+            admin.setEmail(email.getText().toLowerCase());
             admin.setPassword(password.getText());
-            admin.setCodeAdmin(codeAdmin.getText());
+            admin.setCodeAdmin(codeAdmin.getText().toUpperCase());
             user = admin;
         }
         else{
             user = new Cliente();
-            user.setEmail(email.getText());
+            user.setEmail(email.getText().toLowerCase());
             user.setPassword(password.getText());
         }
 

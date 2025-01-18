@@ -125,6 +125,29 @@ public class Utility {
         return canRegister;
     }
 
+    public static String getStringFirstLetterMaiusc(String text){
+        if (text == null || text.isEmpty()) {
+            return text;
+        }
+
+        //Dividi la stringa in parole
+        String[] words = text.split("\\s+");
+        StringBuilder capitalized = new StringBuilder();
+
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                //Mette la prima lettera in maiuscolo, mentre il resto mette in minuscolo
+                capitalized.append(Character.toUpperCase(word.charAt(0)))
+                        .append(word.substring(1).toLowerCase())
+                        .append(" ");
+            }
+        }
+
+        //Rimuovi l'ultimo spazio in eccesso
+        return capitalized.toString().trim();
+    }
+
+
     public static void sendResponseLogin(Integer num, Cliente user){
         if(num > 0){
             LoadPage.answerScene("positive", "ACCESSO APPROVATO");

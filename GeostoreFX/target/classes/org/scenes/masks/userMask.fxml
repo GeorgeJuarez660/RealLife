@@ -73,7 +73,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="phoneNumber" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font-min2-title">
+                        <TextField fx:id="phoneNumber" onKeyTyped="#patternPhoneNumber" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font-min2-title">
                            <font>
                               <Font size="11.0" />
                            </font>

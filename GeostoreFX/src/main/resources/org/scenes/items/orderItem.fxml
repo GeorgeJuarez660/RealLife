@@ -22,12 +22,12 @@
                      <children>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label prefHeight="24.0" prefWidth="29.0" styleClass="label-font-min-title" text="ID:" wrapText="true" textFill="#0495cd">
+                              <Label prefHeight="24.0" prefWidth="29.0" styleClass="label-font-min3-title" text="ID:" textFill="#0495cd" wrapText="true">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="id" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true" textFill="#03A8E8">
+                              <Label fx:id="id" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min3-title" text="XXX" textFill="#03A8E8" wrapText="true">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
@@ -36,12 +36,12 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label prefHeight="24.0" prefWidth="60.0" styleClass="label-font-min-title" text="Email utente:" wrapText="true" textFill="#0495cd">
+                              <Label prefHeight="24.0" prefWidth="67.0" styleClass="label-font-min3-title" text="Email utente:" textFill="#0495cd" wrapText="true">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="userEmail" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true" textFill="#03A8E8">
+                              <Label fx:id="userEmail" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min3-title" text="XXX" textFill="#03A8E8" wrapText="true">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
@@ -50,12 +50,12 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="95.0" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label prefHeight="24.0" prefWidth="77.0" styleClass="label-font-min-title" text="Nome prodotto:" wrapText="true" textFill="#0495cd">
+                              <Label prefHeight="24.0" prefWidth="88.0" styleClass="label-font-min3-title" text="Nome prodotto:" textFill="#0495cd" wrapText="true">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="productName" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true" textFill="#03A8E8">
+                              <Label fx:id="productName" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min3-title" text="XXX" textFill="#03A8E8" wrapText="true">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
@@ -64,12 +64,12 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="124.0" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label prefHeight="24.0" prefWidth="122.0" styleClass="label-font-min-title" text="Data ordine:" wrapText="true" textFill="#0495cd">
+                              <Label prefHeight="24.0" prefWidth="67.0" styleClass="label-font-min3-title" text="Data ordine:" textFill="#0495cd" wrapText="true">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="orderDate" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true" textFill="#03A8E8">
+                              <Label fx:id="orderDate" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min3-title" text="XXX" textFill="#03A8E8" wrapText="true">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
@@ -78,12 +78,12 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="137.0" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label prefHeight="24.0" prefWidth="54.0" styleClass="label-font-min-title" text="Stato:" wrapText="true" textFill="#0495cd">
+                              <Label prefHeight="24.0" prefWidth="54.0" styleClass="label-font-min3-title" text="Stato:" textFill="#0495cd" wrapText="true">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="status" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true" textFill="#03A8E8">
+                              <Label fx:id="status" prefHeight="100.0" prefWidth="120.0" styleClass="label-font-min3-title" text="XXX" textFill="#03A8E8" wrapText="true">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
@@ -92,12 +92,12 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="146.0" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label prefHeight="25.0" prefWidth="75.0" styleClass="label-font-min-title" text="Quantità ordinata:" wrapText="true" textFill="#0495cd">
+                              <Label prefHeight="25.0" prefWidth="86.0" styleClass="label-font-min3-title" text="Quantità ordinata:" textFill="#0495cd" wrapText="true">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="orderQuantity" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true" textFill="#03A8E8">
+                              <Label fx:id="orderQuantity" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min3-title" text="XXX" textFill="#03A8E8" wrapText="true">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
@@ -106,12 +106,12 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="151.0" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label prefHeight="25.0" prefWidth="75.0" styleClass="label-font-min-title" text="Prezzo unitario:" wrapText="true" textFill="#0495cd">
+                              <Label prefHeight="25.0" prefWidth="87.0" styleClass="label-font-min3-title" text="Prezzo unitario:" textFill="#0495cd" wrapText="true">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="productPrice" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min-title" text="XXX" wrapText="true" textFill="#03A8E8">
+                              <Label fx:id="productPrice" prefHeight="100.0" prefWidth="100.0" styleClass="label-font-min3-title" text="XXX" textFill="#03A8E8" wrapText="true">
                                  <font>
                                     <Font size="8.0" />
                                  </font>
@@ -138,7 +138,7 @@
          <children>
             <HBox alignment="BOTTOM_CENTER" prefHeight="170.0" prefWidth="136.0" spacing="13.0">
                <children>
-                  <Button fx:id="update" onAction="#updating" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="40.0" style="-fx-background-radius: 7; -fx-background-color: #2352A4;" textAlignment="CENTER">
+                  <Button fx:id="update" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#updating" prefHeight="35.0" prefWidth="40.0" style="-fx-background-radius: 7; -fx-background-color: #2352A4;" textAlignment="CENTER">
                      <HBox.margin>
                         <Insets bottom="5.0" />
                      </HBox.margin>
@@ -150,7 +150,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="delete" onAction="#deleting" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="40.0" style="-fx-background-radius: 7; -fx-background-color: #FF5757;" textAlignment="CENTER">
+                  <Button fx:id="delete" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#deleting" prefHeight="35.0" prefWidth="40.0" style="-fx-background-radius: 7; -fx-background-color: #FF5757;" textAlignment="CENTER">
                      <HBox.margin>
                         <Insets bottom="5.0" />
                      </HBox.margin>

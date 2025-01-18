@@ -43,10 +43,11 @@ public class OrdineRepository implements ordiniCRUD {
 
     @Override
     public HashMap<Integer, Ordine> getOrdiniWithDB() {
-        String sql = "SELECT o.id, u.id AS id_utente, u.nome AS nome_utente, u.cognome AS cognome_utente, u.sesso AS sesso_utente, u.data_nascita AS dataNascita_utente, u.email AS email_utente, u.telefono AS telefono_utente, u.codice_admin AS code_admin, u.portafoglio AS portafoglio_utente, u.codice_admin AS code_admin, og.id AS id_prodotto, og.nome AS nome_prodotto, og.quantita_disp AS quant_disp_prod, o.data_ordine, o.quantita, o.prezzo_unitario, s.id as st_id, s.code as st_code " +
+        String sql = "SELECT o.id, u.id AS id_utente, u.nome AS nome_utente, u.cognome AS cognome_utente, u.sesso AS sesso_utente, u.data_nascita AS dataNascita_utente, u.email AS email_utente, u.telefono AS telefono_utente, ac.codice AS code_admin, u.portafoglio AS portafoglio_utente, og.id AS id_prodotto, og.nome AS nome_prodotto, og.quantita_disp AS quant_disp_prod, o.data_ordine, o.quantita, o.prezzo_unitario, s.id as st_id, s.code as st_code " +
                 " FROM ordini o JOIN utenti u ON(o.utente_id =u.id ) \n" +
                 " JOIN stato s ON(o.stato_id=s.id)\n" +
-                "JOIN prodotti og ON(o.prodotto_id =og.id ) ";
+                " JOIN prodotti og ON(o.prodotto_id =og.id ) \n" +
+                " LEFT JOIN admin_codes ac ON(u.codice_id = ac.id)";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet rs = null;
@@ -127,11 +128,12 @@ public class OrdineRepository implements ordiniCRUD {
     }
 
     public HashMap<Integer, Ordine> getOrdiniByEmailWithDB(String email) {
-        String sql = "SELECT o.id, u.id AS id_utente, u.nome AS nome_utente, u.cognome AS cognome_utente, u.sesso AS sesso_utente, u.data_nascita AS dataNascita_utente, u.email AS email_utente, u.telefono AS telefono_utente, u.codice_admin AS code_admin, u.portafoglio AS portafoglio_utente, u.codice_admin AS code_admin, og.id AS id_prodotto, og.nome AS nome_prodotto, og.quantita_disp AS quant_disp_prod, o.data_ordine, o.quantita, o.prezzo_unitario, s.id as st_id, s.code as st_code " +
+        String sql = "SELECT o.id, u.id AS id_utente, u.nome AS nome_utente, u.cognome AS cognome_utente, u.sesso AS sesso_utente, u.data_nascita AS dataNascita_utente, u.email AS email_utente, u.telefono AS telefono_utente, ac.codice AS code_admin, u.portafoglio AS portafoglio_utente, og.id AS id_prodotto, og.nome AS nome_prodotto, og.quantita_disp AS quant_disp_prod, o.data_ordine, o.quantita, o.prezzo_unitario, s.id as st_id, s.code as st_code " +
                 " FROM ordini o JOIN utenti u ON(o.utente_id =u.id ) \n" +
                 " JOIN stato s ON(o.stato_id=s.id)\n" +
-                "JOIN prodotti og ON(o.prodotto_id =og.id )\n" +
-                "WHERE u.email LIKE ?";
+                " JOIN prodotti og ON(o.prodotto_id =og.id )\n" +
+                " LEFT JOIN admin_codes ac ON(u.codice_id = ac.id )\n" +
+                " WHERE u.email LIKE ?";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet rs = null;
@@ -214,10 +216,11 @@ public class OrdineRepository implements ordiniCRUD {
     }
 
     public HashMap<Integer, Ordine> getOrdiniByUserWithDB(Integer idUtente) {
-        String sql = "SELECT o.id, u.id AS id_utente, u.nome AS nome_utente, u.cognome AS cognome_utente, u.sesso AS sesso_utente, u.data_nascita AS dataNascita_utente, u.email AS email_utente, u.telefono AS telefono_utente, u.portafoglio AS portafoglio_utente, u.codice_admin AS code_admin, og.nome AS nome_prodotto, og.id AS id_prodotto, og.quantita_disp AS quant_disp_prod, o.data_ordine, o.quantita, o.prezzo_unitario, s.id as st_id, s.code as st_code " +
+        String sql = "SELECT o.id, u.id AS id_utente, u.nome AS nome_utente, u.cognome AS cognome_utente, u.sesso AS sesso_utente, u.data_nascita AS dataNascita_utente, u.email AS email_utente, u.telefono AS telefono_utente, u.portafoglio AS portafoglio_utente, ac.codice AS code_admin, og.nome AS nome_prodotto, og.id AS id_prodotto, og.quantita_disp AS quant_disp_prod, o.data_ordine, o.quantita, o.prezzo_unitario, s.id as st_id, s.code as st_code " +
                 " FROM ordini o JOIN utenti u ON(o.utente_id =u.id ) \n" +
                 " JOIN stato s ON(o.stato_id=s.id)\n" +
-                "JOIN prodotti og ON(o.prodotto_id =og.id )\n" +
+                " JOIN prodotti og ON(o.prodotto_id = og.id )\n" +
+                " JOIN admin_codes ac ON(u.codice_id = ac.id )\n" +
                 "WHERE o.utente_id = ?";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -299,10 +302,11 @@ public class OrdineRepository implements ordiniCRUD {
     }
 
     public HashMap<Integer, Ordine> getOrdiniByUserAndKeywordWithDB(Integer idUtente, String keyword) {
-        String sql = "SELECT o.id, u.id AS id_utente, u.nome AS nome_utente, u.cognome AS cognome_utente, u.sesso AS sesso_utente, u.data_nascita AS dataNascita_utente, u.email AS email_utente, u.telefono AS telefono_utente, u.portafoglio AS portafoglio_utente, u.codice_admin AS code_admin, og.nome AS nome_prodotto, og.id AS id_prodotto, og.quantita_disp AS quant_disp_prod, o.data_ordine, o.quantita, o.prezzo_unitario, s.id as st_id, s.code as st_code " +
+        String sql = "SELECT o.id, u.id AS id_utente, u.nome AS nome_utente, u.cognome AS cognome_utente, u.sesso AS sesso_utente, u.data_nascita AS dataNascita_utente, u.email AS email_utente, u.telefono AS telefono_utente, u.portafoglio AS portafoglio_utente, ac.codice AS code_admin, og.nome AS nome_prodotto, og.id AS id_prodotto, og.quantita_disp AS quant_disp_prod, o.data_ordine, o.quantita, o.prezzo_unitario, s.id as st_id, s.code as st_code " +
                 " FROM ordini o JOIN utenti u ON(o.utente_id =u.id ) \n" +
                 " JOIN stato s ON(o.stato_id=s.id)\n" +
-                "JOIN prodotti og ON(o.prodotto_id =og.id )\n" +
+                " JOIN prodotti og ON(o.prodotto_id =og.id )\n" +
+                " JOIN admin_codes ac ON(u.codice_id = ac.id )\n" +
                 "WHERE o.utente_id = ? AND og.nome LIKE ?";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -386,10 +390,11 @@ public class OrdineRepository implements ordiniCRUD {
     }
 
     public HashMap<Integer, Ordine> getOrdiniByProductWithDB(Integer idProdotto) {
-        String sql = "SELECT o.id, u.id AS id_utente, u.nome AS nome_utente, u.cognome AS cognome_utente, u.sesso AS sesso_utente, u.data_nascita AS dataNascita_utente, u.email AS email_utente, u.telefono AS telefono_utente, u.portafoglio AS portafoglio_utente, u.codice_admin AS code_admin, og.nome AS nome_prodotto, og.id AS id_prodotto, og.quantita_disp AS quant_disp_prod, o.data_ordine, o.quantita, o.prezzo_unitario, s.id as st_id, s.code as st_code " +
+        String sql = "SELECT o.id, u.id AS id_utente, u.nome AS nome_utente, u.cognome AS cognome_utente, u.sesso AS sesso_utente, u.data_nascita AS dataNascita_utente, u.email AS email_utente, u.telefono AS telefono_utente, u.portafoglio AS portafoglio_utente, ac.codice AS code_admin, og.nome AS nome_prodotto, og.id AS id_prodotto, og.quantita_disp AS quant_disp_prod, o.data_ordine, o.quantita, o.prezzo_unitario, s.id as st_id, s.code as st_code " +
                 " FROM ordini o JOIN utenti u ON(o.utente_id =u.id ) \n" +
                 " JOIN stato s ON(o.stato_id=s.id)\n" +
-                "JOIN prodotti og ON(o.prodotto_id =og.id )\n" +
+                " JOIN prodotti og ON(o.prodotto_id = og.id )\n" +
+                " LEFT JOIN admin_codes ac ON(u.codice_id = ac.id )\n" +
                 "WHERE o.prodotto_id = ?";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -471,10 +476,11 @@ public class OrdineRepository implements ordiniCRUD {
     }
 
     public Ordine getOrdineByUserWithDB(Integer idUtente, Integer idOrdine) {
-        String sql = "SELECT o.id, u.id AS id_utente, u.nome AS nome_utente, u.cognome AS cognome_utente, u.sesso AS sesso_utente, u.data_nascita AS dataNascita_utente, u.email AS email_utente, u.telefono AS telefono_utente, u.portafoglio AS portafoglio_utente, u.codice_admin AS code_admin, og.nome AS nome_prodotto, og.id AS id_prodotto, og.quantita_disp AS quant_disp_prod, o.data_ordine, o.quantita, o.prezzo_unitario, s.id as st_id, s.code as st_code " +
+        String sql = "SELECT o.id, u.id AS id_utente, u.nome AS nome_utente, u.cognome AS cognome_utente, u.sesso AS sesso_utente, u.data_nascita AS dataNascita_utente, u.email AS email_utente, u.telefono AS telefono_utente, u.portafoglio AS portafoglio_utente, ac.codice AS code_admin, og.nome AS nome_prodotto, og.id AS id_prodotto, og.quantita_disp AS quant_disp_prod, o.data_ordine, o.quantita, o.prezzo_unitario, s.id as st_id, s.code as st_code " +
                 " FROM ordini o JOIN utenti u ON(o.utente_id =u.id ) \n" +
                 " JOIN stato s ON(o.stato_id=s.id)\n" +
                 " JOIN prodotti og ON(o.prodotto_id=og.id)\n" +
+                " LEFT JOIN admin_codes ac ON(u.codice_id=ac.id)\n" +
                 "WHERE o.utente_id = ? AND o.id = ?";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -555,10 +561,11 @@ public class OrdineRepository implements ordiniCRUD {
 
     @Override
     public Ordine getOrdineWithDB(Integer id) {
-        String sql = "SELECT o.id, u.id AS id_utente, u.nome AS nome_utente, u.cognome AS cognome_utente, u.sesso AS sesso_utente, u.data_nascita AS dataNascita_utente, u.email AS email_utente, u.telefono AS telefono_utente, u.portafoglio AS portafoglio_utente, u.codice_admin AS code_admin, og.nome AS nome_prodotto, og.id AS id_prodotto, og.quantita_disp AS quant_disp_prod, o.data_ordine, o.quantita, o.prezzo_unitario, s.id as st_id, s.code as st_code " +
+        String sql = "SELECT o.id, u.id AS id_utente, u.nome AS nome_utente, u.cognome AS cognome_utente, u.sesso AS sesso_utente, u.data_nascita AS dataNascita_utente, u.email AS email_utente, u.telefono AS telefono_utente, u.portafoglio AS portafoglio_utente, ac.codice AS code_admin, og.nome AS nome_prodotto, og.id AS id_prodotto, og.quantita_disp AS quant_disp_prod, o.data_ordine, o.quantita, o.prezzo_unitario, s.id as st_id, s.code as st_code " +
                 " FROM ordini o JOIN utenti u ON(o.utente_id =u.id ) \n" +
                 " JOIN stato s ON(o.stato_id=s.id)\n" +
                 " JOIN prodotti og ON(o.prodotto_id=og.id)\n" +
+                " LEFT JOIN admin_codes ac ON(u.codice_id=ac.id)\n" +
                 "WHERE o.id = ?";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
