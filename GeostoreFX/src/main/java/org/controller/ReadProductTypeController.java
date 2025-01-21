@@ -95,7 +95,7 @@ public class ReadProductTypeController {// Questo è il BorderPane di menu.fxml
                         ProductTypeButtonController productTypeButtonController = loader.getController();
                         productTypeButtonController.save(fxmlLoader, user);
                         productTypeButtonController.setCategoryValues(categoria);
-                        productTypeButtonController.enableButtons(isAdmin);
+                        productTypeButtonController.enableButtons();
                         buttonList.getChildren().add(categoryButton);
 
                         // Carica il file FXML
@@ -123,7 +123,7 @@ public class ReadProductTypeController {// Questo è il BorderPane di menu.fxml
                         ProductTypeButtonController productTypeButtonController = loader.getController();
                         productTypeButtonController.save(fxmlLoader, user);
                         productTypeButtonController.setMaterialValues(materia);
-                        productTypeButtonController.enableButtons(isAdmin);
+                        productTypeButtonController.enableButtons();
                         buttonList.getChildren().add(categoryButton);
 
                         // Carica il file FXML

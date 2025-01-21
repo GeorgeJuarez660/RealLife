@@ -24,7 +24,7 @@ public class MenuController {
     private Cliente user;
 
     @FXML
-    private Boolean isAdmin;
+    private String isAdmin;
 
     //------------------INITIALIZE-----------------------
 
@@ -34,11 +34,11 @@ public class MenuController {
         if(utente instanceof Amministratore){
             Amministratore admin = (Amministratore) utente;
             user = admin;
-            isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank();
+            isAdmin = admin.getCodeAdmin();
         }
         else{
             user = utente;
-            isAdmin = false;
+            isAdmin = null;
         }
 
         setFields();
@@ -75,7 +75,7 @@ public class MenuController {
 
     @FXML
     private void user(){
-        if(isAdmin){
+        if(isAdmin != null && (isAdmin.contains("A") || isAdmin.contains("U") || isAdmin.contains("N"))){
             System.out.println("goes to user");
             LoadPage.getPartialScene(fxmlLoader, "chooseTUserAdmin", user);
         }
@@ -91,7 +91,7 @@ public class MenuController {
 
     @FXML
     private void product(){
-        if(isAdmin){
+        if(isAdmin != null && (isAdmin.contains("A") || isAdmin.contains("P") || isAdmin.contains("Q"))){
             System.out.println("goes to product");
             LoadPage.getPartialScene(fxmlLoader, "chooseTProductAdmin", user);
         }
@@ -103,7 +103,7 @@ public class MenuController {
 
     @FXML
     private void order(){
-        if(isAdmin){
+        if(isAdmin != null && (isAdmin.contains("A") || isAdmin.contains("Q") || isAdmin.contains("O"))){
             System.out.println("goes to order");
             LoadPage.getPartialScene(fxmlLoader, "chooseTOrderAdmin", user);
         }
@@ -115,7 +115,7 @@ public class MenuController {
 
     @FXML
     private void category(){
-        if(isAdmin){
+        if(isAdmin != null && (isAdmin.contains("A") || isAdmin.contains("P") || isAdmin.contains("Q"))){
             System.out.println("goes to category");
             LoadPage.getPartialScene(fxmlLoader, "chooseTCategoryAdmin", user);
         }
@@ -132,7 +132,7 @@ public class MenuController {
 
     @FXML
     private void material(){
-        if(isAdmin){
+        if(isAdmin != null && (isAdmin.contains("A") || isAdmin.contains("P") || isAdmin.contains("Q"))){
             System.out.println("goes to material");
             LoadPage.getPartialScene(fxmlLoader, "chooseTMaterialAdmin", user);
         }

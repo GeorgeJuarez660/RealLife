@@ -32,7 +32,10 @@ public class ProductItemController implements Initializable {
         if(utente instanceof Amministratore){
             Amministratore admin = (Amministratore) utente;
             user = admin;
-            isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank();
+            isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank() &&
+                    (admin.getCodeAdmin().contains("A")
+                    || admin.getCodeAdmin().contains("P")
+                    || admin.getCodeAdmin().contains("Q"));
         }
         else{
             user = utente;
@@ -54,7 +57,7 @@ public class ProductItemController implements Initializable {
 
     }
 
-    public void enableButtons(Boolean isAdmin, Boolean canOrder){
+    public void enableButtons(Boolean canOrder){
         update.setVisible(isAdmin);
         update.setManaged(isAdmin);
         delete.setVisible(isAdmin);

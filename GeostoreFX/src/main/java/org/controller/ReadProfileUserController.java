@@ -43,7 +43,10 @@ public class ReadProfileUserController {// Questo è il BorderPane di menu.fxml
         if(utente instanceof Amministratore){
             Amministratore admin = (Amministratore) utente;
             user = admin;
-            isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank();
+            isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank() &&
+                    (admin.getCodeAdmin().contains("A")
+                    || admin.getCodeAdmin().contains("U")
+                    || admin.getCodeAdmin().contains("N"));
         }
         else{
             user = utente;
@@ -107,7 +110,7 @@ public class ReadProfileUserController {// Questo è il BorderPane di menu.fxml
         PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
         partialSceneDTO.setFxmlLoader(fxmlLoader);
         partialSceneDTO.setInnerScene("update");
-        partialSceneDTO.setItemScene("user");
+        partialSceneDTO.setItemScene("user-P");
         partialSceneDTO.setUser(user);
         String idKey = user.getId().toString();
         LoadPage.getPartialSceneCRU(partialSceneDTO, idKey);

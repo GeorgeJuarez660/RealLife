@@ -27,7 +27,7 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
     private HBox createMask;
 
     private Cliente user;
-    private Boolean isAdmin;
+    private String isAdmin;
     private BorderPane fxmlLoader;
     private Service service;
     private String itemScene;
@@ -41,11 +41,11 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
         if(utente instanceof Amministratore){
             Amministratore admin = (Amministratore) utente;
             user = admin;
-            isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank();
+            isAdmin = admin.getCodeAdmin();
         }
         else{
             user = utente;
-            isAdmin = false;
+            isAdmin = null;
         }
 
         this.fxmlLoader = fxmlLoader;
@@ -255,7 +255,7 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
             LoadPage.getPartialScene(fxmlLoader, "chooseTProductAdmin", user);
         }
         else if(this.itemScene != null && this.itemScene.equals("order")){
-            if(isAdmin){
+            if(isAdmin != null && (isAdmin.contains("A") || isAdmin.contains("Q") || isAdmin.contains("O"))){
                 LoadPage.getPartialScene(fxmlLoader, "chooseTOrderAdmin", user);
             }
             else{

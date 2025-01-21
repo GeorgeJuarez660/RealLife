@@ -10,7 +10,6 @@ import org.utility.PartialSceneDTO;
 
 public class ChooseTUserController {
     private Cliente user;
-    private Boolean isAdmin;
     private BorderPane fxmlLoader;
     private Service service;
 
@@ -21,11 +20,9 @@ public class ChooseTUserController {
         if(utente instanceof Amministratore){
             Amministratore admin = (Amministratore) utente;
             user = admin;
-            isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank();
         }
         else{
             user = utente;
-            isAdmin = false;
         }
 
         this.fxmlLoader = fxmlLoader;

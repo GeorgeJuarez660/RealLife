@@ -131,7 +131,7 @@ public class ReadProductsByCMController {// Questo è il BorderPane di menu.fxml
                         ProductItemController productItemController = loader.getController();
                         productItemController.save(fxmlLoader, user);
                         productItemController.setValues(prodotto);
-                        productItemController.enableButtons(isAdmin, false);
+                        productItemController.enableButtons(false);
                         itemList.getChildren().add(productItem);
 
                         // Carica il file FXML
@@ -154,45 +154,23 @@ public class ReadProductsByCMController {// Questo è il BorderPane di menu.fxml
     private void back() { //button per tornare indietro
         System.out.println("Going back");
         if(this.itemScene != null && this.itemScene.contains("product")){
-            if(isAdmin){
-                if(this.itemScene.equals("product-C")){
-                    System.out.println("goes to category");
-                    PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
-                    partialSceneDTO.setFxmlLoader(fxmlLoader);
-                    partialSceneDTO.setInnerScene("readProductType");
-                    partialSceneDTO.setItemScene("category");
-                    partialSceneDTO.setUser(user);
-                    LoadPage.getPartialSceneCRU(partialSceneDTO, null);
-                }
-                else if(this.itemScene.equals("product-M")){
-                    System.out.println("goes to material");
-                    PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
-                    partialSceneDTO.setFxmlLoader(fxmlLoader);
-                    partialSceneDTO.setInnerScene("readProductType");
-                    partialSceneDTO.setItemScene("material");
-                    partialSceneDTO.setUser(user);
-                    LoadPage.getPartialSceneCRU(partialSceneDTO, null);
-                }
+            if(this.itemScene.equals("product-C")){
+                System.out.println("goes to category");
+                PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+                partialSceneDTO.setFxmlLoader(fxmlLoader);
+                partialSceneDTO.setInnerScene("readProductType");
+                partialSceneDTO.setItemScene("category");
+                partialSceneDTO.setUser(user);
+                LoadPage.getPartialSceneCRU(partialSceneDTO, null);
             }
-            else{
-                if(this.itemScene.equals("product-C")){
-                    System.out.println("goes to category");
-                    PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
-                    partialSceneDTO.setFxmlLoader(fxmlLoader);
-                    partialSceneDTO.setInnerScene("readProductType");
-                    partialSceneDTO.setItemScene("category");
-                    partialSceneDTO.setUser(user);
-                    LoadPage.getPartialSceneCRU(partialSceneDTO, null);
-                }
-                else if(this.itemScene.equals("product-M")){
-                    System.out.println("goes to material");
-                    PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
-                    partialSceneDTO.setFxmlLoader(fxmlLoader);
-                    partialSceneDTO.setInnerScene("readProductType");
-                    partialSceneDTO.setItemScene("material");
-                    partialSceneDTO.setUser(user);
-                    LoadPage.getPartialSceneCRU(partialSceneDTO, null);
-                }
+            else if(this.itemScene.equals("product-M")){
+                System.out.println("goes to material");
+                PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+                partialSceneDTO.setFxmlLoader(fxmlLoader);
+                partialSceneDTO.setInnerScene("readProductType");
+                partialSceneDTO.setItemScene("material");
+                partialSceneDTO.setUser(user);
+                LoadPage.getPartialSceneCRU(partialSceneDTO, null);
             }
         }
     }

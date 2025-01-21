@@ -11,6 +11,7 @@ import org.controller.masks.*;
 import org.models.*;
 import org.services.LoadPage;
 import org.services.Service;
+import org.utility.PartialSceneDTO;
 
 import java.net.URL;
 import java.text.ParseException;
@@ -24,7 +25,7 @@ public class UpdateController {// Questo è il BorderPane di menu.fxml
     private HBox updateMask;
 
     private Cliente user;
-    private Boolean isAdmin;
+    private String isAdmin;
     private BorderPane fxmlLoader;
     private Service service;
     private String itemScene;
@@ -38,18 +39,18 @@ public class UpdateController {// Questo è il BorderPane di menu.fxml
         if(utente instanceof Amministratore){
             Amministratore admin = (Amministratore) utente;
             user = admin;
-            isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank();
+            isAdmin = admin.getCodeAdmin();
         }
         else{
             user = utente;
-            isAdmin = false;
+            isAdmin = null;
         }
 
         this.fxmlLoader = fxmlLoader;
     }
 
     public void setTitle(String itemScene) {
-        if(itemScene != null && itemScene.equals("user")){
+        if(itemScene != null && itemScene.contains("user")){
             title.setText("Modifica utente");
         }
         else if(itemScene != null && itemScene.equals("code")){
@@ -75,7 +76,7 @@ public class UpdateController {// Questo è il BorderPane di menu.fxml
     public void loadMask(String itemScene, String IDkey){
         this.itemScene = itemScene;
 
-        if(this.itemScene != null && this.itemScene.equals("user")){
+        if(this.itemScene != null && this.itemScene.contains("user")){
             try {
                 // Costruisce il percorso completo del file FXML della maschera
                 URL fileUrl = getClass().getResource("/org/scenes/masks/userMask.fxml");
@@ -250,6 +251,19 @@ public class UpdateController {// Questo è il BorderPane di menu.fxml
         System.out.println("Going back");
         if(this.itemScene != null && this.itemScene.equals("user")){
             LoadPage.getPartialScene(fxmlLoader, "chooseTUserAdmin", user);
+        }
+        else if(this.itemScene != null && this.itemScene.equals("user-P")){
+            if(isAdmin != null && (isAdmin.contains("A") || isAdmin.contains("U") || isAdmin.contains("N"))){
+                LoadPage.getPartialScene(fxmlLoader, "chooseTUserAdmin", user);
+            }
+            else {
+                System.out.println("goes to user");
+                PartialSceneDTO partialSceneDTO = new PartialSceneDTO();
+                partialSceneDTO.setFxmlLoader(fxmlLoader);
+                partialSceneDTO.setInnerScene("readProfileUser");
+                partialSceneDTO.setUser(user);
+                LoadPage.getPartialSceneCRU(partialSceneDTO, null);
+            }
         }
         else if(this.itemScene != null && this.itemScene.equals("code")){
             LoadPage.getPartialScene(fxmlLoader, "chooseTCodeAdmin", user);

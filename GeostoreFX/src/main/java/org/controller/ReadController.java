@@ -30,7 +30,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
     private TextField search;
 
     private Cliente user;
-    private Boolean isAdmin;
+    private String isAdmin;
     private BorderPane fxmlLoader;
     private Service service;
     private String itemScene;
@@ -46,11 +46,11 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
         if(utente instanceof Amministratore){
             Amministratore admin = (Amministratore) utente;
             user = admin;
-            isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank();
+            isAdmin = admin.getCodeAdmin();
         }
         else{
             user = utente;
-            isAdmin = false;
+            isAdmin = null;
         }
 
         this.fxmlLoader = fxmlLoader;
@@ -179,7 +179,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                         UserItemController userItemController = loader.getController();
                         userItemController.save(fxmlLoader, user);
                         userItemController.setValues(utente);
-                        userItemController.enableButtons(isAdmin);
+                        userItemController.enableButtons();
                         itemList.getChildren().add(userItem);
 
                         // Carica il file FXML
@@ -208,10 +208,10 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                         productItemController.save(fxmlLoader, user);
                         productItemController.setValues(prodotto);
                         if(this.itemScene.equals("product-O")){ //per l'ordinazione prodotto
-                            productItemController.enableButtons(false, true);
+                            productItemController.enableButtons(true);
                         }
                         else{
-                            productItemController.enableButtons(isAdmin, false);
+                            productItemController.enableButtons(false);
                         }
                         itemList.getChildren().add(productItem);
 
@@ -240,7 +240,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                         OrderItemController orderItemController = loader.getController();
                         orderItemController.save(fxmlLoader, user);
                         orderItemController.setValues(ordine);
-                        orderItemController.enableButtons(isAdmin);
+                        orderItemController.enableButtons();
                         itemList.getChildren().add(productItem);
 
                         // Carica il file FXML
@@ -268,7 +268,7 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                         NewsItemController newsItemController = loader.getController();
                         newsItemController.save(fxmlLoader, user);
                         newsItemController.setValues(notizia);
-                        newsItemController.enableButtons(isAdmin);
+                        newsItemController.enableButtons();
                         itemList.getChildren().add(newsItem);
 
                         // Carica il file FXML
@@ -293,25 +293,26 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
             LoadPage.getPartialScene(fxmlLoader, "chooseTUserAdmin", user);
         }
         else if(this.itemScene != null && this.itemScene.contains("product")){
-            if(isAdmin){
-                if(this.itemScene.equals("product-O")){ //per l'ordinazione prodotto
+            if(this.itemScene.equals("product-O")){
+                if(isAdmin != null && (isAdmin.contains("A") || isAdmin.contains("Q") || isAdmin.contains("O"))){
                     LoadPage.getPartialScene(fxmlLoader, "chooseTOrderAdmin", user);
                 }
                 else{
-                    LoadPage.getPartialScene(fxmlLoader, "chooseTProductAdmin", user);
+                    LoadPage.getPartialScene(fxmlLoader, "chooseTOrderCliente", user);
                 }
             }
             else{
-                if(this.itemScene.equals("product-O")){ //per l'ordinazione prodotto
-                    LoadPage.getPartialScene(fxmlLoader, "chooseTOrderCliente", user);
+                if(isAdmin != null && (isAdmin.contains("A") || isAdmin.contains("P") || isAdmin.contains("Q"))){
+                    LoadPage.getPartialScene(fxmlLoader, "chooseTProductAdmin", user);
                 }
                 else{
                     LoadPage.getPartialScene(fxmlLoader, "chooseTProductCliente", user);
                 }
             }
+
         }
-        else if(this.itemScene != null && this.itemScene.contains("order")){
-            if(isAdmin){
+        else if(this.itemScene != null && (this.itemScene.contains("order"))){
+            if(isAdmin != null && (isAdmin.contains("A") || isAdmin.contains("Q") || isAdmin.contains("O"))){
                 LoadPage.getPartialScene(fxmlLoader, "chooseTOrderAdmin", user);
             }
             else{

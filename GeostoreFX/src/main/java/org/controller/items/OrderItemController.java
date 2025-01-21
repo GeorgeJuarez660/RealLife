@@ -35,7 +35,10 @@ public class OrderItemController implements Initializable {
         if(utente instanceof Amministratore){
             Amministratore admin = (Amministratore) utente;
             user = admin;
-            isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank();
+            isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank() &&
+                    (admin.getCodeAdmin().contains("A")
+                    || admin.getCodeAdmin().contains("Q")
+                    || admin.getCodeAdmin().contains("O"));
         }
         else{
             user = utente;
@@ -76,7 +79,7 @@ public class OrderItemController implements Initializable {
 
     }
 
-    public void enableButtons(Boolean isAdmin){
+    public void enableButtons(){
         update.setVisible(isAdmin);
         update.setManaged(isAdmin);
         delete.setVisible(isAdmin);

@@ -141,7 +141,7 @@ public class ReadCodesController {// Questo è il BorderPane di menu.fxml
                         CodeItemController codeItemController = loader.getController();
                         codeItemController.save(fxmlLoader, user);
                         codeItemController.setValues(codice);
-                        codeItemController.enableButtons(isAdmin);
+                        codeItemController.enableButtons();
                         itemList.getChildren().add(codeItem);
 
                         // Carica il file FXML
@@ -169,7 +169,7 @@ public class ReadCodesController {// Questo è il BorderPane di menu.fxml
                         CodeAssociateItemController codeAssociateItemController = loader.getController();
                         codeAssociateItemController.save(fxmlLoader, user);
                         codeAssociateItemController.setValues(associateDTO);
-                        codeAssociateItemController.enableButtons(isAdmin);
+                        codeAssociateItemController.enableButtons();
                         itemList.getChildren().add(codeAssociateItem);
 
                         // Carica il file FXML

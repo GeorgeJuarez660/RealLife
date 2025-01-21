@@ -20,22 +20,6 @@
             </ImageView>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" spacing="70.0">
-         <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="22.0" prefWidth="46.0" style="-fx-background-color: #FF5757; -fx-background-radius: 6;" textAlignment="CENTER">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/come_back_sym.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-         <VBox.margin>
-            <Insets left="10.0" />
-         </VBox.margin>
-      </HBox>
       <HBox alignment="TOP_CENTER" prefHeight="50.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" styleClass="label-font" text="Scegli la tipologia" textAlignment="CENTER" textFill="#2352a4" wrapText="true" HBox.hgrow="ALWAYS">

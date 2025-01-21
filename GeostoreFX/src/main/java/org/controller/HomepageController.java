@@ -42,7 +42,10 @@ public class HomepageController {
         if(utente instanceof Amministratore){
             Amministratore admin = (Amministratore) utente;
             user = admin;
-            isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank();
+            isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank() &&
+                    (admin.getCodeAdmin().contains("A")
+                    || admin.getCodeAdmin().contains("U")
+                    || admin.getCodeAdmin().contains("N"));
         }
         else{
             user = utente;
@@ -112,7 +115,7 @@ public class HomepageController {
                 NewsItemController newsItemController = loader.getController();
                 newsItemController.save(fxmlLoader, user);
                 newsItemController.setValues(notizia);
-                newsItemController.enableButtons(isAdmin);
+                newsItemController.enableButtons();
                 newsList.getChildren().add(newsItem);
 
                 // Carica il file FXML

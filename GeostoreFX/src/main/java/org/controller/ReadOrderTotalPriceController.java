@@ -42,7 +42,10 @@ public class ReadOrderTotalPriceController {// Questo è il BorderPane di menu.f
         if(utente instanceof Amministratore){
             Amministratore admin = (Amministratore) utente;
             user = admin;
-            isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank();
+            isAdmin = admin.getCodeAdmin() != null && !admin.getCodeAdmin().isEmpty() && !admin.getCodeAdmin().isBlank() &&
+                    (admin.getCodeAdmin().contains("A")
+                    || admin.getCodeAdmin().contains("Q")
+                    || admin.getCodeAdmin().contains("O"));
         }
         else{
             user = utente;
