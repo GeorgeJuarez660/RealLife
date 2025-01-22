@@ -131,7 +131,7 @@ public class ReadProductsByCMController {// Questo è il BorderPane di menu.fxml
                         ProductItemController productItemController = loader.getController();
                         productItemController.save(fxmlLoader, user);
                         productItemController.setValues(prodotto);
-                        productItemController.enableButtons(false);
+                        productItemController.enableButtons();
                         itemList.getChildren().add(productItem);
 
                         // Carica il file FXML

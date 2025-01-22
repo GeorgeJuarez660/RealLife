@@ -53,3 +53,7 @@
       -fx-font-size: 9;
       -fx-backgoung: normal;
 }
+
+.button{
+      -fx-cursor: hand;
+}

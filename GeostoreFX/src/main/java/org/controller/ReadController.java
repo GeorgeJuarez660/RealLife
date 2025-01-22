@@ -208,10 +208,10 @@ public class ReadController {// Questo è il BorderPane di menu.fxml
                         productItemController.save(fxmlLoader, user);
                         productItemController.setValues(prodotto);
                         if(this.itemScene.equals("product-O")){ //per l'ordinazione prodotto
-                            productItemController.enableButtons(true);
+                            productItemController.enableButtonsForOrder();
                         }
                         else{
-                            productItemController.enableButtons(false);
+                            productItemController.enableButtons();
                         }
                         itemList.getChildren().add(productItem);
 

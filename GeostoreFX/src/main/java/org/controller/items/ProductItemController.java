@@ -57,13 +57,22 @@ public class ProductItemController implements Initializable {
 
     }
 
-    public void enableButtons(Boolean canOrder){
+    public void enableButtons(){
         update.setVisible(isAdmin);
         update.setManaged(isAdmin);
         delete.setVisible(isAdmin);
         delete.setManaged(isAdmin);
-        shop.setVisible(canOrder);
-        shop.setManaged(canOrder);
+        shop.setVisible(false);
+        shop.setManaged(false);
+    }
+
+    public void enableButtonsForOrder(){
+        update.setVisible(false);
+        update.setManaged(false);
+        delete.setVisible(false);
+        delete.setManaged(false);
+        shop.setVisible(true);
+        shop.setManaged(true);
     }
 
     //------------------BUTTONS-----------------------
