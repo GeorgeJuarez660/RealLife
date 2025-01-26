@@ -4,6 +4,7 @@ import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.util.Duration;
 import org.models.Cliente;
+import org.models.News;
 import org.models.Utente;
 import org.services.LoadPage;
 import java.time.Period;
@@ -16,11 +17,13 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Utility {
 
     static Scanner input = new Scanner(System.in);
 
+    //------------------UTILITY-----------------------
 
     public static void msgInf(String owner, String text) //metodo di messaggio info
     {
@@ -147,6 +150,7 @@ public class Utility {
         return capitalized.toString().trim();
     }
 
+    //------------------RESPONSE-----------------------
 
     public static void sendResponseLogin(Integer num, Cliente user){
         if(num > 0){

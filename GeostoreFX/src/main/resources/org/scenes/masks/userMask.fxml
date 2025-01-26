@@ -21,7 +21,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="name" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font-min2-title">
+                        <TextField fx:id="name" prefHeight="25.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" styleClass="label-font-min2-title">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -35,7 +35,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="surname" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font-min2-title">
+                        <TextField fx:id="surname" prefHeight="25.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" styleClass="label-font-min2-title">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -49,7 +49,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="sex" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font-min2-title">
+                        <TextField fx:id="sex" prefHeight="25.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" styleClass="label-font-min2-title">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -63,7 +63,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="bornDate" prefHeight="26.0" prefWidth="166.0" style="-fx-background-radius: 7;" styleClass="label-font-min2-title" />
+                        <DatePicker fx:id="bornDate" prefHeight="26.0" prefWidth="166.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" styleClass="label-font-min2-title" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="104.0" prefHeight="31.0" prefWidth="200.0" spacing="5.0">
@@ -73,7 +73,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="phoneNumber" onKeyTyped="#patternPhoneNumber" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font-min2-title">
+                        <TextField fx:id="phoneNumber" onKeyTyped="#patternPhoneNumber" prefHeight="25.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" styleClass="label-font-min2-title">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -91,7 +91,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="address" prefHeight="26.0" prefWidth="154.0" style="-fx-background-radius: 7;" styleClass="label-font-min2-title">
+                        <TextField fx:id="address" prefHeight="26.0" prefWidth="154.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" styleClass="label-font-min2-title">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -105,7 +105,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="email" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font-min2-title">
+                        <TextField fx:id="email" prefHeight="25.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" styleClass="label-font-min2-title">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -119,7 +119,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <PasswordField fx:id="password" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font-min2-title" />
+                        <PasswordField fx:id="password" prefHeight="25.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" styleClass="label-font-min2-title" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="72.0" prefHeight="31.0" prefWidth="200.0" spacing="5.0">

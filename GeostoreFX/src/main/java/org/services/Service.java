@@ -92,40 +92,46 @@ public class Service {
 
     public void creazioneUtente(Cliente user, Cliente userID){
         int num = 0;
+        String checkNN = user.checkNotNullUtente(user);
 
-        if(user instanceof Amministratore){
-            Amministratore admin = (Amministratore) user;
-            num = cor.getIDIfExistCode(admin.getCodeAdmin());
-            admin.setCodeAdmin(String.valueOf(num));
-        }
-        else{
-            num = 1;
-        }
+        if(checkNN.isEmpty()){
+            if(user instanceof Amministratore){
+                Amministratore admin = (Amministratore) user;
+                num = cor.getIDIfExistCode(admin.getCodeAdmin());
+                admin.setCodeAdmin(String.valueOf(num));
+            }
+            else{
+                num = 1;
+            }
 
-        if(num > 0){
-            num = ur.checkDuplicatesUtente(user);
+            if(num > 0){
+                num = ur.checkDuplicatesUtente(user);
 
-            if(num == 0){
-                if(Utility.getAge(user.getDataNascita())){
-                    num = ur.insertUtenteWithDB(null, user);
+                if(num == 0){
+                    if(Utility.getAge(user.getDataNascita())){
+                        num = ur.insertUtenteWithDB(null, user);
 
-                    if(num > 0){
-                        Utility.sendResponse(num, "UTENTE CREATO", userID);
+                        if(num > 0){
+                            Utility.sendResponse(num, "UTENTE CREATO", userID);
+                        }
+                        else{
+                            Utility.sendResponse(num, "CREAZIONE UTENTE", userID);
+                        }
                     }
                     else{
-                        Utility.sendResponse(num, "CREAZIONE UTENTE", userID);
+                        Utility.sendResponse(0, "L'UTENTE DEVE AVERE ALMENO 13 ANNI. CREAZIONE UTENTE", userID);
                     }
                 }
                 else{
-                    Utility.sendResponse(0, "L'UTENTE DEVE AVERE ALMENO 13 ANNI. CREAZIONE UTENTE", userID);
+                    Utility.sendResponse(0, "L'UTENTE GIÀ ESISTE. CREAZIONE UTENTE", userID);
                 }
             }
             else{
-                Utility.sendResponse(0, "L'UTENTE GIÀ ESISTE. CREAZIONE UTENTE", userID);
+                Utility.sendResponse(0, "NON ESISTE TALE CODICE ADMIN DICHIARATO. CREAZIONE UTENTE", userID);
             }
         }
         else{
-            Utility.sendResponse(0, "NON ESISTE TALE CODICE ADMIN DICHIARATO. CREAZIONE UTENTE", userID);
+            Utility.sendResponse(0, checkNN + ". CREAZIONE UTENTE", userID);
         }
 
     }
@@ -347,14 +353,20 @@ public class Service {
         notizia.setUtente(user);
         int num = 0;
 
-        num = nr.insertNotizieWithDB(notizia.getDataPub(), notizia.getDataMod(), notizia.getTesto(), notizia.getUtente().getId());
+        if(notizia.checkNotNullNotizia(notizia)){
+            num = nr.insertNotizieWithDB(notizia.getDataPub(), notizia.getDataMod(), notizia.getTesto(), notizia.getUtente().getId());
 
-        if(num > 0){
-            Utility.sendResponse(num, "NEWS CREATO", user);
+            if(num > 0){
+                Utility.sendResponse(num, "NEWS CREATO", user);
+            }
+            else{
+                Utility.sendResponse(num, "CREAZIONE NEWS", user);
+            }
         }
         else{
-            Utility.sendResponse(num, "CREAZIONE NEWS", user);
+            Utility.sendResponse(0, "DEVI OBBLIGATORIAMENTE INSERIRE IL TESTO. CREAZIONE NEWS", user);
         }
+
     }
 
     public void creazioneNotiziaSenzaRisposta(News notizia){
@@ -367,14 +379,20 @@ public class Service {
         notizia.setUtente(user);
         int num = 0;
 
-        num = nr.updateNotizieWithDB(notizia.getId(), notizia.getDataMod(), notizia.getTesto(), notizia.getUtente().getId());
+        if(notizia.checkNotNullNotizia(notizia)){
+            num = nr.updateNotizieWithDB(notizia.getId(), notizia.getDataMod(), notizia.getTesto(), notizia.getUtente().getId());
 
-        if(num > 0){
-            Utility.sendResponse(num, "NEWS MODIFICATO", user);
+            if(num > 0){
+                Utility.sendResponse(num, "NEWS MODIFICATO", user);
+            }
+            else{
+                Utility.sendResponse(num, "MODIFICA NEWS", user);
+            }
         }
         else{
-            Utility.sendResponse(num, "MODIFICA NEWS", user);
+            Utility.sendResponse(0, "DEVI OBBLIGATORIAMENTE INSERIRE IL TESTO. MODIFICA NEWS", user);
         }
+
     }
 
     public void eliminazioneNotizia(String IDKey, Cliente user){

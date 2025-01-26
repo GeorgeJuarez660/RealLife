@@ -85,4 +85,15 @@ public class News {
                 "utente='" + utente + '\'' +
                 '}';
     }
+
+    public boolean checkNotNullNotizia(News n){
+        boolean canCU = true;
+
+        if(n.getTesto() == null || n.getTesto().isEmpty() || n.getTesto().isBlank()){
+            canCU = false;
+        }
+
+        return canCU;
+
+    }
 }

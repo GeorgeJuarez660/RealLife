@@ -2,6 +2,7 @@ package org.models;
 
 import java.sql.Date;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class Utente {
     private Integer id = 0;
@@ -111,5 +112,82 @@ public class Utente {
                 ", telefono='" + telefono + '\'' +
                 ", indirizzo='" + indirizzo + '\'' +
                 '}';
+    }
+
+    public String checkNotNullUtente(Utente u){
+        String canCU = "";
+        boolean areThereNull = false;
+
+        if(u.getNome() == null || u.getNome().isEmpty() || u.getNome().isBlank()){
+            canCU += "NOME (NULLO) ";
+            areThereNull = true;
+        }
+        if(u.getCognome() == null || u.getCognome().isEmpty() || u.getCognome().isBlank()){
+            canCU += "COGNOME (NULLO) ";
+            areThereNull = true;
+        }
+        if(u.getSesso() == null || u.getSesso().isEmpty() || u.getSesso().isBlank()){
+            canCU += "SESSO (NULLO) ";
+            areThereNull = true;
+        }
+        else if(u.getSesso().length() != 1){
+            canCU += "SESSO (UN CARATTERE) ";
+            areThereNull = true;
+        }
+        else if(!u.getSesso().equals("M") || !u.getSesso().equals("F") || !u.getSesso().equals("P") || !u.getSesso().equals("N")){
+            canCU += "SESSO (SOLO M, F, P o N) ";
+            areThereNull = true;
+        }
+
+        String regex = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([0-9]{4})$";
+
+        if(u.getDataNascita() == null){
+            canCU += "DATA NASCITA (NULLO) ";
+            areThereNull = true;
+        }
+        else if(!Pattern.matches(regex, u.getDataNascita().toString())) {
+            canCU += "DATA NASCITA (FORMATO DD/MM/YYYY) ";
+            areThereNull = true;
+        }
+
+        if(u.getIndirizzo() == null || u.getIndirizzo().isEmpty() || u.getIndirizzo().isBlank()){
+            canCU += "INDIRIZZO (NULLO) ";
+            areThereNull = true;
+        }
+        if(u.getTelefono() == null || u.getTelefono().isEmpty() || u.getTelefono().isBlank()){
+            canCU += "TELEFONO (NULLO) ";
+            areThereNull = true;
+        }
+
+        Cliente c = (Cliente) u;
+
+        regex = "^[a-zA-Z]+@[a-zA-Z]+\\\\.(it|com|net|org|edu)$";
+
+        if(c.getEmail() == null || c.getEmail().isEmpty() || c.getEmail().isBlank()){
+            canCU += "EMAIL (NULLO) ";
+            areThereNull = true;
+        }
+        else if(!Pattern.matches(regex, c.getEmail())){
+            canCU += "EMAIL (FORMATO NOME@CASELLAPOSTALE.COM/IT/NET/ORG/EDU) ";
+            areThereNull = true;
+        }
+
+        regex = "^[a-zA-Z0-9]+$";
+
+        if(c.getPassword() == null || c.getPassword().isEmpty() || c.getPassword().isBlank()){
+            canCU += "PASSWORD (NULLO) ";
+            areThereNull = true;
+        }
+        else if(!Pattern.matches(regex, c.getPassword())){
+            canCU += "PASSWORD (QUALCHE CARATTERE E QUALCHE NUMERO) ";
+            areThereNull = true;
+        }
+
+        if(areThereNull){
+            canCU = "ALCUNI CAMPI DEVONO ESSERE COMPILATI O FORMATTATI BENE: " + canCU;
+        }
+
+        return canCU;
+
     }
 }

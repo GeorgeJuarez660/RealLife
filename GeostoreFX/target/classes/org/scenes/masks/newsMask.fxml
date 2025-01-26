@@ -19,7 +19,7 @@
       <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="238.0" prefWidth="310.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" styleClass="label-font" text="Testo:" textAlignment="CENTER" textFill="WHITE" />
-            <TextArea fx:id="text" prefHeight="208.0" prefWidth="208.0" styleClass="label-font-min-title" wrapText="true">
+            <TextArea fx:id="text" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" prefHeight="208.0" prefWidth="208.0" styleClass="label-font-min-title" wrapText="true">
                <font>
                   <Font size="10.0" />
                </font>

@@ -57,3 +57,16 @@
 .button{
       -fx-cursor: hand;
 }
+
+/*CSS POPOVER*/
+.popover {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: white;
+    -fx-border-width: 0;
+    -fx-border-radius: 10;
+    -fx-pref-width: 130;
+    -fx-pref-height: 10;
+    -fx-opacity: 0.8;
+}
+

@@ -64,7 +64,7 @@ public class AccessController {
                 Amministratore admin = (Amministratore) user;
                 admin.setNome(Utility.getStringFirstLetterMaiusc(name.getText()));
                 admin.setCognome(Utility.getStringFirstLetterMaiusc(surname.getText()));
-                admin.setSesso(sex.getText());
+                admin.setSesso(sex.getText().toUpperCase());
                 admin.setDataNascita(Date.valueOf(bornDate.getValue()));
                 admin.setTelefono(phoneNumber.getText());
                 admin.setIndirizzo(Utility.getStringFirstLetterMaiusc(address.getText()));
@@ -78,7 +78,7 @@ public class AccessController {
                 user = new Cliente();
                 user.setNome(Utility.getStringFirstLetterMaiusc(name.getText()));
                 user.setCognome(Utility.getStringFirstLetterMaiusc(surname.getText()));
-                user.setSesso(sex.getText());
+                user.setSesso(sex.getText().toUpperCase());
                 user.setDataNascita(Date.valueOf(bornDate.getValue()));
                 user.setTelefono(phoneNumber.getText());
                 user.setIndirizzo(Utility.getStringFirstLetterMaiusc(address.getText()));
