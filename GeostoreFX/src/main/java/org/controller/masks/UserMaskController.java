@@ -94,7 +94,12 @@ public class UserMaskController implements Initializable {
             admin.setNome(Utility.getStringFirstLetterMaiusc(name.getText()));
             admin.setCognome(Utility.getStringFirstLetterMaiusc(surname.getText()));
             admin.setSesso(sex.getText().toUpperCase());
-            admin.setDataNascita(Date.valueOf(bornDate.getValue()));
+            if(admin.checkCorrectBornDate(bornDate.getEditor().getText())){
+                admin.setDataNascita(Date.valueOf(bornDate.getValue()));
+            }
+            else{
+                admin.setDataNascita(null);
+            }
             admin.setIndirizzo(Utility.getStringFirstLetterMaiusc(address.getText()));
             admin.setTelefono(phoneNumber.getText());
             admin.setEmail(email.getText().toLowerCase());
@@ -111,7 +116,12 @@ public class UserMaskController implements Initializable {
             cliente.setNome(Utility.getStringFirstLetterMaiusc(name.getText()));
             cliente.setCognome(Utility.getStringFirstLetterMaiusc(surname.getText()));
             cliente.setSesso(sex.getText().toUpperCase());
-            cliente.setDataNascita(Date.valueOf(bornDate.getValue()));
+            if(cliente.checkCorrectBornDate(bornDate.getEditor().getText())){
+                cliente.setDataNascita(Date.valueOf(bornDate.getValue()));
+            }
+            else{
+                cliente.setDataNascita(null);
+            }
             cliente.setIndirizzo(Utility.getStringFirstLetterMaiusc(address.getText()));
             cliente.setTelefono(phoneNumber.getText());
             cliente.setEmail(email.getText().toLowerCase());
@@ -136,7 +146,12 @@ public class UserMaskController implements Initializable {
             admin.setNome(Utility.getStringFirstLetterMaiusc(name.getText()));
             admin.setCognome(Utility.getStringFirstLetterMaiusc(surname.getText()));
             admin.setSesso(sex.getText().toUpperCase());
-            admin.setDataNascita(Date.valueOf(bornDate.getValue()));
+            if(admin.checkCorrectBornDate(bornDate.getEditor().getText())){
+                admin.setDataNascita(Date.valueOf(bornDate.getValue()));
+            }
+            else{
+                admin.setDataNascita(null);
+            }
             admin.setIndirizzo(Utility.getStringFirstLetterMaiusc(address.getText()));
             admin.setTelefono(phoneNumber.getText());
             admin.setEmail(email.getText().toLowerCase());
@@ -154,7 +169,12 @@ public class UserMaskController implements Initializable {
             cliente.setNome(Utility.getStringFirstLetterMaiusc(name.getText()));
             cliente.setCognome(Utility.getStringFirstLetterMaiusc(surname.getText()));
             cliente.setSesso(sex.getText().toUpperCase());
-            cliente.setDataNascita(Date.valueOf(bornDate.getValue()));
+            if(cliente.checkCorrectBornDate(bornDate.getEditor().getText())){
+                cliente.setDataNascita(Date.valueOf(bornDate.getValue()));
+            }
+            else{
+                cliente.setDataNascita(null);
+            }
             cliente.setIndirizzo(Utility.getStringFirstLetterMaiusc(address.getText()));
             cliente.setTelefono(phoneNumber.getText());
             cliente.setEmail(email.getText().toLowerCase());

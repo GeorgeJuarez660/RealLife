@@ -139,17 +139,10 @@ public class Utente {
             areThereNull = true;
         }
 
-        String regex = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([0-9]{4})$";
-
         if(u.getDataNascita() == null){
             canCU += "DATA NASCITA (NULLO) ";
             areThereNull = true;
         }
-        else if(!Pattern.matches(regex, u.getDataNascita().toString())) {
-            canCU += "DATA NASCITA (FORMATO DD/MM/YYYY) ";
-            areThereNull = true;
-        }
-
         if(u.getIndirizzo() == null || u.getIndirizzo().isEmpty() || u.getIndirizzo().isBlank()){
             canCU += "INDIRIZZO (NULLO) ";
             areThereNull = true;
@@ -161,7 +154,7 @@ public class Utente {
 
         Cliente c = (Cliente) u;
 
-        regex = "^[a-zA-Z]+@[a-zA-Z]+\\\\.(it|com|net|org|edu)$";
+        String regex = "^[a-zA-Z]+@[a-zA-Z]+\\\\.(it|com|net|org|edu)$";
 
         if(c.getEmail() == null || c.getEmail().isEmpty() || c.getEmail().isBlank()){
             canCU += "EMAIL (NULLO) ";
@@ -190,4 +183,18 @@ public class Utente {
         return canCU;
 
     }
+
+    public boolean checkCorrectBornDate(String dataNas){
+        boolean isCorrect = true;
+
+        String regex = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([0-9]{4})$";
+
+        if(!Pattern.matches(regex, dataNas)) {
+            isCorrect = false;
+        }
+
+        return isCorrect;
+
+    }
+
 }

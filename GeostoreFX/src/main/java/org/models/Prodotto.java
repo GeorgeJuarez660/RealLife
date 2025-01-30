@@ -112,4 +112,33 @@ public class Prodotto {
                 ", quantita_disp=" + quantita_disp +
                 '}';
     }
+
+    public String checkNotNullProdotto(Prodotto p){
+        String canCU = "";
+        boolean areThereNull = false;
+
+        if(p.getNome() == null || p.getNome().isEmpty() || p.getNome().isBlank()){
+            canCU += "NOME (NULLO) ";
+            areThereNull = true;
+        }
+        if(p.getDisponibilita() == null || p.getDisponibilita().getCode() == null){
+            canCU += "DISPONIBILITÀ (NULLO) ";
+            areThereNull = true;
+        }
+        if(p.getCategoria() == null || p.getCategoria().getNome() == null){
+            canCU += "CATEGORIA (NULLO) ";
+            areThereNull = true;
+        }
+        if(p.getMateria() == null || p.getMateria().getNome() == null){
+            canCU += "MATERIA (NULLO) ";
+            areThereNull = true;
+        }
+
+        if(areThereNull){
+            canCU = "ALCUNI CAMPI DEVONO ESSERE COMPILATI O FORMATTATI BENE: " + canCU;
+        }
+
+        return canCU;
+
+    }
 }

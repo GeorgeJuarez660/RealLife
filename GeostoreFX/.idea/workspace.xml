@@ -6,29 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="8273ca0a-1299-4b65-b52d-47dc6a793eae" name="Changes" comment="AppJavaFx: creating example">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/AccessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/AccessController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/WelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/WelcomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/masks/NewsMaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/masks/NewsMaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/masks/ProductMaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/masks/ProductMaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/masks/UserMaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/masks/UserMaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/News.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/News.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/Prodotto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/Prodotto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/models/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/Utente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/services/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/services/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/utility/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/utility/Utility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/css/font_geostore.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/css/font_geostore.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/masks/newsMask.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/masks/newsMask.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/masks/userMask.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/masks/userMask.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/AccessController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/AccessController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/welcome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/welcome.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/controller/WelcomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/WelcomeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/masks/NewsMaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/masks/NewsMaskController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/masks/UserMaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/masks/UserMaskController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/css/font_geostore.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/css/font_geostore.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/News.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/News.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/Utente.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/Utente.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/masks/newsMask.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/masks/newsMask.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/masks/userMask.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/masks/userMask.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/services/Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/services/Service.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/utility/Utility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/utility/Utility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/welcome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/welcome.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,8 +72,8 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "featureDev/desktop",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/giorg/OneDrive/Desktop/App/G&P/Programming/Java/GeostoreFX/src/main/resources/org/jar/controlsfx-11.2.1.jar",
-    "project.structure.last.edited": "Libraries",
+    "last_opened_file_path": "C:/Users/giorg/OneDrive/Desktop/App/G&P/Programming/Java/GeostoreFX/src/main/resources/org/jar/sqlite-jdbc-3.48.0.0.jar",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.36666667",
     "settings.editor.selected.configurable": "preferences.pluginManager"
@@ -290,11 +277,6 @@
           <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/controller/masks/UserMaskController.java</url>
-          <line>94</line>
-          <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/ReadController.java</url>
           <line>194</line>
           <option name="timeStamp" value="75" />
@@ -316,7 +298,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/Service.java</url>
-          <line>656</line>
+          <line>666</line>
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -331,17 +313,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/Service.java</url>
-          <line>683</line>
+          <line>693</line>
           <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/Service.java</url>
-          <line>774</line>
+          <line>784</line>
           <option name="timeStamp" value="83" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/Service.java</url>
-          <line>780</line>
+          <line>790</line>
           <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -356,7 +338,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/Service.java</url>
-          <line>1074</line>
+          <line>1084</line>
           <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -411,7 +393,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/masks/UserMaskController.java</url>
-          <line>175</line>
+          <line>195</line>
           <option name="timeStamp" value="105" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -473,6 +455,26 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/models/Utente.java</url>
           <line>120</line>
           <option name="timeStamp" value="120" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/controller/WelcomeController.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="123" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/controller/masks/UserMaskController.java</url>
+          <line>96</line>
+          <option name="timeStamp" value="124" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/controller/masks/UserMaskController.java</url>
+          <line>118</line>
+          <option name="timeStamp" value="128" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/models/Utente.java</url>
+          <line>189</line>
+          <option name="timeStamp" value="129" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
