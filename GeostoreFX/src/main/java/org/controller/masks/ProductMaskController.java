@@ -93,16 +93,30 @@ public class ProductMaskController implements Initializable {
 
         Disponibilita disponibilita = new Disponibilita();
 
-        disponibilita.setId(Integer.parseInt(available.getValue().replaceAll("[^0-9]", "")));
-        disponibilita.setCode(available.getValue().replaceAll(".*[^a-zA-Z]", ""));
+        if(available.getValue() != null){
+            disponibilita.setId(Integer.parseInt(available.getValue().replaceAll("[^0-9]", "")));
+            disponibilita.setCode(available.getValue().replaceAll(".*[^a-zA-Z]", ""));
+        }
+        else{
+            disponibilita.setCode(null);
+        }
+
         prodotto.setDisponibilita(disponibilita);
 
         Categoria categoria = new Categoria();
-        categoria.setId(Integer.parseInt(category.getValue().replaceAll("[^0-9]", "")));
+
+        if(category.getValue() != null){
+            categoria.setId(Integer.parseInt(category.getValue().replaceAll("[^0-9]", "")));
+        }
+
         prodotto.setCategoria(categoria);
 
         Materia materia = new Materia();
-        materia.setId(Integer.parseInt(material.getValue().replaceAll("[^0-9]", "")));
+
+        if(material.getValue() != null){
+            materia.setId(Integer.parseInt(material.getValue().replaceAll("[^0-9]", "")));
+        }
+
         prodotto.setMateria(materia);
 
         if(quantity != null && quantity.getText() != null && !quantity.getText().isEmpty() && !quantity.getText().isBlank()){
@@ -131,15 +145,27 @@ public class ProductMaskController implements Initializable {
         }
 
         Disponibilita disponibilita = new Disponibilita();
-        disponibilita.setId(Integer.parseInt(available.getValue().replaceAll("[^0-9]", "")));
+
+        if(available.getValue() != null){
+            disponibilita.setId(Integer.parseInt(available.getValue().replaceAll("[^0-9]", "")));
+        }
+
         prodotto.setDisponibilita(disponibilita);
 
         Categoria categoria = new Categoria();
-        categoria.setId(Integer.parseInt(category.getValue().replaceAll("[^0-9]", "")));
+
+        if(category.getValue() != null){
+            categoria.setId(Integer.parseInt(category.getValue().replaceAll("[^0-9]", "")));
+        }
+
         prodotto.setCategoria(categoria);
 
         Materia materia = new Materia();
-        materia.setId(Integer.parseInt(material.getValue().replaceAll("[^0-9]", "")));
+
+        if(material.getValue() != null){
+            materia.setId(Integer.parseInt(material.getValue().replaceAll("[^0-9]", "")));
+        }
+
         prodotto.setMateria(materia);
 
         if(quantity != null && quantity.getText() != null && !quantity.getText().isEmpty() && !quantity.getText().isBlank()){
