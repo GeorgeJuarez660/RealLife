@@ -46,4 +46,25 @@ public class CodiceAssociateDTO {
     public void setEmailUtente(String emailUtente) {
         this.emailUtente = emailUtente;
     }
+
+    public String checkNotNullCodiceAssociato(CodiceAssociateDTO ca){
+        String canCU = "";
+        boolean areThereNull = false;
+
+        if(ca.getIdCodice() == null){
+            canCU += "CODICE (NULLO) ";
+            areThereNull = true;
+        }
+        if(ca.getEmailUtente() == null || ca.getEmailUtente().isEmpty() || ca.getEmailUtente().isBlank()){
+            canCU += "EMAIL UTENTE (NULLO) ";
+            areThereNull = true;
+        }
+
+        if(areThereNull){
+            canCU = "ALCUNI CAMPI DEVONO ESSERE COMPILATI O FORMATTATI BENE: " + canCU;
+        }
+
+        return canCU;
+
+    }
 }

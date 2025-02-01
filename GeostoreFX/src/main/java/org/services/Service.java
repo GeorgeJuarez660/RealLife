@@ -202,20 +202,27 @@ public class Service {
     public void creazioneCodice(Codice code, Cliente user){
         int num = 0;
 
-        num = cor.checkDuplicatesCodice(code);
+        String checkNN = code.checkNotNullCodice(code);
 
-        if(num == 0){
-            num = cor.insertCodiceWithDB(null, code);
+        if(checkNN.isEmpty()) {
+            num = cor.checkDuplicatesCodice(code);
 
-            if(num > 0){
-                Utility.sendResponse(num, "CODICE CREATO", user);
+            if(num == 0){
+                num = cor.insertCodiceWithDB(null, code);
+
+                if(num > 0){
+                    Utility.sendResponse(num, "CODICE CREATO", user);
+                }
+                else{
+                    Utility.sendResponse(num, "CREAZIONE CODICE", user);
+                }
             }
             else{
-                Utility.sendResponse(num, "CREAZIONE CODICE", user);
+                Utility.sendResponse(0, "IL CODICE GIÀ ESISTE. CREAZIONE CODICE", user);
             }
         }
         else{
-            Utility.sendResponse(0, "IL CODICE GIÀ ESISTE. CREAZIONE CODICE", user);
+            Utility.sendResponse(0, checkNN + ". CREAZIONE CODICE", user);
         }
 
     }
@@ -223,20 +230,27 @@ public class Service {
     public void modificaCodice(Codice code, Cliente user){
         int num = 0;
 
-        num = cor.checkDuplicatesCodice(code);
+        String checkNN = code.checkNotNullCodice(code);
 
-        if(num == 0){
-            num = cor.updateCodiceWithDB(code.getId(), code);
+        if(checkNN.isEmpty()) {
+            num = cor.checkDuplicatesCodice(code);
 
-            if(num > 0){
-                Utility.sendResponse(num, "CODICE MODIFICATO", user);
+            if(num == 0){
+                num = cor.updateCodiceWithDB(code.getId(), code);
+
+                if(num > 0){
+                    Utility.sendResponse(num, "CODICE MODIFICATO", user);
+                }
+                else{
+                    Utility.sendResponse(num, "MODIFICA CODICE", user);
+                }
             }
             else{
-                Utility.sendResponse(num, "MODIFICA CODICE", user);
+                Utility.sendResponse(0, "IL CODICE GIÀ ESISTE. MODIFICA CODICE", user);
             }
         }
         else{
-            Utility.sendResponse(0, "IL CODICE GIÀ ESISTE. MODIFICA CODICE", user);
+            Utility.sendResponse(0, checkNN + ". MODIFICA CODICE", user);
         }
 
     }
@@ -278,20 +292,27 @@ public class Service {
     public void associazioneCodice(CodiceAssociateDTO codeAssociate, Cliente user){
         int num = 0;
 
-        num = cor.checkAlreadyAssociatedCodice(codeAssociate.getIdCodice(), codeAssociate.getEmailUtente());
+        String checkNN = codeAssociate.checkNotNullCodiceAssociato(codeAssociate);
 
-        if(num == 0){
-            num = cor.associateCodiceToUtenteWithDB(codeAssociate.getIdCodice(), codeAssociate.getEmailUtente());
+        if(checkNN.isEmpty()) {
+            num = cor.checkAlreadyAssociatedCodice(codeAssociate.getIdCodice(), codeAssociate.getEmailUtente());
 
-            if(num > 0){
-                Utility.sendResponse(num, "CODICE ASSOCIATO", user);
+            if(num == 0){
+                num = cor.associateCodiceToUtenteWithDB(codeAssociate.getIdCodice(), codeAssociate.getEmailUtente());
+
+                if(num > 0){
+                    Utility.sendResponse(num, "CODICE ASSOCIATO", user);
+                }
+                else{
+                    Utility.sendResponse(num, "ASSOCIAZIONE CODICE", user);
+                }
             }
             else{
-                Utility.sendResponse(num, "ASSOCIAZIONE CODICE", user);
+                Utility.sendResponse(0, "IL CODICE È GIÀ STATO ASSOCIATO ALL'UTENTE. ASSOCIAZIONE CODICE", user);
             }
         }
         else{
-            Utility.sendResponse(0, "IL CODICE È GIÀ STATO ASSOCIATO ALL'UTENTE. ASSOCIAZIONE CODICE", user);
+            Utility.sendResponse(0, checkNN + ". ASSOCIAZIONE CODICE", user);
         }
 
     }
@@ -299,31 +320,38 @@ public class Service {
     public void modificaAssociazioneCodice(CodiceAssociateDTO codeAssociate, Cliente user){
         int num = 0;
 
-        num = cor.checkAlreadyAssociatedCodice(codeAssociate.getIdCodice(), codeAssociate.getEmailUtente());
+        String checkNN = codeAssociate.checkNotNullCodiceAssociato(codeAssociate);
 
-        if(num == 0){
+        if(checkNN.isEmpty()) {
+            num = cor.checkAlreadyAssociatedCodice(codeAssociate.getIdCodice(), codeAssociate.getEmailUtente());
 
-            num = cor.dissociateCodiceToUtenteWithDB(codeAssociate.getIdCodice(), codeAssociate.getKey());
+            if(num == 0){
 
-            if(num > 0){
-                Utility.msgInf("GEOSTORE", "Codice dissociato all'utente precedente\n");
+                num = cor.dissociateCodiceToUtenteWithDB(codeAssociate.getIdCodice(), codeAssociate.getKey());
+
+                if(num > 0){
+                    Utility.msgInf("GEOSTORE", "Codice dissociato all'utente precedente\n");
+                }
+                else{
+                    Utility.msgInf("GEOSTORE", "Utenti aggiornati\n");
+                }
+
+
+                num = cor.associateCodiceToUtenteWithDB(codeAssociate.getIdCodice(), codeAssociate.getEmailUtente());
+
+                if(num > 0){
+                    Utility.sendResponse(num, "CODICE ASSOCIATO", user);
+                }
+                else{
+                    Utility.sendResponse(num, "ASSOCIAZIONE CODICE", user);
+                }
             }
             else{
-                Utility.msgInf("GEOSTORE", "Utenti aggiornati\n");
-            }
-
-
-            num = cor.associateCodiceToUtenteWithDB(codeAssociate.getIdCodice(), codeAssociate.getEmailUtente());
-
-            if(num > 0){
-                Utility.sendResponse(num, "CODICE ASSOCIATO", user);
-            }
-            else{
-                Utility.sendResponse(num, "ASSOCIAZIONE CODICE", user);
+                Utility.sendResponse(0, "IL CODICE È GIÀ STATO ASSOCIATO ALL'UTENTE. ASSOCIAZIONE CODICE", user);
             }
         }
         else{
-            Utility.sendResponse(0, "IL CODICE È GIÀ STATO ASSOCIATO ALL'UTENTE. ASSOCIAZIONE CODICE", user);
+            Utility.sendResponse(0, checkNN + ". ASSOCIAZIONE CODICE", user);
         }
 
     }
@@ -674,51 +702,61 @@ public class Service {
     }
 
     public void ordinazioneProdotto(Ordine o, Cliente user){
-        String canOrder = checkAmountOrderAndSufficientWallet(o, user);
-        char firstchar = canOrder.charAt(0);
-        String response = canOrder.substring(4);
-        if(firstchar == 'T'){
-            int num = or.insertOrdineWithDB(null, o);
-            if(num > 0){
-                Utility.sendResponseOrderedProducts(num, response, user);
+        if(o.checkNotNullOrdine(o)){
+            String canOrder = checkAmountOrderAndSufficientWallet(o, user);
+            char firstchar = canOrder.charAt(0);
+            String response = canOrder.substring(4);
+            if(firstchar == 'T'){
+                int num = or.insertOrdineWithDB(null, o);
+                if(num > 0){
+                    Utility.sendResponseOrderedProducts(num, response, user);
+                }
+                else{
+                    Utility.sendResponseOrderedProducts(num, response, user);
+                }
             }
             else{
-                Utility.sendResponseOrderedProducts(num, response, user);
+                Utility.sendResponseOrderedProducts(0, response, user);
             }
         }
         else{
-            Utility.sendResponseOrderedProducts(0, response, user);
+            Utility.sendResponse(0, "DEVI OBBLIGATORIAMENTE INSERIRE LA QUANTITÀ. ORDINAZIONE PRODOTTO", user);
         }
     }
 
     public void modificaOrdine(Ordine order, Cliente user){
+        if(order.checkNotNullOrdine(order)){
+            Stato s = sr.getStatoWithDB(order.getStato().getId());
 
-        Stato s = sr.getStatoWithDB(order.getStato().getId());
+            if(s != null && s.getCode() != null){
+                Ordine orderOld = or.getOrdineWithDB(order.getId());
+                Utente u = ur.getUtenteWithDB(orderOld.getUtente().getId());
+                String responseCheckOrder;
 
-        if(s != null && s.getCode() != null){
-            Ordine orderOld = or.getOrdineWithDB(order.getId());
-            Utente u = ur.getUtenteWithDB(orderOld.getUtente().getId());
-            String responseCheckOrder;
+                responseCheckOrder = checkOrderChanged(orderOld, order, u);
+                char firstchar = responseCheckOrder.charAt(0);
+                String response = responseCheckOrder.substring(4);
+                if(firstchar == 'T'){
+                    changeStatusProdottoAfterOrder(orderOld, order);
 
-            responseCheckOrder = checkOrderChanged(orderOld, order, u);
-            char firstchar = responseCheckOrder.charAt(0);
-            String response = responseCheckOrder.substring(4);
-            if(firstchar == 'T'){
-                changeStatusProdottoAfterOrder(orderOld, order);
+                    int num = or.updateOrdineWithDB(order.getId(), order);
 
-                int num = or.updateOrdineWithDB(order.getId(), order);
-
-                if(num > 0){
-                    Utility.sendResponse(num, response, user);
+                    if(num > 0){
+                        Utility.sendResponse(num, response, user);
+                    }
+                    else{
+                        Utility.sendResponse(num, response, user);
+                    }
                 }
                 else{
-                    Utility.sendResponse(num, response, user);
+                    Utility.sendResponse(0, response, user);
                 }
             }
-            else{
-                Utility.sendResponse(0, response, user);
-            }
         }
+        else{
+            Utility.sendResponse(0, "DEVI OBBLIGATORIAMENTE INSERIRE LA QUANTITÀ. MODIFICA ORDINE", user);
+        }
+
     }
 
     private static String checkAmountOrderAndSufficientWallet(Ordine o, Utente u){
@@ -963,61 +1001,70 @@ public class Service {
     public void creazioneCategoria(Categoria category, Cliente user){
         int num = 0;
 
-        num = cr.checkDuplicatesCategoria(category);
+        if(category.checkNotNullCategoria(category)){
+            num = cr.checkDuplicatesCategoria(category);
 
-        if(num == 0){
+            if(num == 0){
 
-            num = cr.insertCategoriaWithDB(category.getId(), category);
+                num = cr.insertCategoriaWithDB(category.getId(), category);
 
-            if(num > 0){
-                //notizia per la creazione categoria
-                News notiziaCreazione = new News();
-                notiziaCreazione.setUtente(user);
-                notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
-                notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
-                notiziaCreazione.setTesto("È stata allestita una nuova categoria: " + category.getNome() + ". Presto i prodotti di questa categoria saranno disponibili su Geostore");
-                this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
+                if(num > 0){
+                    //notizia per la creazione categoria
+                    News notiziaCreazione = new News();
+                    notiziaCreazione.setUtente(user);
+                    notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
+                    notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
+                    notiziaCreazione.setTesto("È stata allestita una nuova categoria: " + category.getNome() + ". Presto i prodotti di questa categoria saranno disponibili su Geostore");
+                    this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
 
-                Utility.sendResponse(num, "CATEGORIA AGGIUNTA", user);
+                    Utility.sendResponse(num, "CATEGORIA AGGIUNTA", user);
+                }
+                else{
+                    Utility.sendResponse(num, "CREAZIONE CATEGORIA", user);
+                }
             }
             else{
-                Utility.sendResponse(num, "CREAZIONE CATEGORIA", user);
+                Utility.sendResponse(0, "LA CATEGORIA GIÀ ESISTE. CREAZIONE CATEGORIA", user);
             }
         }
         else{
-            Utility.sendResponse(0, "LA CATEGORIA GIÀ ESISTE. CREAZIONE CATEGORIA", user);
+            Utility.sendResponse(0, "DEVI OBBLIGATORIAMENTE INSERIRE IL NOME. CREAZIONE CATEGORIA", user);
         }
-
 
     }
 
     public void modificaCategoria(Categoria category, Cliente user){
         int num = 0;
 
-        Categoria c = cr.getCategoriaWithDB(category.getId()); //per la notizia della modifica
+        if(category.checkNotNullCategoria(category)) {
+            Categoria c = cr.getCategoriaWithDB(category.getId()); //per la notizia della modifica
 
-        num = cr.checkDuplicatesCategoria(category);
+            num = cr.checkDuplicatesCategoria(category);
 
-        if(num == 0){
-            num = cr.updateCategoriaWithDB(category.getId(), category);
+            if(num == 0){
+                num = cr.updateCategoriaWithDB(category.getId(), category);
 
-            if(num > 0){
-                //notizia per la modifica categoria
-                News notiziaCreazione = new News();
-                notiziaCreazione.setUtente(user);
-                notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
-                notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
-                notiziaCreazione.setTesto("È stato modificato il nome categoria: da " + c.getNome() + " è stata rimoninata in " + category.getNome());
-                this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
+                if(num > 0){
+                    //notizia per la modifica categoria
+                    News notiziaCreazione = new News();
+                    notiziaCreazione.setUtente(user);
+                    notiziaCreazione.setDataPub(Date.valueOf(LocalDate.now()));
+                    notiziaCreazione.setDataMod(Date.valueOf(LocalDate.now()));
+                    notiziaCreazione.setTesto("È stato modificato il nome categoria: da " + c.getNome() + " è stata rimoninata in " + category.getNome());
+                    this.creazioneNotiziaSenzaRisposta(notiziaCreazione);
 
-                Utility.sendResponse(num, "CATEGORIA MODIFICATA", user);
+                    Utility.sendResponse(num, "CATEGORIA MODIFICATA", user);
+                }
+                else{
+                    Utility.sendResponse(num, "MODIFICA CATEGORIA", user);
+                }
             }
             else{
-                Utility.sendResponse(num, "MODIFICA CATEGORIA", user);
+                Utility.sendResponse(0, "LA CATEGORIA GIÀ ESISTE. MODIFICA CATEGORIA", user);
             }
         }
         else{
-            Utility.sendResponse(0, "LA CATEGORIA GIÀ ESISTE. MODIFICA CATEGORIA", user);
+            Utility.sendResponse(0, "DEVI OBBLIGATORIAMENTE INSERIRE IL NOME. MODIFICA CATEGORIA", user);
         }
 
     }
@@ -1098,20 +1145,25 @@ public class Service {
     public void creazioneMateria(Materia material, Cliente user){
         int num = 0;
 
-        num = mr.checkDuplicatesMateria(material);
+        if(material.checkNotNullMateria(material)){
+            num = mr.checkDuplicatesMateria(material);
 
-        if(num == 0){
-            num = mr.insertMateriaWithDB(material.getId(), material);
+            if(num == 0){
+                num = mr.insertMateriaWithDB(material.getId(), material);
 
-            if(num > 0){
-                Utility.sendResponse(num, "MATERIA AGGIUNTA", user);
+                if(num > 0){
+                    Utility.sendResponse(num, "MATERIA AGGIUNTA", user);
+                }
+                else{
+                    Utility.sendResponse(num, "CREAZIONE MATERIA", user);
+                }
             }
             else{
-                Utility.sendResponse(num, "CREAZIONE MATERIA", user);
+                Utility.sendResponse(0, "LA MATERIA GIÀ ESISTE. CREAZIONE MATERIA", user);
             }
         }
         else{
-            Utility.sendResponse(0, "LA MATERIA GIÀ ESISTE. CREAZIONE MATERIA", user);
+            Utility.sendResponse(0, "DEVI OBBLIGATORIAMENTE INSERIRE IL NOME. CREAZIONE MATERIA", user);
         }
 
     }
@@ -1119,20 +1171,25 @@ public class Service {
     public void modificaMateria(Materia material, Cliente user){
         int num = 0;
 
-        num = mr.checkDuplicatesMateria(material);
+        if(material.checkNotNullMateria(material)) {
+            num = mr.checkDuplicatesMateria(material);
 
-        if(num == 0){
-            num = mr.updateMateriaWithDB(material.getId(), material);
+            if(num == 0){
+                num = mr.updateMateriaWithDB(material.getId(), material);
 
-            if(num > 0){
-                Utility.sendResponse(num, "MATERIA MODIFICATA", user);
+                if(num > 0){
+                    Utility.sendResponse(num, "MATERIA MODIFICATA", user);
+                }
+                else{
+                    Utility.sendResponse(num, "MODIFICA MATERIA", user);
+                }
             }
             else{
-                Utility.sendResponse(num, "MODIFICA MATERIA", user);
+                Utility.sendResponse(0, "LA MATERIA GIÀ ESISTE. MODIFICA MATERIA", user);
             }
         }
         else{
-            Utility.sendResponse(0, "LA MATERIA GIÀ ESISTE. MODIFICA MATERIA", user);
+            Utility.sendResponse(0, "DEVI OBBLIGATORIAMENTE INSERIRE IL NOME. MODIFICA MATERIA", user);
         }
 
     }

@@ -4,6 +4,7 @@ import org.utility.Utility;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class Codice {
     private Integer id = 0;
@@ -69,5 +70,33 @@ public class Codice {
                 ", codice='" + codice + '\'' +
                 ", descrizione=" + descrizione +
                 '}';
+    }
+
+    public String checkNotNullCodice(Codice c){
+        String canCU = "";
+        boolean areThereNull = false;
+
+        String regex = "^GS[A-Z]\\d{3}$";
+
+        if(c.getCodice() == null || c.getCodice().isEmpty() || c.getCodice().isBlank()){
+            canCU += "CODICE (NULLO) ";
+            areThereNull = true;
+        }
+        else if(!Pattern.matches(regex, c.getCodice())){
+            canCU += "CODICE (FORMATO GSX123) ";
+            areThereNull = true;
+        }
+
+        if(c.getDescrizione() == null || c.getDescrizione().isEmpty() || c.getDescrizione().isBlank()){
+            canCU += "DESCRIZIONE (NULLO) ";
+            areThereNull = true;
+        }
+
+        if(areThereNull){
+            canCU = "ALCUNI CAMPI DEVONO ESSERE COMPILATI O FORMATTATI BENE: " + canCU;
+        }
+
+        return canCU;
+
     }
 }

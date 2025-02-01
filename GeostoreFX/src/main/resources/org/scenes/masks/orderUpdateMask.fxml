@@ -59,7 +59,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="quantity" onKeyTyped="#patternNumberQuantity" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font">
+                        <TextField fx:id="quantity" onKeyTyped="#patternNumberQuantity" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font">
                            <font>
                               <Font size="11.0" />
                            </font>

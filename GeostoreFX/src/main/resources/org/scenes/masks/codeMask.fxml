@@ -15,7 +15,7 @@
                <font>
                   <Font size="10.0" />
                </font></Label>
-            <TextField fx:id="code" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 5;" styleClass="label-font-min-title">
+            <TextField fx:id="code" onMouseEntered="#showPopOverCode" onMouseExited="#hidePopOver" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 5;" styleClass="label-font-min-title">
                <font>
                   <Font size="10.0" />
                </font>
@@ -25,7 +25,7 @@
       <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="238.0" prefWidth="310.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="78.0" styleClass="label-font" text="Descrizione:" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-            <TextArea fx:id="description" prefHeight="208.0" prefWidth="208.0" styleClass="label-font-min-title" wrapText="true">
+            <TextArea fx:id="description" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" prefHeight="208.0" prefWidth="208.0" styleClass="label-font-min-title" wrapText="true">
                <font>
                   <Font size="10.0" />
                </font>

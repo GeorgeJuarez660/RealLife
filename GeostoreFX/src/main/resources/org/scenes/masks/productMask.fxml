@@ -20,7 +20,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="name" prefHeight="25.0" prefWidth="164.0" style="-fx-background-radius: 7;" styleClass="label-font-min2-title">
+                        <TextField fx:id="name" prefHeight="25.0" prefWidth="164.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" styleClass="label-font-min2-title">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -48,7 +48,7 @@
                               <Font size="8.0" />
                            </font>
                         </Label>
-                        <ChoiceBox fx:id="available" prefWidth="164.0" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font-min2-title" />
+                        <ChoiceBox fx:id="available" prefWidth="164.0" prefHeight="25.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" styleClass="label-font-min2-title" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="72.0" prefHeight="31.0" prefWidth="200.0" spacing="5.0">
@@ -58,7 +58,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <ChoiceBox fx:id="category" prefHeight="26.0" prefWidth="164.0" style="-fx-background-radius: 7;" styleClass="label-font-min2-title" />
+                        <ChoiceBox fx:id="category" prefHeight="26.0" prefWidth="164.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" styleClass="label-font-min2-title" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="104.0" prefHeight="31.0" prefWidth="200.0" spacing="5.0">
@@ -68,7 +68,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <ChoiceBox fx:id="material" prefHeight="25.0" prefWidth="164.0" style="-fx-background-radius: 7;" styleClass="label-font-min2-title" />
+                        <ChoiceBox fx:id="material" prefHeight="25.0" prefWidth="164.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" styleClass="label-font-min2-title" />
                      </children>
                   </HBox>
                </children>

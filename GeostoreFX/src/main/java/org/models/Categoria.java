@@ -54,4 +54,15 @@ public class Categoria {
                 "nome='" + nome + '\'' +
                 '}';
     }
+
+    public boolean checkNotNullCategoria(Categoria c){
+        boolean canCU = true;
+
+        if(c.getNome() == null || c.getNome().isEmpty() || c.getNome().isBlank()){
+            canCU = false;
+        }
+
+        return canCU;
+
+    }
 }

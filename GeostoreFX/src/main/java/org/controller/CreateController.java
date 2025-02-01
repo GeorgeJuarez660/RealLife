@@ -55,7 +55,7 @@ public class CreateController {// Questo è il BorderPane di menu.fxml
         if(itemScene != null && itemScene.equals("user")){
             title.setText("Creazione utente");
         }
-        if(itemScene != null && itemScene.equals("code")){
+        else if(itemScene != null && itemScene.equals("code")){
             title.setText("Creazione codice");
         }
         else if(itemScene != null && itemScene.equals("product")){

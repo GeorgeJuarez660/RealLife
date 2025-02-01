@@ -56,4 +56,15 @@ public class Materia {
                 ", nome='" + nome + '\'' +
                 '}';
     }
+
+    public boolean checkNotNullMateria(Materia m){
+        boolean canCU = true;
+
+        if(m.getNome() == null || m.getNome().isEmpty() || m.getNome().isBlank()){
+            canCU = false;
+        }
+
+        return canCU;
+
+    }
 }

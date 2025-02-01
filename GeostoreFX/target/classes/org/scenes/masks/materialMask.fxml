@@ -19,7 +19,7 @@
                               <Font size="8.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="name" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font-min-title">
+                        <TextField fx:id="name" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font-min-title">
                            <font>
                               <Font size="11.0" />
                            </font>

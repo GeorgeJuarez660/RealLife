@@ -132,6 +132,7 @@ public class NewsMaskController implements Initializable {
     private void hidePopOver(MouseEvent event){
         if(popOver != null && popOver.isShowing()){  //controllo se non è vuoto e se sta mostrando
             popOver.hide(); //verrà nascosto solo quando il cursore non si trova sopra al text area
+            popOver = null;
         }
     }
 

@@ -113,4 +113,15 @@ public class Ordine {
                 ", stato=" + stato +
                 '}';
     }
+
+    public boolean checkNotNullOrdine(Ordine o){
+        boolean canCU = true;
+
+        if(o.getQuantita() == null){
+            canCU = false;
+        }
+
+        return canCU;
+
+    }
 }
