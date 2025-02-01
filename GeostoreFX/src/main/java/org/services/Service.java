@@ -41,18 +41,34 @@ public class Service {
         int num = 0;
         if(user instanceof Amministratore){
             Amministratore admin = (Amministratore) user;
-            admin = ur.checkAdmin(admin.getEmail(), admin.getPassword(), admin.getCodeAdmin());
 
-            if(admin.getEmail() != null && admin.getCodeAdmin() != null){
-                num = 1;
+            String checkNN = user.checkNotNullLoginAdmin(admin);
+
+            if(checkNN.isEmpty()){
+                admin = ur.checkAdmin(admin.getEmail(), admin.getPassword(), admin.getCodeAdmin());
+
+                if(admin.getEmail() != null && admin.getCodeAdmin() != null){
+                    num = 1;
+                }
+                user = admin;
             }
-            user = admin;
+            else{
+                num = 0;
+            }
+
         }
         else{
-            user = ur.checkCliente(user.getEmail(), user.getPassword());
+            String checkNN = user.checkNotNullLoginCliente(user);
 
-            if(user.getEmail() != null){
-                num = 1;
+            if(checkNN.isEmpty()){
+                user = ur.checkCliente(user.getEmail(), user.getPassword());
+
+                if(user.getEmail() != null){
+                    num = 1;
+                }
+            }
+            else{
+                num = 0;
             }
         }
 
@@ -62,22 +78,29 @@ public class Service {
     public void registerUtente(Cliente user){
         int num = 0;
 
-        if(user instanceof Amministratore){
-            Amministratore admin = (Amministratore) user;
-            num = cor.getIDIfExistCode(admin.getCodeAdmin());
-            admin.setCodeAdmin(String.valueOf(num));
-        }
-        else{
-            num = 1;
-        }
+        String checkNN = user.checkNotNullUtente(user);
 
-        if(num > 0){
-            num = ur.checkDuplicatesUtente(user);
+        if(checkNN.isEmpty()){
+            if(user instanceof Amministratore){
+                Amministratore admin = (Amministratore) user;
+                num = cor.getIDIfExistCode(admin.getCodeAdmin());
+                admin.setCodeAdmin(String.valueOf(num));
+            }
+            else{
+                num = 1;
+            }
 
-            if(num == 0){
-                num = ur.insertUtenteWithDB(user.getId(), user);
+            if(num > 0){
+                num = ur.checkDuplicatesUtente(user);
 
-                Utility.sendResponseRegister(num);
+                if(num == 0){
+                    num = ur.insertUtenteWithDB(user.getId(), user);
+
+                    Utility.sendResponseRegister(num);
+                }
+                else{
+                    Utility.sendResponseRegister(0);
+                }
             }
             else{
                 Utility.sendResponseRegister(0);
@@ -86,8 +109,6 @@ public class Service {
         else{
             Utility.sendResponseRegister(0);
         }
-
-
     }
 
     public void creazioneUtente(Cliente user, Cliente userID){

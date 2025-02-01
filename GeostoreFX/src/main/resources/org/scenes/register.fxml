@@ -56,19 +56,19 @@
                         <HBox alignment="CENTER_RIGHT" prefHeight="31.0" spacing="5.0">
                            <children>
                               <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" styleClass="label-font" text="Nome" textAlignment="RIGHT" textFill="WHITE" />
-                              <TextField fx:id="name" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font" />
+                              <TextField fx:id="name" prefHeight="25.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" styleClass="label-font" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="200.0" spacing="5.0">
                            <children>
                               <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" styleClass="label-font" text="Cognome" textAlignment="RIGHT" textFill="WHITE" wrapText="true" />
-                              <TextField fx:id="surname" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font" />
+                              <TextField fx:id="surname" prefHeight="25.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" styleClass="label-font" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="41.0" prefHeight="31.0" prefWidth="200.0" spacing="5.0">
                            <children>
                               <Label styleClass="label-font" text="Sesso" textFill="WHITE" wrapText="true" />
-                              <TextField fx:id="sex" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font" />
+                              <TextField fx:id="sex" prefHeight="25.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOverSex" onMouseExited="#hidePopOver" styleClass="label-font" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="72.0" prefHeight="31.0" prefWidth="200.0" spacing="5.0">
@@ -78,13 +78,13 @@
                                     <Font size="11.0" />
                                  </font>
                               </Label>
-                              <DatePicker fx:id="bornDate" prefHeight="25.0" prefWidth="158.0" style="-fx-background-radius: 7;" styleClass="label-font" />
+                              <DatePicker fx:id="bornDate" prefHeight="25.0" prefWidth="158.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOverBornDate" onMouseExited="#hidePopOver" styleClass="label-font" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="104.0" prefHeight="31.0" prefWidth="200.0" spacing="5.0">
                            <children>
                               <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" styleClass="label-font" text="Telefono" textAlignment="RIGHT" textFill="WHITE" />
-                              <TextField fx:id="phoneNumber" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font" />
+                              <TextField fx:id="phoneNumber" prefHeight="25.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" styleClass="label-font" />
                            </children>
                         </HBox>
                      </children>
@@ -94,19 +94,19 @@
                         <HBox alignment="CENTER_RIGHT" prefHeight="31.0" spacing="5.0">
                            <children>
                               <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" styleClass="label-font" text="Indirizzo" textAlignment="RIGHT" textFill="WHITE" />
-                              <TextField fx:id="address" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font" />
+                              <TextField fx:id="address" prefHeight="25.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" styleClass="label-font" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="200.0" spacing="5.0">
                            <children>
                               <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" styleClass="label-font" text="Email" textAlignment="RIGHT" textFill="WHITE" wrapText="true" />
-                              <TextField fx:id="email" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font" />
+                              <TextField fx:id="email" prefHeight="25.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOverEmail" onMouseExited="#hidePopOver" styleClass="label-font" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="41.0" prefHeight="31.0" prefWidth="200.0" spacing="5.0">
                            <children>
                               <Label styleClass="label-font" text="Password" textFill="WHITE" wrapText="true" />
-                              <PasswordField fx:id="password" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font" />
+                              <PasswordField fx:id="password" prefHeight="25.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" styleClass="label-font" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="72.0" prefHeight="31.0" prefWidth="200.0" spacing="5.0">
@@ -116,7 +116,7 @@
                                     <Font size="7.0" />
                                  </font>
                               </Label>
-                              <PasswordField fx:id="confirmPassword" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font" />
+                              <PasswordField fx:id="confirmPassword" prefHeight="25.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOverConfirmPwd" onMouseExited="#hidePopOver" styleClass="label-font" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="104.0" prefHeight="31.0" prefWidth="200.0" spacing="5.0">

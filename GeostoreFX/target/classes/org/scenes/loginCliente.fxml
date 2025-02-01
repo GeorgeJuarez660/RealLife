@@ -57,13 +57,13 @@
                         <HBox alignment="CENTER_RIGHT" prefHeight="31.0" spacing="5.0">
                            <children>
                               <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" styleClass="label-font" text="Email" textAlignment="RIGHT" textFill="WHITE" />
-                              <TextField fx:id="email" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font" />
+                              <TextField fx:id="email" prefHeight="25.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOverEmail" onMouseExited="#hidePopOver" styleClass="label-font" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="200.0" spacing="5.0">
                            <children>
                               <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" styleClass="label-font" text="Password" textAlignment="RIGHT" textFill="WHITE" wrapText="true" />
-                              <PasswordField fx:id="password" prefHeight="25.0" style="-fx-background-radius: 7;" styleClass="label-font" />
+                              <PasswordField fx:id="password" prefHeight="25.0" style="-fx-background-radius: 7;" onMouseEntered="#showPopOver" onMouseExited="#hidePopOver" styleClass="label-font" />
                            </children>
                         </HBox>
                      </children>
