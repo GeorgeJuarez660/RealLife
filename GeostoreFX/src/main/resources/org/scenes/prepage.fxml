@@ -15,6 +15,22 @@
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" BorderPane.alignment="CENTER">
          <children>
+            <HBox maxWidth="1000.0" prefWidth="560.0" spacing="20.0">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#back" prefHeight="22.0" prefWidth="46.0" style="-fx-background-color: #FF5757; -fx-background-radius: 6;" textAlignment="CENTER">
+                     <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/come_back_sym.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="96.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" styleClass="label-font" text="Un programma che permette di simulare lo store virtuale" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS">

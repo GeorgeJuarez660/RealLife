@@ -32,4 +32,11 @@ public class PrepageController {
         LoadPage.access("User");
     }
 
+    @FXML
+    private void back(ActionEvent event) {
+        System.out.println("Going back");
+
+        LoadPage.getFullScene("welcome");
+    }
+
 }

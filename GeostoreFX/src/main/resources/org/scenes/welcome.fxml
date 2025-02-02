@@ -46,6 +46,21 @@
                   <Insets />
                </VBox.margin>
             </VBox>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="80.0" prefWidth="800.0">
+               <children>
+                  <ImageView fitHeight="75.0" fitWidth="119.0" pickOnBounds="true" onMouseClicked="#goesToChangeLanguage" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../images/world.gif" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
          </children>
       </VBox>
    </center>

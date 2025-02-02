@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
@@ -47,6 +48,14 @@ public class WelcomeController {
 
         // Simula una richiesta di chiusura della finestra (questo succede perchè non viene intercettato window close event come nel tasto X)
         stage.fireEvent(new WindowEvent(stage, WindowEvent.WINDOW_CLOSE_REQUEST));
+    }
+
+    @FXML
+    private void goesToChangeLanguage(MouseEvent event) {
+        System.out.println("goes to change language");
+        LoadPage.saveStage(event);
+
+        LoadPage.getFullScene("language");
     }
 
 
