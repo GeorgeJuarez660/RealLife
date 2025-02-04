@@ -6,6 +6,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javafx.util.Duration;
 import org.services.LoadPage;
 
@@ -14,8 +16,14 @@ import java.io.IOException;
 public class GeostoreMain extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(GeostoreMain.class.getResource("/org/scenes/welcome.fxml"));
+        Locale locale = new Locale("it"); // Setti il linguaggio di default da prendere il resource
+        ResourceBundle bundle = ResourceBundle.getBundle("org.language.language", locale);
+        FXMLLoader fxmlLoader = new FXMLLoader(GeostoreMain.class.getResource("/org/scenes/welcome.fxml"), bundle);
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+
+        WelcomeController welcomeController = (WelcomeController) fxmlLoader.getController(); //Ottieni il controller della scena caricata
+        welcomeController.setLanguage("it");
+
         stage.setTitle("GeoStore");
         stage.setScene(scene);
         stage.show();

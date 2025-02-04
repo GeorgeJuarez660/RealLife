@@ -5,15 +5,34 @@ import javafx.event.ActionEvent;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 import org.services.LoadPage;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 public class WelcomeController {
 
+    @FXML
+    private Label welcomeTitle;
+    @FXML
+    private Button welcomeEnter, welcomeExit;
+
     private Stage stage;
+
+    //------------------INITIALIZE-----------------------
+    public void setLanguage(String id){
+        Locale locale = new Locale(id != null ? id : "it"); // Cambia in "en" per Inglese
+        ResourceBundle bundle = ResourceBundle.getBundle("org.language.language", locale);
+        welcomeTitle.setText(bundle.getString("welcome.title"));
+        welcomeEnter.setText(bundle.getString("welcome.enter"));
+        welcomeExit.setText(bundle.getString("welcome.exit"));
+    }
 
     //------------------BUTTONS-----------------------
     @FXML

@@ -15,6 +15,7 @@ import org.utility.PartialSceneDTO;
 
 
 import java.net.URL;
+import java.util.ResourceBundle;
 
 public class LoadPage {
     @FXML

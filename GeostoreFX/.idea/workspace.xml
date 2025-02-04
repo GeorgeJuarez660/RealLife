@@ -5,29 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8273ca0a-1299-4b65-b52d-47dc6a793eae" name="Changes" comment="AppJavaFx: creating example">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/controller/LanguageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/images/en.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/images/es.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/images/it.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/images/jp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/images/world.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/language.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/controller/LanguageController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/images/en.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/images/es.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/images/it.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/images/jp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/images/world.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/scenes/language.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/PrepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/PrepageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/GeostoreMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/GeostoreMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/WelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/WelcomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/prepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/prepage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/images/es.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/language.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/language.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/welcome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/welcome.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/PrepageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/PrepageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/GeostoreMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/GeostoreMain.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/controller/WelcomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/WelcomeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/prepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/prepage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/images/es.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/language.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/language.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/welcome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/welcome.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/services/LoadPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/services/LoadPage.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +46,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/22-ea+11/javafx-fxml-22-ea+11-win.jar!/javafx/fxml/FXMLLoader.class" root0="SKIP_INSPECTION" />
     <setting file="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/22-ea+11/javafx-graphics-22-ea+11-win.jar!/javafx/scene/image/Image.class" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/org/language_ja.properties" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -72,25 +64,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GeostoreMain.executor": "Run",
-    "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.MainPreview.executor": "Run",
-    "Application.Unnamed.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "featureDev/desktop",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/giorg/OneDrive/Desktop/App/G&P/Programming/Java/GeostoreFX/src/main/resources/org/images",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.36666667",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GeostoreMain.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainPreview.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;featureDev/desktop&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/giorg/OneDrive/Desktop/App/G&amp;P/Programming/Java/GeostoreFX/src/main/resources/org/images&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.36666667&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\images" />
@@ -100,11 +92,11 @@
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes\items" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\language" />
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes\masks" />
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org" />
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\jar" />
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes\items" />
-      <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\scenes" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.controller" />
@@ -250,7 +242,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/LoadPage.java</url>
-          <line>290</line>
+          <line>291</line>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -285,7 +277,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/LoadPage.java</url>
-          <line>312</line>
+          <line>313</line>
           <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -365,12 +357,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/GeostoreMain.java</url>
-          <line>25</line>
+          <line>33</line>
           <option name="timeStamp" value="91" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/GeostoreMain.java</url>
-          <line>26</line>
+          <line>34</line>
           <option name="timeStamp" value="92" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -465,7 +457,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/controller/WelcomeController.java</url>
-          <line>30</line>
+          <line>49</line>
           <option name="timeStamp" value="123" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
