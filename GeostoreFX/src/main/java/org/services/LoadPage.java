@@ -4,7 +4,9 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -14,8 +16,8 @@ import org.models.Cliente;
 import org.utility.PartialSceneDTO;
 
 
+import java.io.ByteArrayInputStream;
 import java.net.URL;
-import java.util.ResourceBundle;
 
 public class LoadPage {
     @FXML
@@ -58,6 +60,63 @@ public class LoadPage {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public static void getFullSceneWithLang(String lang) {
+        Pane view = null;
+        try {
+            // Costruisce il percorso completo del file FXML
+            URL fileUrl = GeostoreMain.class.getResource("/org/scenes/welcome.fxml");
+            if (fileUrl == null) {
+                throw new java.io.FileNotFoundException("Nessun file FXML trovato");
+            }
+
+            FXMLLoader loader = new FXMLLoader(fileUrl);
+            Pane newScene = loader.load();
+
+            changeButtonText(newScene, lang);
+
+            //carica la scena
+            double prefWidth = savedStage.getWidth(); //dimensione rimane invariata o mantenuta dall'utente
+            double prefHeight = savedStage.getHeight();
+            Scene scene = new Scene(newScene);
+            savedStage.setWidth(prefWidth);
+            savedStage.setHeight(prefHeight); //inserendo dimensioni fisse
+            savedStage.setScene(scene);
+            savedStage.show();
+
+        } catch (Exception e) {
+            System.out.println("No page found. Please check FXMLLoader.");
+            e.printStackTrace();
+        }
+    }
+
+    private static void changeButtonText(Parent root, String newLang) {
+        if(newLang == null){
+            newLang = Translater.getLanguage();
+        }
+        assert newLang != null;
+        if(!newLang.equals(Translater.getLanguage())){
+            Translater.setLanguage(newLang);
+        }
+        // Cerca tutti i bottoni e cambia il loro testo
+        // Scansiona ricorsivamente tutti i nodi
+        //Questo metodo trova tutti i nodi della scena, anche quelli annidati. quindi BorderPane-->VBox-->HBox
+        for (Node node : root.lookupAll("*")) {
+            if (node instanceof Button) {
+                Button button = (Button) node;
+                String currentText = button.getText();
+                // Modifica il testo in base alla logica desiderata
+                if ("ENTRA".equals(currentText)) {
+                    button.setText("LOGIN");
+                } else if ("ESCI".equals(currentText)) {
+                    button.setText("EXIT");
+                }
+            }
+        }
+
+    }
+
 
     @FXML
     public static void goesToMenu(Cliente user) {
