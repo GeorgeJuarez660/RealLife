@@ -1,5 +1,8 @@
 package org.services;
 
+import com.detectlanguage.DetectLanguage;
+import com.detectlanguage.errors.APIError;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -42,30 +45,9 @@ public class Translater {
         return json.substring(start, end);
     }
 
-    public static String detectLanguage(String text) throws IOException {
-        String urlStr = "https://api.mymemory.translated.net/get?q=" + URLEncoder.encode(text, "UTF-8") +
-                "&langpair=auto|en";  // "auto" rileva la lingua e "en" serve per la traduzione fittizia
-
-        URL url = new URL(urlStr);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
-        StringBuilder response = new StringBuilder();
-        String responseLine;
-
-        while ((responseLine = br.readLine()) != null) {
-            response.append(responseLine.trim());
-        }
-
-        String json = response.toString(); //ottiene la risposta in json
-        int start = json.indexOf("\"source\":\"") + 10;
-        int end = json.indexOf("\"", start);
-
-        if (start != -1 && end != -1) {
-            return json.substring(start, end);
-        } else {
-            return "Unknown";
-        }
+    public static String detectLanguage(String text) throws APIError {
+        //utilizzo l'api DetectLanguage per individuare la lingua di partenza, avendo a disposizione l'api key e il metodo proprio
+        DetectLanguage.apiKey = "76bfad3cbd48db7b717f5aa46b94eb22";
+        return DetectLanguage.simpleDetect(text);
     }
 }

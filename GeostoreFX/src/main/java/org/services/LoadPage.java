@@ -1,5 +1,6 @@
 package org.services;
 
+import com.detectlanguage.errors.APIError;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +17,7 @@ import org.models.Cliente;
 import org.utility.PartialSceneDTO;
 
 
-import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.net.URL;
 
 public class LoadPage {
@@ -95,7 +96,6 @@ public class LoadPage {
         if(newLang == null){
             newLang = Translater.getLanguage();
         }
-        assert newLang != null;
         if(!newLang.equals(Translater.getLanguage())){
             Translater.setLanguage(newLang);
         }
@@ -106,12 +106,17 @@ public class LoadPage {
             if (node instanceof Button) {
                 Button button = (Button) node;
                 String currentText = button.getText();
-                // Modifica il testo in base alla logica desiderata
-                if ("ENTRA".equals(currentText)) {
-                    button.setText("LOGIN");
-                } else if ("ESCI".equals(currentText)) {
-                    button.setText("EXIT");
+
+                try{
+                    String fromLanguage = Translater.detectLanguage(currentText);
+                    button.setText(Translater.translate(currentText, fromLanguage.toLowerCase(), Translater.getLanguage()));
+
+                }catch (APIError e){
+                    e.printStackTrace();
+                }catch (IOException e){
+                    e.printStackTrace();
                 }
+
             }
         }
 

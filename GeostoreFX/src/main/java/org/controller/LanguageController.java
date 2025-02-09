@@ -20,21 +20,27 @@ public class LanguageController {
 
     @FXML
     private void chooseItalian(ActionEvent event) {
-        System.out.println("Going back");
+        System.out.println("Changing language in italian");
+        LoadPage.saveStage(event);
+        LoadPage.loadingScene("CAMBIO LINGUA...");
 
         LoadPage.getFullSceneWithLang("it");
     }
 
     @FXML
     private void chooseEnglish(ActionEvent event) {
-        System.out.println("Going back");
+        System.out.println("Changing language in english");
+        LoadPage.saveStage(event);
+        LoadPage.loadingScene("CAMBIO LINGUA...");
 
         LoadPage.getFullSceneWithLang("en");
     }
 
     @FXML
     private void chooseJapanese(ActionEvent event) {
-        System.out.println("Going back");
+        System.out.println("Changing language in japanese");
+        LoadPage.saveStage(event);
+        LoadPage.loadingScene("CAMBIO LINGUA...");
 
         LoadPage.getFullSceneWithLang("ja");
     }

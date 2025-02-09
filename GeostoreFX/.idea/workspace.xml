@@ -7,26 +7,17 @@
     <list default="true" id="8273ca0a-1299-4b65-b52d-47dc6a793eae" name="Changes" comment="AppJavaFx: creating example">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/GeostoreMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/GeostoreMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/LanguageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/LanguageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/WelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/WelcomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/language/language.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/language/language_en.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/language/language_it.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/language/language_ja.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/language.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/language.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/welcome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/welcome.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/services/Translater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/services/Translater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/GeostoreFX-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/GeostoreFX-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/controller/GeostoreMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/GeostoreMain.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/controller/LanguageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/LanguageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/WelcomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/WelcomeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/language/language.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/language/language_en.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/language/language_it.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/language/language_ja.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/language.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/language.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/welcome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/welcome.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/services/LoadPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/services/LoadPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/services/Translater.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/services/Translater.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,7 +243,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/LoadPage.java</url>
-          <line>346</line>
+          <line>351</line>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -287,7 +278,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/LoadPage.java</url>
-          <line>368</line>
+          <line>373</line>
           <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -502,18 +493,28 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/LoadPage.java</url>
-          <line>68</line>
+          <line>69</line>
           <option name="timeStamp" value="144" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/LoadPage.java</url>
-          <line>76</line>
+          <line>77</line>
           <option name="timeStamp" value="146" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/services/LoadPage.java</url>
-          <line>100</line>
-          <option name="timeStamp" value="147" />
+          <line>98</line>
+          <option name="timeStamp" value="148" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/services/LoadPage.java</url>
+          <line>110</line>
+          <option name="timeStamp" value="149" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/services/Translater.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="154" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
