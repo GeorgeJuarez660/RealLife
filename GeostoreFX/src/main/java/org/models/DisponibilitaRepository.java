@@ -2,7 +2,7 @@ package org.models;
 
 import org.services.DBConnection;
 import org.utility.Utility;
-import org.utility.disponibilitaCRUD;
+import org.utility.crud.disponibilitaCRUD;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -12,7 +12,6 @@ module info {
     requires com.almasb.fxgl.all;
     requires java.sql;
     requires transitive org.xerial.sqlitejdbc;
-    requires detectlanguage;
 
     opens org.controller to javafx.fxml;
     exports org.controller;
@@ -26,4 +25,6 @@ module info {
     opens org.controller.masks to javafx.fxml;
     exports org.utility;
     opens org.utility to javafx.fxml;
+    exports org.utility.crud;
+    opens org.utility.crud to javafx.fxml;
 }

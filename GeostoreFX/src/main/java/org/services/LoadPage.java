@@ -1,13 +1,10 @@
 package org.services;
 
-import com.detectlanguage.errors.APIError;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -15,10 +12,12 @@ import javafx.stage.WindowEvent;
 import org.controller.*;
 import org.models.Cliente;
 import org.utility.PartialSceneDTO;
+import org.utility.Translater;
 
 
-import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class LoadPage {
     @FXML
@@ -63,19 +62,24 @@ public class LoadPage {
     }
 
     @FXML
-    public static void getFullSceneWithLang(String lang) {
+    public static void getFullSceneWithLang(String choosedScene, String lang) {
         Pane view = null;
         try {
             // Costruisce il percorso completo del file FXML
-            URL fileUrl = GeostoreMain.class.getResource("/org/scenes/welcome.fxml");
+            lang = lang != null ? lang : Translater.getLanguage(); //per prima cosa controlla la lingua per impostarla
+            Locale locale = new Locale(lang); // Setti il linguaggio di default da prendere il resource
+            ResourceBundle resLang = ResourceBundle.getBundle("org.languages.language", locale); //prende la risorsa dove ci sono i messaggi già citati
+            URL fileUrl = GeostoreMain.class.getResource("/org/scenes/" + choosedScene + ".fxml");
             if (fileUrl == null) {
                 throw new java.io.FileNotFoundException("Nessun file FXML trovato");
             }
 
-            FXMLLoader loader = new FXMLLoader(fileUrl);
+            FXMLLoader loader = new FXMLLoader(fileUrl, resLang);
             Pane newScene = loader.load();
 
-            changeButtonText(newScene, lang);
+            Translater.setLanguage(lang); //conserva la lingua per la prossima volta
+
+            //changeButtonText(newScene, lang);
 
             //carica la scena
             double prefWidth = savedStage.getWidth(); //dimensione rimane invariata o mantenuta dall'utente
@@ -91,37 +95,6 @@ public class LoadPage {
             e.printStackTrace();
         }
     }
-
-    private static void changeButtonText(Parent root, String newLang) {
-        if(newLang == null){
-            newLang = Translater.getLanguage();
-        }
-        if(!newLang.equals(Translater.getLanguage())){
-            Translater.setLanguage(newLang);
-        }
-        // Cerca tutti i bottoni e cambia il loro testo
-        // Scansiona ricorsivamente tutti i nodi
-        //Questo metodo trova tutti i nodi della scena, anche quelli annidati. quindi BorderPane-->VBox-->HBox
-        for (Node node : root.lookupAll("*")) {
-            if (node instanceof Button) {
-                Button button = (Button) node;
-                String currentText = button.getText();
-
-                try{
-                    String fromLanguage = Translater.detectLanguage(currentText);
-                    button.setText(Translater.translate(currentText, fromLanguage.toLowerCase(), Translater.getLanguage()));
-
-                }catch (APIError e){
-                    e.printStackTrace();
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
-
-            }
-        }
-
-    }
-
 
     @FXML
     public static void goesToMenu(Cliente user) {
@@ -155,11 +128,15 @@ public class LoadPage {
     }
 
     @FXML
-    public static void access(String choose) {
+    public static void access(String choose, String lang) {
         try {
             String chooseType =  "login" + choose;
 
             URL fileUrl = null;
+
+            lang = lang != null ? lang : Translater.getLanguage(); //per prima cosa controlla la lingua per impostarla
+            Locale locale = new Locale(lang); // Setti il linguaggio di default da prendere il resource
+            ResourceBundle resLang = ResourceBundle.getBundle("org.languages.language", locale); //prende la risorsa dove ci sono i messaggi già citati
 
             // Costruisce il percorso completo del file FXML
             if(chooseType.equals("loginAdmin")){
@@ -181,13 +158,15 @@ public class LoadPage {
                 }
             }
 
-            FXMLLoader loader = new FXMLLoader(fileUrl);
+            FXMLLoader loader = new FXMLLoader(fileUrl, resLang);
             Pane newScene = loader.load();
             /*Object controller = loader.getController(); //Ottieni il controller della scena caricata
 
             if(controller instanceof AccessController){
                 AccessController accessController = (AccessController) controller;
             }*/
+
+            Translater.setLanguage(lang); //conserva la lingua per la prossima volta
 
             //carica la scena
             double prefWidth = savedStage.getWidth();

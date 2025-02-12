@@ -28,7 +28,7 @@ public class WelcomeController {
         System.out.println("goes to prepage");
         LoadPage.saveStage(event);
 
-        LoadPage.getFullScene("prepage");
+        LoadPage.getFullSceneWithLang("prepage", null);
     }
 
     @FXML
@@ -62,7 +62,7 @@ public class WelcomeController {
         System.out.println("goes to change language");
         LoadPage.saveStage(event);
 
-        LoadPage.getFullScene("language");
+        LoadPage.getFullSceneWithLang("language", null);
     }
 
 

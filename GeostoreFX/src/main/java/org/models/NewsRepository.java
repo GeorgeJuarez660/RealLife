@@ -2,11 +2,10 @@ package org.models;
 
 import org.services.DBConnection;
 import org.utility.Utility;
-import org.utility.newsCRUD;
+import org.utility.crud.newsCRUD;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class NewsRepository implements newsCRUD {
 

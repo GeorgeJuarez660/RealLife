@@ -13,7 +13,7 @@ public class PrepageController {
         System.out.println("signing up");
         LoadPage.saveStage(event);
 
-        LoadPage.access("register");
+        LoadPage.access("register", null);
     }
 
     @FXML
@@ -21,7 +21,7 @@ public class PrepageController {
         System.out.println("signing in admin");
         LoadPage.saveStage(event);
 
-        LoadPage.access("Admin");
+        LoadPage.access("Admin", null);
     }
 
     @FXML
@@ -29,14 +29,14 @@ public class PrepageController {
         System.out.println("signing in cliente");
         LoadPage.saveStage(event);
 
-        LoadPage.access("User");
+        LoadPage.access("User", null);
     }
 
     @FXML
     private void back(ActionEvent event) {
         System.out.println("Going back");
 
-        LoadPage.getFullScene("welcome");
+        LoadPage.getFullSceneWithLang("welcome", null);
     }
 
 }

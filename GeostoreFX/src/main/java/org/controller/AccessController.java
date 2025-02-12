@@ -154,7 +154,7 @@ public class AccessController {
     private void back(ActionEvent event) {
         System.out.println("Going back");
 
-        LoadPage.getFullScene("prepage");
+        LoadPage.getFullSceneWithLang("prepage", null);
     }
 
     //------------------POP OVER (ON MOUSE ENTERED AND EXITED)-----------------------

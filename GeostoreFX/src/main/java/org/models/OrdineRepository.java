@@ -2,7 +2,7 @@ package org.models;
 
 import org.services.DBConnection;
 import org.utility.Utility;
-import org.utility.ordiniCRUD;
+import org.utility.crud.ordiniCRUD;
 
 import java.sql.*;
 import java.util.HashMap;

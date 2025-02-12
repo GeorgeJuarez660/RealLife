@@ -2,7 +2,7 @@ package org.models;
 
 import org.services.DBConnection;
 import org.utility.Utility;
-import org.utility.prodottiCRUD;
+import org.utility.crud.prodottiCRUD;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
