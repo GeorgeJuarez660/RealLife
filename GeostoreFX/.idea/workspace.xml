@@ -5,93 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8273ca0a-1299-4b65-b52d-47dc6a793eae" name="Changes" comment="AppJavaFx: creating example">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/utility/Translater.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/utility/Translater.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/utility/crud/categorieCRUD.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/utility/crud/codiciCRUD.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/utility/crud/disponibilitaCRUD.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/utility/crud/materieCRUD.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/utility/crud/newsCRUD.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/utility/crud/ordiniCRUD.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/utility/crud/prodottiCRUD.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/utility/crud/statusCRUD.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/utility/crud/utentiCRUD.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/AccessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/AccessController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/GeostoreMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/GeostoreMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/LanguageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/LanguageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/PrepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/PrepageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/controller/WelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/controller/WelcomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/CategoriaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/CategoriaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/CodiceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/CodiceRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/DisponibilitaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/DisponibilitaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/MateriaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/MateriaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/NewsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/NewsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/OrdineRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/OrdineRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/ProdottoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/ProdottoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/StatusRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/StatusRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/models/UtenteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/models/UtenteRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/services/LoadPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/services/Translater.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/utility/categorieCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/utility/crud/categorieCRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/utility/codiciCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/utility/crud/codiciCRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/utility/disponibilitaCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/utility/crud/disponibilitaCRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/utility/materieCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/utility/crud/materieCRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/utility/newsCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/utility/crud/newsCRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/utility/ordiniCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/utility/crud/ordiniCRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/utility/prodottiCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/utility/crud/prodottiCRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/utility/statusCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/utility/crud/statusCRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/utility/utentiCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/utility/crud/utentiCRUD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/languages/language.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/languages/language.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/languages/language_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/languages/language_en.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/languages/language_it.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/languages/language_it.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/languages/language_ja.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/languages/language_ja.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/language.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/language.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/loginAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/loginAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/loginCliente.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/loginCliente.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/prepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/prepage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/register.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/scenes/welcome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/scenes/welcome.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/GeostoreFX-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/GeostoreFX-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/AccessController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/AccessController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/GeostoreMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/GeostoreMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/LanguageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/LanguageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/PrepageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/PrepageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/controller/WelcomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/controller/WelcomeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/language/language.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/languages/language.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/language/language_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/languages/language_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/language/language_it.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/languages/language_it.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/language/language_ja.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/languages/language_ja.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/CategoriaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/CategoriaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/CodiceRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/CodiceRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/DisponibilitaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/DisponibilitaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/MateriaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/MateriaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/NewsRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/NewsRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/OrdineRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/OrdineRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/ProdottoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/ProdottoRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/StatusRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/StatusRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/models/UtenteRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/models/UtenteRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/language.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/language.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/loginAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/loginAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/loginCliente.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/loginCliente.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/prepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/prepage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/register.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/scenes/welcome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/scenes/welcome.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/services/LoadPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/services/LoadPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/services/Translater.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/utility/categorieCRUD.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/utility/codiciCRUD.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/utility/disponibilitaCRUD.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/utility/materieCRUD.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/utility/newsCRUD.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/utility/ordiniCRUD.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/utility/prodottiCRUD.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/utility/statusCRUD.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/utility/utentiCRUD.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,27 +55,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GeostoreMain.executor": "Run",
-    "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.MainPreview.executor": "Run",
-    "Application.Unnamed.executor": "Run",
-    "Maven.GeostoreFX [clean].executor": "Run",
-    "Maven.GeostoreFX [install].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "featureDev/desktop",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/giorg/OneDrive/Desktop/App/G&P/Programming/Java/GeostoreFX/src/main/resources/org/images",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.36666667",
-    "settings.editor.selected.configurable": "File.Encoding"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GeostoreMain.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainPreview.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.GeostoreFX [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.GeostoreFX [install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;featureDev/desktop&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/giorg/OneDrive/Desktop/App/G&amp;P/Programming/Java/GeostoreFX/src/main/resources/org/images&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.36666667&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\giorg\OneDrive\Desktop\App\G&amp;P\Programming\Java\GeostoreFX\src\main\resources\org\images" />
