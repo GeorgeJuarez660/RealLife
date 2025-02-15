@@ -10,6 +10,7 @@ import org.models.Cliente;
 import org.services.LoadPage;
 
 import java.sql.Date;
+import java.util.ResourceBundle;
 
 public class AnswerController {
     @FXML
@@ -22,6 +23,36 @@ public class AnswerController {
 
         response.setText(answer);
 
+    }
+
+    public void responseWithLang(String answer, ResourceBundle resLang) {
+        System.out.println(answer);
+
+        switch (answer) {
+            case "REG-Y":
+                response.setText(resLang.getString("answer.register.positive"));
+                break;
+            case "LOG-Y":
+                response.setText(resLang.getString("answer.login.positive"));
+                break;
+            case "LOG-N":
+                response.setText(resLang.getString("answer.login.negative"));
+                break;
+            case "REG-N":
+                response.setText(resLang.getString("answer.register.negative"));
+                break;
+            case "BD-ERR":
+                response.setText(resLang.getString("answer.register.errorBornDate"));
+                break;
+            case "PWD-NOMATCH":
+                response.setText(resLang.getString("answer.register.differentPasswords"));
+                break;
+            case "AGE-ERR":
+                response.setText(resLang.getString("answer.register.wrongAge"));
+                break;
+            default:
+                break;
+        }
     }
 
 }

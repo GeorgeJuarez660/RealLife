@@ -154,10 +154,10 @@ public class Utility {
 
     public static void sendResponseLogin(Integer num, Cliente user){
         if(num > 0){
-            LoadPage.answerScene("positive", "ACCESSO APPROVATO");
+            LoadPage.answerSceneWithLang("positive", "LOG-Y", null);
         }
         else{
-            LoadPage.answerScene("negative", "ACCESSO FALLITO");
+            LoadPage.answerSceneWithLang("negative", "LOG-N", null);
         }
 
         if(num>0){
@@ -174,7 +174,7 @@ public class Utility {
             PauseTransition delay = new PauseTransition(Duration.seconds(3));
             delay.setOnFinished(event -> {
                 // Dopo 2 secondi, carica la terza scena
-                LoadPage.getFullScene("prepage");
+                LoadPage.getFullSceneWithLang("prepage", null);
             });
             delay.play();
         }
@@ -183,17 +183,17 @@ public class Utility {
 
     public static void sendResponseRegister(Integer num){
         if(num > 0){
-            LoadPage.answerScene("positive", "REGISTRATO CON SUCCESSO");
+            LoadPage.answerSceneWithLang("positive", "REG-Y", null);
         }
         else{
-            LoadPage.answerScene("negative", "REGISTRAZIONE FALLITA");
+            LoadPage.answerSceneWithLang("negative", "REG-N", null);
         }
 
         //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
         PauseTransition delay = new PauseTransition(Duration.seconds(3));
         delay.setOnFinished(event -> {
             // Dopo 2 secondi, carica la terza scena
-            LoadPage.getFullScene("prepage");
+            LoadPage.getFullSceneWithLang("prepage", null);
         });
         delay.play();
     }

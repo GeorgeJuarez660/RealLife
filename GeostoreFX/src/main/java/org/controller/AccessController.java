@@ -44,38 +44,38 @@ public class AccessController {
     private void signup(ActionEvent event) {
         System.out.println("Signing up");
         LoadPage.saveStage(event);
-        LoadPage.loadingScene("REGISTRAZIONE IN CORSO...");
+        LoadPage.loadingSceneWithLang("LOAD-REG", null);
 
         Cliente user;
         service = new Service();
 
         if(!password.getText().equals(confirmPassword.getText())){
-            LoadPage.answerScene("negative", "LE PASSWORD NON COINCIDONO");
+            LoadPage.answerSceneWithLang("negative", "PWD-NOMATCH", null);
             //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
             PauseTransition delay = new PauseTransition(Duration.seconds(3));
             delay.setOnFinished(e -> {
                 // Dopo 2 secondi, carica la terza scena
-                LoadPage.getFullScene("register");
+                LoadPage.getFullSceneWithLang("register", null);
             });
             delay.play();
         }
         else if(bornDate.getValue() == null){
-            LoadPage.answerScene("negative", "LA DATA NASCITA È OBBLIGATORIA");
+            LoadPage.answerSceneWithLang("negative", "BD-ERR", null);
             //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
             PauseTransition delay = new PauseTransition(Duration.seconds(3));
             delay.setOnFinished(e -> {
                 // Dopo 2 secondi, carica la terza scena
-                LoadPage.getFullScene("register");
+                LoadPage.getFullSceneWithLang("register", null);
             });
             delay.play();
         }
         else if(!Utility.getAge(Date.valueOf(bornDate.getValue()))){
-            LoadPage.answerScene("negative", "DEVI AVERE ALMENO 13 ANNI PER REGISTRARTI");
+            LoadPage.answerSceneWithLang("negative", "AGE-ERR", null);
             //PauseTransition serve per ritardare il caricamento della nuova scena, permettendo di mostrare temporaneamente la precedente (s-1)
             PauseTransition delay = new PauseTransition(Duration.seconds(3));
             delay.setOnFinished(e -> {
                 // Dopo 2 secondi, carica la terza scena
-                LoadPage.getFullScene("register");
+                LoadPage.getFullSceneWithLang("register", null);
             });
             delay.play();
         }
@@ -127,7 +127,7 @@ public class AccessController {
     private void signin(ActionEvent event) {
         System.out.println("Signing in");
         LoadPage.saveStage(event);
-        LoadPage.loadingScene("ACCESSO IN CORSO...");
+        LoadPage.loadingSceneWithLang("LOAD-LOG", null);
 
         Cliente user;
         service = new Service();

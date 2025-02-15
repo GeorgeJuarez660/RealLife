@@ -22,7 +22,7 @@ public class LanguageController {
     private void chooseItalian(ActionEvent event) {
         System.out.println("Changing language in italian");
         LoadPage.saveStage(event);
-        LoadPage.loadingScene("CAMBIO LINGUA...");
+        LoadPage.loadingSceneWithLang("LOAD-CHL", null);
 
         LoadPage.getFullSceneWithLang("welcome", "it");
     }
@@ -31,7 +31,7 @@ public class LanguageController {
     private void chooseEnglish(ActionEvent event) {
         System.out.println("Changing language in english");
         LoadPage.saveStage(event);
-        LoadPage.loadingScene("CAMBIO LINGUA...");
+        LoadPage.loadingSceneWithLang("LOAD-CHL", null);
 
         LoadPage.getFullSceneWithLang("welcome", "en");
     }
@@ -40,7 +40,7 @@ public class LanguageController {
     private void chooseJapanese(ActionEvent event) {
         System.out.println("Changing language in japanese");
         LoadPage.saveStage(event);
-        LoadPage.loadingScene("CAMBIO LINGUA...");
+        LoadPage.loadingSceneWithLang("LOAD-CHL", null);
 
         LoadPage.getFullSceneWithLang("welcome", "ja");
     }
